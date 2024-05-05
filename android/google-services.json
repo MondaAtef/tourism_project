@@ -1,0 +1,47 @@
+{
+  "project_info": {
+    "project_number": "246841416963",
+    "project_id": "tourism-812c5",
+    "storage_bucket": "tourism-812c5.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:246841416963:android:1603657565afe1fc4e5d36",
+        "android_client_info": {
+          "package_name": "com.example.vixor_project"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "246841416963-o6cp4d6mcoj2tpsqq70tpfqirgpc1ol2.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.example.vixor_project",
+            "certificate_hash": "9dcc053241bfeccfb0ca3e44a1eb8521e77c6a96"
+          }
+        },
+        {
+          "client_id": "246841416963-pbn3mkp77a7cs4rbdcapbn4e1npkcv9c.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyDu82dRPCX2Ni2MxqMOwbq5jRanYL336lU"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "246841416963-pbn3mkp77a7cs4rbdcapbn4e1npkcv9c.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

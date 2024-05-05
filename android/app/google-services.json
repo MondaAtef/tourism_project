@@ -1,0 +1,29 @@
+{
+  "project_info": {
+    "project_number": "246841416963",
+    "project_id": "tourism-812c5",
+    "storage_bucket": "tourism-812c5.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:246841416963:android:1603657565afe1fc4e5d36",
+        "android_client_info": {
+          "package_name": "com.example.vixor_project"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyDu82dRPCX2Ni2MxqMOwbq5jRanYL336lU"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

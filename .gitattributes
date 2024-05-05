@@ -1,0 +1,10 @@
+# Auto detect text files and perform LF normalization
+* text=auto
+#Added for LFS
+#UE file types
+*.uasset filter=lfs diff=lfs merge=lfs -text
+*.umap filter=lfs diff=lfs merge=lfs -text
+
+#Raw Content types
+*.so filter=lfs diff=lfs merge=lfs -text
+*.apk filter=lfs diff=lfs merge=lfs -text
