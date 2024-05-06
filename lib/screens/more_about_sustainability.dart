@@ -40,7 +40,7 @@ class Sustabilty extends StatelessWidget {
                       width: double.infinity,
                       // constraints: BoxConstraints(
                       //     minHeight: MediaQuery.of(context).size.height * .8),
-                      height: MediaQuery.of(context).size.height * .37,
+                      height: MediaQuery.sizeOf(context).height * .40,
                       child: Stack(
                         children: [
                           Positioned(
@@ -48,7 +48,8 @@ class Sustabilty extends StatelessWidget {
                             left: 0,
                             child: Container(
                               constraints: BoxConstraints(
-                                  maxWidth: MediaQuery.of(context).size.width * .6),
+                                  maxWidth:
+                                      MediaQuery.of(context).size.width * .6),
                               child: Column(
                                 crossAxisAlignment: CrossAxisAlignment.start,
                                 children: [
@@ -92,7 +93,7 @@ class Sustabilty extends StatelessWidget {
                                       fontSize: 20,
                                       fontWeight: FontWeight.w400,
                                       text:
-                                          "Sustainability has become a pivotal concern in the global ",
+                                          "Sustainability has become a pivotal concern in the ",
                                     ),
                                   ),
                                   // Container(
@@ -110,13 +111,12 @@ class Sustabilty extends StatelessWidget {
                               ),
                             ),
                           ),
-                          Positioned(
+                          const Positioned(
                             top: 15,
                             right: 0,
                             child: SizedBox(
-                                width: MediaQuery.of(context).size.width * .5,
-                                child: const Image(
-                                    image: AssetImage(Assets.forest))),
+                                //width: MediaQuery.of(context).size.width * .5,
+                                child: Image(image: AssetImage(Assets.forest))),
                           ),
                         ],
                       ),
@@ -127,7 +127,7 @@ class Sustabilty extends StatelessWidget {
                         fontSize: 20,
                         fontWeight: FontWeight.w400,
                         text:
-                            "context, transcending various industries. In recent years, the tourism sector has witnessed a paradigm shift towards responsible and sustainable practices.As the world seeks ways to minimize its environmental footprint, Egypt is also embracing the concept of sustainable tourism to safeguard its rich cultural and natural heritage. ",
+                            "global context, transcending various industries. In recent years, the tourism sector has witnessed a paradigm shift towards responsible and sustainable practices.As the world seeks ways to minimize its environmental footprint, Egypt is also embracing the concept of sustainable tourism to safeguard its rich cultural and natural heritage. ",
                       ),
                     ),
                     Container(

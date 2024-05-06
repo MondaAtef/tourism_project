@@ -116,7 +116,7 @@ class _TripScreenState extends State<TripScreen> {
                   padding: const EdgeInsets.symmetric(horizontal: 22),
                   child: Align(
                       alignment: Alignment.topLeft,
-                      child: Text("72".tr,style: TextStyle(
+                      child: Text("72".tr,style: const TextStyle(
                         fontWeight: FontWeight.bold,
                         fontSize: 15.0,
                         color: Colors.black,
@@ -139,7 +139,7 @@ class _TripScreenState extends State<TripScreen> {
                           padding: const EdgeInsets.all(8.0),
                           child: Text(
                             item,
-                            style: TextStyle(
+                            style: const TextStyle(
                               fontWeight: FontWeight.bold,
                               fontSize: 16.0,
                               color: Colors.black,

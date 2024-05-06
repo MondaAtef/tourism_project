@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:vixor_project/const/reusable.dart';
+import 'package:vixor_project/utils/app_colors.dart';
 
 import 'package:vixor_project/utils/app_imagse.dart';
 
@@ -40,8 +41,10 @@ class HomeItem3 extends StatelessWidget {
                     gradient: const LinearGradient(
                       colors: [
                         // Color.fromARGB(120, 141, 219, 225),
-                        Color.fromARGB(142, 79, 56, 25),
-                        Color.fromARGB(120, 255, 255, 255),
+                        //Color.fromARGB(142, 79, 56, 25),
+                        AppColors.brown,
+                        Color.fromARGB(255, 179, 190, 123)
+                        //Color.fromARGB(116, 246, 206, 7),
                       ],
                       stops: [0.0, 0.5],
                       begin: Alignment.bottomCenter,

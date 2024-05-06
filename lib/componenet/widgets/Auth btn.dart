@@ -17,7 +17,7 @@ import 'package:vixor_project/componenet/widgets/text_widget.dart';
       child: ElevatedButton(
           style: ElevatedButton.styleFrom(
            // primary: primary,
-            backgroundColor: Color(0xFF7441F2),
+            backgroundColor: const Color(0xFF7441F2),
     // background (button) color
           ),
           onPressed: fct,

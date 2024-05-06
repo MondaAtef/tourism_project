@@ -95,7 +95,7 @@ class _ProductDetailsScreenState extends State<ProductDetailsScreen> {
                             height: kBottomNavigationBarHeight - 10,
                             child: ElevatedButton.icon(
                               style: ElevatedButton.styleFrom(
-                                backgroundColor: Color(0xff8E4F2E),
+                                backgroundColor: const Color(0xff8E4F2E),
                                 shape: RoundedRectangleBorder(
                                   borderRadius: BorderRadius.circular(
                                     30.0,
@@ -134,7 +134,7 @@ class _ProductDetailsScreenState extends State<ProductDetailsScreen> {
                                   productId: getCurrProduct.PlaceId)
                                   ? "In Trip"
                                   : "Add to MyTrip",
-                                   style: TextStyle(color: Colors.white),
+                                   style: const TextStyle(color: Colors.white),
 
                             ),
                           ),

@@ -16,15 +16,15 @@ class _AdminState extends State<Admin> {
     return Scaffold(
       body: Stack(
         children: [
-          Image.asset(
-            Assets.imagesLang,
-            fit: BoxFit.cover,
-            height: double.infinity,
-            width: double.infinity,
-          ),
+          // Image.asset(
+          //   Assets.imagesLang,
+          //   fit: BoxFit.cover,
+          //   height: double.infinity,
+          //   width: double.infinity,
+          // ),
           Container(
               decoration:
-                  BoxDecoration(color: AppColors.white.withOpacity(0.7))),
+                  const BoxDecoration(color: AppColors.white)),
           const Padding(
             padding: EdgeInsets.only(top: 20),
             child: Column(children: [
@@ -33,12 +33,12 @@ class _AdminState extends State<Admin> {
               SizedBox(height: 50),
               ItemList2(),
 
-              Row(
-                children: [
-                  //HomeItem3(),
-                  //  HomeItem3(),
-                ],
-              ),
+              // Row(
+              //   children: [
+              //     //HomeItem3(),
+              //     //  HomeItem3(),
+              //   ],
+              // ),
               SizedBox(
                 height: 10,
               ),

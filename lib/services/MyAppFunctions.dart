@@ -62,7 +62,7 @@ class MyAppFunctions {
                         fct();
                         Navigator.pop(context);
                       },
-                      child: SubtitleTextWidget(
+                      child: const SubtitleTextWidget(
 
                         label: "OK",
                         color: Colors.brown,

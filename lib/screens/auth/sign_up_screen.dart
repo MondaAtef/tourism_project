@@ -7,13 +7,11 @@ import 'package:vixor_project/componenet/checkbox.dart';
 import 'package:vixor_project/componenet/custom_text_widget.dart';
 import 'package:vixor_project/componenet/link_text.dart';
 import 'package:vixor_project/componenet/padge.dart';
-import 'package:vixor_project/componenet/widgets/back%20widget.dart';
 import 'package:vixor_project/const/firebase%20constants.dart';
 import 'package:vixor_project/const/reusable.dart';
 import 'package:vixor_project/screens/dashboard_screen/widgets/bottom_nav_bar.dart';
 import 'package:vixor_project/screens/auth/login_screen.dart';
 import 'package:vixor_project/screens/t_and_c.dart';
-import 'package:vixor_project/screens/upload.dart';
 
 class SignUp extends StatefulWidget {
   const SignUp({super.key});
@@ -73,7 +71,7 @@ class _LoginState extends State<SignUp> {
           'image':'https://as1.ftcdn.net/v2/jpg/04/28/56/60/1000_F_428566061_Fkqaq0l831DXPM12Ixs9ds3waZWlCXHH.jpg',
           'cover':'https://as1.ftcdn.net/v2/jpg/04/28/56/60/1000_F_428566061_Fkqaq0l831DXPM12Ixs9ds3waZWlCXHH.jpg',
         });
-        navigateTo(context, CustomBottomNavBar());
+        navigateTo(context, const CustomBottomNavBar());
         print('succesfully registered');
       }
       on FirebaseException catch(error)
@@ -115,11 +113,11 @@ class _LoginState extends State<SignUp> {
             children: [
               const Padge(),
                Padding(
-                  padding: EdgeInsets.all(8.0),
+                  padding: const EdgeInsets.all(8.0),
                   child: CustomTextWidget(
                     text: "10".tr,
                     fontSize: 32,
-                    color: Color(0xff8E4F2E),
+                    color: const Color(0xff8E4F2E),
                     fontWeight: FontWeight.w700,
                   )),
 Form(
@@ -128,7 +126,7 @@ Form(
     crossAxisAlignment: CrossAxisAlignment.start,
     children: [
       Padding(
-          padding: EdgeInsets.all(6),
+          padding: const EdgeInsets.all(6),
           child: CustomTextWidget(
             text: "16".tr,
             fontSize: 14,
@@ -162,7 +160,7 @@ Form(
         ),
       ),
        Padding(
-          padding: EdgeInsets.all(6),
+          padding: const EdgeInsets.all(6),
           child: CustomTextWidget(
             text: "2".tr,
             fontSize: 14,
@@ -311,7 +309,7 @@ Form(
               Button(
                   text: "10".tr,
                   //TextStyle:Colors.white,
-                  color:Color(0xff8E4F2E),
+                  color:const Color(0xff8E4F2E),
                   onPressed: () {
                     _submitFormOnRegister();
                   }

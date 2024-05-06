@@ -69,7 +69,7 @@ class _PlaceWidget2State extends State<PlaceWidget2> {
                       fontSize: 18,
                       maxLines: 2,
                     ),
-                  ),Spacer(),
+                  ),const Spacer(),
                   Flexible(
                     flex: 2,
                     child: HeartButtonWidget(

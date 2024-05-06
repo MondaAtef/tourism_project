@@ -4,7 +4,6 @@ import 'package:vixor_project/componenet/custom_text_widget.dart';
 import 'package:vixor_project/const/reusable.dart';
 import 'package:vixor_project/screens/dashboard_screen/widgets/HomeScreen.dart';
 import 'package:vixor_project/screens/dashboard_screen/widgets/Trip/Trip_Screen.dart';
-//import 'package:vixor_project/screens/dashboard_screen/widgets/add&edit%20place.dart';
 import 'package:vixor_project/utils/app_imagse.dart';
 
 class ItemList1 extends StatelessWidget {
@@ -23,7 +22,7 @@ class ItemList1 extends StatelessWidget {
                 flex: 2,
                 child: GestureDetector(
                   onTap: () {
-                    navigateTo(context, HomeScreen());
+                    navigateTo(context, const Homescreen());
                   },
                   child: Container(
                     decoration: BoxDecoration(
@@ -68,9 +67,14 @@ class ItemList1 extends StatelessWidget {
                     ),
                   ),
                 )),
+
+
+
             const SizedBox(
               width: 15,
             ),
+
+
             Expanded(
                 flex: 1,
                 child: GestureDetector(

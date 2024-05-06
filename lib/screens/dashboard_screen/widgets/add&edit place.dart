@@ -317,7 +317,7 @@ class _EditOrUploadPlaceScreenState extends State<EditOrUploadPlaceScreen> {
                     ),
                     icon: const Icon(Icons.upload,color: Colors.white,),
                     label: Text(
-                      isEditing ? "Edit Product" : "Upload Product",style: TextStyle(
+                      isEditing ? "Edit Product" : "Upload Product",style: const TextStyle(
                       color: Colors.white,
                       fontWeight: FontWeight.bold,
                       fontSize: 15.0,

@@ -81,7 +81,7 @@ class _ForgetPasswordScreenState extends State<ForgetPasswordScreen> {
                     height: size.height * 0.1,
                   ),
                   const Backwidget(),
-                  SizedBox(
+                  const SizedBox(
                     height: 20,
                   ),
                   Textwidget(
@@ -97,14 +97,14 @@ class _ForgetPasswordScreenState extends State<ForgetPasswordScreen> {
                     style: const TextStyle(color: Colors.black),
                     decoration:  InputDecoration(
                       hintText: "14".tr,
-                      hintStyle: TextStyle(color: Colors.black),
-                      enabledBorder: UnderlineInputBorder(
+                      hintStyle: const TextStyle(color: Colors.black),
+                      enabledBorder: const UnderlineInputBorder(
                         borderSide: BorderSide(color: Colors.black),
                       ),
-                      focusedBorder: UnderlineInputBorder(
+                      focusedBorder: const UnderlineInputBorder(
                         borderSide: BorderSide(color: Colors.black),
                       ),
-                      errorBorder: UnderlineInputBorder(
+                      errorBorder: const UnderlineInputBorder(
                         borderSide: BorderSide(color: Colors.red),
                       ),
                     ),

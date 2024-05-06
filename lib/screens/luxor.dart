@@ -34,7 +34,7 @@ class luxor extends StatelessWidget {
                   children: [
                     SizedBox(
                       width: double.infinity,
-                      height: MediaQuery.of(context).size.height * .33,
+                      height: MediaQuery.of(context).size.height * .44,
                       child: Stack(
                         children: [
                           Positioned(
@@ -43,7 +43,7 @@ class luxor extends StatelessWidget {
                             child: Container(
                               constraints: BoxConstraints(
                                   maxWidth:
-                                      MediaQuery.of(context).size.width * .6),
+                                      MediaQuery.of(context).size.width * .5),
                               child: Column(
                                   crossAxisAlignment: CrossAxisAlignment.start,
                                   children: [
@@ -87,7 +87,7 @@ class luxor extends StatelessWidget {
                                           fontSize: 20,
                                           fontWeight: FontWeight.w400,
                                           text:
-                                              "Sustainability has become a pivotal"),
+                                              "Sustainability has become a pivotal concern in the global context,"),
                                     ),
                                     Container(
                                       decoration: const BoxDecoration(
@@ -103,13 +103,12 @@ class luxor extends StatelessWidget {
                                   ]),
                             ),
                           ),
-                          Positioned(
+                          const Positioned(
                             top: 15,
                             right: 0,
                             child: SizedBox(
-                                width: MediaQuery.sizeOf(context).width * .5,
-                                child: const Image(
-                                    image: AssetImage(Assets.forest))),
+                                //width: MediaQuery.sizeOf(context).width * .5,
+                                child: Image(image: AssetImage(Assets.forest))),
                           ),
                         ],
                       ),
@@ -120,7 +119,7 @@ class luxor extends StatelessWidget {
                           fontSize: 20,
                           fontWeight: FontWeight.w400,
                           text:
-                              "concern in the global context, transcending various industries. In recent years, the tourism sector has witnessed a paradigm shift towards responsible and sustainable practices. As the world seeks ways to minimize its environmental footprint, Egypt is also embracing the concept of sustainable tourism to safeguard its rich cultural and natural heritage."),
+                              " transcending various industries. In recent years, the tourism sector has witnessed a paradigm shift towards responsible and sustainable practices. As the world seeks ways to minimize its environmental footprint, Egypt is also embracing the concept of sustainable tourism to safeguard its rich cultural and natural heritage."),
                     ),
                     Container(
                       decoration: const BoxDecoration(

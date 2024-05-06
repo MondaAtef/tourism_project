@@ -25,7 +25,7 @@ List<DropdownMenuItem<String>>? get getModelsItem {
   return modelsItems;
 }
 
-TextStyle smallTextStyle = TextStyle(
+TextStyle smallTextStyle = const TextStyle(
   fontSize: 15.0,
 );
 

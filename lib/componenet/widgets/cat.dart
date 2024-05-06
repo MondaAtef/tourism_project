@@ -1,7 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:gap/gap.dart';
 import 'package:vixor_project/componenet/widgets/subtitle_text.dart';
-import 'package:vixor_project/const/reusable.dart';
 import 'package:vixor_project/screens/dashboard_screen/widgets/searchscreen.dart';
 
 

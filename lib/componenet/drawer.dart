@@ -1,8 +1,6 @@
-
 import 'package:flutter/cupertino.dart';
 
 // ignore_for_file: use_key_in_widget_constructors
-
 
 import 'package:flutter/material.dart';
 import 'package:fluttertoast/fluttertoast.dart';
@@ -19,9 +17,8 @@ class Mydrawer extends StatelessWidget {
   Widget build(BuildContext context) {
     var emailcontroller = TextEditingController();
     var formKey = GlobalKey<FormState>();
-    return
-      Drawer(
-        child: Stack(
+    return Drawer(
+      child: Stack(
         children: [
           // Background image
           Container(
@@ -82,8 +79,6 @@ class Mydrawer extends StatelessWidget {
                 },
               ),
 
-
-
               // ListTile(
               //   title: const Text(
               //     'Green Places',
@@ -142,11 +137,13 @@ class Mydrawer extends StatelessWidget {
                                   Form(
                                     key: formKey,
                                     child: Row(
-                                      mainAxisAlignment: MainAxisAlignment.center,
+                                      mainAxisAlignment:
+                                          MainAxisAlignment.center,
                                       children: [
                                         SizedBox(
-                                          width:
-                                          MediaQuery.of(context).size.width *
+                                          width: MediaQuery.of(context)
+                                                  .size
+                                                  .width *
                                               0.6,
                                           height: 50,
                                           child: TextFormField(
@@ -158,17 +155,19 @@ class Mydrawer extends StatelessWidget {
                                                 }
                                               },
                                               decoration: InputDecoration(
-                                                prefixIcon: Icon(Icons.lock),
-                                                fillColor: Color(0xff8E4F2E),
+                                                prefixIcon:
+                                                    const Icon(Icons.lock),
+                                                fillColor:
+                                                    const Color(0xff8E4F2E),
                                                 filled: true,
                                                 labelText: 'LocK',
                                                 border: OutlineInputBorder(
                                                     borderRadius:
-                                                    BorderRadius.circular(
-                                                        12)),
+                                                        BorderRadius.circular(
+                                                            12)),
                                               ),
                                               keyboardType:
-                                              TextInputType.emailAddress,
+                                                  TextInputType.emailAddress,
                                               onChanged: (value) {
                                                 print(value);
                                               }),
@@ -185,39 +184,40 @@ class Mydrawer extends StatelessWidget {
                                       child: Container(
                                         decoration: BoxDecoration(
                                           borderRadius:
-                                          BorderRadius.circular(20.0),
+                                              BorderRadius.circular(20.0),
                                           color: const Color(0xffecf6ff),
                                         ),
                                         height: 40.0,
                                         width: 250.0,
                                         child: Row(
                                           mainAxisAlignment:
-                                          MainAxisAlignment.center,
+                                              MainAxisAlignment.center,
                                           children: [
                                             MaterialButton(
                                               onPressed: () {
                                                 if (formKey.currentState!
                                                     .validate()) {
-                                                  if(emailcontroller.text=='123')
-                                                  {
-                                                    navigateTo(context, Admin());
-                                                  }
-                                                  else
-                                                  {
+                                                  if (emailcontroller.text ==
+                                                      '123') {
+                                                    navigateTo(
+                                                        context, const Admin());
+                                                  } else {
                                                     Fluttertoast.showToast(
                                                       msg: "Try Again",
-                                                      toastLength: Toast.LENGTH_LONG,
-                                                      gravity: ToastGravity.CENTER,
+                                                      toastLength:
+                                                          Toast.LENGTH_LONG,
+                                                      gravity:
+                                                          ToastGravity.CENTER,
                                                       timeInSecForIosWeb: 1,
-                                                      backgroundColor: Colors.grey.shade600,
+                                                      backgroundColor:
+                                                          Colors.grey.shade600,
                                                       textColor: Colors.white,
                                                       fontSize: 16.0,
                                                     );
                                                   }
-
                                                 }
                                               },
-                                              child: Text(
+                                              child: const Text(
                                                 'Enter',
                                                 style: TextStyle(
                                                   fontSize: 15.0,
@@ -238,7 +238,6 @@ class Mydrawer extends StatelessWidget {
                     },
                   );
                 },
-
               ),
             ],
           ),
