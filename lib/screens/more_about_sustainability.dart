@@ -3,7 +3,6 @@ import 'package:vixor_project/componenet/custom_text_widget.dart';
 import 'package:vixor_project/componenet/drawer.dart';
 import 'package:vixor_project/componenet/my_app_bar.dart';
 import 'package:vixor_project/utils/app_colors.dart';
-//import 'package:vixor_project/utils/app_images.dart';
 import 'package:vixor_project/utils/app_imagse.dart';
 
 class Sustabilty extends StatelessWidget {

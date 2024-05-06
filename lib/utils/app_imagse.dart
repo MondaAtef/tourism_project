@@ -1,6 +1,6 @@
 class Assets {
   Assets._();
-  
+
   /// Assets for imagesFacebook
   /// assets/images/facebook.png
   static const String imagesFacebook = "assets/images/facebook.png";
@@ -30,7 +30,6 @@ class Assets {
   static const String imagesTips = "assets/images/tips.jfif";
   static const String place = "assets/images/place.jpg";
 
-
   /// Assets for imagesTrip
   /// assets/images/trip.png
   static const String imagesTrip = "assets/images/trip.png";
@@ -47,18 +46,15 @@ class Assets {
   /// assets/images/wall1.jpg
   static const String forest = "assets/images/forest.png";
 
-  static const String enter="assets/images/enter.PNG";
+  static const String enter = "assets/images/enter.PNG";
 
-  static const String lang="assets/images/language.PNG";
-  static const String com="assets/images/community.PNG";
-  static const String pharaon="assets/images/pharaoh.png";
-  static const String chatbot="assets/images/chat-bot.png";
-  static const String map="assets/images/map.png";
-  static const String gallery="assets/images/images.png";
-  static const String home="assets/images/home.png";
-  static const String profile="assets/images/profile.png";
-  static const String vixor="assets/images/vixor_3.PNG";
-
-
+  static const String lang = "assets/images/language.PNG";
+  static const String com = "assets/images/community.PNG";
+  static const String pharaon = "assets/images/pharaoh.png";
+  static const String chatbot = "assets/images/chat-bot.png";
+  static const String map = "assets/images/map.png";
+  static const String gallery = "assets/images/images.png";
+  static const String home = "assets/images/home.png";
+  static const String profile = "assets/images/profile.png";
+  static const String vixor = "assets/images/vixor_3withoutbackground.PNG";
 }
-
