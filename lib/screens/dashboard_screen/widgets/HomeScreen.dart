@@ -7,14 +7,14 @@ import 'package:vixor_project/componenet/widgets/namewidget.dart';
 import 'package:vixor_project/componenet/widgets/title%20widget.dart';
 import 'package:vixor_project/const/app_constants.dart';
 import 'package:vixor_project/services/chatservices/assets_manager.dart';
-class HomeScreen extends StatefulWidget {
-  const HomeScreen({super.key});
+class Homescreen extends StatefulWidget {
+  const Homescreen({super.key});
 
   @override
-  State<HomeScreen> createState() => _HomeScreenState();
+  State<Homescreen> createState() => _HomeScreenState();
 }
 
-class _HomeScreenState extends State<HomeScreen> {
+class _HomeScreenState extends State<Homescreen> {
 
 
   @override
@@ -30,7 +30,7 @@ class _HomeScreenState extends State<HomeScreen> {
         ),
 
         title: const AppNameTextWidget(fontSize: 20),
-        systemOverlayStyle: SystemUiOverlayStyle(
+        systemOverlayStyle: const SystemUiOverlayStyle(
             statusBarColor: Colors.white,
             statusBarIconBrightness: Brightness.dark
         ),
@@ -40,6 +40,7 @@ class _HomeScreenState extends State<HomeScreen> {
         padding: const EdgeInsets.all(8.0),
         child: SingleChildScrollView(
           child: Column(
+
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [
               const SizedBox(
@@ -73,6 +74,7 @@ class _HomeScreenState extends State<HomeScreen> {
               const SizedBox(
                 height: 15.0,
               ),
+
               ListView.separated(
                 shrinkWrap: true,
                 physics:const BouncingScrollPhysics(),

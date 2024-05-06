@@ -6,7 +6,6 @@ import 'package:cloud_firestore/cloud_firestore.dart';
 
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
-import 'package:fluttertoast/fluttertoast.dart';
 import 'package:get/get.dart';
 import 'package:google_sign_in/google_sign_in.dart';
 import 'package:vixor_project/componenet/button.dart';
@@ -307,7 +306,7 @@ class _LoginState extends State<Login> {
 
                           await  _googleSignUp(context: context).
                           then((value) {
-                            navigateTo(context,CustomBottomNavBar());
+                            navigateTo(context,const CustomBottomNavBar());
 
                         //  await  _googleSignUp(context).then((value) {
                          //   navigateTo(context,const CustomBottomNavBar());

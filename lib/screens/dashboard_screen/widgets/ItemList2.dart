@@ -58,7 +58,7 @@ class ItemList2 extends StatelessWidget {
                             ),
                             child: Center(
                               child: CustomTextWidget(
-                                text:'55'.tr,
+                                text: '55'.tr,
                                 textAlign: TextAlign.center,
                                 fontSize: 19.0,
                                 fontWeight: FontWeight.w900,
@@ -76,7 +76,7 @@ class ItemList2 extends StatelessWidget {
                 flex: 1,
                 child: GestureDetector(
                     onTap: () {
-                      navigateTo(context, AllplacesScreen());
+                      navigateTo(context, const AllplacesScreen());
                     },
                     child: Container(
                       decoration: BoxDecoration(

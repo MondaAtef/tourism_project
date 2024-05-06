@@ -229,7 +229,7 @@ Future<void>warningDialog({
         children: [
 
           Image.asset(Assets.pharaon,height: 35.0,width: 40.0,fit: BoxFit.fill),
-          SizedBox(width: 8.0,),
+          const SizedBox(width: 8.0,),
 
           Text(title),
         ],

@@ -79,7 +79,7 @@ class _ProductWidgetState extends State<ProductWidget> {
             Padding(
               padding: const EdgeInsets.all(2.0),
               child: Text(
-                "Ticketforadult: ${getCurrProduct.Ticketforadult}\$",style: TextStyle(
+                "Ticketforadult: ${getCurrProduct.Ticketforadult}\$",style: const TextStyle(
                 fontWeight: FontWeight.w600,
                 color: Colors.blue,
                 fontSize: 15
@@ -93,7 +93,7 @@ class _ProductWidgetState extends State<ProductWidget> {
             Padding(
               padding: const EdgeInsets.all(2.0),
               child: Text(
-                "Ticketforadult: ${getCurrProduct.TicketforStudent}\$",style: TextStyle(
+                "Ticketforadult: ${getCurrProduct.TicketforStudent}\$",style: const TextStyle(
                   fontWeight: FontWeight.w600,
                   color: Colors.blue,
                   fontSize: 15

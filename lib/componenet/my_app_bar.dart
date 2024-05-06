@@ -1,11 +1,4 @@
-import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
-import 'package:fluttertoast/fluttertoast.dart';
-import 'package:vixor_project/componenet/drawer.dart';
-import 'package:vixor_project/const/reusable.dart';
-import 'package:vixor_project/screens/admin_screen.dart';
-import 'package:vixor_project/screens/luxor.dart';
-import 'package:vixor_project/screens/more_about_sustainability.dart';
 import 'package:vixor_project/utils/app_imagse.dart';
 
 class Myappbar extends StatelessWidget implements PreferredSizeWidget {
@@ -38,7 +31,7 @@ class Myappbar extends StatelessWidget implements PreferredSizeWidget {
       ),
       actions:  [
         Padding(
-          padding: EdgeInsets.only(right: 5.0),
+          padding: const EdgeInsets.only(right: 5.0),
           child: Image.asset(Assets.imagesLogo,
             width: 60,
             height:50,)),

@@ -21,17 +21,17 @@ ThemeData themeEnglish = ThemeData(
   floatingActionButtonTheme: const FloatingActionButtonThemeData(
       backgroundColor: AppColor.primaryColor
   ),
-  textTheme: const TextTheme(
-      headline1: TextStyle(
+  textTheme:  const TextTheme(
+      displayLarge: TextStyle(
           fontWeight: FontWeight.bold, fontSize: 22, color: AppColor.black),
-      headline2: TextStyle(
+      displayMedium: TextStyle(
           fontWeight: FontWeight.bold, fontSize: 26, color: AppColor.black),
-      bodyText1: TextStyle(
+      bodyLarge: TextStyle(
           height: 2,
           color: AppColor.grey,
           fontWeight: FontWeight.bold,
           fontSize: 14),
-      bodyText2: TextStyle(height: 2, color: AppColor.grey, fontSize: 14)),
+      bodyMedium: TextStyle(height: 2, color: AppColor.grey, fontSize: 14)),
   primarySwatch: Colors.blue,
 );
 

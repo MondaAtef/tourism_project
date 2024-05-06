@@ -15,7 +15,7 @@ Future<dynamic> showBottomMySheet(context) {
               Text(
                 '50'.tr,
                 textAlign: TextAlign.center,
-                style: TextStyle(
+                style: const TextStyle(
                   fontSize: 40.0,
                   wordSpacing: 1,
                   fontWeight: FontWeight.w900,
@@ -23,10 +23,10 @@ Future<dynamic> showBottomMySheet(context) {
                   color: Color.fromARGB(250, 142, 80, 46),
                 ),
               ),
-              SizedBox(
+              const SizedBox(
                 height: 10,
               ),
-              Text(
+              const Text(
                 'Join us today on your favorite social media apps and let\'s embark on a journey towards greener, more responsible travel together!',
                 textAlign: TextAlign.center,
                 style: TextStyle(
@@ -37,10 +37,10 @@ Future<dynamic> showBottomMySheet(context) {
                   color: Color.fromARGB(250, 142, 80, 46),
                 ),
               ),
-              SizedBox(
+              const SizedBox(
                 height: 10,
               ),
-              Row(
+              const Row(
                 crossAxisAlignment: CrossAxisAlignment.center,
                 mainAxisAlignment: MainAxisAlignment.center,
                 children: [

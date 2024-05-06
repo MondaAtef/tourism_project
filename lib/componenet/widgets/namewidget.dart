@@ -1,6 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:shimmer/shimmer.dart';
-import 'package:vixor_project/componenet/widgets/title%20widget.dart';
 
 import '../../utils/app_imagse.dart';
 class AppNameTextWidget extends StatelessWidget {

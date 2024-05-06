@@ -35,7 +35,7 @@ class EmptyBagWidget extends StatelessWidget {
            TitlesTextWidget(
             label:'61'.tr,
             fontSize: 40,
-            color: Color(0xff9f6b4f),
+            color: const Color(0xff9f6b4f),
           ),
           const SizedBox(
             height: 20,
@@ -51,11 +51,11 @@ class EmptyBagWidget extends StatelessWidget {
           ElevatedButton(
             style: ElevatedButton.styleFrom(
                 elevation: 0,
-                backgroundColor: Color(0xff9f6b4f),
+                backgroundColor: const Color(0xff9f6b4f),
                 padding:
                 const EdgeInsets.symmetric(horizontal: 20, vertical: 15)),
             onPressed: () {},
-            child: Text(buttonText,style: TextStyle(
+            child: Text(buttonText,style: const TextStyle(
               fontSize: 17.0,
               color: Colors.white,
               fontWeight: FontWeight.bold,

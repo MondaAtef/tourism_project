@@ -56,7 +56,7 @@ class _CustomBottomNavBarState extends State<CustomBottomNavBar> {
               icon: Image.asset(Assets.home,
                   width: 35,
                   height:35,
-                  color: Color(0xff8E4F2E)
+                  color: const Color(0xff8E4F2E)
 
               ),
             ),
@@ -65,7 +65,7 @@ class _CustomBottomNavBarState extends State<CustomBottomNavBar> {
               icon: Image.asset(Assets.map,
                   width: 35,
                   height:40,
-                  color: Color(0xff8E4F2E)
+                  color: const Color(0xff8E4F2E)
 
               ),
             ),
@@ -74,7 +74,7 @@ class _CustomBottomNavBarState extends State<CustomBottomNavBar> {
               icon: Image.asset(Assets.gallery,
                   width: 35,
                   height:35,
-                  color: Color(0xff8E4F2E)
+                  color: const Color(0xff8E4F2E)
 
               ),
             ),
@@ -83,7 +83,7 @@ class _CustomBottomNavBarState extends State<CustomBottomNavBar> {
               icon: Image.asset(Assets.chatbot,
                 width: 40,
                 height:45,
-                  color: Color(0xff8E4F2E)
+                  color: const Color(0xff8E4F2E)
 
               ),
             ),
@@ -92,7 +92,7 @@ class _CustomBottomNavBarState extends State<CustomBottomNavBar> {
               icon: Image.asset(Assets.profile,
                   width: 35,
                   height:40,
-                  color: Color(0xff8E4F2E)
+                  color: const Color(0xff8E4F2E)
 
               ),
             ),
