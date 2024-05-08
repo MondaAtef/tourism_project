@@ -7,6 +7,7 @@ import 'package:vixor_project/utils/app_imagse.dart';
 
 import '../webview.dart';
 
+
 class HomeItem3 extends StatelessWidget {
   const HomeItem3({super.key});
 
@@ -40,11 +41,9 @@ class HomeItem3 extends StatelessWidget {
                     borderRadius: BorderRadius.circular(25),
                     gradient: const LinearGradient(
                       colors: [
-                        // Color.fromARGB(120, 141, 219, 225),
-                        //Color.fromARGB(142, 79, 56, 25),
-                        AppColors.brown,
-                        Color.fromARGB(255, 179, 190, 123)
-                        //Color.fromARGB(116, 246, 206, 7),
+                        AppColors.primaryColor,
+                        Color.fromARGB(255, 173, 156, 146),
+                        //Color.fromARGB(255, 247, 202, 104),
                       ],
                       stops: [0.0, 0.5],
                       begin: Alignment.bottomCenter,
