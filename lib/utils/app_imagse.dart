@@ -56,5 +56,5 @@ class Assets {
   static const String gallery = "assets/images/images.png";
   static const String home = "assets/images/home.png";
   static const String profile = "assets/images/profile.png";
-  static const String vixor = "assets/images/vixor_3withoutbackground.PNG";
+  static const String vixor = "assets/images/vixor_3withoutbackground.png";
 }

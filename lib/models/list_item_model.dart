@@ -1,6 +1,6 @@
-class ListItemModel {
+class ListItemModell {
   final String image;
   final String text;
 
-  ListItemModel({required this.image, required this.text});
+  ListItemModell({required this.image, required this.text});
 }

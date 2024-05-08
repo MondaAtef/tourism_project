@@ -1,10 +1,9 @@
-
 import 'package:flutter/material.dart';
 import 'package:vixor_project/models/list_item_model.dart';
 
 class ItemList extends StatelessWidget {
   const ItemList({super.key, required this.item});
-  final ListItemModel item;
+  final ListItemModell item;
   @override
   Widget build(BuildContext context) {
     return Column(
@@ -24,8 +23,7 @@ class ItemList extends StatelessWidget {
                 fit: BoxFit.cover,
               ),
             )),
-        Text(
-            item.text,
+        Text(item.text,
             style: TextStyle(
               fontSize: 15.0,
               fontWeight: FontWeight.w900,
