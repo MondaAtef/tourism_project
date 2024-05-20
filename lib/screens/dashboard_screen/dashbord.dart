@@ -68,11 +68,10 @@ class _DashBoardScreenState extends State<DashBoardScreen> {
                     padding: EdgeInsets.all(8.0),
                     child: TitlesTextWidget(label: "Top Places"),
                   ),
-                  const SizedBox(height: 15.0),
                   SingleChildScrollView(
                     scrollDirection: Axis.horizontal,
                     child: SizedBox(
-                      height: MediaQuery.sizeOf(context).height * .25,
+                      height: MediaQuery.of(context).size.height * .19,
                       child: Row(
                         children: itemModel.map((item) {
                           return Padding(
@@ -81,11 +80,32 @@ class _DashBoardScreenState extends State<DashBoardScreen> {
                               width: MediaQuery.of(context).size.width * .30,
                               child: Column(
                                 children: [
-                                  Image.asset(
-                                    item.image,
+                                  Container(
                                     width: 100,
                                     height: 100,
-                                    fit: BoxFit.cover,
+                                    decoration: BoxDecoration(
+                                      borderRadius: BorderRadius.circular(
+                                          20), // Adjust radius for rounded but not circular shape
+                                      border: Border.all(
+                                        color: Colors.black,
+                                        width:
+                                            2, // Optional: Add a border around the container
+                                      ),
+                                    ),
+                                    child: Center(
+                                      child: ClipRRect(
+                                        borderRadius: BorderRadius.circular(
+                                            20), // Match radius with the container
+                                        child: Image.asset(
+                                          item.image,
+                                          width:
+                                              80, // Adjust width to not take full container space
+                                          height:
+                                              80, // Adjust height to not take full container space
+                                          fit: BoxFit.cover,
+                                        ),
+                                      ),
+                                    ),
                                   ),
                                   const SizedBox(height: 8),
                                   Text(item.text),
@@ -97,6 +117,7 @@ class _DashBoardScreenState extends State<DashBoardScreen> {
                       ),
                     ),
                   ),
+
                   const SizedBox(height: 30),
                   const ItemList1(),
                   // const SizedBox(height: 30),
