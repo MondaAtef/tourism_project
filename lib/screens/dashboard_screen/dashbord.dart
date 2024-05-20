@@ -118,7 +118,7 @@ class _DashBoardScreenState extends State<DashBoardScreen> {
                     ),
                   ),
 
-                  const SizedBox(height: 20),
+                  //const SizedBox(height: 20),
                   const ItemList1(),
                   // const SizedBox(height: 30),
                   // const HomeItem3(),
