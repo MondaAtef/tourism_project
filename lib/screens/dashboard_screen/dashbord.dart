@@ -83,25 +83,20 @@ class _DashBoardScreenState extends State<DashBoardScreen> {
                                     width: 100,
                                     height: 100,
                                     decoration: BoxDecoration(
-                                      borderRadius: BorderRadius.circular(
-                                          20), // Adjust radius for rounded but not circular shape
+                                      borderRadius: BorderRadius.circular(20),
                                       border: Border.all(
                                         color: const Color.fromARGB(
                                             156, 54, 52, 52),
-                                        width:
-                                            2, // Optional: Add a border around the container
+                                        width: 2,
                                       ),
                                     ),
                                     child: Center(
                                       child: ClipRRect(
-                                        borderRadius: BorderRadius.circular(
-                                            20), // Match radius with the container
+                                        borderRadius: BorderRadius.circular(20),
                                         child: Image.asset(
                                           item.image,
-                                          width:
-                                              80, // Adjust width to not take full container space
-                                          height:
-                                              80, // Adjust height to not take full container space
+                                          width: 80,
+                                          height: 80,
                                           fit: BoxFit.cover,
                                         ),
                                       ),
