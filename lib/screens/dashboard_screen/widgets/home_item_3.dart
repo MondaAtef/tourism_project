@@ -7,7 +7,6 @@ import 'package:vixor_project/utils/app_imagse.dart';
 
 import '../webview.dart';
 
-
 class HomeItem3 extends StatelessWidget {
   const HomeItem3({super.key});
 
@@ -17,7 +16,8 @@ class HomeItem3 extends StatelessWidget {
       child: Padding(
         padding: const EdgeInsets.all(8.0),
         child: Container(
-          height: MediaQuery.sizeOf(context).height * 0.10,
+          //height: MediaQuery.sizeOf(context).height * 0.10,
+          height: 100,
           decoration: BoxDecoration(
             borderRadius: BorderRadius.circular(25),
           ),

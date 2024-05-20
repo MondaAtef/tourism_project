@@ -44,7 +44,7 @@ class _DashBoardScreenState extends State<DashBoardScreen> {
                   const SizedBox(height: 15),
                   ClipRRect(
                     child: SizedBox(
-                      height: 200, // Set a fixed height here
+                      height: 200,
                       child: Swiper(
                         autoplay: true,
                         itemBuilder: (BuildContext context, int index) {
@@ -56,7 +56,7 @@ class _DashBoardScreenState extends State<DashBoardScreen> {
                         itemCount: AppConstants.bannersImages.length,
                         pagination: const SwiperPagination(
                           builder: DotSwiperPaginationBuilder(
-                            activeColor: Colors.red,
+                            activeColor: AppColors.primaryColor,
                             color: Colors.white,
                           ),
                         ),
@@ -69,16 +69,16 @@ class _DashBoardScreenState extends State<DashBoardScreen> {
                     child: TitlesTextWidget(label: "Top Places"),
                   ),
                   const SizedBox(height: 15.0),
-                  SizedBox(
-                    height: MediaQuery.sizeOf(context).height * .18,
-                    child: SingleChildScrollView(
-                      scrollDirection: Axis.horizontal,
+                  SingleChildScrollView(
+                    scrollDirection: Axis.horizontal,
+                    child: SizedBox(
+                      height: MediaQuery.sizeOf(context).height * .25,
                       child: Row(
                         children: itemModel.map((item) {
                           return Padding(
                             padding: const EdgeInsets.all(8.0),
                             child: SizedBox(
-                              width: MediaQuery.of(context).size.width * .35,
+                              width: MediaQuery.of(context).size.width * .30,
                               child: Column(
                                 children: [
                                   Image.asset(

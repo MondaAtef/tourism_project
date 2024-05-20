@@ -1,7 +1,10 @@
 import 'package:flutter/material.dart';
-import 'package:vixor_project/screens/dashboard_screen/widgets/ItemList2.dart';
+import 'package:get/get_utils/get_utils.dart';
+import 'package:vixor_project/componenet/button.dart';
+import 'package:vixor_project/screens/dashboard_screen/widgets/All%20places.dart';
+import 'package:vixor_project/screens/dashboard_screen/widgets/add&edit%20place.dart';
 import 'package:vixor_project/utils/app_colors.dart';
-import 'package:vixor_project/utils/app_imagse.dart';
+import 'package:get/get.dart';
 
 class Admin extends StatefulWidget {
   const Admin({super.key});
@@ -22,16 +25,39 @@ class _AdminState extends State<Admin> {
           //   height: double.infinity,
           //   width: double.infinity,
           // ),
-          Container(
-              decoration:
-                  const BoxDecoration(color: AppColors.white)),
-          const Padding(
-            padding: EdgeInsets.only(top: 20),
+          Container(decoration: const BoxDecoration(color: AppColors.white)),
+          Padding(
+            padding: const EdgeInsets.only(top: 20),
             child: Column(children: [
-              SizedBox(height: 15),
+              const SizedBox(height: 15),
               //ItemList1(),
-              SizedBox(height: 50),
-              ItemList2(),
+
+              Button(
+                  text: "55".tr,
+                  // TextStyle:Colors.white,
+                  color: const Color(0xff8E4F2E),
+                  onPressed: () {
+                    Navigator.push(
+                      context,
+                      MaterialPageRoute(
+                          builder: (context) =>
+                              const EditOrUploadPlaceScreen()),
+                    );
+                  }),
+              const SizedBox(height: 50),
+
+              Button(
+                  text: "56".tr,
+                  // TextStyle:Colors.white,
+                  color: const Color(0xff8E4F2E),
+                  onPressed: () {
+                    Navigator.push(
+                      context,
+                      MaterialPageRoute(
+                          builder: (context) => const AllplacesScreen()),
+                    );
+                  }),
+              // ItemList2(),
 
               // Row(
               //   children: [
@@ -39,7 +65,7 @@ class _AdminState extends State<Admin> {
               //     //  HomeItem3(),
               //   ],
               // ),
-              SizedBox(
+              const SizedBox(
                 height: 10,
               ),
             ]),
