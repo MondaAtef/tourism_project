@@ -5,7 +5,6 @@ import 'package:vixor_project/const/app_constants.dart';
 import 'package:vixor_project/models/list_item_model.dart';
 import 'package:vixor_project/screens/dashboard_screen/widgets/home_item_list_1.dart';
 import 'package:vixor_project/utils/app_imagse.dart';
-import 'package:vixor_project/screens/dashboard_screen/widgets/home_item_3.dart';
 import 'package:vixor_project/utils/app_colors.dart';
 
 class DashBoardScreen extends StatefulWidget {
@@ -18,8 +17,8 @@ class DashBoardScreen extends StatefulWidget {
 class _DashBoardScreenState extends State<DashBoardScreen> {
   List<ListItemModell> itemModel = [
     ListItemModell(image: Assets.imagesWall1, text: 'Ballon '),
-    ListItemModell(image: Assets.imagesWall1, text: 'luxor temple'),
-    ListItemModell(image: Assets.imagesWall1, text: 'karnak temple'),
+    ListItemModell(image: Assets.imagesWall1, text: 'Luxor Temple'),
+    ListItemModell(image: Assets.imagesWall1, text: 'karnak Temple'),
     ListItemModell(image: Assets.imagesWall1, text: 'Abo EL Hagaga Mosque'),
     ListItemModell(
         image: Assets.imagesWall1, text: 'Church of the Virgin Mary'),
@@ -71,7 +70,7 @@ class _DashBoardScreenState extends State<DashBoardScreen> {
                   SingleChildScrollView(
                     scrollDirection: Axis.horizontal,
                     child: SizedBox(
-                      height: MediaQuery.of(context).size.height * .19,
+                      height: MediaQuery.of(context).size.height * .23,
                       child: Row(
                         children: itemModel.map((item) {
                           return Padding(
@@ -87,7 +86,8 @@ class _DashBoardScreenState extends State<DashBoardScreen> {
                                       borderRadius: BorderRadius.circular(
                                           20), // Adjust radius for rounded but not circular shape
                                       border: Border.all(
-                                        color: Colors.black,
+                                        color: const Color.fromARGB(
+                                            156, 54, 52, 52),
                                         width:
                                             2, // Optional: Add a border around the container
                                       ),
@@ -118,7 +118,7 @@ class _DashBoardScreenState extends State<DashBoardScreen> {
                     ),
                   ),
 
-                  const SizedBox(height: 30),
+                  const SizedBox(height: 20),
                   const ItemList1(),
                   // const SizedBox(height: 30),
                   // const HomeItem3(),
