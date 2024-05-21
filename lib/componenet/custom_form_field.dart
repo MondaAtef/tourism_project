@@ -21,7 +21,7 @@ class MyCustomTextField extends StatelessWidget {
       decoration: InputDecoration(
         labelText: labelText,
         enabledBorder: OutlineInputBorder(
-          borderSide: const BorderSide(width: 3, color: AppColors.primaryColor),
+          borderSide: const BorderSide(width: 3, color: AppColors.brown),
           borderRadius: BorderRadius.circular(15),
         ),
         focusedBorder: OutlineInputBorder(

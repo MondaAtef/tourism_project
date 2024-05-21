@@ -36,7 +36,7 @@ Future<void> errorDialog({
           ),
           content: Text(
               subtitle,
-              style: const TextStyle(color:Colors.white)),
+              style:  TextStyle(color:Colors.white)),
           actions: [
             TextButton(
               style: TextButton.styleFrom(backgroundColor: Colors.white),

@@ -5,7 +5,7 @@ import 'package:vixor_project/const/reusable.dart';
 import 'package:vixor_project/screens/dashboard_screen/widgets/HomeScreen.dart';
 import 'package:vixor_project/screens/dashboard_screen/widgets/Trip/Trip_Screen.dart';
 import 'package:vixor_project/utils/app_imagse.dart';
-import 'package:vixor_project/screens/RecommendationScreen.dart';
+import 'package:vixor_project/screens/recommendation_trip/RecommendationScreen.dart';
 
 class ItemList1 extends StatelessWidget {
   const ItemList1({super.key});

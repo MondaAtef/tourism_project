@@ -10,12 +10,13 @@ class Myappbar extends StatelessWidget implements PreferredSizeWidget {
 
     return AppBar(
       elevation: 0,
-
+      iconTheme: IconThemeData(color: Colors.brown),
       title:  Center(
         child: Image.asset(Assets.vixor,
         width: 100,
         height:90,
-        )
+        ),
+
 
    
 
