@@ -18,14 +18,14 @@ class Lang extends GetView<LocaleController> {
           Container(
             decoration: const BoxDecoration(
               image: DecorationImage(
-                image: AssetImage(Assets.lang),
+                image: AssetImage(Assets.background),
                 fit: BoxFit.cover,
               ),
             ),
           ),
           Container(
             height: double.infinity,
-            color: Colors.white.withOpacity(0.9),
+            color: const Color(0xFF8D502F).withOpacity(0.8), // Overlay color
             child: Container(
               margin: const EdgeInsets.fromLTRB(41, 198, 50, 206),
               child: SingleChildScrollView(
@@ -41,49 +41,58 @@ class Lang extends GetView<LocaleController> {
                       ),
                     ),
                     Container(
-                        margin: const EdgeInsets.fromLTRB(0, 0, 3, 34),
-                        child: const CustomTextWidget(
-                          text: 'vixor',
-                          fontSize: 70,
-                          color: AppColors.primaryColor,
-                        )),
+                      margin: const EdgeInsets.fromLTRB(0, 0, 3, 34),
+                      child: const CustomTextWidget(
+                        text: 'vixor',
+                        fontSize: 70,
+                        color: Colors.white,
+                      ),
+                    ),
                     Container(
-                        margin: const EdgeInsets.fromLTRB(0, 0, 84, 0),
-                        child: const Text(
-                          "Select Language",
-                          style: TextStyle(
-                            color: AppColors.blue,
-                            fontWeight: FontWeight.w500,
-                            fontSize: 20,
-                          ),
-                        )),
+                      margin: const EdgeInsets.fromLTRB(0, 0, 84, 0),
+                      child: const Text(
+                        "Select Language",
+                        style: TextStyle(
+                          color: Colors.white,
+                          fontWeight: FontWeight.w500,
+                          fontSize: 20,
+                        ),
+                      ),
+                    ),
                     Container(
                       margin: const EdgeInsets.fromLTRB(0, 0, 0, 59),
                       padding: const EdgeInsets.fromLTRB(32, 0, 32, 0),
                       width: double.infinity,
                       height: 62,
                       decoration: BoxDecoration(
-                        border: Border.all(color: const Color(0xff9f6b4f)),
+                        border: Border.all(color: Colors.white),
                         borderRadius: BorderRadius.circular(32),
                       ),
                       child: DropdownButton<String>(
                         isExpanded: true,
+                        dropdownColor: const Color(0xFF8D502F), // Background color of the dropdown menu
                         value: "English",
                         items: const [
                           DropdownMenuItem(
                             value: 'English',
                             child: Text(
                               'English',
-                              style: TextStyle(color: Colors.black),
+                              style: TextStyle(color: Colors.white),
                             ),
                           ),
                           DropdownMenuItem(
                             value: 'Ar',
-                            child: CustomTextWidget(text: 'Arabic'),
+                            child: CustomTextWidget(
+                              text: 'Arabic',
+                              color: Colors.white, // Text color of dropdown items
+                            ),
                           ),
                           DropdownMenuItem(
                             value: 'ko',
-                            child: CustomTextWidget(text: 'korean'),
+                            child: CustomTextWidget(
+                              text: 'Korean',
+                              color: Colors.white, // Text color of dropdown items
+                            ),
                           ),
                         ],
                         onChanged: (String? value) {
@@ -98,8 +107,10 @@ class Lang extends GetView<LocaleController> {
                             navigateTo(context, const Info());
                           }
                         },
+                        iconEnabledColor: Colors.white, // Dropdown arrow color
+                        style: const TextStyle(color: Colors.white), // Text color inside the dropdown
                       ),
-                    )
+                    ),
                   ],
                 ),
               ),

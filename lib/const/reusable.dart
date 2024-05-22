@@ -6,7 +6,7 @@ import 'package:vixor_project/componenet/widgets/title%20widget.dart';
 
 import '../utils/app_imagse.dart';
 // import 'package:vixor_project/const/Chat%20constants/constants.dart';
-// import 'package:vixor_project/const/global_colors.dart';
+
 // import 'package:vixor_project/utils/app_imagse.dart';
 void navigateTo(context,Widget)=>Navigator.push(context, MaterialPageRoute(
   builder:(context)=>Widget,

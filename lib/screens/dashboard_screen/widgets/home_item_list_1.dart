@@ -23,7 +23,7 @@ class ItemList1 extends StatelessWidget {
                 flex: 2,
                 child: GestureDetector(
                   onTap: () {
-                    navigateTo(context, const Homescreen());
+                    navigateTo(context,  Homescreen());
                   },
                   child: Container(
                     decoration: BoxDecoration(
@@ -35,9 +35,8 @@ class ItemList1 extends StatelessWidget {
                           child: ClipRRect(
                             borderRadius: BorderRadius.circular(50),
                             child: Image.asset(
-                              Assets.imagesTrip,
-                              fit: BoxFit
-                                  .cover, // Ensure the image fills the container
+                              Assets.img1,
+                              fit: BoxFit.cover, // Ensure the image fills the container
                             ),
                           ),
                         ),
@@ -96,7 +95,7 @@ class ItemList1 extends StatelessWidget {
                              child: ClipRRect(
                                borderRadius: BorderRadius.circular(40),
                                child: Image.asset(
-                                 Assets.imagesWall1,
+                                 Assets.img2,
                                  fit: BoxFit
                                      .cover, // Ensure the image fills the container
                                ),

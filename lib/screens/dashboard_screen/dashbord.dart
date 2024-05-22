@@ -16,14 +16,12 @@ class DashBoardScreen extends StatefulWidget {
 
 class _DashBoardScreenState extends State<DashBoardScreen> {
   List<ListItemModell> itemModel = [
-    ListItemModell(image: Assets.imagesWall1, text: 'Ballon '),
-    ListItemModell(image: Assets.imagesWall1, text: 'Luxor Temple'),
-    ListItemModell(image: Assets.imagesWall1, text: 'karnak Temple'),
+    ListItemModell(image: Assets.Ballon, text: 'Ballon'),
+    ListItemModell(image: Assets.luxor, text: 'Luxor Temple'),
+    ListItemModell(image: Assets.imagesWall1, text: 'Karnak Temple'),
     ListItemModell(image: Assets.imagesWall1, text: 'Abo EL Hagaga Mosque'),
-    ListItemModell(
-        image: Assets.imagesWall1, text: 'Church of the Virgin Mary'),
-    ListItemModell(
-        image: Assets.imagesWall1, text: 'Valley of the Kings Temple'),
+    ListItemModell(image: Assets.imagesWall1, text: 'Church of the Virgin Mary'),
+    ListItemModell(image: Assets.imagesWall1, text: 'Valley of the Kings Temple',),
     ListItemModell(image: Assets.imagesWall1, text: 'Nile Corniche'),
   ];
 
@@ -32,7 +30,19 @@ class _DashBoardScreenState extends State<DashBoardScreen> {
     return Scaffold(
       body: Stack(
         children: [
-          Container(decoration: const BoxDecoration(color: AppColors.white)),
+          // Background image
+          Image(
+            image: AssetImage(Assets.background),
+            fit: BoxFit.cover,
+            width: double.infinity,
+            height: double.infinity,
+          ),
+          // Semi-transparent color overlay
+          Container(
+            color: const Color(0xFF8D502F).withOpacity(0.8),
+            width: double.infinity,
+            height: double.infinity,
+          ),
           Padding(
             padding: const EdgeInsets.only(top: 20),
             child: SingleChildScrollView(
@@ -65,7 +75,7 @@ class _DashBoardScreenState extends State<DashBoardScreen> {
                   const SizedBox(height: 15),
                   const Padding(
                     padding: EdgeInsets.all(8.0),
-                    child: TitlesTextWidget(label: "Top Places"),
+                    child: TitlesTextWidget(label: "Top Places", color: Colors.white),
                   ),
                   SingleChildScrollView(
                     scrollDirection: Axis.horizontal,
@@ -85,8 +95,7 @@ class _DashBoardScreenState extends State<DashBoardScreen> {
                                     decoration: BoxDecoration(
                                       borderRadius: BorderRadius.circular(20),
                                       border: Border.all(
-                                        color: const Color.fromARGB(
-                                            156, 54, 52, 52),
+                                        color:Colors.white,
                                         width: 2,
                                       ),
                                     ),
@@ -112,11 +121,7 @@ class _DashBoardScreenState extends State<DashBoardScreen> {
                       ),
                     ),
                   ),
-
-                  //const SizedBox(height: 20),
                   const ItemList1(),
-                  // const SizedBox(height: 30),
-                  // const HomeItem3(),
                 ],
               ),
             ),
