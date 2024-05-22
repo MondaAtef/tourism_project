@@ -61,7 +61,7 @@ PreferredSizeWidget defaultAppbar({
   List<Widget>? actions,
 }) =>
     AppBar(
-      backgroundColor: Colors.white,
+      backgroundColor: const Color(0xFF8D502F),
       elevation: 0.0,
       leading: IconButton(
         onPressed: () {

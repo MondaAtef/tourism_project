@@ -58,9 +58,11 @@ class Assets {
   static const String profile = "assets/images/profile.png";
   static const String vixor = "assets/images/vixor_3withoutbackground.png";
   static const String background = "assets/images/lang.jpg";
+
   static const String img1 = "assets/images/img1.jpg";
   static const String img2 = "assets/images/img2.jpg";
   static const String Ballon = "assets/images/Ballon.PNG";
   static const String luxor = "assets/images/luxor.PNG";
+
 
 }

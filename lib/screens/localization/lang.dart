@@ -16,7 +16,7 @@ class Lang extends GetView<LocaleController> {
       body: Stack(
         children: [
           Container(
-            decoration: const BoxDecoration(
+            decoration: BoxDecoration(
               image: DecorationImage(
                 image: AssetImage(Assets.background),
                 fit: BoxFit.cover,
@@ -60,12 +60,14 @@ class Lang extends GetView<LocaleController> {
                       ),
                     ),
                     Container(
-                      margin: const EdgeInsets.fromLTRB(0, 0, 0, 59),
-                      padding: const EdgeInsets.fromLTRB(32, 0, 32, 0),
+                      margin:  EdgeInsets.fromLTRB(0, 0, 0, 59),
+                      padding:  EdgeInsets.fromLTRB(32, 0, 32, 0),
                       width: double.infinity,
                       height: 62,
                       decoration: BoxDecoration(
-                        border: Border.all(color: Colors.white),
+
+                         border: Border.all(color: Colors.white),
+
                         borderRadius: BorderRadius.circular(32),
                       ),
                       child: DropdownButton<String>(
