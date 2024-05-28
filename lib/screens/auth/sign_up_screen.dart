@@ -13,6 +13,8 @@ import 'package:vixor_project/screens/dashboard_screen/widgets/bottom_nav_bar.da
 import 'package:vixor_project/screens/auth/login_screen.dart';
 import 'package:vixor_project/screens/t_and_c.dart';
 
+import '../../utils/app_imagse.dart';
+
 class SignUp extends StatefulWidget {
   const SignUp({super.key});
 
@@ -69,7 +71,7 @@ class _LoginState extends State<SignUp> {
           'phone':'01284464432',
           'bio':'write your bio...',
           'image':'https://as1.ftcdn.net/v2/jpg/04/28/56/60/1000_F_428566061_Fkqaq0l831DXPM12Ixs9ds3waZWlCXHH.jpg',
-          'cover':'https://as1.ftcdn.net/v2/jpg/04/28/56/60/1000_F_428566061_Fkqaq0l831DXPM12Ixs9ds3waZWlCXHH.jpg',
+
         });
         navigateTo(context, const CustomBottomNavBar());
         print('succesfully registered');
@@ -101,37 +103,65 @@ class _LoginState extends State<SignUp> {
   }
   @override
   Widget build(BuildContext context) {
-    return Scaffold(
 
-      body: SingleChildScrollView(
+    return Scaffold(
+        body: Container(
+        decoration: BoxDecoration(
+        image: DecorationImage(
+        image: AssetImage(Assets.background),
+    fit: BoxFit.cover,
+    ),
+    gradient: LinearGradient(
+            colors: [
+            Color.fromARGB(200, 33, 126, 180),
+            Color.fromARGB(200, 142, 80, 46),
+          ],
+            stops: [0.0, 0.5],
+            begin: Alignment.bottomCenter,
+            end: Alignment.topCenter,
+      ),
+    ),
+    child: Container(
+          decoration: BoxDecoration(
+          gradient: LinearGradient(
+          colors: [
+          Color.fromARGB(200, 33, 126, 180),
+          Color.fromARGB(200, 142, 80, 46),
+          ],
+          stops: [0.0, 0.5],
+          begin: Alignment.bottomCenter,
+          end: Alignment.topCenter,
+          ),
+         ),
+    child: SizedBox(
+    width: MediaQuery.of(context).size.width,
+    height: MediaQuery.of(context).size.height,
+    child: SingleChildScrollView(
         scrollDirection: Axis.vertical,
         child: Padding(
           padding: const EdgeInsets.symmetric(horizontal: 20),
           child: Column(
-            mainAxisAlignment: MainAxisAlignment.start,
-            crossAxisAlignment: CrossAxisAlignment.start,
+           // mainAxisAlignment: MainAxisAlignment.start,
+            //crossAxisAlignment: CrossAxisAlignment.start,
             children: [
-              const Padge(),
+             const Padge(),
                Padding(
                   padding: const EdgeInsets.all(8.0),
                   child: CustomTextWidget(
                     text: "10".tr,
                     fontSize: 32,
-                    color: const Color(0xff8E4F2E),
+                    color:Colors.white,
                     fontWeight: FontWeight.w700,
-                  )),
+                  )
+               ),
 Form(
   key: _formKey,
   child: Column(
     crossAxisAlignment: CrossAxisAlignment.start,
     children: [
       Padding(
-          padding: const EdgeInsets.all(6),
-          child: CustomTextWidget(
-            text: "16".tr,
-            fontSize: 14,
-            fontWeight: FontWeight.w400,
-          )),
+          padding: const EdgeInsets.all(10),
+          ),
       TextFormField(
 
         keyboardType: TextInputType.name,
@@ -147,26 +177,25 @@ Form(
           }
         },
         decoration: InputDecoration(
-          labelText: "18".tr,
-          enabledBorder: OutlineInputBorder(
+          labelText: "16".tr,
+          labelStyle: TextStyle(color: Colors.white),
+
+          enabledBorder: UnderlineInputBorder(
             borderSide:
-            const BorderSide(width: 3, color: Colors.brown),
-            borderRadius: BorderRadius.circular(15),
+            const BorderSide(width: 2, color: Colors.white),
+
           ),
-          focusedBorder: OutlineInputBorder(
-            borderSide: const BorderSide(width: 3, color: Colors.black),
+          focusedBorder: UnderlineInputBorder(
+            borderSide: const BorderSide(width: 3, color: Colors.white),
             borderRadius: BorderRadius.circular(15),
           ),
         ),
       ),
        Padding(
-          padding: const EdgeInsets.all(6),
-          child: CustomTextWidget(
-            text: "2".tr,
-            fontSize: 14,
-            fontWeight: FontWeight.w400,
-          )),
+          padding: const EdgeInsets.all(10),
+          ),
       TextFormField(
+
         focusNode: _emailFocusNode,
         textInputAction: TextInputAction.next,
         onEditingComplete: () => FocusScope.of(context)
@@ -181,25 +210,24 @@ Form(
           }
         },
         decoration: InputDecoration(
-          labelText: "3".tr,
-          enabledBorder: OutlineInputBorder(
+          labelText: "2".tr,
+          labelStyle: TextStyle(color: Colors.white),
+
+          enabledBorder: UnderlineInputBorder(
             borderSide:
-            const BorderSide(width: 3, color: Colors.brown),
-            borderRadius: BorderRadius.circular(15),
+            const BorderSide(width: 2, color: Colors.white),
+
           ),
-          focusedBorder: OutlineInputBorder(
-            borderSide: const BorderSide(width: 3, color: Colors.black),
+          focusedBorder: UnderlineInputBorder(
+            borderSide: const BorderSide(width: 2, color: Colors.white),
             borderRadius: BorderRadius.circular(15),
           ),
         ),
       ),
+
       Padding(
-          padding: const EdgeInsets.all(6),
-          child: CustomTextWidget(
-            text: "4".tr,
-            fontSize: 14,
-            fontWeight: FontWeight.w400,
-          )),
+          padding: const EdgeInsets.all(10),
+          ),
       TextFormField(
         focusNode: _passFocusNode,
         obscureText: _obscureText,
@@ -215,14 +243,15 @@ Form(
         onEditingComplete: () => FocusScope.of(context)
             .requestFocus(_addressFocusNode),
         decoration: InputDecoration(
-          labelText: "5".tr,
-          enabledBorder: OutlineInputBorder(
+          labelText: "4".tr,
+          labelStyle: TextStyle(color: Colors.white),
+          enabledBorder: UnderlineInputBorder(
             borderSide:
-            const BorderSide(width: 3, color: Colors.brown),
-            borderRadius: BorderRadius.circular(15),
+            const BorderSide(width: 3, color: Colors.white),
+
           ),
-          focusedBorder: OutlineInputBorder(
-            borderSide: const BorderSide(width: 3, color: Colors.black),
+          focusedBorder: UnderlineInputBorder(
+            borderSide: const BorderSide(width: 3, color: Colors.white),
             borderRadius: BorderRadius.circular(15),
           ),
           suffixIcon: GestureDetector(
@@ -235,18 +264,14 @@ Form(
               _obscureText
                   ? Icons.visibility
                   : Icons.visibility_off,
-              color: Colors.black,
+              color: Colors.white,
             ),
           ),
         ),
       ),
       Padding(
-          padding: const EdgeInsets.all(6),
-          child: CustomTextWidget(
-            text: "21".tr,
-            fontSize: 14,
-            fontWeight: FontWeight.w400,
-          )),
+          padding: const EdgeInsets.all(10),
+         ),
       TextFormField(
         focusNode: _addressFocusNode,
         textInputAction: TextInputAction.done,
@@ -259,17 +284,19 @@ Form(
             return null;
           }
         },
-        maxLines: 2,
+        //maxLines: 2,
         textAlign: TextAlign.start,
         decoration: InputDecoration(
-          labelText: "23".tr,
-          enabledBorder: OutlineInputBorder(
+          labelText: "21".tr,
+
+          labelStyle: TextStyle(color: Colors.white),
+          enabledBorder: UnderlineInputBorder(
             borderSide:
-            const BorderSide(width: 3, color: Colors.brown),
-            borderRadius: BorderRadius.circular(15),
+            const BorderSide(width: 2, color: Colors.white),
+          //  borderRadius: BorderRadius.circular(15),
           ),
-          focusedBorder: OutlineInputBorder(
-            borderSide: const BorderSide(width: 3, color: Colors.black),
+          focusedBorder: UnderlineInputBorder(
+            borderSide: const BorderSide(width: 2, color: Colors.white),
             borderRadius: BorderRadius.circular(15),
           ),
 
@@ -308,24 +335,28 @@ Form(
               // GestureDetector(onTap: _signUp),
               Button(
                   text: "10".tr,
-                  //TextStyle:Colors.white,
-                  color:const Color(0xff8E4F2E),
+
+                  color: Color.fromARGB(255, 208, 208, 208),
                   onPressed: () {
                     _submitFormOnRegister();
                   }
 
                   ),
 
+
               Row(
                 mainAxisAlignment: MainAxisAlignment.center,
                 children: [
                    CustomTextWidget(
                     text: "26".tr,
+
                     fontSize: 14,
                     fontWeight: FontWeight.w400,
                   ),
                   LinkText(
                     text: "7".tr,
+
+
                     onPressed: () {
                       Navigator.push(
                         context,
@@ -340,6 +371,9 @@ Form(
           ),
         ),
       ),
+     ),
+    ),
+        ),
     );
   }
 

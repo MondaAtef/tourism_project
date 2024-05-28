@@ -250,6 +250,7 @@ class _LoginState extends State<Login> {
                 child: Align(
                   alignment: Alignment.centerRight,
                   child: LinkText(
+
                     text: "6".tr,
                     onPressed: () {
                       navigateTo(context,const ForgetPasswordScreen());
@@ -261,7 +262,7 @@ class _LoginState extends State<Login> {
              GestureDetector(
                child:  Button(
                   text: "7".tr,
-                 //  TextStyle:Colors.white,
+                   //TextStyle:Color.fromARGB(167, 33, 126, 180),
                   color: AppColors.primaryColor,
                   onPressed: () {
                     submitFormOnLogin();
@@ -334,6 +335,7 @@ class _LoginState extends State<Login> {
                     ),
                     LinkText(
                       text: "10".tr,
+
                       onPressed: () {
                         Navigator.push(
                           context,

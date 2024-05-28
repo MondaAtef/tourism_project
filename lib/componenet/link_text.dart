@@ -1,3 +1,5 @@
+// in sign up , login __________
+
 import 'package:flutter/material.dart';
 
 class LinkText extends StatelessWidget {
@@ -6,7 +8,7 @@ class LinkText extends StatelessWidget {
 
   const LinkText({super.key, 
     required this.text,
-    required this.onPressed,
+    required this.onPressed
   });
 
   @override
@@ -16,7 +18,7 @@ class LinkText extends StatelessWidget {
       child: Text(
         text,
         style: const TextStyle(
-          color: Colors.black, // Customize link text color
+          color: Colors.amber, // Customize link text color
           decoration: TextDecoration.underline, // Add underline to text
         ),
       ),

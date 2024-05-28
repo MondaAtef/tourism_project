@@ -22,7 +22,7 @@ class CustomTextWidget extends StatelessWidget {
       text,
       textAlign: textAlign,
       style: TextStyle(
-        color: color ?? Colors.black,
+        color: color ?? Colors.white,
         fontSize: fontSize ?? 16,
         fontWeight: fontWeight,
       ),

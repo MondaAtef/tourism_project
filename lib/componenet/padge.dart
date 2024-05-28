@@ -1,3 +1,4 @@
+// The the app bar of sign up and login page__________________
 import 'package:flutter/material.dart';
 import 'package:vixor_project/utils/app_imagse.dart';
 
@@ -22,7 +23,7 @@ class Padge extends StatelessWidget {
               ),
             ),
             const SizedBox(height: 0),
-            const Text(
+            /*const Text(
               'vixor',
               textAlign: TextAlign.center,
               style: TextStyle(
@@ -31,7 +32,7 @@ class Padge extends StatelessWidget {
                 height: 2,
                 color: Color(0xd18e4f2e),
               ),
-            ),
+            ),*/
           ],
         ),
       ),

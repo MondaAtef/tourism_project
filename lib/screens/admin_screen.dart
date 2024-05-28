@@ -34,7 +34,7 @@ class _AdminState extends State<Admin> {
 
               Button(
                   text: "55".tr,
-                  // TextStyle:Colors.white,
+                  //TextStyle:Colors.white,
                   color: const Color(0xff8E4F2E),
                   onPressed: () {
                     Navigator.push(

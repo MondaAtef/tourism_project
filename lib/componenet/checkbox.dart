@@ -18,6 +18,8 @@ class _CheckboxbutState extends State<Checkboxbut> {
               isChecked = value!;
             });
           },
+      activeColor: Colors.amber
         );
+
   }
 }
