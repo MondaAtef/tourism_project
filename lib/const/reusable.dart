@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_iconly/flutter_iconly.dart';
 import 'package:get/get.dart';
+import 'package:google_fonts/google_fonts.dart';
 import 'package:vixor_project/componenet/widgets/text_widget.dart';
 import 'package:vixor_project/componenet/widgets/title%20widget.dart';
 
@@ -19,7 +20,7 @@ Future<void> errorDialog({
       context: context,
       builder: (context) {
         return AlertDialog(
-          backgroundColor: Colors.brown.withOpacity(0.9),
+          backgroundColor: Color(0xFF8D502F).withOpacity(0.9),
           title: Row(
             children: [
               Image.asset(
@@ -46,7 +47,7 @@ Future<void> errorDialog({
                 }
               },
               child: Textwidget(
-                color: Colors.brown,
+                color:Color(0xFF8D502F),
                 text: 'Ok',
                 textsize: 18,
               ),
@@ -128,11 +129,16 @@ Widget defaultformfield({
             prefix,
           ),
           labelText: label,
+
           border: const OutlineInputBorder(),
+
         ),
+
         validator: validator,
         keyboardType: type,
-        onChanged: onchange);
+        onChanged: onchange
+    );
+
 Widget listtile({
   required String title,
   required IconData icon,
@@ -254,7 +260,7 @@ Future<void>warningDialog({
           style: TextButton.styleFrom(backgroundColor: Colors.white),
           onPressed: fct
           ,child:Textwidget(
-          color: Colors.brown,
+          color:  Color(0xFF8D502F),
           text: 'ok',
           textsize: 18,
         ),

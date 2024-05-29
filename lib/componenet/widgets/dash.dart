@@ -21,7 +21,9 @@ class CategorydashWidget extends StatelessWidget {
       child: Container(
         decoration: BoxDecoration(
           border: Border.all(
-            color: const Color.fromARGB(255, 183, 178, 178), // Border color
+            color:Colors.white,
+            //color: const Color.fromARGB(255, 183, 178, 178),
+            // Border color
             //color: AppColors.gray, // Border color
             width: 2, // Border width
           ),

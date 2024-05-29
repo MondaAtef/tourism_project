@@ -2,6 +2,7 @@ import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
+import 'package:google_fonts/google_fonts.dart';
 import 'package:vixor_project/componenet/button.dart';
 import 'package:vixor_project/componenet/checkbox.dart';
 import 'package:vixor_project/componenet/custom_text_widget.dart';
@@ -141,17 +142,16 @@ class _LoginState extends State<SignUp> {
         child: Padding(
           padding: const EdgeInsets.symmetric(horizontal: 20),
           child: Column(
-           // mainAxisAlignment: MainAxisAlignment.start,
-            //crossAxisAlignment: CrossAxisAlignment.start,
             children: [
              const Padge(),
                Padding(
                   padding: const EdgeInsets.all(8.0),
                   child: CustomTextWidget(
                     text: "10".tr,
+
                     fontSize: 32,
                     color:Colors.white,
-                    fontWeight: FontWeight.w700,
+                      fontWeight: FontWeight.w700
                   )
                ),
 Form(
@@ -178,8 +178,13 @@ Form(
         },
         decoration: InputDecoration(
           labelText: "16".tr,
-          labelStyle: TextStyle(color: Colors.white),
-
+          labelStyle: GoogleFonts.oxanium(
+            textStyle: TextStyle(color: Colors.white),
+          ),
+          errorStyle: TextStyle(color: Colors.amber),
+          errorBorder: UnderlineInputBorder(
+            borderSide: BorderSide(color: Colors.amber),
+          ),
           enabledBorder: UnderlineInputBorder(
             borderSide:
             const BorderSide(width: 2, color: Colors.white),
@@ -211,8 +216,13 @@ Form(
         },
         decoration: InputDecoration(
           labelText: "2".tr,
-          labelStyle: TextStyle(color: Colors.white),
-
+          labelStyle: GoogleFonts.oxanium(
+            textStyle: TextStyle(color: Colors.white),
+          ),
+          errorStyle: TextStyle(color: Colors.amber),
+          errorBorder: UnderlineInputBorder( // Change error border color
+            borderSide: BorderSide(color: Colors.amber),
+          ),
           enabledBorder: UnderlineInputBorder(
             borderSide:
             const BorderSide(width: 2, color: Colors.white),
@@ -236,22 +246,31 @@ Form(
         validator: (value) {
           if (value!.isEmpty || value.length < 7) {
             return "20".tr;
+
           } else {
             return null;
           }
         },
         onEditingComplete: () => FocusScope.of(context)
             .requestFocus(_addressFocusNode),
+
         decoration: InputDecoration(
           labelText: "4".tr,
-          labelStyle: TextStyle(color: Colors.white),
+          labelStyle: GoogleFonts.oxanium(
+            textStyle: TextStyle(color: Colors.white),
+          ),
+          errorStyle: TextStyle(color: Colors.amber),
+          errorBorder: UnderlineInputBorder( // Change error border color
+            borderSide: BorderSide(color: Colors.amber),
+          ),
           enabledBorder: UnderlineInputBorder(
             borderSide:
-            const BorderSide(width: 3, color: Colors.white),
+            const BorderSide(width: 2, color: Colors.white),
 
           ),
+
           focusedBorder: UnderlineInputBorder(
-            borderSide: const BorderSide(width: 3, color: Colors.white),
+            borderSide: const BorderSide(width: 2, color: Colors.white),
             borderRadius: BorderRadius.circular(15),
           ),
           suffixIcon: GestureDetector(
@@ -267,6 +286,7 @@ Form(
               color: Colors.white,
             ),
           ),
+
         ),
       ),
       Padding(
@@ -284,16 +304,21 @@ Form(
             return null;
           }
         },
-        //maxLines: 2,
+
         textAlign: TextAlign.start,
         decoration: InputDecoration(
           labelText: "21".tr,
-
-          labelStyle: TextStyle(color: Colors.white),
+          labelStyle: GoogleFonts.oxanium(
+            textStyle: TextStyle(color: Colors.white),
+          ),
           enabledBorder: UnderlineInputBorder(
             borderSide:
             const BorderSide(width: 2, color: Colors.white),
-          //  borderRadius: BorderRadius.circular(15),
+
+          ),
+          errorStyle: TextStyle(color: Colors.amber),
+          errorBorder: UnderlineInputBorder( // Change error border color
+            borderSide: BorderSide(color: Colors.amber),
           ),
           focusedBorder: UnderlineInputBorder(
             borderSide: const BorderSide(width: 2, color: Colors.white),
@@ -335,28 +360,22 @@ Form(
               // GestureDetector(onTap: _signUp),
               Button(
                   text: "10".tr,
-
                   color: Color.fromARGB(255, 208, 208, 208),
                   onPressed: () {
                     _submitFormOnRegister();
-                  }
-
+                     }
                   ),
-
 
               Row(
                 mainAxisAlignment: MainAxisAlignment.center,
                 children: [
                    CustomTextWidget(
                     text: "26".tr,
-
                     fontSize: 14,
                     fontWeight: FontWeight.w400,
                   ),
                   LinkText(
                     text: "7".tr,
-
-
                     onPressed: () {
                       Navigator.push(
                         context,

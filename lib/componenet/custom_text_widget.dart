@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:google_fonts/google_fonts.dart';
 
 class CustomTextWidget extends StatelessWidget {
   const CustomTextWidget(
@@ -21,10 +22,12 @@ class CustomTextWidget extends StatelessWidget {
     return Text(
       text,
       textAlign: textAlign,
-      style: TextStyle(
-        color: color ?? Colors.white,
-        fontSize: fontSize ?? 16,
-        fontWeight: fontWeight,
+      style: GoogleFonts.oxanium(
+        textStyle: TextStyle(
+          color: color ?? Colors.white,
+          fontSize: fontSize ?? 16,
+          fontWeight: fontWeight,
+        ),
       ),
     );
   }

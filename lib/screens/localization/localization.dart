@@ -92,7 +92,7 @@ class MyTranslation extends Translations {
       "7": "Log In",
       "8": "Or Login With",
       "9": "Don’t Have An Account ?",
-      "10": "Sign Up",
+      "10": "SIGN UP",
       "11": "Please Enter a Correct Email Address",
       "12": "An email has been sent to your email address",
       "13": "Forget Password",
