@@ -18,10 +18,12 @@ class MyCustomTextField extends StatelessWidget {
     return TextField(
       controller: controller,
       onChanged: onChanged,
+
       decoration: InputDecoration(
         labelText: labelText,
+
         enabledBorder: OutlineInputBorder(
-          borderSide: const BorderSide(width: 3, color: AppColors.primaryColor),
+          borderSide: const BorderSide(width: 3, color: AppColors.brown),
           borderRadius: BorderRadius.circular(15),
         ),
         focusedBorder: OutlineInputBorder(

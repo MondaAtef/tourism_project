@@ -20,4 +20,5 @@ class AssetsManager {
   static String pharaoh_dog  = "$imagePath/dog.png";
   static String recent = "$imagePath/history.png";
   static String viewed = "$imagePath/viewed.jpg";
+  static String wall = "$imagePath/Wall2.jpg";
 }

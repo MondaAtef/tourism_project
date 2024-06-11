@@ -1,7 +1,19 @@
 import 'package:flutter/material.dart';
-import 'package:vixor_project/models/catmodel.dart';
 import 'package:vixor_project/services/chatservices/assets_manager.dart';
 
+class CategoriesModel {
+  final String id;
+  final String image;
+  final String name;
+
+
+  CategoriesModel({
+    required this.id,
+    required this.name,
+    required this.image,
+
+  });
+}
 class AppConstants {
   static const String imageUrl =
       'https://i.ibb.co/8r1Ny2n/20-Nike-Air-Force-1-07.png';
@@ -13,6 +25,7 @@ class AppConstants {
     'leisure tourism',
     'Religious tourism',
   ];
+
   static List<CategoriesModel> categoyList = [
     CategoriesModel(
       id: "Nile Tourism",
@@ -23,21 +36,25 @@ class AppConstants {
       id: "Historical landmarks (west)",
       image: AssetsManager.west,
       name: "Historical landmarks (west)",
+
     ),
     CategoriesModel(
       id: "Historical landmarks (East)",
       image: AssetsManager.east,
       name: "Historical landmarks (East)",
+
     ),
     CategoriesModel(
       id: "leisure tourism",
       image: AssetsManager.leusrios,
       name: "leisure tourism",
+
     ),
     CategoriesModel(
       id: "Religious tourism",
       image: AssetsManager.religious,
       name: "Religious tourism",
+
     ),
 
   ];

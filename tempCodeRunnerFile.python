@@ -1,0 +1,26 @@
+from math import ceil
+
+
+def trans(plain,key):
+    col_trans=[int(k) for k in key]
+    col_num=len(col_trans)
+    row_num=ceil(len(plain)/col_num)
+
+    matrix=[["" for i in range(col_num)] for j in range(row_num)]
+
+    index=0
+    for i in range(row_num):
+        for j in range(col_num):
+            if index <=len(plain)-1:
+                matrix[i][j]=plain[index]
+                index+=1
+
+
+    for i in range( col_num):
+        for j in col_trans:
+           print(''.join(matrix[i][j-1]),end="") 
+
+
+trans("esraa","21")
+                   
+

@@ -5,7 +5,6 @@ import 'package:vixor_project/const/app_constants.dart';
 import 'package:vixor_project/models/list_item_model.dart';
 import 'package:vixor_project/screens/dashboard_screen/widgets/home_item_list_1.dart';
 import 'package:vixor_project/utils/app_imagse.dart';
-import 'package:vixor_project/screens/dashboard_screen/widgets/home_item_3.dart';
 import 'package:vixor_project/utils/app_colors.dart';
 
 class DashBoardScreen extends StatefulWidget {
@@ -17,14 +16,12 @@ class DashBoardScreen extends StatefulWidget {
 
 class _DashBoardScreenState extends State<DashBoardScreen> {
   List<ListItemModell> itemModel = [
-    ListItemModell(image: Assets.imagesWall1, text: 'Ballon '),
-    ListItemModell(image: Assets.imagesWall1, text: 'luxor temple'),
-    ListItemModell(image: Assets.imagesWall1, text: 'karnak temple'),
+    ListItemModell(image: Assets.Ballon, text: 'Ballon'),
+    ListItemModell(image: Assets.luxor, text: 'Luxor Temple'),
+    ListItemModell(image: Assets.imagesWall1, text: 'Karnak Temple'),
     ListItemModell(image: Assets.imagesWall1, text: 'Abo EL Hagaga Mosque'),
-    ListItemModell(
-        image: Assets.imagesWall1, text: 'Church of the Virgin Mary'),
-    ListItemModell(
-        image: Assets.imagesWall1, text: 'Valley of the Kings Temple'),
+    ListItemModell(image: Assets.imagesWall1, text: 'Church of the Virgin Mary'),
+    ListItemModell(image: Assets.imagesWall1, text: 'Valley of the Kings Temple'),
     ListItemModell(image: Assets.imagesWall1, text: 'Nile Corniche'),
   ];
 
@@ -33,7 +30,20 @@ class _DashBoardScreenState extends State<DashBoardScreen> {
     return Scaffold(
       body: Stack(
         children: [
-          Container(decoration: const BoxDecoration(color: AppColors.white)),
+          // Background image
+          Image(
+            image: AssetImage(Assets.background),
+            fit: BoxFit.cover,
+            width: double.infinity,
+            height: double.infinity,
+
+          ),
+          // Semi-transparent color overlay
+          Container(
+            color: const Color(0xFF8D502F).withOpacity(0.8),
+            width: double.infinity,
+            height: double.infinity,
+          ),
           Padding(
             padding: const EdgeInsets.only(top: 20),
             child: SingleChildScrollView(
@@ -44,7 +54,7 @@ class _DashBoardScreenState extends State<DashBoardScreen> {
                   const SizedBox(height: 15),
                   ClipRRect(
                     child: SizedBox(
-                      height: 200, // Set a fixed height here
+                      height: 200,
                       child: Swiper(
                         autoplay: true,
                         itemBuilder: (BuildContext context, int index) {
@@ -56,7 +66,7 @@ class _DashBoardScreenState extends State<DashBoardScreen> {
                         itemCount: AppConstants.bannersImages.length,
                         pagination: const SwiperPagination(
                           builder: DotSwiperPaginationBuilder(
-                            activeColor: Colors.red,
+                            activeColor: AppColors.primaryColor,
                             color: Colors.white,
                           ),
                         ),
@@ -66,26 +76,45 @@ class _DashBoardScreenState extends State<DashBoardScreen> {
                   const SizedBox(height: 15),
                   const Padding(
                     padding: EdgeInsets.all(8.0),
-                    child: TitlesTextWidget(label: "Top Places"),
+                    child: TitlesTextWidget(label: "Top Places", color: Colors.white),
                   ),
-                  const SizedBox(height: 15.0),
-                  SizedBox(
-                    height: MediaQuery.sizeOf(context).height * .18,
-                    child: SingleChildScrollView(
-                      scrollDirection: Axis.horizontal,
+                  SingleChildScrollView(
+                    scrollDirection: Axis.horizontal,
+                    child: SizedBox(
+                      height: MediaQuery.of(context).size.height * .23,
                       child: Row(
                         children: itemModel.map((item) {
                           return Padding(
                             padding: const EdgeInsets.all(8.0),
                             child: SizedBox(
-                              width: MediaQuery.of(context).size.width * .35,
+                              width: MediaQuery.of(context).size.width * .30,
                               child: Column(
                                 children: [
-                                  Image.asset(
-                                    item.image,
+                                  Container(
                                     width: 100,
                                     height: 100,
-                                    fit: BoxFit.cover,
+                                    decoration: BoxDecoration(
+
+                                      borderRadius: BorderRadius.circular(20), // Adjust radius for rounded but not circular shape
+                                      border: Border.all(
+                                        color: Colors.white,
+                                        width: 2, // Optional: Add a border around the container
+
+                                      ),
+                                    ),
+                                    child: Center(
+                                      child: ClipRRect(
+
+                                        borderRadius: BorderRadius.circular(20), // Match radius with the container
+                                        child: Image.asset(
+                                          item.image,
+                                          width: 80, // Adjust width to not take full container space
+                                          height: 80, // Adjust height to not take full container space
+
+                                          fit: BoxFit.cover,
+                                        ),
+                                      ),
+                                    ),
                                   ),
                                   const SizedBox(height: 8),
                                   Text(item.text),
@@ -97,10 +126,10 @@ class _DashBoardScreenState extends State<DashBoardScreen> {
                       ),
                     ),
                   ),
+
                   const SizedBox(height: 30),
+
                   const ItemList1(),
-                  // const SizedBox(height: 30),
-                  // const HomeItem3(),
                 ],
               ),
             ),

@@ -40,6 +40,8 @@ class ItemList2 extends StatelessWidget {
                               ),
                             ),
                           ),
+
+
                           const SizedBox(
                             width: 15,
                           ),
@@ -69,9 +71,13 @@ class ItemList2 extends StatelessWidget {
                         ],
                       ),
                     ))),
+
+
             const SizedBox(
               width: 15,
             ),
+
+            
             Expanded(
                 flex: 1,
                 child: GestureDetector(

@@ -1,42 +1,43 @@
 import 'package:flutter/material.dart';
-import 'package:vixor_project/utils/app_imagse.dart';
+import 'package:vixor_project/utils/app_imagse.dart'; // Ensure this import is correct
 
-class Myappbar extends StatelessWidget implements PreferredSizeWidget {
+class MyAppBar extends StatelessWidget implements PreferredSizeWidget {
+
   // ignore: use_key_in_widget_constructors
-  const Myappbar({Key? key});
+  const MyAppBar({Key? key});
+
 
   @override
   Widget build(BuildContext context) {
-
+    
     return AppBar(
+
+      backgroundColor: const Color(0xFF8D502F),
       elevation: 0,
+      iconTheme: const IconThemeData(color: Colors.white),
+      title: Center(
+        child: Text(
+          'Vixor',
+          style: const TextStyle(
 
-      title:  Center(
-        child: Image.asset(Assets.vixor,
-        width: 100,
-        height:90,
-        )
-
-   
-
-        // Text(
-        //   'Vixor',
-        //   style: TextStyle(
-        //       fontSize: 30,
-        //       fontWeight: FontWeight.w400,
-        //       height: 0.8,
-        //       color: Color(0xffffffff)),
-        //       //color: Color(0xff8E4F2E)),
-        // ),
+            fontSize: 30,
+            fontWeight: FontWeight.w400,
+            height: 0.8,
+            color: Color(0xffffffff),
+          ),
+        ),
       ),
-      actions:  [
+      actions: [
         Padding(
           padding: const EdgeInsets.only(right: 5.0),
-          child: Image.asset(Assets.imagesLogo,
+          child: Image.asset(
+
+            Assets.imagesLogow,
+
             width: 60,
-            height:50,)),
-
-
+            height: 50,
+          ),
+        ),
       ],
     );
   }

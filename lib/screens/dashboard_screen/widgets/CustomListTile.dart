@@ -4,20 +4,27 @@ import 'package:vixor_project/componenet/widgets/subtitle_text.dart';
 
 class CustomListTile extends StatelessWidget {
   const CustomListTile({
-    super.key,
+    Key? key,
     required this.imagePath,
     required this.text,
     required this.function,
-  });
+    this.textColor = Colors.white, // Add this line with default value
+  }) : super(key: key);
+
   final String imagePath, text;
   final Function function;
+  final Color textColor; // Add this line
+
   @override
   Widget build(BuildContext context) {
     return ListTile(
       onTap: () {
         function();
       },
-      title: SubtitleTextWidget(label: text),
+      title: SubtitleTextWidget(
+        label: text,
+        color: textColor, // Pass textColor to SubtitleTextWidget
+      ),
       leading: Image.asset(
         imagePath,
         height: 34,

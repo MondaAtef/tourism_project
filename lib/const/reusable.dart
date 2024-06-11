@@ -1,12 +1,13 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_iconly/flutter_iconly.dart';
 import 'package:get/get.dart';
+import 'package:google_fonts/google_fonts.dart';
 import 'package:vixor_project/componenet/widgets/text_widget.dart';
 import 'package:vixor_project/componenet/widgets/title%20widget.dart';
 
 import '../utils/app_imagse.dart';
 // import 'package:vixor_project/const/Chat%20constants/constants.dart';
-// import 'package:vixor_project/const/global_colors.dart';
+
 // import 'package:vixor_project/utils/app_imagse.dart';
 void navigateTo(context,Widget)=>Navigator.push(context, MaterialPageRoute(
   builder:(context)=>Widget,
@@ -19,7 +20,7 @@ Future<void> errorDialog({
       context: context,
       builder: (context) {
         return AlertDialog(
-          backgroundColor: Colors.brown.withOpacity(0.9),
+          backgroundColor: Color(0xFF8D502F).withOpacity(0.9),
           title: Row(
             children: [
               Image.asset(
@@ -36,7 +37,7 @@ Future<void> errorDialog({
           ),
           content: Text(
               subtitle,
-              style: const TextStyle(color:Colors.white)),
+              style:  TextStyle(color:Colors.white)),
           actions: [
             TextButton(
               style: TextButton.styleFrom(backgroundColor: Colors.white),
@@ -46,7 +47,7 @@ Future<void> errorDialog({
                 }
               },
               child: Textwidget(
-                color: Colors.brown,
+                color:Color(0xFF8D502F),
                 text: 'Ok',
                 textsize: 18,
               ),
@@ -61,7 +62,7 @@ PreferredSizeWidget defaultAppbar({
   List<Widget>? actions,
 }) =>
     AppBar(
-      backgroundColor: Colors.white,
+      backgroundColor: const Color(0xFF8D502F),
       elevation: 0.0,
       leading: IconButton(
         onPressed: () {
@@ -77,19 +78,33 @@ PreferredSizeWidget defaultAppbar({
         style: const TextStyle(
           fontSize: 20.0,
           fontWeight: FontWeight.bold,
-          color: Colors.black,
+          color: Colors.white,
         ),
       ),
       actions: actions,
     );
 Widget defaulttextbutton({
   required VoidCallback function,
-  required String text,
+  required String text, required Color background,
 }) =>
-    TextButton(
-      onPressed: function,
-      child: Text(
-        text.toUpperCase(),
+    Container(
+      margin: const EdgeInsets.fromLTRB(0, 14, 0, 20),
+      child: SizedBox(
+        width: 200, // Set width to 200 pixels
+        child: TextButton(
+          onPressed: function,
+          style: ButtonStyle(
+            backgroundColor: MaterialStateProperty.resolveWith<Color>(
+                  (states) => Color.fromARGB(255, 208, 208, 208).withOpacity(0.8),
+            ),
+          ),
+          child: Text(
+            text.toUpperCase(),
+            style: TextStyle(
+              color: Color.fromARGB(167, 33, 126, 180),
+            ),
+          ),
+        ),
       ),
     );
 
@@ -97,22 +112,30 @@ Widget defaultButton({
   double width = double.infinity,
   Color? background,
   bool isUppercase = true,
-  double raduis = 10,
+  double radius = 100, // Corrected the spelling from "raduis" to "radius"
   @required Function()? function,
   @required String? text,
 }) =>
     Container(
-      width: width,
-      child: MaterialButton(
-        onPressed: function,
-        height: 45.0,
-        color: background,
-        child: Text(
-          isUppercase ? text!.toUpperCase() : text!,
-          style: const TextStyle(fontSize: 13, color: Colors.white),
+      width: 200,
+      child: ClipRRect(
+        borderRadius: BorderRadius.circular(radius),
+        child: MaterialButton(
+          onPressed: function,
+          height: 35.0,
+
+          color: background ?? Color.fromARGB(255, 208, 208, 208).withOpacity(0.8),
+          child: Text(
+            isUppercase ? text!.toUpperCase() : text!,
+            style: const TextStyle(
+              fontSize: 13,
+              color: Color.fromARGB(167, 33, 126, 180),
+            ),
+          ),
         ),
       ),
     );
+
 Widget defaultformfield({
   required TextEditingController controller,
   required TextInputType type,
@@ -122,17 +145,30 @@ Widget defaultformfield({
   required IconData prefix,
 }) =>
     TextFormField(
-        controller: controller,
-        decoration: InputDecoration(
-          prefixIcon: Icon(
-            prefix,
-          ),
-          labelText: label,
-          border: const OutlineInputBorder(),
+      controller: controller,
+      decoration: InputDecoration(
+        prefixIcon: Icon(
+          prefix,
+          color: Colors.white, // Set icon color to white
         ),
-        validator: validator,
-        keyboardType: type,
-        onChanged: onchange);
+        labelText: label,
+        labelStyle: TextStyle(color: Colors.white), // Set label text color to white
+        border: OutlineInputBorder(
+          borderSide: BorderSide(color: Colors.white), // Set border color to white
+        ),
+        enabledBorder: OutlineInputBorder(
+          borderSide: BorderSide(color: Colors.white), // Set enabled border color to white
+        ),
+        focusedBorder: OutlineInputBorder(
+          borderSide: BorderSide(color: Colors.white), // Set focused border color to white
+        ),
+      ),
+      style: TextStyle(color: Colors.white), // Set text color to white
+      validator: validator,
+      keyboardType: type,
+      onChanged: onchange,
+    );
+
 Widget listtile({
   required String title,
   required IconData icon,
@@ -254,7 +290,7 @@ Future<void>warningDialog({
           style: TextButton.styleFrom(backgroundColor: Colors.white),
           onPressed: fct
           ,child:Textwidget(
-          color: Colors.brown,
+          color:  Color(0xFF8D502F),
           text: 'ok',
           textsize: 18,
         ),
