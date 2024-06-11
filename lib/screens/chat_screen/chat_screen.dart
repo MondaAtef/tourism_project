@@ -1,111 +1,76 @@
-import 'dart:developer';
+import 'dart:convert';
 import 'package:flutter/material.dart';
-import 'package:flutter_spinkit/flutter_spinkit.dart';
-import 'package:provider/provider.dart';
-import 'package:vixor_project/componenet/chatwidget/chat_widget.dart';
-import 'package:vixor_project/componenet/chatwidget/text_widget.dart';
-//import 'package:vixor_project/const/Chat%20constants/constants.dart';
-import 'package:vixor_project/provider/chatprovider/chats_provider.dart';
-import 'package:vixor_project/provider/chatprovider/models_provider.dart';
-//import 'package:vixor_project/services/chatservices/assets_manager.dart';
-//import 'package:vixor_project/services/chatservices/services.dart';
-
+import 'package:http/http.dart' as http;
 
 class ChatScreen extends StatefulWidget {
-  const ChatScreen({super.key});
-
   @override
-  State<ChatScreen> createState() => _ChatScreenState();
+  _ChatScreenState createState() => _ChatScreenState();
 }
 
 class _ChatScreenState extends State<ChatScreen> {
-  bool _isTyping = false;
+  final List<ChatMessage> _messages = [];
+  final TextEditingController _textController = TextEditingController();
 
-  late TextEditingController textEditingController;
-  late ScrollController _listScrollController;
-  late FocusNode focusNode;
-  @override
-  void initState() {
-    _listScrollController = ScrollController();
-    textEditingController = TextEditingController();
-    focusNode = FocusNode();
-    super.initState();
-  }
-
-  @override
-  void dispose() {
-    _listScrollController.dispose();
-    textEditingController.dispose();
-    focusNode.dispose();
-    super.dispose();
-  }
-
-  // List<ChatModel> chatList = [];
   @override
   Widget build(BuildContext context) {
-    final modelsProvider = Provider.of<ModelsProvider>(context);
-    final chatProvider = Provider.of<ChatProvider>(context);
     return Scaffold(
-      backgroundColor:Colors.white,
-      body: SafeArea(
-        child: Column(
-          children: [
+      appBar: PreferredSize(
+        preferredSize: Size.fromHeight(60.0),
+        child: Container(
+          decoration: BoxDecoration(
+            borderRadius: BorderRadius.vertical(
+              bottom: Radius.circular(30),
+            ),
+            color: Colors.blue,
+          ),
+          child: AppBar(
+            title: Text('Chatbot Demo'),
+            centerTitle: true,
+          ),
+        ),
+      ),
+      body: Column(
+        children: <Widget>[
+          Expanded(
+            child: ListView.builder(
+              reverse: true,
+              itemCount: _messages.length,
+              itemBuilder: (_, int index) => _messages[index],
+            ),
+          ),
+          Divider(height: 1.0),
+          Container(
+            decoration: BoxDecoration(color: Theme.of(context).cardColor),
+            child: _buildTextComposer(),
+          ),
+        ],
+      ),
+    );
+  }
+
+  Widget _buildTextComposer() {
+    return IconTheme(
+      data: IconThemeData(color: Theme.of(context).cardColor),
+      child: Container(
+        margin: const EdgeInsets.symmetric(horizontal: 8.0),
+        child: Row(
+          children: <Widget>[
             Flexible(
-              child: ListView.builder(
-                  controller: _listScrollController,
-                  itemCount: chatProvider.getChatList.length, //chatList.length,
-                  itemBuilder: (context, index) {
-                    return ChatWidget(
-                      msg: chatProvider
-                          .getChatList[index].msg, // chatList[index].msg,
-                      chatIndex: chatProvider.getChatList[index]
-                          .chatIndex,
-                      shouldAnimate: chatProvider.getChatList.length-1==index,//chatList[index].chatIndex,
-                    );
-                  }),
-            ),
-            if (_isTyping) ...[
-              const SpinKitThreeBounce(
-                color: Colors.black,
-                size: 18,
-              ),
-            ],
-            const SizedBox(
-              height: 15,
-            ),
-            Material(
-              color: Colors.white,
-              child: Padding(
-                padding: const EdgeInsets.all(8.0),
-                child: Row(
-                  children: [
-                    Expanded(
-                      child: TextField(
-                        focusNode: focusNode,
-                        style: const TextStyle(color: Colors.black),
-                        controller: textEditingController,
-                        onSubmitted: (value) async {
-                          await sendMessageFCT(
-                              modelsProvider: modelsProvider,
-                              chatProvider: chatProvider);
-                        },
-                        decoration: const InputDecoration.collapsed(
-                            hintText: "How can I help you",
-                            hintStyle: TextStyle(color: Colors.grey)),
-                      ),
-                    ),
-                    IconButton(
-                        onPressed: () async {
-                          await sendMessageFCT(
-                              modelsProvider: modelsProvider,
-                              chatProvider: chatProvider);
-                        },
-                        icon: const Icon(
-                          Icons.send,
-                          color: Colors.black,
-                        ))
-                  ],
+              child: TextField(
+                controller: _textController,
+                onSubmitted: _handleSubmitted,
+                decoration: InputDecoration.collapsed(
+                  hintText: 'Send a message',
                 ),
+              ),
+            ),
+            Container(
+              margin: EdgeInsets.symmetric(horizontal: 4.0),
+              child: IconButton(
+                icon: Icon(Icons.send),
+                onPressed: () {
+                  _handleSubmitted(_textController.text);
+                },
               ),
             ),
           ],
@@ -114,63 +79,91 @@ class _ChatScreenState extends State<ChatScreen> {
     );
   }
 
-  void scrollListToEND() {
-    _listScrollController.animateTo(
-        _listScrollController.position.maxScrollExtent,
-        duration: const Duration(seconds: 2),
-        curve: Curves.easeOut);
+  void _handleSubmitted(String text) async {
+    _textController.clear();
+    ChatMessage message = ChatMessage(
+      text: text,
+      isUserMessage: true,
+    );
+    setState(() {
+      _messages.insert(0, message);
+    });
+    String response = await sendMessageToChatbot(text);
+    message = ChatMessage(
+      text: response,
+      isUserMessage: false,
+    );
+    setState(() {
+      _messages.insert(0, message);
+    });
   }
 
-  Future<void> sendMessageFCT(
-      {required ModelsProvider modelsProvider,
-        required ChatProvider chatProvider}) async {
-    if (_isTyping) {
-      ScaffoldMessenger.of(context).showSnackBar(
-        const SnackBar(
-          content: TextWidget(
-            label: "You cant send multiple messages at a time",
-          ),
-          backgroundColor: Colors.red,
-        ),
-      );
-      return;
-    }
-    if (textEditingController.text.isEmpty) {
-      ScaffoldMessenger.of(context).showSnackBar(
-        const SnackBar(
-          content: TextWidget(
-            label: "Please type a message",
-          ),
-          backgroundColor: Colors.red,
-        ),
-      );
-      return;
-    }
-    try {
-      String msg = textEditingController.text;
-      setState(() {
-        _isTyping = true;
+  Future<String> sendMessageToChatbot(String message) async {
+    final response = await http.post(
+      Uri.parse('http://192.168.21.207:5000/chatbot'),
+      headers: <String, String>{
+        'Content-Type': 'application/json; charset=UTF-8',
+      },
+      body: jsonEncode(<String, String>{
+        'message': message,
+      }),
+    );
 
-        chatProvider.addUserMessage(msg: msg);
-        textEditingController.clear();
-        focusNode.unfocus();
-      });
-      await chatProvider.sendMessageAndGetAnswers(
-          msg: msg, chosenModelId: modelsProvider.getCurrentModel);
-      setState(() {});
-    } catch (error) {
-      log("error $error");
-      ScaffoldMessenger.of(context).showSnackBar(SnackBar(
-        content: TextWidget(
-          label: error.toString(),
-        ),
-        backgroundColor: Colors.red,
-      ));
-    } finally {
-      setState(() {
-        scrollListToEND();
-        _isTyping = false;
-      });
+    if (response.statusCode == 200) {
+      return jsonDecode(response.body)['response'];
+    } else {
+      throw Exception('Failed to send message to the chatbot server');
     }
+  }
+}
+
+class ChatMessage extends StatelessWidget {
+  final String text;
+  final bool isUserMessage;
+
+  ChatMessage({required this.text, required this.isUserMessage});
+
+  @override
+  Widget build(BuildContext context) {
+    return Container(
+      margin: EdgeInsets.symmetric(vertical: 10.0),
+      child: Row(
+        crossAxisAlignment: CrossAxisAlignment.start,
+        mainAxisAlignment:
+        isUserMessage ? MainAxisAlignment.start : MainAxisAlignment.end,
+        children: <Widget>[
+          isUserMessage ? Container() : Container(width: 48.0),
+          Expanded(
+            child: Column(
+              crossAxisAlignment: CrossAxisAlignment.start,
+              children: <Widget>[
+                Text(
+                  isUserMessage ? 'User' : 'Chatbot',
+                  style: TextStyle(
+                    fontWeight: FontWeight.bold,
+                  ),
+                ),
+                Container(
+                  margin: EdgeInsets.only(top: 5.0),
+                  padding: EdgeInsets.all(10.0),
+                  decoration: BoxDecoration(
+                    color:
+                    isUserMessage ? Colors.blue[200] : Colors.green[200],
+                    borderRadius: BorderRadius.circular(8.0),
+                  ),
+                  child: Text(
+                    text,
+                    style: TextStyle(
+                      fontSize: 16.0,
+                    ),
+                  ),
+                ),
+              ],
+            ),
+          ),
+          isUserMessage ? Container(width: 48.0) : Container(),
+        ],
+      ),
+    );
   }
 }

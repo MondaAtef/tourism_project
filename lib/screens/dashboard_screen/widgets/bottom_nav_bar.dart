@@ -25,7 +25,7 @@ class _CustomBottomNavBarState extends State<CustomBottomNavBar> {
     const DashBoardScreen(),
     const MapScreen(),
     const Photobook(),
-    const ChatScreen(),
+    ChatScreen(),
     SettingScreen(),
   ];
 
