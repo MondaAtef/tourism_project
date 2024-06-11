@@ -67,6 +67,6 @@ flutter {
 }
 
 dependencies {
-    implementation 'com.facebook.android:facebook-login:latest.release'
-
+    implementation 'com.facebook.android:facebook-login:12.3.0'  // replace with the latest known version
 }
+

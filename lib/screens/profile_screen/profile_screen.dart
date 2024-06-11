@@ -176,7 +176,7 @@ class _SettingScreenState extends State<SettingScreen> {
                         ],
                       ),
                     ),
-                    SwitchListTile(
+                   /* SwitchListTile(
                       title: Textwidget(
                         text: themeState.getDarkTheme
                             ? 'DarkMode'
@@ -193,7 +193,7 @@ class _SettingScreenState extends State<SettingScreen> {
                           themeState.setDarkTheme = value;
                         });
                       },
-                    ),
+                    ),*/
                     CustomListTile(
                       text: "29".tr,
                       imagePath: AssetsManager.wishlistSvg,

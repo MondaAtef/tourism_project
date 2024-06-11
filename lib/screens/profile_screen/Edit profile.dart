@@ -62,6 +62,15 @@ class EditProfile extends StatelessWidget {
                   decoration: BoxDecoration(
                     color:Color(0xFF8D502F).withOpacity(0.8),
                     borderRadius: BorderRadius.circular(10.0),
+                    gradient: LinearGradient(
+                      colors: [
+                        Color.fromARGB(200, 33, 126, 180),
+                        Color.fromARGB(200, 142, 80, 46),
+                      ],
+                      stops: [0.0, 0.5],
+                      begin: Alignment.bottomCenter,
+                      end: Alignment.topCenter,
+                    ),
                     boxShadow: [
                       BoxShadow(
                         color: Colors.brown.withOpacity(0.8),
