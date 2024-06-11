@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_iconly/flutter_iconly.dart';
+import 'package:google_fonts/google_fonts.dart';
 import 'package:vixor_project/componenet/widgets/subtitle_text.dart';
 
 class CustomListTile extends StatelessWidget {
@@ -8,7 +9,8 @@ class CustomListTile extends StatelessWidget {
     required this.imagePath,
     required this.text,
     required this.function,
-    this.textColor = Colors.white, // Add this line with default value
+    this.textColor = Colors.white,
+    // Add this line with default value
   }) : super(key: key);
 
   final String imagePath, text;
@@ -21,10 +23,12 @@ class CustomListTile extends StatelessWidget {
       onTap: () {
         function();
       },
+
       title: SubtitleTextWidget(
         label: text,
-        color: textColor, // Pass textColor to SubtitleTextWidget
+        color: textColor,
       ),
+
       leading: Image.asset(
         imagePath,
         height: 34,

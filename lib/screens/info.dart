@@ -20,14 +20,14 @@ class Info extends StatelessWidget {
           Container(
             decoration: const BoxDecoration(
               image: DecorationImage(
-                image: AssetImage(Assets.enter),
+                image: AssetImage(Assets.background),
                 fit: BoxFit.cover,
               ),
             ),
           ),
           Container(
             height: double.infinity,
-            color: Colors.white.withOpacity(0.7),
+            color:const Color (0xFF8D502F).withOpacity(0.7),
             child: Container(
               margin: const EdgeInsets.fromLTRB(41, 198, 50, 206),
               child: SingleChildScrollView(
@@ -46,14 +46,14 @@ class Info extends StatelessWidget {
                       margin: const EdgeInsets.fromLTRB(0, 0, 0, 34),
                       child: const CustomTextWidget(
                         text: 'vixor',
-                        color: AppColors.primaryColor,
+                        color: Colors.white,
                         fontSize: 50,
                       ),
                     ),
                     Button(
                         text: "7".tr,
                        // TextStyle:Colors.white,
-                        color: const Color(0xff8E4F2E),
+                        color: Color.fromARGB(255, 208, 208, 208),
                         onPressed: () {
                           Navigator.push(
                             context,
@@ -64,7 +64,7 @@ class Info extends StatelessWidget {
                     Button(
                         text: "47".tr,
                         //TextStyle:Colors.brown,
-                        color: const Color(0xffffffff),
+                        color: Color.fromARGB(255, 208, 208, 208),
                         onPressed: () {
                           Navigator.push(
                             context,
