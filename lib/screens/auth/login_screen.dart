@@ -314,7 +314,6 @@ class _LoginState extends State<Login> {
                     Expanded(
                       flex: 1,
                       child: ImageButton(
-
                         imagePath: Assets.imagesFacebook,
                         onPressed: () {
                           signInWithFacebook();

@@ -1,4 +1,3 @@
-//import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 
 class TitlesTextWidget extends StatelessWidget {
@@ -14,6 +13,7 @@ class TitlesTextWidget extends StatelessWidget {
   final double fontSize;
   final Color? color;
   final int? maxLines;
+
   @override
   Widget build(BuildContext context) {
     return Text(
@@ -24,6 +24,7 @@ class TitlesTextWidget extends StatelessWidget {
         color: color,
         fontSize: fontSize,
         fontWeight: FontWeight.bold,
+        fontFamily: 'Oxanium', // Specify the Oxanium font family
         overflow: TextOverflow.ellipsis,
       ),
     );

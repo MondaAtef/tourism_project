@@ -58,7 +58,7 @@ class HomeItem3 extends StatelessWidget {
                         fontSize: 20.0,
                         wordSpacing: 1,
                         fontWeight: FontWeight.w900,
-                        fontFamily: 'koulen',
+                        fontFamily: 'Oxanium',
                         color: Colors.brown,
                       ),
                     ),

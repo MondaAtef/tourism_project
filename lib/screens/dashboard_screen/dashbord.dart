@@ -36,6 +36,7 @@ class _DashBoardScreenState extends State<DashBoardScreen> {
             fit: BoxFit.cover,
             width: double.infinity,
             height: double.infinity,
+
           ),
           // Semi-transparent color overlay
           Container(
