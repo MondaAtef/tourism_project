@@ -5,7 +5,7 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:get/get.dart';
 import 'package:get/get_navigation/get_navigation.dart';
 import 'package:provider/provider.dart';
-import 'package:vixor_project/const/theme_data.dart';
+
 import 'package:vixor_project/cubit/bloc%20observer.dart';
 import 'package:vixor_project/cubit/bloc.dart';
 import 'package:vixor_project/cubit/cashe%20helper.dart';
@@ -140,7 +140,7 @@ class _MyAppState extends State<MyApp> {
 
                     title: 'Luxor app',
                     home: const Splash(),
-                    theme: Styles.themeData(themeChangeProvider.getDarkTheme, context),
+
 
                   );
                 }),

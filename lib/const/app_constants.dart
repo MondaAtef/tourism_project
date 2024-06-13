@@ -59,9 +59,13 @@ class AppConstants {
 
   ];
   static List<String> bannersImages = [
-    AssetsManager.banner1,
-    AssetsManager.banner2,
+    AssetsManager.banner4,
+    AssetsManager.banner5,
+    AssetsManager.banner6,
     AssetsManager.banner3,
+
+
+
   ];
   static List<DropdownMenuItem<String>>? get categoriesDropDownList {
     List<DropdownMenuItem<String>>? menuItem =

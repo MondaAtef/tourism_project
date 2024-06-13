@@ -20,10 +20,10 @@ text,
       maxLines: Maxlinees,
       style: TextStyle(
         overflow: TextOverflow.ellipsis,
-
         color: color,
       fontSize: textsize,
       fontWeight: istitle?FontWeight.bold:FontWeight.normal,
+        fontFamily: "Oxanium",
     ),
     );
   }

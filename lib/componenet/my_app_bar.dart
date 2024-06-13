@@ -31,9 +31,7 @@ class MyAppBar extends StatelessWidget implements PreferredSizeWidget {
         Padding(
           padding: const EdgeInsets.only(right: 5.0),
           child: Image.asset(
-
             Assets.imagesLogow,
-
             width: 60,
             height: 50,
           ),

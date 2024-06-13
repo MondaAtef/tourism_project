@@ -5,6 +5,7 @@ import 'package:vixor_project/componenet/my_app_bar.dart';
 import 'package:vixor_project/utils/app_colors.dart';
 import 'package:vixor_project/utils/app_imagse.dart';
 
+
 class Sustabilty extends StatelessWidget {
   const Sustabilty({Key? key});
 
@@ -22,14 +23,14 @@ class Sustabilty extends StatelessWidget {
             Container(
               decoration: const BoxDecoration(
                 image: DecorationImage(
-                  image: AssetImage(Assets.imagesLang),
+                  image: AssetImage(Assets.background),
                   fit: BoxFit.cover,
                 ),
               ),
             ),
             Container(
               height: double.infinity,
-              color: Colors.white.withOpacity(0.7),
+              color:const Color (0xFF8D502F).withOpacity(0.7),
               child: SingleChildScrollView(
                 scrollDirection: Axis.vertical,
                 child: Column(
@@ -67,27 +68,29 @@ class Sustabilty extends StatelessWidget {
                                     height: 10,
                                   ),
                                   Container(
+                                    width: 200,
+                                    height: 50,
                                     decoration: const BoxDecoration(
                                       color: Color(0xffC78800),
                                       borderRadius: BorderRadius.only(
-                                        topRight: Radius.circular(20.0),
+                                        topRight: Radius.circular(50.0),
                                         topLeft: Radius.zero,
-                                        bottomRight: Radius.circular(20.0),
+                                        bottomRight: Radius.circular(50.0),
                                         bottomLeft: Radius.zero,
                                       ),
                                     ),
                                     child: const Padding(
-                                      padding: EdgeInsets.all(8.0),
+                                      padding: EdgeInsets.all(0),
                                       child: CustomTextWidget(
                                         text: 'Introduction',
-                                        fontSize: 32,
-                                        fontWeight: FontWeight.w400,
+                                        fontSize: 29,
+                                        fontWeight: FontWeight.w700,
                                         color: AppColors.white,
                                       ),
                                     ),
                                   ),
                                   const Padding(
-                                    padding: EdgeInsets.all(8.0),
+                                    padding: EdgeInsets.all(0),
                                     child: CustomTextWidget(
                                       fontSize: 20,
                                       fontWeight: FontWeight.w400,
@@ -130,21 +133,24 @@ class Sustabilty extends StatelessWidget {
                       ),
                     ),
                     Container(
+                      width: 200,
+                      height: 50,
                       decoration: const BoxDecoration(
                         color: Color(0xffC78800),
                         borderRadius: BorderRadius.only(
-                          topRight: Radius.circular(20.0),
+                          topRight: Radius.circular(50.0),
                           topLeft: Radius.zero,
-                          bottomRight: Radius.circular(20.0),
+                          bottomRight: Radius.circular(50.0),
                           bottomLeft: Radius.zero,
                         ),
                       ),
                       child: const Padding(
-                        padding: EdgeInsets.all(8.0),
+
+                        padding: EdgeInsets.all(0),
                         child: CustomTextWidget(
                           text: 'Importance',
-                          fontSize: 32,
-                          fontWeight: FontWeight.w400,
+                          fontSize: 30,
+                          fontWeight: FontWeight.w700,
                           color: AppColors.white,
                         ),
                       ),
@@ -168,21 +174,23 @@ class Sustabilty extends StatelessWidget {
                       height: 30,
                     ),
                     Container(
+                      width: 400,
+                      height: 50,
                       decoration: const BoxDecoration(
                         color: Color(0xffC78800),
                         borderRadius: BorderRadius.only(
-                          topRight: Radius.circular(20.0),
+                          topRight: Radius.circular(50.0),
                           topLeft: Radius.zero,
-                          bottomRight: Radius.circular(20.0),
+                          bottomRight: Radius.circular(50.0),
                           bottomLeft: Radius.zero,
                         ),
                       ),
                       child: const Padding(
-                        padding: EdgeInsets.all(8.0),
+                        padding: EdgeInsets.all(0),
                         child: CustomTextWidget(
                           text: 'Sustainable Tourism in Egypt',
-                          fontSize: 28,
-                          fontWeight: FontWeight.w400,
+                          fontSize: 25,
+                          fontWeight: FontWeight.w700,
                           color: AppColors.white,
                         ),
                       ),

@@ -6,10 +6,16 @@ class AppNameTextWidget extends StatelessWidget {
   final double fontSize;
   @override
   Widget build(BuildContext context) {
-    return Image.asset(
-      Assets.vixor,
-      width: 120,
-      height: 90,
+    return Text(
+      'vixor',
+      style: TextStyle(
+        fontSize: fontSize,
+        fontWeight: FontWeight.w400,
+        color: Colors.white,
+        fontFamily: "Oxanium",
+
+        // You can add more styling options here
+      ),
     );
     // return Shimmer.fromColors(
     //   period: const Duration(seconds: 22),

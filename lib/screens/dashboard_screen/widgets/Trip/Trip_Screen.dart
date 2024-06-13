@@ -58,7 +58,7 @@ class _TripScreenState extends State<TripScreen> {
     return cartProvider.getCartitems.isEmpty
         ? Scaffold(
       body: EmptyBagWidget(
-        imagePath: AssetsManager.banner1,
+        imagePath: AssetsManager.banner6,
         title: "57".tr,
         subtitle: "",
         buttonText: "58".tr,

@@ -45,7 +45,7 @@ class _DashBoardScreenState extends State<DashBoardScreen> {
             height: double.infinity,
           ),
           Padding(
-            padding: const EdgeInsets.only(top: 20),
+            padding: const EdgeInsets.only(top: 10),
             child: SingleChildScrollView(
               scrollDirection: Axis.vertical,
               child: Column(
@@ -54,7 +54,7 @@ class _DashBoardScreenState extends State<DashBoardScreen> {
                   const SizedBox(height: 15),
                   ClipRRect(
                     child: SizedBox(
-                      height: 200,
+                      height: 250,
                       child: Swiper(
                         autoplay: true,
                         itemBuilder: (BuildContext context, int index) {

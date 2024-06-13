@@ -23,7 +23,7 @@ class MyCustomTextField extends StatelessWidget {
         labelText: labelText,
 
         enabledBorder: OutlineInputBorder(
-          borderSide: const BorderSide(width: 3, color: AppColors.white),
+          borderSide: const BorderSide(width: 3,color: AppColors.white),
           borderRadius: BorderRadius.circular(15),
         ),
         focusedBorder: OutlineInputBorder(
