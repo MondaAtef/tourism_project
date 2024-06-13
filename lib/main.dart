@@ -110,7 +110,6 @@ class _MyAppState extends State<MyApp> {
                 return TripProvider();
               }),
 
-
               ChangeNotifierProvider(
                 create: (_) => ChatProvider(),
               ),
