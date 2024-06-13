@@ -3,7 +3,6 @@ import 'package:get/get.dart';
 import 'package:vixor_project/componenet/custom_text_widget.dart';
 import 'package:vixor_project/const/reusable.dart';
 import 'package:vixor_project/screens/dashboard_screen/widgets/HomeScreen.dart';
-import 'package:vixor_project/screens/dashboard_screen/widgets/Trip/Trip_Screen.dart';
 import 'package:vixor_project/utils/app_imagse.dart';
 import 'package:vixor_project/screens/recommendation_trip/RecommendationScreen.dart';
 
@@ -23,7 +22,7 @@ class ItemList1 extends StatelessWidget {
                 flex: 2,
                 child: GestureDetector(
                   onTap: () {
-                    navigateTo(context,  Homescreen());
+                    navigateTo(context, Homescreen());
                   },
                   child: Container(
                     decoration: BoxDecoration(
@@ -36,7 +35,8 @@ class ItemList1 extends StatelessWidget {
                             borderRadius: BorderRadius.circular(50),
                             child: Image.asset(
                               Assets.img1,
-                              fit: BoxFit.cover, // Ensure the image fills the container
+                              fit: BoxFit
+                                  .cover, // Ensure the image fills the container
                             ),
                           ),
                         ),
@@ -67,69 +67,65 @@ class ItemList1 extends StatelessWidget {
                     ),
                   ),
                 )),
-
-
-
-              SizedBox(
+            SizedBox(
               width: 15,
             ),
-
-
-         //button Show your trip
-             Expanded(
-                 flex: 1,
-                 child: GestureDetector(
-                     onTap: () {
-                       Navigator.push(
-                         context,
-                         MaterialPageRoute(builder: (context) => RecommendationScreen()),
-                       );
-                     },
-                     child: Container(
-                       decoration: BoxDecoration(
-                         borderRadius: BorderRadius.circular(40),
-                       ),
-                       child: Stack(
-                         children: [
-                           Positioned.fill(
-                             child: ClipRRect(
-                               borderRadius: BorderRadius.circular(40),
-                               child: Image.asset(
-                                 Assets.img2,
-                                 fit: BoxFit
-                                     .cover, // Ensure the image fills the container
-                               ),
-                             ),
-                           ),
-                           const SizedBox(
-                             width: 15,
-                           ),
-                           Container(
-                             decoration: BoxDecoration(
-                               borderRadius: BorderRadius.circular(40),
-                               gradient: const LinearGradient(
-                                 colors: [
-                                   Color.fromARGB(100, 0, 0, 0),
-                                   Color.fromARGB(100, 0, 0, 0),
-                                 ],
-                                 stops: [0.0, 0.5],
-                                 begin: Alignment.bottomCenter,
-                                 end: Alignment.topCenter,
-                               ),
-                             ),
-                             child: Center(
-                               child: CustomTextWidget(
-                                 text: "53".tr,
-                                 textAlign: TextAlign.center,
-                                 fontSize: 19.0,
-                                 fontWeight: FontWeight.w900,
-                                 color: Colors.white,
-                               ),
-                             ),
-                           ),
-                         ],
-                       ),
-                     ))),
+            //button Show your trip
+            Expanded(
+                flex: 1,
+                child: GestureDetector(
+                    onTap: () {
+                      Navigator.push(
+                        context,
+                        MaterialPageRoute(
+                            builder: (context) => RecommendationScreen()),
+                      );
+                    },
+                    child: Container(
+                      decoration: BoxDecoration(
+                        borderRadius: BorderRadius.circular(40),
+                      ),
+                      child: Stack(
+                        children: [
+                          Positioned.fill(
+                            child: ClipRRect(
+                              borderRadius: BorderRadius.circular(40),
+                              child: Image.asset(
+                                Assets.img2,
+                                fit: BoxFit
+                                    .cover, // Ensure the image fills the container
+                              ),
+                            ),
+                          ),
+                          const SizedBox(
+                            width: 15,
+                          ),
+                          Container(
+                            decoration: BoxDecoration(
+                              borderRadius: BorderRadius.circular(40),
+                              gradient: const LinearGradient(
+                                colors: [
+                                  Color.fromARGB(100, 0, 0, 0),
+                                  Color.fromARGB(100, 0, 0, 0),
+                                ],
+                                stops: [0.0, 0.5],
+                                begin: Alignment.bottomCenter,
+                                end: Alignment.topCenter,
+                              ),
+                            ),
+                            child: Center(
+                              child: CustomTextWidget(
+                                text: "53".tr,
+                                textAlign: TextAlign.center,
+                                fontSize: 19.0,
+                                fontWeight: FontWeight.w900,
+                                color: Colors.white,
+                              ),
+                            ),
+                          ),
+                        ],
+                      ),
+                    ))),
           ],
         ),
       ),

@@ -27,10 +27,10 @@ class _HomeScreenState extends State<Homescreen> {
         leading: Padding(
           padding: const EdgeInsets.all(8.0),
           child: Image.asset(
-            AssetsManager.hors,
+            Assets.imagesLogow,
           ),
         ),
-        title: const AppNameTextWidget(fontSize: 20),
+        title: const AppNameTextWidget(fontSize: 30),
         systemOverlayStyle: const SystemUiOverlayStyle(
           statusBarColor: Colors.transparent,
           statusBarIconBrightness: Brightness.dark,
@@ -64,7 +64,7 @@ class _HomeScreenState extends State<Homescreen> {
                     ),
                     const TitlesTextWidget(label: "Categories", color: Colors.white,fontSize:25),
                     const SizedBox(
-                      height: 5.0,
+                      height: 5,
                     ),
                     SizedBox(
                       width: size.width * 0.9,  // Adjust width here
@@ -86,7 +86,7 @@ class _HomeScreenState extends State<Homescreen> {
                           );
                         },
                         separatorBuilder: (context, index) {
-                          return const Gap(20);
+                          return const Gap(15);
                         },
                       ),
                     ),

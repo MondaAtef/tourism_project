@@ -6,9 +6,13 @@ class AssetsManager {
   static String hors = "$imagePath/logo.png";
   static String error = "$imagePath/error.png";
   static String warning = "$imagePath/warning.png";
-  static String banner2 = "$imagePath/ballon4.jpg";
   static String banner3 = "$imagePath/winter_palace2.jpeg";
-  static String banner1 = "$imagePath/banner3.jpg";
+  static String banner4 = "$imagePath/banner5.PNG";
+  static String banner5 = "$imagePath/banner6.webp";
+  static String banner6 = "$imagePath/banner8.PNG";
+
+
+
   static String east = "$imagePath/1-historical east.jpg";
   static String west = "$imagePath/historical west.jpg";
   static String nile = "$imagePath/nile.jpg";

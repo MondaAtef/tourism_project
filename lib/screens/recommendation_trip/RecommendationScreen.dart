@@ -18,7 +18,7 @@ class _RecommendationScreenState extends State<RecommendationScreen> {
 
   void fetchRecommendations(int numDays) async {
     final response = await http.post(
-      Uri.parse('http://192.168.1.6:5000/recommend'),
+      Uri.parse('http://192.168.1.5:5000/recommend'),
       headers: <String, String>{
         'Content-Type': 'application/json; charset=UTF-8',
       },
@@ -125,6 +125,7 @@ class _RecommendationScreenState extends State<RecommendationScreen> {
                           Padding(
                             padding: const EdgeInsets.all(8.0),
                             child: Wrap(
+                              alignment: WrapAlignment.center,
                               spacing: 8.0,
                               runSpacing: 8.0,
                               children: List.generate(

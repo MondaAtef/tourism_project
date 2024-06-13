@@ -29,7 +29,7 @@ class SubtitleTextWidget extends StatelessWidget {
         decoration: textDecoration,
         color: color,
         fontStyle: fontStyle,
-        fontFamily: fontFamily, // Use fontFamily parameter
+        fontFamily: "Oxanium", // Use fontFamily parameter
       ),
     );
   }

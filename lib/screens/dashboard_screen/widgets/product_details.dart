@@ -95,7 +95,7 @@ class _ProductDetailsScreenState extends State<ProductDetailsScreen> {
                             height: kBottomNavigationBarHeight - 10,
                             child: ElevatedButton.icon(
                               style: ElevatedButton.styleFrom(
-                                backgroundColor: const Color(0xff8E4F2E),
+                                backgroundColor:  Color(0xFF8D502F),
                                 shape: RoundedRectangleBorder(
                                   borderRadius: BorderRadius.circular(
                                     30.0,
