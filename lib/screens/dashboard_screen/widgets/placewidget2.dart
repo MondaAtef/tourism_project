@@ -114,7 +114,7 @@ class _PlaceWidget2State extends State<PlaceWidget2> {
                 ],
               ),
             ),
-            const SizedBox(
+           /* const SizedBox(
               height: 6.0,
             ),
             Padding(
@@ -132,9 +132,9 @@ class _PlaceWidget2State extends State<PlaceWidget2> {
                   ),
                 ],
               ),
-            ),
+            ),*/
 
-            Padding(
+            /*Padding(
               padding: const EdgeInsets.all(2.0),
               child: Row(
 
@@ -149,7 +149,7 @@ class _PlaceWidget2State extends State<PlaceWidget2> {
                   ),
                 ],
               ),
-            ),
+            ),*/
 
 
           ],

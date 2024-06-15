@@ -68,12 +68,23 @@ class _ProductWidgetState extends State<ProductWidget> {
             Padding(
               padding: const EdgeInsets.all(2.0),
               child: TitlesTextWidget(
-                label: getCurrProduct.PlaceAddress,
+                label: getCurrProduct.BestTime,
                 fontSize: 18,
                 maxLines: 2,
               ),
             ),
             const SizedBox(
+              height: 6.0,
+            ),
+            Padding(
+              padding: const EdgeInsets.all(2.0),
+              child: TitlesTextWidget(
+                label: getCurrProduct.PlaceAddress,
+                fontSize: 18,
+                maxLines: 2,
+              ),
+            ),
+          /*  const SizedBox(
               height: 6.0,
             ),
             Padding(
@@ -100,7 +111,7 @@ class _ProductWidgetState extends State<ProductWidget> {
               ),
 
               ),
-            ),
+            ),*/
 
           ],
         ),

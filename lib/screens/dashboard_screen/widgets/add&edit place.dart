@@ -27,20 +27,24 @@ class EditOrUploadPlaceScreen extends StatefulWidget {
 class _EditOrUploadPlaceScreenState extends State<EditOrUploadPlaceScreen> {
   final _formKey = GlobalKey<FormState>();
   XFile? _pickedImage;
-  late TextEditingController _titleController,
-      _priceController,
+  late TextEditingController
+  _titleController,
+      _addressController,
       _descriptionController,
-      _adultController,
-      _quantityController;
-  var openedat = TextEditingController();
-  var closedat = TextEditingController();
+      _timeController;
+
+
+//  _adultController,
+// _studentController;
+//var openedat = TextEditingController();
+//var closedat = TextEditingController();
   String? _categoryValue;
   bool isEditing = false;
   String? productNetworkImage;
   bool _isLoading = false;
   String? productImageUrl;
-  String?x;
-  String?y;
+ // String?x;
+  //String?y;
   @override
   void initState() {
     if (widget.productModel != null) {
@@ -50,17 +54,18 @@ class _EditOrUploadPlaceScreenState extends State<EditOrUploadPlaceScreen> {
     }
     _titleController =
         TextEditingController(text: widget.productModel?.PlaceTitle);
-    _priceController =
+    _addressController =
         TextEditingController(text: widget.productModel?.PlaceAddress);
     _descriptionController =
         TextEditingController(text: widget.productModel?.PlaceDescription);
-    _quantityController =
+    _timeController =
+        TextEditingController(text: widget.productModel?.BestTime);
+   /* _studentController =
         TextEditingController(text: widget.productModel?.TicketforStudent);
     _adultController =
         TextEditingController(text: widget.productModel?.Ticketforadult);
     openedat= TextEditingController(text: widget.productModel?.openedat);
-    closedat= TextEditingController(text: widget.productModel?.closedat);
-
+    closedat= TextEditingController(text: widget.productModel?.closedat);*/
 
     super.initState();
   }
@@ -68,23 +73,25 @@ class _EditOrUploadPlaceScreenState extends State<EditOrUploadPlaceScreen> {
   @override
   void dispose() {
     _titleController.dispose();
-    _priceController.dispose();
+    _addressController.dispose();
     _descriptionController.dispose();
-    _quantityController.dispose();
+    _timeController.dispose();
+   /* _studentController.dispose();
     _adultController.dispose();
     openedat.dispose();
-    closedat.dispose();
+    closedat.dispose();*/
     super.dispose();
   }
 
   void clearForm() {
     _titleController.clear();
-    _priceController.clear();
+    _addressController.clear();
     _descriptionController.clear();
-    _quantityController.clear();
+    _timeController.clear();
+   /* _studentController.clear();
     _adultController.clear();
     openedat.clear();
-    closedat.clear();
+    closedat.clear();*/
     removePickedImage();
   }
 
@@ -125,14 +132,15 @@ class _EditOrUploadPlaceScreenState extends State<EditOrUploadPlaceScreen> {
             .set({
           'PlaceId': productId,
           'PlaceTitle': _titleController.text,
-          'PlaceAddress':_priceController.text,
-          'Ticketforadult':_adultController.text,
-          'TicketforStudent':_quantityController.text,
+          'PlaceAddress':_addressController.text,
           'PlaceImage': productImageUrl,
-          'openedat':x,
-          'closedat':y,
           'PlaceCategory': _categoryValue,
           'PlaceDescription': _descriptionController.text,
+          /*'Ticketforadult':_adultController.text,
+          'TicketforStudent':_studentController.text,
+          'openedat':x,
+          'closedat':y,*/
+          'BestTime':_timeController.text,
           'createdAt': Timestamp.now(),
         });
         Fluttertoast.showToast(
@@ -201,14 +209,15 @@ class _EditOrUploadPlaceScreenState extends State<EditOrUploadPlaceScreen> {
             .update({
           'PlaceId': widget.productModel!.PlaceId,
           'PlaceTitle': _titleController.text,
-          'PlaceAddress':_priceController.text,
-           'Ticketforadult':_adultController.text,
-          'TicketforStudent':_quantityController.text,
+          'PlaceAddress':_addressController.text,
           'PlaceImage': productImageUrl,
           'PlaceCategory': _categoryValue,
+         /* 'Ticketforadult':_adultController.text,
+          'TicketforStudent':_studentController.text,
           'openedat':x,
-          'closedat':y,
+          'closedat':y,*/
           'PlaceDescription': _descriptionController.text,
+          'BestTime':_timeController.text,
           'createdAt': Timestamp.now(),
         });
         Fluttertoast.showToast(
@@ -379,7 +388,7 @@ class _EditOrUploadPlaceScreenState extends State<EditOrUploadPlaceScreen> {
                                   onPressed: () {
                                     localImagePicker();
                                   },
-                                  child: const Text("Pick Place  Image"),
+                                  child: const Text("Pick Place Image"),
                                 ),
                               ],
                             ),
@@ -467,7 +476,7 @@ class _EditOrUploadPlaceScreenState extends State<EditOrUploadPlaceScreen> {
                             height: 10,
                           ),
                           TextFormField(
-                            controller: _priceController,
+                            controller: _addressController,
                             key: const ValueKey('Address'),
                             maxLength: 80,
                             minLines: 1,
@@ -488,12 +497,12 @@ class _EditOrUploadPlaceScreenState extends State<EditOrUploadPlaceScreen> {
                           const SizedBox(
                             height: 10,
                           ),
-                          Row(
+                        /*  Row(
                             children: [
                               Flexible(
                                 flex: 1,
                                 child: TextFormField(
-                                  controller: _quantityController,
+                                  controller: _studentController,
                                   key: const ValueKey('Price \$'),
                                   keyboardType: TextInputType.number,
                                   inputFormatters: <TextInputFormatter>[
@@ -545,23 +554,23 @@ class _EditOrUploadPlaceScreenState extends State<EditOrUploadPlaceScreen> {
                                 ),
                               ),
                             ],
-                          ),
+                          ),*/
                           const SizedBox(height: 15),
-                          Row(
+                          /*Row(
                             children: [
                               Flexible(
                                 flex: 1,
                                 child: TextFormField(
                                   onTap: (){
-showTimePicker(
-  context:context ,
-    initialTime:TimeOfDay.now(),
-).then((value) {
-setState(() {
-  x=value.toString();
-});
-openedat.text=value!.format(context).toString();
-});
+                                showTimePicker(
+                                  context:context ,
+                                    initialTime:TimeOfDay.now(),
+                                              ).then((value) {
+                                setState(() {
+                                  x=value.toString();
+                                });
+                                openedat.text=value!.format(context).toString();
+                                });
                                   },
                                   controller: openedat,
                                   keyboardType: TextInputType.datetime,
@@ -615,7 +624,7 @@ openedat.text=value!.format(context).toString();
                                 ),
                               ),
                             ],
-                          ),
+                          ),*/
                           const SizedBox(height: 15),
                           TextFormField(
                             key: const ValueKey('Description'),
@@ -634,6 +643,25 @@ openedat.text=value!.format(context).toString();
                               );
                             },
                             onTap: () {},
+                          ),
+                          TextFormField(
+                            controller:  _timeController,
+                            key: const ValueKey('The Best Time'),
+                            maxLength: 50,
+                            minLines: 1,
+                            maxLines: 2,
+                            keyboardType: TextInputType.multiline,
+                            textInputAction: TextInputAction.newline,
+                            decoration: const InputDecoration(
+                              hintText: 'The Best Time',
+                            ),
+                            validator: (value) {
+                              return MyValidators.uploadProdTexts(
+                                value: value,
+                                toBeReturnedString:
+                                "Please enter a valid Time",
+                              );
+                            },
                           ),
                         ],
                       ),
