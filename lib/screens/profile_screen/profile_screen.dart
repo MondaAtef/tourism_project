@@ -176,7 +176,7 @@ class _SettingScreenState extends State<SettingScreen> {
                         ],
                       ),
                     ),
-                   /* SwitchListTile(
+                    /* SwitchListTile(
                       title: Textwidget(
                         text: themeState.getDarkTheme
                             ? 'DarkMode'

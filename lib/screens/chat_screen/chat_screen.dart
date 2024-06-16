@@ -1,169 +1,128 @@
-import 'dart:convert';
+import 'dart:io';
+import 'dart:typed_data';
+import 'package:dash_chat_2/dash_chat_2.dart';
 import 'package:flutter/material.dart';
-import 'package:http/http.dart' as http;
+import 'package:flutter_gemini/flutter_gemini.dart';
+import 'package:image_picker/image_picker.dart';
+
+const String GEMINI_API_KEY = 'AIzaSyATicaAafi-vz0hgnOkp_U132hG_6Y3yaw';
 
 class ChatScreen extends StatefulWidget {
+  const ChatScreen({super.key});
+
   @override
-  _ChatScreenState createState() => _ChatScreenState();
+  State<ChatScreen> createState() => _ChatScreenState();
 }
 
 class _ChatScreenState extends State<ChatScreen> {
-  final List<ChatMessage> _messages = [];
-  final TextEditingController _textController = TextEditingController();
+  final Gemini gemini = Gemini.instance;
+
+  ChatUser currentUser = ChatUser(
+    id: '0',
+    firstName: 'Ebtihal',
+  );
+
+  ChatUser geminiUser = ChatUser(
+    id: '1',
+    firstName: 'VIXOR',
+    profileImage:
+'https://th.bing.com/th/id/OIP.W9wvIK6EBcuAuUFMObyUMAHaFj?rs=1&pid=ImgDetMain'  );
+
+  List<ChatMessage> messages = [];
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: PreferredSize(
-        preferredSize: Size.fromHeight(60.0),
-        child: Container(
-          decoration: BoxDecoration(
-            borderRadius: BorderRadius.vertical(
-              bottom: Radius.circular(30),
-            ),
-            color: Colors.blue,
-          ),
-          child: AppBar(
-            title: Text('Chatbot Demo'),
-            centerTitle: true,
+
+      body: DashChat(
+        inputOptions: InputOptions(
+          autocorrect: true,
+          alwaysShowSend: true,
+          sendButtonBuilder: (send) {
+            return IconButton(
+              onPressed: send,
+              icon: Icon(Icons.arrow_back),
+            );
+          },
+          cursorStyle: const CursorStyle(
+            color: Colors.black,
           ),
         ),
-      ),
-      body: Column(
-        children: <Widget>[
-          Expanded(
-            child: ListView.builder(
-              reverse: true,
-              itemCount: _messages.length,
-              itemBuilder: (_, int index) => _messages[index],
-            ),
-          ),
-          Divider(height: 1.0),
-          Container(
-            decoration: BoxDecoration(color: Theme.of(context).cardColor),
-            child: _buildTextComposer(),
-          ),
-        ],
+        currentUser: currentUser,
+        onSend: _sendMessage,
+        messages: messages,
       ),
     );
   }
 
-  Widget _buildTextComposer() {
-    return IconTheme(
-      data: IconThemeData(color: Theme.of(context).cardColor),
-      child: Container(
-        margin: const EdgeInsets.symmetric(horizontal: 8.0),
-        child: Row(
-          children: <Widget>[
-            Flexible(
-              child: TextField(
-                controller: _textController,
-                onSubmitted: _handleSubmitted,
-                decoration: InputDecoration.collapsed(
-                  hintText: 'Send a message',
-                ),
-              ),
-            ),
-            Container(
-              margin: EdgeInsets.symmetric(horizontal: 4.0),
-              child: IconButton(
-                icon: Icon(Icons.send),
-                onPressed: () {
-                  _handleSubmitted(_textController.text);
-                },
-              ),
-            ),
-          ],
-        ),
-      ),
-    );
-  }
-
-  void _handleSubmitted(String text) async {
-    _textController.clear();
-    ChatMessage message = ChatMessage(
-      text: text,
-      isUserMessage: true,
-    );
+  void _sendMessage(ChatMessage message) {
     setState(() {
-      _messages.insert(0, message);
+      messages = [message, ...messages];
     });
-    String response = await sendMessageToChatbot(text);
-    message = ChatMessage(
-      text: response,
-      isUserMessage: false,
-    );
-    setState(() {
-      _messages.insert(0, message);
-    });
-  }
+    try {
+      String question = message.text;
 
-  Future<String> sendMessageToChatbot(String message) async {
-    final response = await http.post(
-      Uri.parse('http://192.168.21.207:5000/chatbot'),
-      headers: <String, String>{
-        'Content-Type': 'application/json; charset=UTF-8',
-      },
-      body: jsonEncode(<String, String>{
-        'message': message,
-      }),
-    );
+      List<Uint8List>? images;
+      if (message.medias?.isNotEmpty ?? false) {
+        images = [
+          File(message.medias!.first.url).readAsBytesSync(),
+        ];
+      }
+      gemini
+          .streamGenerateContent(
+        question,
+        images: images,
+      )
+          .listen((event) {
+        ChatMessage? lastMessage = messages.firstOrNull;
 
-    if (response.statusCode == 200) {
-      return jsonDecode(response.body)['response'];
-    } else {
-      throw Exception('Failed to send message to the chatbot server');
+        if (lastMessage != null && lastMessage.user == geminiUser) {
+          lastMessage = messages.removeAt(0);
+
+          String response = event.content?.parts?.fold(
+              '', (previous, current) => '$previous ${current.text}') ??
+              '';
+          lastMessage.text += response;
+          setState(() {
+            messages = [lastMessage!, ...messages];
+          });
+        } else {
+          String response = event.content?.parts?.fold(
+              '', (previous, current) => '$previous ${current.text}') ??
+              '';
+
+          ChatMessage message = ChatMessage(
+            user: geminiUser,
+            text: response,
+            createdAt: DateTime.now(),
+          );
+          setState(() {
+            messages = [message, ...messages];
+          });
+        }
+      });
+    } catch (e) {
+      debugPrint('my error is $e');
     }
   }
-}
 
-class ChatMessage extends StatelessWidget {
-  final String text;
-  final bool isUserMessage;
-
-  ChatMessage({required this.text, required this.isUserMessage});
-
-  @override
-  Widget build(BuildContext context) {
-    return Container(
-      margin: EdgeInsets.symmetric(vertical: 10.0),
-      child: Row(
-        crossAxisAlignment: CrossAxisAlignment.start,
-        mainAxisAlignment:
-        isUserMessage ? MainAxisAlignment.start : MainAxisAlignment.end,
-        children: <Widget>[
-          isUserMessage ? Container() : Container(width: 48.0),
-          Expanded(
-            child: Column(
-              crossAxisAlignment: CrossAxisAlignment.start,
-              children: <Widget>[
-                Text(
-                  isUserMessage ? 'User' : 'Chatbot',
-                  style: TextStyle(
-                    fontWeight: FontWeight.bold,
-                  ),
-                ),
-                Container(
-                  margin: EdgeInsets.only(top: 5.0),
-                  padding: EdgeInsets.all(10.0),
-                  decoration: BoxDecoration(
-                    color:
-                    isUserMessage ? Colors.blue[200] : Colors.green[200],
-                    borderRadius: BorderRadius.circular(8.0),
-                  ),
-                  child: Text(
-                    text,
-                    style: TextStyle(
-                      fontSize: 16.0,
-                    ),
-                  ),
-                ),
-              ],
-            ),
+  void _sendMediaMessage() async {
+    ImagePicker imagePicker = ImagePicker();
+    XFile? file = await imagePicker.pickImage(source: ImageSource.gallery);
+    if (file != null) {
+      ChatMessage message = ChatMessage(
+        user: currentUser,
+        text: 'Describe this picture ?',
+        medias: [
+          ChatMedia(
+            fileName: '',
+            type: MediaType.image,
+            url: file.path,
           ),
-          isUserMessage ? Container(width: 48.0) : Container(),
         ],
-      ),
-    );
+        createdAt: DateTime.now(),
+      );
+      _sendMessage(message);
+    }
   }
 }

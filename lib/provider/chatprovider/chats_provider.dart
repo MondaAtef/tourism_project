@@ -2,10 +2,6 @@ import 'package:flutter/cupertino.dart';
 import 'package:vixor_project/models/chatmodel/chat_model.dart';
 import 'package:vixor_project/services/chatservices/api_service.dart';
 
-
-
-
-
 class ChatProvider with ChangeNotifier {
   List<ChatModel> chatList = [];
   List<ChatModel> get getChatList {
