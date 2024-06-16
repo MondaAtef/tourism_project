@@ -89,14 +89,14 @@ class TripoWidget extends StatelessWidget {
                           label: "Address:${getCurrProduct.PlaceAddress}",
                           color: Colors.black,
                         ),
-                        SubtitleTextWidget(
+                       /* SubtitleTextWidget(
                           label: "Ticketforadult:${getCurrProduct.Ticketforadult}\$",
                           color: Colors.blue,
                         ),
                         SubtitleTextWidget(
                           label: "TicketforStudent:${getCurrProduct.TicketforStudent}\$",
                           color: Colors.blue,
-                        ),
+                        ),*/
 
 
                       ],

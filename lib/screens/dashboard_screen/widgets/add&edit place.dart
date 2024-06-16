@@ -27,18 +27,24 @@ class EditOrUploadPlaceScreen extends StatefulWidget {
 class _EditOrUploadPlaceScreenState extends State<EditOrUploadPlaceScreen> {
   final _formKey = GlobalKey<FormState>();
   XFile? _pickedImage;
-  late TextEditingController _titleController,
-      _priceController,
+  late TextEditingController
+  _titleController,
+      _addressController,
       _descriptionController,
-      _quantityController;
-  var timeToVisit = TextEditingController();
+      _timeController;
+
+
+//  _adultController,
+// _studentController;
+//var openedat = TextEditingController();
+//var closedat = TextEditingController();
   String? _categoryValue;
   bool isEditing = false;
   String? productNetworkImage;
   bool _isLoading = false;
-  String? placeImageUrl;
-  String?x;
-  String?y;
+  String? productImageUrl;
+ // String?x;
+  //String?y;
   @override
   void initState() {
     if (widget.productModel != null) {
@@ -48,14 +54,18 @@ class _EditOrUploadPlaceScreenState extends State<EditOrUploadPlaceScreen> {
     }
     _titleController =
         TextEditingController(text: widget.productModel?.PlaceTitle);
-    _priceController =
+    _addressController =
         TextEditingController(text: widget.productModel?.PlaceAddress);
     _descriptionController =
         TextEditingController(text: widget.productModel?.PlaceDescription);
-    _quantityController =
+    _timeController =
+        TextEditingController(text: widget.productModel?.BestTime);
+   /* _studentController =
         TextEditingController(text: widget.productModel?.TicketforStudent);
-    timeToVisit= TextEditingController(text: widget.productModel?.timeToVisit);// handle it**********************************
-
+    _adultController =
+        TextEditingController(text: widget.productModel?.Ticketforadult);
+    openedat= TextEditingController(text: widget.productModel?.openedat);
+    closedat= TextEditingController(text: widget.productModel?.closedat);*/
 
 
     super.initState();
@@ -64,19 +74,25 @@ class _EditOrUploadPlaceScreenState extends State<EditOrUploadPlaceScreen> {
   @override
   void dispose() {
     _titleController.dispose();
-    _priceController.dispose();
+    _addressController.dispose();
     _descriptionController.dispose();
-    _quantityController.dispose();
-    timeToVisit.dispose();
+    _timeController.dispose();
+   /* _studentController.dispose();
+    _adultController.dispose();
+    openedat.dispose();
+    closedat.dispose();*/
     super.dispose();
   }
 
   void clearForm() {
     _titleController.clear();
-    _priceController.clear();
+    _addressController.clear();
     _descriptionController.clear();
-    _quantityController.clear();
-    timeToVisit.clear();
+    _timeController.clear();
+   /* _studentController.clear();
+    _adultController.clear();
+    openedat.clear();
+    closedat.clear();*/
     removePickedImage();
   }
 
@@ -117,11 +133,11 @@ class _EditOrUploadPlaceScreenState extends State<EditOrUploadPlaceScreen> {
             .set({
           'PlaceId': placeId,
           'PlaceTitle': _titleController.text,
-          'PlaceAddress':_priceController.text,
-          'PlaceImage': placeImageUrl,
-          'timeToVisit':x,
+          'PlaceAddress':_addressController.text,
+          'PlaceImage': productImageUrl,
           'PlaceCategory': _categoryValue,
           'PlaceDescription': _descriptionController.text,
+          'BestTime':_timeController.text,
           'createdAt': Timestamp.now(),
         });
         Fluttertoast.showToast(
@@ -190,11 +206,11 @@ class _EditOrUploadPlaceScreenState extends State<EditOrUploadPlaceScreen> {
             .update({
           'PlaceId': widget.productModel!.PlaceId,
           'PlaceTitle': _titleController.text,
-          'PlaceAddress':_priceController.text,
-          'PlaceImage': placeImageUrl,
+          'PlaceAddress':_addressController.text,
+          'PlaceImage': productImageUrl,
           'PlaceCategory': _categoryValue,
-          'timeToVisit':x,
           'PlaceDescription': _descriptionController.text,
+          'BestTime':_timeController.text,
           'createdAt': Timestamp.now(),
         });
         Fluttertoast.showToast(
@@ -365,7 +381,7 @@ class _EditOrUploadPlaceScreenState extends State<EditOrUploadPlaceScreen> {
                                   onPressed: () {
                                     localImagePicker();
                                   },
-                                  child: const Text("Pick Place  Image"),
+                                  child: const Text("Pick Place Image"),
                                 ),
                               ],
                             ),
@@ -453,7 +469,7 @@ class _EditOrUploadPlaceScreenState extends State<EditOrUploadPlaceScreen> {
                             height: 10,
                           ),
                           TextFormField(
-                            controller: _priceController,
+                            controller: _addressController,
                             key: const ValueKey('Address'),
                             maxLength: 80,
                             minLines: 1,
@@ -473,31 +489,7 @@ class _EditOrUploadPlaceScreenState extends State<EditOrUploadPlaceScreen> {
                           ),
                           const SizedBox(
                             height: 10,
-                          ),
-
-                          const SizedBox(height: 15),
-                          Row(
-                            children: [
-                              Flexible(
-                                flex: 1,
-                                child: TextFormField(
-                                  onTap: (){},
-
-                                  controller: timeToVisit,
-                                  keyboardType: TextInputType.text,
-                                  decoration: const InputDecoration(
-                                      hintText: 'Best Time To Visit',
-                                     ),
-                                  validator: (value) {
-                                    return MyValidators.uploadProdTexts(
-                                      value: value,
-                                      toBeReturnedString: "time to visit is missed",
-                                    );
-                                  },
-                                ),
-                              ),
-                             ], ),
-
+                          )
                           const SizedBox(height: 15),
                           TextFormField(
                             key: const ValueKey('Description'),
@@ -516,6 +508,25 @@ class _EditOrUploadPlaceScreenState extends State<EditOrUploadPlaceScreen> {
                               );
                             },
                             onTap: () {},
+                          ),
+                          TextFormField(
+                            controller:  _timeController,
+                            key: const ValueKey('The Best Time'),
+                            maxLength: 50,
+                            minLines: 1,
+                            maxLines: 2,
+                            keyboardType: TextInputType.multiline,
+                            textInputAction: TextInputAction.newline,
+                            decoration: const InputDecoration(
+                              hintText: 'The Best Time',
+                            ),
+                            validator: (value) {
+                              return MyValidators.uploadProdTexts(
+                                value: value,
+                                toBeReturnedString:
+                                "Please enter a valid Time",
+                              );
+                            },
                           ),
                         ],
                       ),

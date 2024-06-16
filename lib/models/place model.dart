@@ -5,24 +5,29 @@ class Placemodel with ChangeNotifier {
   final String PlaceId,
       PlaceTitle,
       PlaceAddress,
-      Ticketforadult,
-      TicketforStudent,
-      timeToVisit,
       PlaceCategory,
       PlaceDescription,
-      PlaceImage;
+      PlaceImage,
+      BestTime;
+  /* Ticketforadult,
+      TicketforStudent,
+      openedat,
+      closedat,*/
   Timestamp? createdAt;
   Placemodel({
     required this.PlaceId,
     required this.PlaceAddress,
     required this.PlaceTitle,
-    required this.Ticketforadult,
-    required this.TicketforStudent,
-    required this.timeToVisit,
     required this.PlaceCategory,
     required this.PlaceDescription,
     required this.PlaceImage,
+    required this.BestTime,
+
     this.createdAt,
+    /*required this.Ticketforadult,
+    required this.TicketforStudent,
+    required this.closedat,
+    required this.openedat,*/
   });
 
   factory Placemodel.fromFirestore(DocumentSnapshot doc) {
@@ -31,14 +36,18 @@ class Placemodel with ChangeNotifier {
     return Placemodel(
       PlaceId: data["PlaceId"], //doc.get(field),
       PlaceTitle: data['PlaceTitle'],
-      timeToVisit: data['time'],
+
       PlaceAddress: data['PlaceAddress'],
-      Ticketforadult: data['Ticketforadult'],
-      TicketforStudent: data['TicketforStudent'],
       PlaceCategory: data['PlaceCategory'],
       PlaceDescription: data['PlaceDescription'],
       PlaceImage: data['PlaceImage'],
+      BestTime:data['BestTime'],
       createdAt: data['createdAt'],
+      //Ticketforadult: data['Ticketforadult'],
+     // TicketforStudent: data['TicketforStudent'],
+      //closedat: data['closedat'],
+      //openedat: data['openedat'],
+
     );
   }
 }
