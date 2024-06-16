@@ -36,6 +36,7 @@ class Placemodel with ChangeNotifier {
     return Placemodel(
       PlaceId: data["PlaceId"], //doc.get(field),
       PlaceTitle: data['PlaceTitle'],
+
       PlaceAddress: data['PlaceAddress'],
       PlaceCategory: data['PlaceCategory'],
       PlaceDescription: data['PlaceDescription'],

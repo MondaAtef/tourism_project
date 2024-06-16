@@ -67,6 +67,7 @@ class _EditOrUploadPlaceScreenState extends State<EditOrUploadPlaceScreen> {
     openedat= TextEditingController(text: widget.productModel?.openedat);
     closedat= TextEditingController(text: widget.productModel?.closedat);*/
 
+
     super.initState();
   }
 
@@ -118,19 +119,19 @@ class _EditOrUploadPlaceScreenState extends State<EditOrUploadPlaceScreen> {
           _isLoading = true;
         });
 
-        final productId = const Uuid().v4();
+        final placeId = const Uuid().v4();
         final ref = FirebaseStorage.instance
             .ref()
             .child("PlacesImages")
-            .child("$productId.jpg");
+            .child("$placeId.jpg");
         await ref.putFile(File(_pickedImage!.path));
-        productImageUrl = await ref.getDownloadURL();
+        placeImageUrl = await ref.getDownloadURL();
 
         await FirebaseFirestore.instance
             .collection("Places")
-            .doc(productId)
+            .doc(placeId)
             .set({
-          'PlaceId': productId,
+          'PlaceId': placeId,
           'PlaceTitle': _titleController.text,
           'PlaceAddress':_addressController.text,
           'PlaceImage': productImageUrl,
@@ -140,7 +141,7 @@ class _EditOrUploadPlaceScreenState extends State<EditOrUploadPlaceScreen> {
           'createdAt': Timestamp.now(),
         });
         Fluttertoast.showToast(
-          msg: "Product has been added",
+          msg: "Place has been added",
           backgroundColor: Colors.brown.shade600,
           textColor: Colors.white,
           fontSize: 16.0,
@@ -196,7 +197,7 @@ class _EditOrUploadPlaceScreenState extends State<EditOrUploadPlaceScreen> {
               .child("PlacesImages")
               .child("${widget.productModel!.PlaceId}.jpg");
           await ref.putFile(File(_pickedImage!.path));
-          productImageUrl = await ref.getDownloadURL();
+          placeImageUrl = await ref.getDownloadURL();
         }
 
         await FirebaseFirestore.instance
@@ -213,7 +214,7 @@ class _EditOrUploadPlaceScreenState extends State<EditOrUploadPlaceScreen> {
           'createdAt': Timestamp.now(),
         });
         Fluttertoast.showToast(
-          msg: "Product has been edited",
+          msg: "Place has been edited",
           textColor: Colors.white,
         );
         if (!mounted) return;
@@ -318,7 +319,7 @@ class _EditOrUploadPlaceScreenState extends State<EditOrUploadPlaceScreen> {
                     ),
                     icon: const Icon(Icons.upload,color: Colors.white,),
                     label: Text(
-                      isEditing ? "Edit Product" : "Upload Product",style: const TextStyle(
+                      isEditing ? "Edit " : "Upload ",style: const TextStyle(
                       color: Colors.white,
                       fontWeight: FontWeight.bold,
                       fontSize: 15.0,
@@ -454,13 +455,13 @@ class _EditOrUploadPlaceScreenState extends State<EditOrUploadPlaceScreen> {
                             keyboardType: TextInputType.multiline,
                             textInputAction: TextInputAction.newline,
                             decoration: const InputDecoration(
-                              hintText: 'Place Title',
+                              hintText: 'Place Name',
                             ),
                             validator: (value) {
                               return MyValidators.uploadProdTexts(
                                 value: value,
                                 toBeReturnedString:
-                                "Please enter a valid title",
+                                "Please enter a valid Name",
                               );
                             },
                           ),
@@ -488,9 +489,7 @@ class _EditOrUploadPlaceScreenState extends State<EditOrUploadPlaceScreen> {
                           ),
                           const SizedBox(
                             height: 10,
-                          ),
-                          const SizedBox(height: 15),
-
+                          )
                           const SizedBox(height: 15),
                           TextFormField(
                             key: const ValueKey('Description'),
@@ -500,7 +499,7 @@ class _EditOrUploadPlaceScreenState extends State<EditOrUploadPlaceScreen> {
                             maxLength: 1000,
                             textCapitalization: TextCapitalization.sentences,
                             decoration: const InputDecoration(
-                              hintText: 'Place description',
+                              hintText: 'info about the Place',
                             ),
                             validator: (value) {
                               return MyValidators.uploadProdTexts(

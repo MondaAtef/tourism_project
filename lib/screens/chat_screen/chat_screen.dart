@@ -1,15 +1,11 @@
-import 'dart:developer';
+import 'dart:io';
+import 'dart:typed_data';
+import 'package:dash_chat_2/dash_chat_2.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter_spinkit/flutter_spinkit.dart';
-import 'package:provider/provider.dart';
-import 'package:vixor_project/componenet/chatwidget/chat_widget.dart';
-import 'package:vixor_project/componenet/chatwidget/text_widget.dart';
-//import 'package:vixor_project/const/Chat%20constants/constants.dart';
-import 'package:vixor_project/provider/chatprovider/chats_provider.dart';
-import 'package:vixor_project/provider/chatprovider/models_provider.dart';
-//import 'package:vixor_project/services/chatservices/assets_manager.dart';
-//import 'package:vixor_project/services/chatservices/services.dart';
+import 'package:flutter_gemini/flutter_gemini.dart';
+import 'package:image_picker/image_picker.dart';
 
+const String GEMINI_API_KEY = 'AIzaSyATicaAafi-vz0hgnOkp_U132hG_6Y3yaw';
 
 class ChatScreen extends StatefulWidget {
   const ChatScreen({super.key});
@@ -19,158 +15,114 @@ class ChatScreen extends StatefulWidget {
 }
 
 class _ChatScreenState extends State<ChatScreen> {
-  bool _isTyping = false;
+  final Gemini gemini = Gemini.instance;
 
-  late TextEditingController textEditingController;
-  late ScrollController _listScrollController;
-  late FocusNode focusNode;
-  @override
-  void initState() {
-    _listScrollController = ScrollController();
-    textEditingController = TextEditingController();
-    focusNode = FocusNode();
-    super.initState();
-  }
+  ChatUser currentUser = ChatUser(
+    id: '0',
+    firstName: 'Ebtihal',
+  );
 
-  @override
-  void dispose() {
-    _listScrollController.dispose();
-    textEditingController.dispose();
-    focusNode.dispose();
-    super.dispose();
-  }
+  ChatUser geminiUser = ChatUser(
+    id: '1',
+    firstName: 'VIXOR',
+    profileImage:
+'https://th.bing.com/th/id/OIP.W9wvIK6EBcuAuUFMObyUMAHaFj?rs=1&pid=ImgDetMain'  );
 
-  // List<ChatModel> chatList = [];
+  List<ChatMessage> messages = [];
+
   @override
   Widget build(BuildContext context) {
-    final modelsProvider = Provider.of<ModelsProvider>(context);
-    final chatProvider = Provider.of<ChatProvider>(context);
     return Scaffold(
-      backgroundColor:Colors.white,
-      body: SafeArea(
-        child: Column(
-          children: [
-            Flexible(
-              child: ListView.builder(
-                  controller: _listScrollController,
-                  itemCount: chatProvider.getChatList.length, //chatList.length,
-                  itemBuilder: (context, index) {
-                    return ChatWidget(
-                      msg: chatProvider
-                          .getChatList[index].msg, // chatList[index].msg,
-                      chatIndex: chatProvider.getChatList[index]
-                          .chatIndex,
-                      shouldAnimate: chatProvider.getChatList.length-1==index,//chatList[index].chatIndex,
-                    );
-                  }),
-            ),
-            if (_isTyping) ...[
-              const SpinKitThreeBounce(
-                color: Colors.black,
-                size: 18,
-              ),
-            ],
-            const SizedBox(
-              height: 15,
-            ),
-            Material(
-              color: Colors.white,
-              child: Padding(
-                padding: const EdgeInsets.all(8.0),
-                child: Row(
-                  children: [
-                    Expanded(
-                      child: TextField(
-                        focusNode: focusNode,
-                        style: const TextStyle(color: Colors.black),
-                        controller: textEditingController,
-                        onSubmitted: (value) async {
-                          await sendMessageFCT(
-                              modelsProvider: modelsProvider,
-                              chatProvider: chatProvider);
-                        },
-                        decoration: const InputDecoration.collapsed(
-                            hintText: "How can I help you",
-                            hintStyle: TextStyle(color: Colors.grey)),
-                      ),
-                    ),
-                    IconButton(
-                        onPressed: () async {
-                          await sendMessageFCT(
-                              modelsProvider: modelsProvider,
-                              chatProvider: chatProvider);
-                        },
-                        icon: const Icon(
-                          Icons.send,
-                          color: Colors.black,
-                        ))
-                  ],
-                ),
-              ),
-            ),
-          ],
+
+      body: DashChat(
+        inputOptions: InputOptions(
+          autocorrect: true,
+          alwaysShowSend: true,
+          sendButtonBuilder: (send) {
+            return IconButton(
+              onPressed: send,
+              icon: Icon(Icons.arrow_back),
+            );
+          },
+          cursorStyle: const CursorStyle(
+            color: Colors.black,
+          ),
         ),
+        currentUser: currentUser,
+        onSend: _sendMessage,
+        messages: messages,
       ),
     );
   }
 
-  void scrollListToEND() {
-    _listScrollController.animateTo(
-        _listScrollController.position.maxScrollExtent,
-        duration: const Duration(seconds: 2),
-        curve: Curves.easeOut);
+  void _sendMessage(ChatMessage message) {
+    setState(() {
+      messages = [message, ...messages];
+    });
+    try {
+      String question = message.text;
+
+      List<Uint8List>? images;
+      if (message.medias?.isNotEmpty ?? false) {
+        images = [
+          File(message.medias!.first.url).readAsBytesSync(),
+        ];
+      }
+      gemini
+          .streamGenerateContent(
+        question,
+        images: images,
+      )
+          .listen((event) {
+        ChatMessage? lastMessage = messages.firstOrNull;
+
+        if (lastMessage != null && lastMessage.user == geminiUser) {
+          lastMessage = messages.removeAt(0);
+
+          String response = event.content?.parts?.fold(
+              '', (previous, current) => '$previous ${current.text}') ??
+              '';
+          lastMessage.text += response;
+          setState(() {
+            messages = [lastMessage!, ...messages];
+          });
+        } else {
+          String response = event.content?.parts?.fold(
+              '', (previous, current) => '$previous ${current.text}') ??
+              '';
+
+          ChatMessage message = ChatMessage(
+            user: geminiUser,
+            text: response,
+            createdAt: DateTime.now(),
+          );
+          setState(() {
+            messages = [message, ...messages];
+          });
+        }
+      });
+    } catch (e) {
+      debugPrint('my error is $e');
+    }
   }
 
-  Future<void> sendMessageFCT(
-      {required ModelsProvider modelsProvider,
-        required ChatProvider chatProvider}) async {
-    if (_isTyping) {
-      ScaffoldMessenger.of(context).showSnackBar(
-        const SnackBar(
-          content: TextWidget(
-            label: "You cant send multiple messages at a time",
+  void _sendMediaMessage() async {
+    ImagePicker imagePicker = ImagePicker();
+    XFile? file = await imagePicker.pickImage(source: ImageSource.gallery);
+    if (file != null) {
+      ChatMessage message = ChatMessage(
+        user: currentUser,
+        text: 'Describe this picture ?',
+        medias: [
+          ChatMedia(
+            fileName: '',
+            type: MediaType.image,
+            url: file.path,
           ),
-          backgroundColor: Colors.red,
-        ),
+        ],
+        createdAt: DateTime.now(),
       );
-      return;
-    }
-    if (textEditingController.text.isEmpty) {
-      ScaffoldMessenger.of(context).showSnackBar(
-        const SnackBar(
-          content: TextWidget(
-            label: "Please type a message",
-          ),
-          backgroundColor: Colors.red,
-        ),
-      );
-      return;
-    }
-    try {
-      String msg = textEditingController.text;
-      setState(() {
-        _isTyping = true;
-
-        chatProvider.addUserMessage(msg: msg);
-        textEditingController.clear();
-        focusNode.unfocus();
-      });
-      await chatProvider.sendMessageAndGetAnswers(
-          msg: msg, chosenModelId: modelsProvider.getCurrentModel);
-      setState(() {});
-    } catch (error) {
-      log("error $error");
-      ScaffoldMessenger.of(context).showSnackBar(SnackBar(
-        content: TextWidget(
-          label: error.toString(),
-        ),
-        backgroundColor: Colors.red,
-      ));
-    } finally {
-      setState(() {
-        scrollListToEND();
-        _isTyping = false;
-      });
+      _sendMessage(message);
     }
   }
 }
