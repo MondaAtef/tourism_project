@@ -84,35 +84,6 @@ class _ProductWidgetState extends State<ProductWidget> {
                 maxLines: 2,
               ),
             ),
-          /*  const SizedBox(
-              height: 6.0,
-            ),
-            Padding(
-              padding: const EdgeInsets.all(2.0),
-              child: Text(
-                "Ticketforadult: ${getCurrProduct.Ticketforadult}\$",style: const TextStyle(
-                fontWeight: FontWeight.w600,
-                color: Colors.blue,
-                fontSize: 15
-              ),
-
-              ),
-            ),
-            const SizedBox(
-              height: 12.0,
-            ),
-            Padding(
-              padding: const EdgeInsets.all(2.0),
-              child: Text(
-                "Ticketforadult: ${getCurrProduct.TicketforStudent}\$",style: const TextStyle(
-                  fontWeight: FontWeight.w600,
-                  color: Colors.blue,
-                  fontSize: 15
-              ),
-
-              ),
-            ),*/
-
           ],
         ),
       ),

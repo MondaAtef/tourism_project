@@ -62,24 +62,6 @@ class _ProductDetailsScreenState extends State<ProductDetailsScreen> {
               child: Column(
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
-
-
-                /*  Row(
-                    crossAxisAlignment: CrossAxisAlignment.start,
-                    children: [
-                      Flexible(
-                        child: Text(
-                        "Title:${getCurrProduct.PlaceTitle}",
-                          softWrap: true,
-                          style: const TextStyle(
-                              fontSize: 20, fontWeight: FontWeight.w700),
-                        ),
-                      ),
-                    ],
-                  ),*/
-                 /* const SizedBox(
-                    height: 20,
-                  ),*/
                   Padding(
                     padding: const EdgeInsets.symmetric(horizontal: 30),
                     child: Row(
@@ -161,24 +143,6 @@ class _ProductDetailsScreenState extends State<ProductDetailsScreen> {
                       ),
                     ],
                   ),
-               /*   SubtitleTextWidget(
-                    label: "Ticket For Student:${getCurrProduct.TicketforStudent}\$",
-                    fontSize: 20,
-                    fontWeight: FontWeight.w600,
-                    color: Colors.grey,
-                  ),
-                  const SizedBox(
-                    height: 20,
-                  ),
-                  SubtitleTextWidget(
-                    label: "Ticket For Adult:${getCurrProduct.Ticketforadult}\$",
-                    fontSize: 20,
-                    fontWeight: FontWeight.w600,
-                    color: Colors.grey,
-                  ),
-                  const SizedBox(
-                    height: 20,
-                  ),*/
                   Row(
                     children: [
                       const TitlesTextWidget(label: "Category:"),

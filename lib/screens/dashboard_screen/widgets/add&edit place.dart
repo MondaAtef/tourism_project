@@ -136,10 +136,6 @@ class _EditOrUploadPlaceScreenState extends State<EditOrUploadPlaceScreen> {
           'PlaceImage': productImageUrl,
           'PlaceCategory': _categoryValue,
           'PlaceDescription': _descriptionController.text,
-          /*'Ticketforadult':_adultController.text,
-          'TicketforStudent':_studentController.text,
-          'openedat':x,
-          'closedat':y,*/
           'BestTime':_timeController.text,
           'createdAt': Timestamp.now(),
         });
@@ -212,10 +208,6 @@ class _EditOrUploadPlaceScreenState extends State<EditOrUploadPlaceScreen> {
           'PlaceAddress':_addressController.text,
           'PlaceImage': productImageUrl,
           'PlaceCategory': _categoryValue,
-         /* 'Ticketforadult':_adultController.text,
-          'TicketforStudent':_studentController.text,
-          'openedat':x,
-          'closedat':y,*/
           'PlaceDescription': _descriptionController.text,
           'BestTime':_timeController.text,
           'createdAt': Timestamp.now(),
@@ -497,134 +489,8 @@ class _EditOrUploadPlaceScreenState extends State<EditOrUploadPlaceScreen> {
                           const SizedBox(
                             height: 10,
                           ),
-                        /*  Row(
-                            children: [
-                              Flexible(
-                                flex: 1,
-                                child: TextFormField(
-                                  controller: _studentController,
-                                  key: const ValueKey('Price \$'),
-                                  keyboardType: TextInputType.number,
-                                  inputFormatters: <TextInputFormatter>[
-                                    FilteringTextInputFormatter.allow(
-                                      RegExp(r'^(\d+)?\.?\d{0,2}'),
-                                    ),
-                                  ],
-                                  decoration: const InputDecoration(
-                                      hintText: 'Ticket for Student',
-                                      prefix: SubtitleTextWidget(
-                                        label: "\$ ",
-                                        color: Colors.blue,
-                                        fontSize: 16,
-                                      )),
-                                  validator: (value) {
-                                    return MyValidators.uploadProdTexts(
-                                      value: value,
-                                      toBeReturnedString: "Price is missing",
-                                    );
-                                  },
-                                ),
-                              ),
-                              const SizedBox(
-                                width: 10,
-                              ),
-                              Flexible(
-                                flex: 1,
-                                child: TextFormField(
-                                  inputFormatters: [
-                                    FilteringTextInputFormatter.digitsOnly
-                                  ],
-                                  controller: _adultController,
-                                  keyboardType: TextInputType.number,
-
-                                  key: const ValueKey('Quantity'),
-                                  decoration: const InputDecoration(
-                                      hintText: 'Ticket for Adult',
-                                      prefix: SubtitleTextWidget(
-                                        label: "\$ ",
-                                        color: Colors.blue,
-                                        fontSize: 16,
-                                      )),
-                                  validator: (value) {
-                                    return MyValidators.uploadProdTexts(
-                                      value: value,
-                                      toBeReturnedString: "Quantity is missed",
-                                    );
-                                  },
-                                ),
-                              ),
-                            ],
-                          ),*/
                           const SizedBox(height: 15),
-                          /*Row(
-                            children: [
-                              Flexible(
-                                flex: 1,
-                                child: TextFormField(
-                                  onTap: (){
-                                showTimePicker(
-                                  context:context ,
-                                    initialTime:TimeOfDay.now(),
-                                              ).then((value) {
-                                setState(() {
-                                  x=value.toString();
-                                });
-                                openedat.text=value!.format(context).toString();
-                                });
-                                  },
-                                  controller: openedat,
-                                  keyboardType: TextInputType.datetime,
-                                  inputFormatters: <TextInputFormatter>[
-                                    FilteringTextInputFormatter.allow(
-                                      RegExp(r'^(\d+)?\.?\d{0,2}'),
-                                    ),
-                                  ],
-                                  decoration: const InputDecoration(
-                                      hintText: 'Opened at',
-                                     ),
-                                  validator: (value) {
-                                    return MyValidators.uploadProdTexts(
-                                      value: value,
-                                      toBeReturnedString: "Price is missing",
-                                    );
-                                  },
-                                ),
-                              ),
-                              const SizedBox(
-                                width: 10,
-                              ),
-                              Flexible(
-                                flex: 1,
-                                child: TextFormField(
-                                  onTap: (){
-                                    showTimePicker(
-                                      context:context ,
-                                      initialTime:TimeOfDay.now(),
-                                    ).then((value) {
-                                      setState(() {
-                                        y=value.toString();
-                                      });
-                                      closedat.text=value!.format(context).toString();
-                                    });
-                                  },
-                                  inputFormatters: [
-                                    FilteringTextInputFormatter.digitsOnly
-                                  ],
-                                  controller: closedat,
-                                  keyboardType: TextInputType.datetime,
-                                  decoration: const InputDecoration(
-                                    hintText: 'Closed at',
-                                  ),
-                                  validator: (value) {
-                                    return MyValidators.uploadProdTexts(
-                                      value: value,
-                                      toBeReturnedString: "Quantity is missed",
-                                    );
-                                  },
-                                ),
-                              ),
-                            ],
-                          ),*/
+
                           const SizedBox(height: 15),
                           TextFormField(
                             key: const ValueKey('Description'),

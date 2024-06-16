@@ -114,44 +114,6 @@ class _PlaceWidget2State extends State<PlaceWidget2> {
                 ],
               ),
             ),
-           /* const SizedBox(
-              height: 6.0,
-            ),
-            Padding(
-              padding: const EdgeInsets.all(2.0),
-              child: Row(
-
-                children: [
-                  Flexible(
-                    flex: 1,
-                    child: SubtitleTextWidget(
-                      label: "Student:${getCurrProduct.TicketforStudent}\$",
-                      fontWeight: FontWeight.w600,
-                      color: Colors.blue,
-                    ),
-                  ),
-                ],
-              ),
-            ),*/
-
-            /*Padding(
-              padding: const EdgeInsets.all(2.0),
-              child: Row(
-
-                children: [
-                  Flexible(
-                    flex: 1,
-                    child: SubtitleTextWidget(
-                      label: "adult:${getCurrProduct.Ticketforadult}\$",
-                      fontWeight: FontWeight.w600,
-                      color: Colors.blue,
-                    ),
-                  ),
-                ],
-              ),
-            ),*/
-
-
           ],
         ),
       ),
