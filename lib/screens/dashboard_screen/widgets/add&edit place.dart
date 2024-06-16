@@ -125,7 +125,7 @@ class _EditOrUploadPlaceScreenState extends State<EditOrUploadPlaceScreen> {
             .child("PlacesImages")
             .child("$placeId.jpg");
         await ref.putFile(File(_pickedImage!.path));
-        placeImageUrl = await ref.getDownloadURL();
+      //  placeImageUrl = await ref.getDownloadURL();
 
         await FirebaseFirestore.instance
             .collection("Places")
@@ -197,7 +197,7 @@ class _EditOrUploadPlaceScreenState extends State<EditOrUploadPlaceScreen> {
               .child("PlacesImages")
               .child("${widget.productModel!.PlaceId}.jpg");
           await ref.putFile(File(_pickedImage!.path));
-          placeImageUrl = await ref.getDownloadURL();
+         // placeImageUrl = await ref.getDownloadURL();
         }
 
         await FirebaseFirestore.instance
@@ -488,9 +488,8 @@ class _EditOrUploadPlaceScreenState extends State<EditOrUploadPlaceScreen> {
                             },
                           ),
                           const SizedBox(
-                            height: 10,
-                          )
-                          const SizedBox(height: 15),
+                            height: 10
+                          ),
                           TextFormField(
                             key: const ValueKey('Description'),
                             controller: _descriptionController,
