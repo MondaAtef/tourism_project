@@ -28,10 +28,11 @@ class _EditOrUploadPlaceScreenState extends State<EditOrUploadPlaceScreen> {
   final _formKey = GlobalKey<FormState>();
   XFile? _pickedImage;
   late TextEditingController
-  _titleController,
+      _titleController,
       _addressController,
       _descriptionController,
-      _timeController;
+      _timeController,
+      _thingsController;
 
 
 //  _adultController,
@@ -60,6 +61,9 @@ class _EditOrUploadPlaceScreenState extends State<EditOrUploadPlaceScreen> {
         TextEditingController(text: widget.productModel?.PlaceDescription);
     _timeController =
         TextEditingController(text: widget.productModel?.BestTime);
+    _thingsController =
+        TextEditingController(text: widget.productModel?.thingToKnow);
+
    /* _studentController =
         TextEditingController(text: widget.productModel?.TicketforStudent);
     _adultController =
@@ -77,6 +81,7 @@ class _EditOrUploadPlaceScreenState extends State<EditOrUploadPlaceScreen> {
     _addressController.dispose();
     _descriptionController.dispose();
     _timeController.dispose();
+    _thingsController.dispose();
    /* _studentController.dispose();
     _adultController.dispose();
     openedat.dispose();
@@ -89,6 +94,7 @@ class _EditOrUploadPlaceScreenState extends State<EditOrUploadPlaceScreen> {
     _addressController.clear();
     _descriptionController.clear();
     _timeController.clear();
+    _thingsController.clear();
    /* _studentController.clear();
     _adultController.clear();
     openedat.clear();
@@ -125,7 +131,7 @@ class _EditOrUploadPlaceScreenState extends State<EditOrUploadPlaceScreen> {
             .child("PlacesImages")
             .child("$placeId.jpg");
         await ref.putFile(File(_pickedImage!.path));
-      //  placeImageUrl = await ref.getDownloadURL();
+         productImageUrl = await ref.getDownloadURL();
 
         await FirebaseFirestore.instance
             .collection("Places")
@@ -137,8 +143,10 @@ class _EditOrUploadPlaceScreenState extends State<EditOrUploadPlaceScreen> {
           'PlaceImage': productImageUrl,
           'PlaceCategory': _categoryValue,
           'PlaceDescription': _descriptionController.text,
+          'thingToKnow':_thingsController.text,
           'BestTime':_timeController.text,
           'createdAt': Timestamp.now(),
+
         });
         Fluttertoast.showToast(
           msg: "Place has been added",
@@ -197,7 +205,7 @@ class _EditOrUploadPlaceScreenState extends State<EditOrUploadPlaceScreen> {
               .child("PlacesImages")
               .child("${widget.productModel!.PlaceId}.jpg");
           await ref.putFile(File(_pickedImage!.path));
-         // placeImageUrl = await ref.getDownloadURL();
+          productImageUrl = await ref.getDownloadURL();
         }
 
         await FirebaseFirestore.instance
@@ -210,6 +218,7 @@ class _EditOrUploadPlaceScreenState extends State<EditOrUploadPlaceScreen> {
           'PlaceImage': productImageUrl,
           'PlaceCategory': _categoryValue,
           'PlaceDescription': _descriptionController.text,
+          'thingToKnow': _thingsController.text,
           'BestTime':_timeController.text,
           'createdAt': Timestamp.now(),
         });
@@ -491,24 +500,6 @@ class _EditOrUploadPlaceScreenState extends State<EditOrUploadPlaceScreen> {
                             height: 10
                           ),
                           TextFormField(
-                            key: const ValueKey('Description'),
-                            controller: _descriptionController,
-                            minLines: 5,
-                            maxLines: 8,
-                            maxLength: 1000,
-                            textCapitalization: TextCapitalization.sentences,
-                            decoration: const InputDecoration(
-                              hintText: 'info about the Place',
-                            ),
-                            validator: (value) {
-                              return MyValidators.uploadProdTexts(
-                                value: value,
-                                toBeReturnedString: "Description is missed",
-                              );
-                            },
-                            onTap: () {},
-                          ),
-                          TextFormField(
                             controller:  _timeController,
                             key: const ValueKey('The Best Time'),
                             maxLength: 50,
@@ -527,6 +518,49 @@ class _EditOrUploadPlaceScreenState extends State<EditOrUploadPlaceScreen> {
                               );
                             },
                           ),
+                          const SizedBox(
+                              height: 10
+                          ),
+                          TextFormField(
+                            key: const ValueKey('Description'),
+                            controller: _descriptionController,
+                            minLines: 5,
+                            maxLines: 8,
+                            maxLength: 1000,
+                            textCapitalization: TextCapitalization.sentences,
+                            decoration: const InputDecoration(
+                              hintText: 'about',
+                            ),
+                            validator: (value) {
+                              return MyValidators.uploadProdTexts(
+                                value: value,
+                                toBeReturnedString: "Description is missed",
+                              );
+                            },
+                            onTap: () {},
+                          ),
+                          const SizedBox(
+                              height: 10
+                          ),
+                          TextFormField(
+                            key: const ValueKey('thingToKnow'),
+                            controller: _thingsController,
+                            minLines: 5,
+                            maxLines: 8,
+                            maxLength: 1000,
+                            textCapitalization: TextCapitalization.sentences,
+                            decoration: const InputDecoration(
+                              hintText: 'thing To Know before you go',
+                            ),
+                            validator: (value) {
+                              return MyValidators.uploadProdTexts(
+                                value: value,
+                                toBeReturnedString: "thing To Know is missed",
+                              );
+                            },
+                            onTap: () {},
+                          ),
+
                         ],
                       ),
                     ),
