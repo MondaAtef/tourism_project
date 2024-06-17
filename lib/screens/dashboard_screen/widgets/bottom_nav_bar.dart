@@ -25,7 +25,7 @@ class _CustomBottomNavBarState extends State<CustomBottomNavBar> {
     const DashBoardScreen(),
     const MapScreen(),
     const Photobook(),
-    const ChatScreen(),
+    ChatScreen(),
     SettingScreen(),
   ];
 
@@ -43,7 +43,7 @@ class _CustomBottomNavBarState extends State<CustomBottomNavBar> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: const Myappbar(),
+      appBar: const MyAppBar(),
       drawer: const Mydrawer(),
       body: screens[_index],
       bottomNavigationBar: BottomNavigationBar(

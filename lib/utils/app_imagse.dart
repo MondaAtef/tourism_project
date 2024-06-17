@@ -56,5 +56,16 @@ class Assets {
   static const String gallery = "assets/images/images.png";
   static const String home = "assets/images/home.png";
   static const String profile = "assets/images/profile.png";
-  static const String vixor = "assets/images/vixor_3withoutbackground.png";
+  //static const String vixor = "assets/images/vixor_3withoutbackground.png";
+  static const String background = "assets/images/lang.jpg";
+
+  static const String img1 = "assets/images/img1.jpg";
+  static const String img2 = "assets/images/img2.jpg";
+  static const String Ballon = "assets/images/Ballon.PNG";
+  static const String luxor = "assets/images/luxor.PNG";
+  static String wall = "assets/images/Wall2.jpg";
+  static String admin_icon = "assets/images/crook.png";
+  static String guard = "assets/images/guard.jpg";
+
+
 }

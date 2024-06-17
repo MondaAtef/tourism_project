@@ -1,4 +1,7 @@
+// in sign up , login __________
+
 import 'package:flutter/material.dart';
+import 'package:google_fonts/google_fonts.dart';
 
 class LinkText extends StatelessWidget {
   final String text;
@@ -6,7 +9,7 @@ class LinkText extends StatelessWidget {
 
   const LinkText({super.key, 
     required this.text,
-    required this.onPressed,
+    required this.onPressed
   });
 
   @override
@@ -15,9 +18,11 @@ class LinkText extends StatelessWidget {
       onTap: onPressed,
       child: Text(
         text,
-        style: const TextStyle(
-          color: Colors.black, // Customize link text color
+        style: GoogleFonts.oxanium(
+        textStyle: TextStyle(
+          color: Colors.amber, // Customize link text color
           decoration: TextDecoration.underline, // Add underline to text
+        ),
         ),
       ),
     );

@@ -62,22 +62,6 @@ class _ProductDetailsScreenState extends State<ProductDetailsScreen> {
               child: Column(
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
-                  Row(
-                    crossAxisAlignment: CrossAxisAlignment.start,
-                    children: [
-                      Flexible(
-                        child: Text(
-                        "Title:${getCurrProduct.PlaceTitle}",
-                          softWrap: true,
-                          style: const TextStyle(
-                              fontSize: 20, fontWeight: FontWeight.w700),
-                        ),
-                      ),
-                    ],
-                  ),
-                  const SizedBox(
-                    height: 20,
-                  ),
                   Padding(
                     padding: const EdgeInsets.symmetric(horizontal: 30),
                     child: Row(
@@ -95,7 +79,7 @@ class _ProductDetailsScreenState extends State<ProductDetailsScreen> {
                             height: kBottomNavigationBarHeight - 10,
                             child: ElevatedButton.icon(
                               style: ElevatedButton.styleFrom(
-                                backgroundColor: const Color(0xff8E4F2E),
+                                backgroundColor:  Color(0xFF8D502F),
                                 shape: RoundedRectangleBorder(
                                   borderRadius: BorderRadius.circular(
                                     30.0,
@@ -143,26 +127,23 @@ class _ProductDetailsScreenState extends State<ProductDetailsScreen> {
                     ],
                     ),
                   ),
-                  SubtitleTextWidget(
-                    label: "Ticket For Student:${getCurrProduct.TicketforStudent}\$",
-                    fontSize: 20,
-                    fontWeight: FontWeight.w600,
-                    color: Colors.grey,
-                  ),
-                  const SizedBox(
-                    height: 20,
-                  ),
-                  SubtitleTextWidget(
-                    label: "Ticket For Adult:${getCurrProduct.Ticketforadult}\$",
-                    fontSize: 20,
-                    fontWeight: FontWeight.w600,
-                    color: Colors.grey,
-                  ),
                   const SizedBox(
                     height: 20,
                   ),
                   Row(
-
+                    crossAxisAlignment: CrossAxisAlignment.start,
+                    children: [
+                      Flexible(
+                        child: Text(
+                          "Title:${getCurrProduct.PlaceTitle}",
+                          softWrap: true,
+                          style: const TextStyle(
+                              fontSize: 20, fontWeight: FontWeight.w700),
+                        ),
+                      ),
+                    ],
+                  ),
+                  Row(
                     children: [
                       const TitlesTextWidget(label: "Category:"),
                       SubtitleTextWidget(
@@ -172,16 +153,49 @@ class _ProductDetailsScreenState extends State<ProductDetailsScreen> {
                   const SizedBox(
                     height: 5,
                   ),
+                  Row(
+                    crossAxisAlignment: CrossAxisAlignment.start,
+                    children: [
+                      Flexible(
+                        child: Text(
+                          "Best Time:${getCurrProduct.BestTime}",
+                          softWrap: true,
+                          style: const TextStyle(
+                              fontSize: 20, fontWeight: FontWeight.w700),
+                        ),
+                      ),
+                    ],
+                  ),
+                  const SizedBox(
+                    height: 5,
+                  ),
                   SingleChildScrollView(
-                    scrollDirection: Axis.horizontal,
-                    child: Row(
+                    scrollDirection: Axis.vertical,
+                    child: Column(
                       children: [
                         const TitlesTextWidget(label:"Description:"),
                         SubtitleTextWidget(
                             label: "${getCurrProduct.PlaceDescription}"),
+
                       ],
                     ),
                   ),
+                  const SizedBox(
+                    height: 5,
+                  ),
+                  SingleChildScrollView(
+                    scrollDirection: Axis.vertical,
+                    child: Column(
+                      children: [
+                        const TitlesTextWidget(label:"Things to Know Before you go:"),
+                        SubtitleTextWidget(
+                            label: "${getCurrProduct.thingToKnow}"),
+
+                      ],
+                    ),
+                  ),
+
+
                 ],
               ),
             )

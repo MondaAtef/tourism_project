@@ -69,7 +69,7 @@ class HomeProvider with ChangeNotifier {
     try {
       return productDb.snapshots().map((snapshot) {
         products.clear();
-        // products = []
+       //  products = [];
         for (var element in snapshot.docs) {
           products.insert(0, Placemodel.fromFirestore(element));
         }

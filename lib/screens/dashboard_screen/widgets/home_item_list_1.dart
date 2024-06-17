@@ -3,8 +3,8 @@ import 'package:get/get.dart';
 import 'package:vixor_project/componenet/custom_text_widget.dart';
 import 'package:vixor_project/const/reusable.dart';
 import 'package:vixor_project/screens/dashboard_screen/widgets/HomeScreen.dart';
-import 'package:vixor_project/screens/dashboard_screen/widgets/Trip/Trip_Screen.dart';
 import 'package:vixor_project/utils/app_imagse.dart';
+import 'package:vixor_project/screens/recommendation_trip/RecommendationScreen.dart';
 
 class ItemList1 extends StatelessWidget {
   const ItemList1({super.key});
@@ -22,7 +22,7 @@ class ItemList1 extends StatelessWidget {
                 flex: 2,
                 child: GestureDetector(
                   onTap: () {
-                    navigateTo(context, const Homescreen());
+                    navigateTo(context, Homescreen());
                   },
                   child: Container(
                     decoration: BoxDecoration(
@@ -34,7 +34,7 @@ class ItemList1 extends StatelessWidget {
                           child: ClipRRect(
                             borderRadius: BorderRadius.circular(50),
                             child: Image.asset(
-                              Assets.imagesTrip,
+                              Assets.img1,
                               fit: BoxFit
                                   .cover, // Ensure the image fills the container
                             ),
@@ -67,19 +67,19 @@ class ItemList1 extends StatelessWidget {
                     ),
                   ),
                 )),
-
-
-
-            const SizedBox(
+            SizedBox(
               width: 15,
             ),
-
-
+            //button Show your trip
             Expanded(
                 flex: 1,
                 child: GestureDetector(
                     onTap: () {
-                      navigateTo(context, const TripScreen());
+                      Navigator.push(
+                        context,
+                        MaterialPageRoute(
+                            builder: (context) => RecommendationScreen()),
+                      );
                     },
                     child: Container(
                       decoration: BoxDecoration(
@@ -91,7 +91,7 @@ class ItemList1 extends StatelessWidget {
                             child: ClipRRect(
                               borderRadius: BorderRadius.circular(40),
                               child: Image.asset(
-                                Assets.imagesWall1,
+                                Assets.img2,
                                 fit: BoxFit
                                     .cover, // Ensure the image fills the container
                               ),

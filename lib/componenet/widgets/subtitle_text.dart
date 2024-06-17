@@ -1,14 +1,15 @@
 import 'package:flutter/material.dart';
 
 class SubtitleTextWidget extends StatelessWidget {
-  const SubtitleTextWidget(
-      {super.key,
-        required this.label,
-        this.fontSize = 18,
-        this.fontStyle = FontStyle.normal,
-        this.fontWeight = FontWeight.normal,
-        this.color,
-        this.textDecoration = TextDecoration.none});
+  const SubtitleTextWidget({
+    Key? key,
+    required this.label,
+    this.fontSize = 18,
+    this.fontStyle = FontStyle.normal,
+    this.fontWeight,
+    this.color,
+    this.textDecoration = TextDecoration.none,
+  }) : fontFamily = "Oxanium"; // Set default fontFamily to "Oxanium"
 
   final String label;
   final double fontSize;
@@ -16,6 +17,8 @@ class SubtitleTextWidget extends StatelessWidget {
   final FontWeight? fontWeight;
   final Color? color;
   final TextDecoration textDecoration;
+  final String fontFamily; // Added fontFamily parameter
+
   @override
   Widget build(BuildContext context) {
     return Text(
@@ -26,7 +29,7 @@ class SubtitleTextWidget extends StatelessWidget {
         decoration: textDecoration,
         color: color,
         fontStyle: fontStyle,
-
+        fontFamily: "Oxanium", // Use fontFamily parameter
       ),
     );
   }

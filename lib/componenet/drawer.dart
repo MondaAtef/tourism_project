@@ -1,11 +1,8 @@
 import 'package:flutter/cupertino.dart';
-
-// ignore_for_file: use_key_in_widget_constructors
-
 import 'package:flutter/material.dart';
 import 'package:fluttertoast/fluttertoast.dart';
 import 'package:vixor_project/const/reusable.dart';
-import 'package:vixor_project/screens/admin_screen.dart';
+import 'package:vixor_project/screens/Admin/admin_screen.dart';
 import 'package:vixor_project/screens/luxor.dart';
 import 'package:vixor_project/screens/more_about_sustainability.dart';
 import 'package:vixor_project/utils/app_imagse.dart';
@@ -79,33 +76,6 @@ class Mydrawer extends StatelessWidget {
                 },
               ),
 
-              // ListTile(
-              //   title: const Text(
-              //     'Green Places',
-              //     style: TextStyle(color: Color(0xff8E4F2E)),
-              //   ),
-              //   onTap: () {
-              //     // Navigator.pop(context);
-              //   },
-              // ),
-              // ListTile(
-              //   title: const Text(
-              //     'Historical Landmarks',
-              //     style: TextStyle(color: Color(0xff8E4F2E)),
-              //   ),
-              //   onTap: () {
-              //     //Navigator.pop(context);
-              //   },
-              // ),
-              // ListTile(
-              //   title: const Text(
-              //     'Contact Us',
-              //     style: TextStyle(color: Color(0xff8E4F2E)),
-              //   ),
-              //   onTap: () {
-              //     // Navigator.pop(context);
-              //   },
-              // ),
 
               ListTile(
                 title: const Text(
@@ -141,10 +111,7 @@ class Mydrawer extends StatelessWidget {
                                           MainAxisAlignment.center,
                                       children: [
                                         SizedBox(
-                                          width: MediaQuery.of(context)
-                                                  .size
-                                                  .width *
-                                              0.6,
+                                          width: MediaQuery.of(context).size.width * 0.6,
                                           height: 50,
                                           child: TextFormField(
                                               controller: emailcontroller,
@@ -153,6 +120,7 @@ class Mydrawer extends StatelessWidget {
                                                 if (v.toString() != '123') {
                                                   print("0");
                                                 }
+                                                return null;
                                               },
                                               decoration: InputDecoration(
                                                 prefixIcon:
@@ -160,11 +128,10 @@ class Mydrawer extends StatelessWidget {
                                                 fillColor:
                                                     const Color(0xff8E4F2E),
                                                 filled: true,
-                                                labelText: 'LocK',
+                                                labelText: 'Lock',
                                                 border: OutlineInputBorder(
                                                     borderRadius:
-                                                        BorderRadius.circular(
-                                                            12)),
+                                                        BorderRadius.circular(12)),
                                               ),
                                               keyboardType:
                                                   TextInputType.emailAddress,
@@ -221,6 +188,7 @@ class Mydrawer extends StatelessWidget {
                                                 'Enter',
                                                 style: TextStyle(
                                                   fontSize: 15.0,
+                                                  fontFamily: 'Oxanium',
                                                 ),
                                               ),
                                             ),

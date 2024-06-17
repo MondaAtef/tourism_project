@@ -1,8 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:provider/provider.dart';
-// import 'package:vixor_project/componenet/widgets/subtitle_text.dart';
-// import 'package:vixor_project/componenet/widgets/title%20widget.dart';
 import 'package:vixor_project/provider/homeprovider.dart';
 import 'package:vixor_project/provider/trip%20provider.dart';
 

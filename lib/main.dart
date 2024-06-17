@@ -2,10 +2,11 @@ import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:flutter_gemini/flutter_gemini.dart';
 import 'package:get/get.dart';
 import 'package:get/get_navigation/get_navigation.dart';
 import 'package:provider/provider.dart';
-import 'package:vixor_project/const/theme_data.dart';
+
 import 'package:vixor_project/cubit/bloc%20observer.dart';
 import 'package:vixor_project/cubit/bloc.dart';
 import 'package:vixor_project/cubit/cashe%20helper.dart';
@@ -17,6 +18,7 @@ import 'package:vixor_project/provider/theme_provider.dart';
 import 'package:vixor_project/provider/trip%20provider.dart';
 import 'package:vixor_project/provider/view%20provider.dart';
 import 'package:vixor_project/provider/wishlist_provider.dart';
+import 'package:vixor_project/screens/chat_screen/chat_screen.dart';
 import 'package:vixor_project/screens/dashboard_screen/widgets/product_details.dart';
 import 'package:vixor_project/screens/dashboard_screen/widgets/viewed_recently.dart';
 import 'package:vixor_project/screens/dashboard_screen/widgets/wishlist.dart';
@@ -26,9 +28,11 @@ import 'package:vixor_project/screens/localization/services.dart';
 import 'package:vixor_project/screens/splash.dart';
 import 'provider/chatprovider/models_provider.dart';
 import 'screens/dashboard_screen/widgets/searchscreen.dart';
+
 void main()async {
   WidgetsFlutterBinding.ensureInitialized();
   await initialServices();
+  Gemini.init(apiKey: GEMINI_API_KEY);
   // ignore: deprecated_member_use
   BlocOverrides.runZoned(
         () async {
@@ -110,7 +114,6 @@ class _MyAppState extends State<MyApp> {
                 return TripProvider();
               }),
 
-
               ChangeNotifierProvider(
                 create: (_) => ChatProvider(),
               ),
@@ -140,7 +143,7 @@ class _MyAppState extends State<MyApp> {
 
                     title: 'Luxor app',
                     home: const Splash(),
-                    theme: Styles.themeData(themeChangeProvider.getDarkTheme, context),
+
 
                   );
                 }),

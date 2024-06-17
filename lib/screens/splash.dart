@@ -12,6 +12,7 @@ class Splash extends StatefulWidget {
 class _SplashState extends State<Splash> with SingleTickerProviderStateMixin {
   late AnimationController _animationController;
   late Animation<double> _animation;
+
   @override
   void initState() {
     super.initState();
@@ -40,15 +41,31 @@ class _SplashState extends State<Splash> with SingleTickerProviderStateMixin {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-        backgroundColor: const Color(0xffffffff),
-        body: Center(
-            child: FadeTransition(
-          // ignore: sized_box_for_whitespace
-          opacity: _animation,
-          child: const SizedBox(
-            width: 250,
-            child: Image(image: AssetImage(Assets.imagesLogo)),
+      backgroundColor: Colors.white,
+      body: Stack(
+        fit: StackFit.expand,
+        children: [
+          // Background image
+          Image(
+            image: AssetImage(Assets.background),
+            fit: BoxFit.cover,
           ),
-        )));
+          // Semi-transparent color overlay
+          Container(
+            color: const Color(0xFF8D502F).withOpacity(0.8), // Overlay color
+          ),
+          // FadeTransition for the logo
+          Center(
+            child: FadeTransition(
+              opacity: _animation,
+              child: const SizedBox(
+                width: 250,
+                child: Image(image: AssetImage(Assets.imagesLogo)),
+              ),
+            ),
+          ),
+        ],
+      ),
+    );
   }
 }

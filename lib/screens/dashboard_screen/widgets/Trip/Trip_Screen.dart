@@ -58,7 +58,7 @@ class _TripScreenState extends State<TripScreen> {
     return cartProvider.getCartitems.isEmpty
         ? Scaffold(
       body: EmptyBagWidget(
-        imagePath: AssetsManager.banner1,
+        imagePath: AssetsManager.banner6,
         title: "57".tr,
         subtitle: "",
         buttonText: "58".tr,
@@ -199,8 +199,9 @@ class _TripScreenState extends State<TripScreen> {
           "PlaceDescription": getCurrProduct.PlaceDescription,
           "PlaceCategory": getCurrProduct.PlaceCategory,
           "PlaceAddress": getCurrProduct.PlaceAddress,
-          'TicketforStudent': double.parse(getCurrProduct.TicketforStudent) ,
-          'Ticketforadult': double.parse(getCurrProduct.Ticketforadult) ,
+          "thingToKnow":getCurrProduct.thingToKnow,
+         // 'TicketforStudent': double.parse(getCurrProduct.TicketforStudent) ,
+          //'Ticketforadult': double.parse(getCurrProduct.Ticketforadult) ,
           'imageUrl': getCurrProduct.PlaceImage,
           'Days of trip:':selecteditem,
           'orderDate': Timestamp.now(),

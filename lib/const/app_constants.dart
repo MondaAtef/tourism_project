@@ -1,50 +1,71 @@
 import 'package:flutter/material.dart';
-import 'package:vixor_project/models/catmodel.dart';
 import 'package:vixor_project/services/chatservices/assets_manager.dart';
 
+class CategoriesModel {
+  final String id;
+  final String image;
+  final String name;
+
+
+  CategoriesModel({
+    required this.id,
+    required this.name,
+    required this.image,
+
+  });
+}
 class AppConstants {
   static const String imageUrl =
       'https://i.ibb.co/8r1Ny2n/20-Nike-Air-Force-1-07.png';
 
   static List<String> categoriesList = [
-    'Nile Tourism ',
+    //'Nile Tourism ',
     'Historical landmarks (west)',
     'Historical landmarks (East)',
     'leisure tourism',
     'Religious tourism',
   ];
+
   static List<CategoriesModel> categoyList = [
-    CategoriesModel(
+   /* CategoriesModel(
       id: "Nile Tourism",
       image: AssetsManager.nile,
       name: "Nile Tourism",
-    ),
+    ),*/
     CategoriesModel(
       id: "Historical landmarks (west)",
       image: AssetsManager.west,
       name: "Historical landmarks (west)",
+
     ),
     CategoriesModel(
       id: "Historical landmarks (East)",
       image: AssetsManager.east,
       name: "Historical landmarks (East)",
+
     ),
     CategoriesModel(
       id: "leisure tourism",
       image: AssetsManager.leusrios,
       name: "leisure tourism",
+
     ),
     CategoriesModel(
       id: "Religious tourism",
       image: AssetsManager.religious,
       name: "Religious tourism",
+
     ),
 
   ];
   static List<String> bannersImages = [
-    AssetsManager.banner1,
-    AssetsManager.banner2,
+    AssetsManager.banner4,
+    AssetsManager.banner5,
+    AssetsManager.banner6,
     AssetsManager.banner3,
+
+
+
   ];
   static List<DropdownMenuItem<String>>? get categoriesDropDownList {
     List<DropdownMenuItem<String>>? menuItem =

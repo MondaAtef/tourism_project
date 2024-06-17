@@ -27,20 +27,25 @@ class EditOrUploadPlaceScreen extends StatefulWidget {
 class _EditOrUploadPlaceScreenState extends State<EditOrUploadPlaceScreen> {
   final _formKey = GlobalKey<FormState>();
   XFile? _pickedImage;
-  late TextEditingController _titleController,
-      _priceController,
+  late TextEditingController
+      _titleController,
+      _addressController,
       _descriptionController,
-      _adultController,
-      _quantityController;
-  var openedat = TextEditingController();
-  var closedat = TextEditingController();
+      _timeController,
+      _thingsController;
+
+
+//  _adultController,
+// _studentController;
+//var openedat = TextEditingController();
+//var closedat = TextEditingController();
   String? _categoryValue;
   bool isEditing = false;
   String? productNetworkImage;
   bool _isLoading = false;
   String? productImageUrl;
-  String?x;
-  String?y;
+ // String?x;
+  //String?y;
   @override
   void initState() {
     if (widget.productModel != null) {
@@ -50,16 +55,21 @@ class _EditOrUploadPlaceScreenState extends State<EditOrUploadPlaceScreen> {
     }
     _titleController =
         TextEditingController(text: widget.productModel?.PlaceTitle);
-    _priceController =
+    _addressController =
         TextEditingController(text: widget.productModel?.PlaceAddress);
     _descriptionController =
         TextEditingController(text: widget.productModel?.PlaceDescription);
-    _quantityController =
+    _timeController =
+        TextEditingController(text: widget.productModel?.BestTime);
+    _thingsController =
+        TextEditingController(text: widget.productModel?.thingToKnow);
+
+   /* _studentController =
         TextEditingController(text: widget.productModel?.TicketforStudent);
     _adultController =
         TextEditingController(text: widget.productModel?.Ticketforadult);
     openedat= TextEditingController(text: widget.productModel?.openedat);
-    closedat= TextEditingController(text: widget.productModel?.closedat);
+    closedat= TextEditingController(text: widget.productModel?.closedat);*/
 
 
     super.initState();
@@ -68,23 +78,27 @@ class _EditOrUploadPlaceScreenState extends State<EditOrUploadPlaceScreen> {
   @override
   void dispose() {
     _titleController.dispose();
-    _priceController.dispose();
+    _addressController.dispose();
     _descriptionController.dispose();
-    _quantityController.dispose();
+    _timeController.dispose();
+    _thingsController.dispose();
+   /* _studentController.dispose();
     _adultController.dispose();
     openedat.dispose();
-    closedat.dispose();
+    closedat.dispose();*/
     super.dispose();
   }
 
   void clearForm() {
     _titleController.clear();
-    _priceController.clear();
+    _addressController.clear();
     _descriptionController.clear();
-    _quantityController.clear();
+    _timeController.clear();
+    _thingsController.clear();
+   /* _studentController.clear();
     _adultController.clear();
     openedat.clear();
-    closedat.clear();
+    closedat.clear();*/
     removePickedImage();
   }
 
@@ -111,32 +125,31 @@ class _EditOrUploadPlaceScreenState extends State<EditOrUploadPlaceScreen> {
           _isLoading = true;
         });
 
-        final productId = const Uuid().v4();
+        final placeId = const Uuid().v4();
         final ref = FirebaseStorage.instance
             .ref()
             .child("PlacesImages")
-            .child("$productId.jpg");
+            .child("$placeId.jpg");
         await ref.putFile(File(_pickedImage!.path));
-        productImageUrl = await ref.getDownloadURL();
+         productImageUrl = await ref.getDownloadURL();
 
         await FirebaseFirestore.instance
             .collection("Places")
-            .doc(productId)
+            .doc(placeId)
             .set({
-          'PlaceId': productId,
+          'PlaceId': placeId,
           'PlaceTitle': _titleController.text,
-          'PlaceAddress':_priceController.text,
-          'Ticketforadult':_adultController.text,
-          'TicketforStudent':_quantityController.text,
+          'PlaceAddress':_addressController.text,
           'PlaceImage': productImageUrl,
-          'openedat':x,
-          'closedat':y,
           'PlaceCategory': _categoryValue,
           'PlaceDescription': _descriptionController.text,
+          'thingToKnow':_thingsController.text,
+          'BestTime':_timeController.text,
           'createdAt': Timestamp.now(),
+
         });
         Fluttertoast.showToast(
-          msg: "Product has been added",
+          msg: "Place has been added",
           backgroundColor: Colors.brown.shade600,
           textColor: Colors.white,
           fontSize: 16.0,
@@ -201,18 +214,16 @@ class _EditOrUploadPlaceScreenState extends State<EditOrUploadPlaceScreen> {
             .update({
           'PlaceId': widget.productModel!.PlaceId,
           'PlaceTitle': _titleController.text,
-          'PlaceAddress':_priceController.text,
-           'Ticketforadult':_adultController.text,
-          'TicketforStudent':_quantityController.text,
+          'PlaceAddress':_addressController.text,
           'PlaceImage': productImageUrl,
           'PlaceCategory': _categoryValue,
-          'openedat':x,
-          'closedat':y,
           'PlaceDescription': _descriptionController.text,
+          'thingToKnow': _thingsController.text,
+          'BestTime':_timeController.text,
           'createdAt': Timestamp.now(),
         });
         Fluttertoast.showToast(
-          msg: "Product has been edited",
+          msg: "Place has been edited",
           textColor: Colors.white,
         );
         if (!mounted) return;
@@ -317,7 +328,7 @@ class _EditOrUploadPlaceScreenState extends State<EditOrUploadPlaceScreen> {
                     ),
                     icon: const Icon(Icons.upload,color: Colors.white,),
                     label: Text(
-                      isEditing ? "Edit Product" : "Upload Product",style: const TextStyle(
+                      isEditing ? "Edit " : "Upload ",style: const TextStyle(
                       color: Colors.white,
                       fontWeight: FontWeight.bold,
                       fontSize: 15.0,
@@ -379,7 +390,7 @@ class _EditOrUploadPlaceScreenState extends State<EditOrUploadPlaceScreen> {
                                   onPressed: () {
                                     localImagePicker();
                                   },
-                                  child: const Text("Pick Place  Image"),
+                                  child: const Text("Pick Place Image"),
                                 ),
                               ],
                             ),
@@ -453,13 +464,13 @@ class _EditOrUploadPlaceScreenState extends State<EditOrUploadPlaceScreen> {
                             keyboardType: TextInputType.multiline,
                             textInputAction: TextInputAction.newline,
                             decoration: const InputDecoration(
-                              hintText: 'Place Title',
+                              hintText: 'Place Name',
                             ),
                             validator: (value) {
                               return MyValidators.uploadProdTexts(
                                 value: value,
                                 toBeReturnedString:
-                                "Please enter a valid title",
+                                "Please enter a valid Name",
                               );
                             },
                           ),
@@ -467,7 +478,7 @@ class _EditOrUploadPlaceScreenState extends State<EditOrUploadPlaceScreen> {
                             height: 10,
                           ),
                           TextFormField(
-                            controller: _priceController,
+                            controller: _addressController,
                             key: const ValueKey('Address'),
                             maxLength: 80,
                             minLines: 1,
@@ -486,137 +497,30 @@ class _EditOrUploadPlaceScreenState extends State<EditOrUploadPlaceScreen> {
                             },
                           ),
                           const SizedBox(
-                            height: 10,
+                            height: 10
                           ),
-                          Row(
-                            children: [
-                              Flexible(
-                                flex: 1,
-                                child: TextFormField(
-                                  controller: _quantityController,
-                                  key: const ValueKey('Price \$'),
-                                  keyboardType: TextInputType.number,
-                                  inputFormatters: <TextInputFormatter>[
-                                    FilteringTextInputFormatter.allow(
-                                      RegExp(r'^(\d+)?\.?\d{0,2}'),
-                                    ),
-                                  ],
-                                  decoration: const InputDecoration(
-                                      hintText: 'Ticket for Student',
-                                      prefix: SubtitleTextWidget(
-                                        label: "\$ ",
-                                        color: Colors.blue,
-                                        fontSize: 16,
-                                      )),
-                                  validator: (value) {
-                                    return MyValidators.uploadProdTexts(
-                                      value: value,
-                                      toBeReturnedString: "Price is missing",
-                                    );
-                                  },
-                                ),
-                              ),
-                              const SizedBox(
-                                width: 10,
-                              ),
-                              Flexible(
-                                flex: 1,
-                                child: TextFormField(
-                                  inputFormatters: [
-                                    FilteringTextInputFormatter.digitsOnly
-                                  ],
-                                  controller: _adultController,
-                                  keyboardType: TextInputType.number,
-
-                                  key: const ValueKey('Quantity'),
-                                  decoration: const InputDecoration(
-                                      hintText: 'Ticket for Adult',
-                                      prefix: SubtitleTextWidget(
-                                        label: "\$ ",
-                                        color: Colors.blue,
-                                        fontSize: 16,
-                                      )),
-                                  validator: (value) {
-                                    return MyValidators.uploadProdTexts(
-                                      value: value,
-                                      toBeReturnedString: "Quantity is missed",
-                                    );
-                                  },
-                                ),
-                              ),
-                            ],
+                          TextFormField(
+                            controller:  _timeController,
+                            key: const ValueKey('The Best Time'),
+                            maxLength: 50,
+                            minLines: 1,
+                            maxLines: 2,
+                            keyboardType: TextInputType.multiline,
+                            textInputAction: TextInputAction.newline,
+                            decoration: const InputDecoration(
+                              hintText: 'The Best Time',
+                            ),
+                            validator: (value) {
+                              return MyValidators.uploadProdTexts(
+                                value: value,
+                                toBeReturnedString:
+                                "Please enter a valid Time",
+                              );
+                            },
                           ),
-                          const SizedBox(height: 15),
-                          Row(
-                            children: [
-                              Flexible(
-                                flex: 1,
-                                child: TextFormField(
-                                  onTap: (){
-showTimePicker(
-  context:context ,
-    initialTime:TimeOfDay.now(),
-).then((value) {
-setState(() {
-  x=value.toString();
-});
-openedat.text=value!.format(context).toString();
-});
-                                  },
-                                  controller: openedat,
-                                  keyboardType: TextInputType.datetime,
-                                  inputFormatters: <TextInputFormatter>[
-                                    FilteringTextInputFormatter.allow(
-                                      RegExp(r'^(\d+)?\.?\d{0,2}'),
-                                    ),
-                                  ],
-                                  decoration: const InputDecoration(
-                                      hintText: 'Opened at',
-                                     ),
-                                  validator: (value) {
-                                    return MyValidators.uploadProdTexts(
-                                      value: value,
-                                      toBeReturnedString: "Price is missing",
-                                    );
-                                  },
-                                ),
-                              ),
-                              const SizedBox(
-                                width: 10,
-                              ),
-                              Flexible(
-                                flex: 1,
-                                child: TextFormField(
-                                  onTap: (){
-                                    showTimePicker(
-                                      context:context ,
-                                      initialTime:TimeOfDay.now(),
-                                    ).then((value) {
-                                      setState(() {
-                                        y=value.toString();
-                                      });
-                                      closedat.text=value!.format(context).toString();
-                                    });
-                                  },
-                                  inputFormatters: [
-                                    FilteringTextInputFormatter.digitsOnly
-                                  ],
-                                  controller: closedat,
-                                  keyboardType: TextInputType.datetime,
-                                  decoration: const InputDecoration(
-                                    hintText: 'Closed at',
-                                  ),
-                                  validator: (value) {
-                                    return MyValidators.uploadProdTexts(
-                                      value: value,
-                                      toBeReturnedString: "Quantity is missed",
-                                    );
-                                  },
-                                ),
-                              ),
-                            ],
+                          const SizedBox(
+                              height: 10
                           ),
-                          const SizedBox(height: 15),
                           TextFormField(
                             key: const ValueKey('Description'),
                             controller: _descriptionController,
@@ -625,7 +529,7 @@ openedat.text=value!.format(context).toString();
                             maxLength: 1000,
                             textCapitalization: TextCapitalization.sentences,
                             decoration: const InputDecoration(
-                              hintText: 'Place description',
+                              hintText: 'about',
                             ),
                             validator: (value) {
                               return MyValidators.uploadProdTexts(
@@ -635,6 +539,28 @@ openedat.text=value!.format(context).toString();
                             },
                             onTap: () {},
                           ),
+                          const SizedBox(
+                              height: 10
+                          ),
+                          TextFormField(
+                            key: const ValueKey('thingToKnow'),
+                            controller: _thingsController,
+                            minLines: 5,
+                            maxLines: 8,
+                            maxLength: 1000,
+                            textCapitalization: TextCapitalization.sentences,
+                            decoration: const InputDecoration(
+                              hintText: 'thing To Know before you go',
+                            ),
+                            validator: (value) {
+                              return MyValidators.uploadProdTexts(
+                                value: value,
+                                toBeReturnedString: "thing To Know is missed",
+                              );
+                            },
+                            onTap: () {},
+                          ),
+
                         ],
                       ),
                     ),

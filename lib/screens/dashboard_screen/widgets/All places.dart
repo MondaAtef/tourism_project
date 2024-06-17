@@ -96,12 +96,12 @@ class _AllplacesScreenState extends State<AllplacesScreen> {
                           ),
                         ),
                       ),
-                      // onChanged: (value) {
-                      //   setState(() {
-                      //     productListSearch = productsProvider.searchQuery(
-                      //         searchText: searchTextController.text);
-                      //   });
-                      // },
+                     /*  onChanged: (value) {
+                         setState(() {
+                           productListSearch = productsProvider.searchQuery(
+                               searchText: searchTextController.text);
+                         });
+                       },*/
                       onSubmitted: (value) {
                         setState(() {
                           productListSearch = productsProvider.searchQuery(
