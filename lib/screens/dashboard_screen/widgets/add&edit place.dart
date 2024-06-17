@@ -31,7 +31,9 @@ class _EditOrUploadPlaceScreenState extends State<EditOrUploadPlaceScreen> {
   _titleController,
       _addressController,
       _descriptionController,
-      _timeController;
+      _timeController,
+      _thingsController;
+
 
 //  _adultController,
 // _studentController;
@@ -42,7 +44,7 @@ class _EditOrUploadPlaceScreenState extends State<EditOrUploadPlaceScreen> {
   String? productNetworkImage;
   bool _isLoading = false;
   String? productImageUrl;
- // String?x;
+  // String?x;
   //String?y;
   @override
   void initState() {
@@ -59,7 +61,10 @@ class _EditOrUploadPlaceScreenState extends State<EditOrUploadPlaceScreen> {
         TextEditingController(text: widget.productModel?.PlaceDescription);
     _timeController =
         TextEditingController(text: widget.productModel?.BestTime);
-   /* _studentController =
+    _thingsController =
+        TextEditingController(text: widget.productModel?.thingToKnow);
+
+    /* _studentController =
         TextEditingController(text: widget.productModel?.TicketforStudent);
     _adultController =
         TextEditingController(text: widget.productModel?.Ticketforadult);
@@ -76,7 +81,8 @@ class _EditOrUploadPlaceScreenState extends State<EditOrUploadPlaceScreen> {
     _addressController.dispose();
     _descriptionController.dispose();
     _timeController.dispose();
-   /* _studentController.dispose();
+    _thingsController.dispose();
+    /* _studentController.dispose();
     _adultController.dispose();
     openedat.dispose();
     closedat.dispose();*/
@@ -88,7 +94,8 @@ class _EditOrUploadPlaceScreenState extends State<EditOrUploadPlaceScreen> {
     _addressController.clear();
     _descriptionController.clear();
     _timeController.clear();
-   /* _studentController.clear();
+    _thingsController.clear();
+    /* _studentController.clear();
     _adultController.clear();
     openedat.clear();
     closedat.clear();*/
@@ -124,7 +131,7 @@ class _EditOrUploadPlaceScreenState extends State<EditOrUploadPlaceScreen> {
             .child("PlacesImages")
             .child("$placeId.jpg");
         await ref.putFile(File(_pickedImage!.path));
-        //placeImageUrl = await ref.getDownloadURL();
+        productImageUrl = await ref.getDownloadURL();
 
         await FirebaseFirestore.instance
             .collection("Places")
@@ -136,8 +143,10 @@ class _EditOrUploadPlaceScreenState extends State<EditOrUploadPlaceScreen> {
           'PlaceImage': productImageUrl,
           'PlaceCategory': _categoryValue,
           'PlaceDescription': _descriptionController.text,
+          'thingToKnow':_thingsController.text,
           'BestTime':_timeController.text,
           'createdAt': Timestamp.now(),
+
         });
         Fluttertoast.showToast(
           msg: "Place has been added",
@@ -196,7 +205,7 @@ class _EditOrUploadPlaceScreenState extends State<EditOrUploadPlaceScreen> {
               .child("PlacesImages")
               .child("${widget.productModel!.PlaceId}.jpg");
           await ref.putFile(File(_pickedImage!.path));
-          //placeImageUrl = await ref.getDownloadURL();
+          productImageUrl = await ref.getDownloadURL();
         }
 
         await FirebaseFirestore.instance
@@ -209,6 +218,7 @@ class _EditOrUploadPlaceScreenState extends State<EditOrUploadPlaceScreen> {
           'PlaceImage': productImageUrl,
           'PlaceCategory': _categoryValue,
           'PlaceDescription': _descriptionController.text,
+          'thingToKnow': _thingsController.text,
           'BestTime':_timeController.text,
           'createdAt': Timestamp.now(),
         });
@@ -309,7 +319,7 @@ class _EditOrUploadPlaceScreenState extends State<EditOrUploadPlaceScreen> {
                   ElevatedButton.icon(
                     style: ElevatedButton.styleFrom(
                       padding: const EdgeInsets.all(12),
-                       backgroundColor: Colors.blue,
+                      backgroundColor: Colors.blue,
                       shape: RoundedRectangleBorder(
                         borderRadius: BorderRadius.circular(
                           10,
@@ -487,26 +497,7 @@ class _EditOrUploadPlaceScreenState extends State<EditOrUploadPlaceScreen> {
                             },
                           ),
                           const SizedBox(
-                            height: 10,
-                          ),
-                          const SizedBox(height: 15),
-                          TextFormField(
-                            key: const ValueKey('Description'),
-                            controller: _descriptionController,
-                            minLines: 5,
-                            maxLines: 8,
-                            maxLength: 1000,
-                            textCapitalization: TextCapitalization.sentences,
-                            decoration: const InputDecoration(
-                              hintText: 'info about the Place',
-                            ),
-                            validator: (value) {
-                              return MyValidators.uploadProdTexts(
-                                value: value,
-                                toBeReturnedString: "Description is missed",
-                              );
-                            },
-                            onTap: () {},
+                              height: 10
                           ),
                           TextFormField(
                             controller:  _timeController,
@@ -527,6 +518,49 @@ class _EditOrUploadPlaceScreenState extends State<EditOrUploadPlaceScreen> {
                               );
                             },
                           ),
+                          const SizedBox(
+                              height: 10
+                          ),
+                          TextFormField(
+                            key: const ValueKey('Description'),
+                            controller: _descriptionController,
+                            minLines: 5,
+                            maxLines: 8,
+                            maxLength: 1000,
+                            textCapitalization: TextCapitalization.sentences,
+                            decoration: const InputDecoration(
+                              hintText: 'about',
+                            ),
+                            validator: (value) {
+                              return MyValidators.uploadProdTexts(
+                                value: value,
+                                toBeReturnedString: "Description is missed",
+                              );
+                            },
+                            onTap: () {},
+                          ),
+                          const SizedBox(
+                              height: 10
+                          ),
+                          TextFormField(
+                            key: const ValueKey('thingToKnow'),
+                            controller: _thingsController,
+                            minLines: 5,
+                            maxLines: 8,
+                            maxLength: 1000,
+                            textCapitalization: TextCapitalization.sentences,
+                            decoration: const InputDecoration(
+                              hintText: 'thing To Know before you go',
+                            ),
+                            validator: (value) {
+                              return MyValidators.uploadProdTexts(
+                                value: value,
+                                toBeReturnedString: "thing To Know is missed",
+                              );
+                            },
+                            onTap: () {},
+                          ),
+
                         ],
                       ),
                     ),

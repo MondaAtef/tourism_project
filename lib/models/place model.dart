@@ -8,6 +8,7 @@ class Placemodel with ChangeNotifier {
       PlaceCategory,
       PlaceDescription,
       PlaceImage,
+      thingToKnow,
       BestTime;
   /* Ticketforadult,
       TicketforStudent,
@@ -22,6 +23,7 @@ class Placemodel with ChangeNotifier {
     required this.PlaceDescription,
     required this.PlaceImage,
     required this.BestTime,
+    required this.thingToKnow,
 
     this.createdAt,
     /*required this.Ticketforadult,
@@ -43,6 +45,7 @@ class Placemodel with ChangeNotifier {
       PlaceImage: data['PlaceImage'],
       BestTime:data['BestTime'],
       createdAt: data['createdAt'],
+      thingToKnow:data['thingToKnow'],
       //Ticketforadult: data['Ticketforadult'],
      // TicketforStudent: data['TicketforStudent'],
       //closedat: data['closedat'],
@@ -50,4 +53,6 @@ class Placemodel with ChangeNotifier {
 
     );
   }
+
+
 }

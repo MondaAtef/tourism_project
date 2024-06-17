@@ -180,6 +180,20 @@ class _ProductDetailsScreenState extends State<ProductDetailsScreen> {
                       ],
                     ),
                   ),
+                  const SizedBox(
+                    height: 5,
+                  ),
+                  SingleChildScrollView(
+                    scrollDirection: Axis.vertical,
+                    child: Column(
+                      children: [
+                        const TitlesTextWidget(label:"Things to Know Before you go:"),
+                        SubtitleTextWidget(
+                            label: "${getCurrProduct.thingToKnow}"),
+
+                      ],
+                    ),
+                  ),
 
 
                 ],

@@ -199,6 +199,7 @@ class _TripScreenState extends State<TripScreen> {
           "PlaceDescription": getCurrProduct.PlaceDescription,
           "PlaceCategory": getCurrProduct.PlaceCategory,
           "PlaceAddress": getCurrProduct.PlaceAddress,
+          "thingToKnow":getCurrProduct.thingToKnow,
          // 'TicketforStudent': double.parse(getCurrProduct.TicketforStudent) ,
           //'Ticketforadult': double.parse(getCurrProduct.Ticketforadult) ,
           'imageUrl': getCurrProduct.PlaceImage,

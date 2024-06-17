@@ -19,7 +19,7 @@ class AppConstants {
       'https://i.ibb.co/8r1Ny2n/20-Nike-Air-Force-1-07.png';
 
   static List<String> categoriesList = [
-    'Nile Tourism ',
+    //'Nile Tourism ',
     'Historical landmarks (west)',
     'Historical landmarks (East)',
     'leisure tourism',
@@ -27,11 +27,11 @@ class AppConstants {
   ];
 
   static List<CategoriesModel> categoyList = [
-    CategoriesModel(
+   /* CategoriesModel(
       id: "Nile Tourism",
       image: AssetsManager.nile,
       name: "Nile Tourism",
-    ),
+    ),*/
     CategoriesModel(
       id: "Historical landmarks (west)",
       image: AssetsManager.west,
