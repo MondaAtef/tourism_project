@@ -28,7 +28,7 @@ class _EditOrUploadPlaceScreenState extends State<EditOrUploadPlaceScreen> {
   final _formKey = GlobalKey<FormState>();
   XFile? _pickedImage;
   late TextEditingController
-      _titleController,
+  _titleController,
       _addressController,
       _descriptionController,
       _timeController,
@@ -44,7 +44,7 @@ class _EditOrUploadPlaceScreenState extends State<EditOrUploadPlaceScreen> {
   String? productNetworkImage;
   bool _isLoading = false;
   String? productImageUrl;
- // String?x;
+  // String?x;
   //String?y;
   @override
   void initState() {
@@ -64,7 +64,7 @@ class _EditOrUploadPlaceScreenState extends State<EditOrUploadPlaceScreen> {
     _thingsController =
         TextEditingController(text: widget.productModel?.thingToKnow);
 
-   /* _studentController =
+    /* _studentController =
         TextEditingController(text: widget.productModel?.TicketforStudent);
     _adultController =
         TextEditingController(text: widget.productModel?.Ticketforadult);
@@ -82,7 +82,7 @@ class _EditOrUploadPlaceScreenState extends State<EditOrUploadPlaceScreen> {
     _descriptionController.dispose();
     _timeController.dispose();
     _thingsController.dispose();
-   /* _studentController.dispose();
+    /* _studentController.dispose();
     _adultController.dispose();
     openedat.dispose();
     closedat.dispose();*/
@@ -95,7 +95,7 @@ class _EditOrUploadPlaceScreenState extends State<EditOrUploadPlaceScreen> {
     _descriptionController.clear();
     _timeController.clear();
     _thingsController.clear();
-   /* _studentController.clear();
+    /* _studentController.clear();
     _adultController.clear();
     openedat.clear();
     closedat.clear();*/
@@ -131,7 +131,7 @@ class _EditOrUploadPlaceScreenState extends State<EditOrUploadPlaceScreen> {
             .child("PlacesImages")
             .child("$placeId.jpg");
         await ref.putFile(File(_pickedImage!.path));
-         productImageUrl = await ref.getDownloadURL();
+        productImageUrl = await ref.getDownloadURL();
 
         await FirebaseFirestore.instance
             .collection("Places")
@@ -319,7 +319,7 @@ class _EditOrUploadPlaceScreenState extends State<EditOrUploadPlaceScreen> {
                   ElevatedButton.icon(
                     style: ElevatedButton.styleFrom(
                       padding: const EdgeInsets.all(12),
-                       backgroundColor: Colors.blue,
+                      backgroundColor: Colors.blue,
                       shape: RoundedRectangleBorder(
                         borderRadius: BorderRadius.circular(
                           10,
@@ -497,7 +497,7 @@ class _EditOrUploadPlaceScreenState extends State<EditOrUploadPlaceScreen> {
                             },
                           ),
                           const SizedBox(
-                            height: 10
+                              height: 10
                           ),
                           TextFormField(
                             controller:  _timeController,
