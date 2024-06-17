@@ -41,7 +41,10 @@ class Assets {
   /// Assets for imagesWall1
   /// assets/images/wall1.jpg
   static const String imagesWall1 = "assets/images/wall1.jpg";
-
+  static const String green_mark = "assets/images/green.jpg";
+  static const String yellow_mark = "assets/images/yellow.jpg";
+  static const String orange_mark = "assets/images/orange.jpg";
+  static const String blue_mark = "assets/images/blue.jpg";
   /// Assets for forest
   /// assets/images/wall1.jpg
   static const String forest = "assets/images/forest.png";

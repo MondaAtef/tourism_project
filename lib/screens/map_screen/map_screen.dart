@@ -122,12 +122,6 @@ class MapScreen extends StatefulWidget {
 
 class _MapScreenState extends State<MapScreen> {
 
-  double lat1 = 30.7124815;
-  double long1 = 31.1069703;
-  double lat2 = 33.7124815;
-  double long2 = 35.1069703;
-  List<Marker> markers = [];
-  
   double lat1 = 20.7124815;
   double long1 = 20.1069703;
   double lat2 = 20.7124815;
@@ -596,10 +590,10 @@ class _MapScreenState extends State<MapScreen> {
             child: Row(
               mainAxisAlignment: MainAxisAlignment.spaceEvenly,
               children: [
-                _buildImageColumn(Assets.imagesWall1, 'Hotel'),
-                _buildImageColumn(Assets.imagesWall1, 'Restaurant'),
-                _buildImageColumn(Assets.imagesWall1, 'Hand Crafts'),
-                _buildImageColumn(Assets.imagesWall1, 'Historical'),
+                _buildImageColumn(Assets.green_mark, 'Hotels'),
+                _buildImageColumn(Assets.orange_mark, 'Restaurants'),
+                _buildImageColumn(Assets.blue_mark, 'Hand Crafts'),
+                _buildImageColumn(Assets.yellow_mark, 'Historical places'),
               ],
             ),
           ),
@@ -612,8 +606,8 @@ class _MapScreenState extends State<MapScreen> {
     return Column(
       children: [
         Container(
-          width: 70,
-          height: 70,
+          width: 30,
+          height: 40,
           decoration: BoxDecoration(
             borderRadius: BorderRadius.circular(10),
             //border: Border.all(color: Colors.black, width: 2),
@@ -622,8 +616,8 @@ class _MapScreenState extends State<MapScreen> {
             borderRadius: BorderRadius.circular(10),
             child: Image.asset(
               imagePath,
-              width: 70,
-              height: 70,
+              width: 30,
+              height: 40,
               fit: BoxFit.cover,
             ),
           ),
