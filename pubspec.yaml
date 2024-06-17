@@ -54,6 +54,7 @@ dependencies:
   webview_flutter: ^4.7.0
 
   google_fonts: ^6.2.1
+  go_router:
 
 
   gap: ^3.0.1

@@ -51,6 +51,7 @@ class _EditOrUploadPlaceScreenState extends State<EditOrUploadPlaceScreen> {
     if (widget.productModel != null) {
       isEditing = true;
       productNetworkImage = widget.productModel!.PlaceImage;
+      productImageUrl = productNetworkImage;
       _categoryValue = widget.productModel!.PlaceCategory;
     }
     _titleController =
@@ -203,10 +204,14 @@ class _EditOrUploadPlaceScreenState extends State<EditOrUploadPlaceScreen> {
           final ref = FirebaseStorage.instance
               .ref()
               .child("PlacesImages")
-              .child("${widget.productModel!.PlaceId}.jpg");
+              .child("${widget.productModel!.PlaceImage}.jpg");
           await ref.putFile(File(_pickedImage!.path));
           productImageUrl = await ref.getDownloadURL();
         }
+        if (productImageUrl == null && productNetworkImage != null) {
+          productImageUrl = productNetworkImage;
+        }
+
 
         await FirebaseFirestore.instance
             .collection("Places")
@@ -215,7 +220,7 @@ class _EditOrUploadPlaceScreenState extends State<EditOrUploadPlaceScreen> {
           'PlaceId': widget.productModel!.PlaceId,
           'PlaceTitle': _titleController.text,
           'PlaceAddress':_addressController.text,
-          'PlaceImage': productImageUrl,
+          'PlaceImage': productImageUrl, // Ensure this is updated
           'PlaceCategory': _categoryValue,
           'PlaceDescription': _descriptionController.text,
           'thingToKnow': _thingsController.text,
@@ -253,6 +258,7 @@ class _EditOrUploadPlaceScreenState extends State<EditOrUploadPlaceScreen> {
       }
     }
   }
+
 
   Future<void> localImagePicker() async {
     final ImagePicker picker = ImagePicker();
@@ -502,9 +508,9 @@ class _EditOrUploadPlaceScreenState extends State<EditOrUploadPlaceScreen> {
                           TextFormField(
                             controller:  _timeController,
                             key: const ValueKey('The Best Time'),
-                            maxLength: 50,
-                            minLines: 1,
-                            maxLines: 2,
+                            minLines: 5,
+                            maxLines: 8,
+                            maxLength: 200,
                             keyboardType: TextInputType.multiline,
                             textInputAction: TextInputAction.newline,
                             decoration: const InputDecoration(

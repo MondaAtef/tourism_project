@@ -153,7 +153,18 @@ class _ProductDetailsScreenState extends State<ProductDetailsScreen> {
                   const SizedBox(
                     height: 5,
                   ),
-                  Row(
+                  SingleChildScrollView(
+                    scrollDirection: Axis.vertical,
+                    child: Column(
+                      children: [
+                        const TitlesTextWidget(label:"The Best Time:"),
+                        SubtitleTextWidget(
+                            label: "${getCurrProduct.BestTime}"),
+
+                      ],
+                    ),
+                  ),
+            /*      Row(
                     crossAxisAlignment: CrossAxisAlignment.start,
                     children: [
                       Flexible(
@@ -165,7 +176,7 @@ class _ProductDetailsScreenState extends State<ProductDetailsScreen> {
                         ),
                       ),
                     ],
-                  ),
+                  ),*/
                   const SizedBox(
                     height: 5,
                   ),

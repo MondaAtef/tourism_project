@@ -10,10 +10,6 @@ class Placemodel with ChangeNotifier {
       PlaceImage,
       thingToKnow,
       BestTime;
-  /* Ticketforadult,
-      TicketforStudent,
-      openedat,
-      closedat,*/
   Timestamp? createdAt;
   Placemodel({
     required this.PlaceId,
