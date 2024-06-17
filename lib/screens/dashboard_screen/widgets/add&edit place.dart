@@ -33,7 +33,6 @@ class _EditOrUploadPlaceScreenState extends State<EditOrUploadPlaceScreen> {
       _descriptionController,
       _timeController;
 
-
 //  _adultController,
 // _studentController;
 //var openedat = TextEditingController();
@@ -125,7 +124,7 @@ class _EditOrUploadPlaceScreenState extends State<EditOrUploadPlaceScreen> {
             .child("PlacesImages")
             .child("$placeId.jpg");
         await ref.putFile(File(_pickedImage!.path));
-        placeImageUrl = await ref.getDownloadURL();
+        //placeImageUrl = await ref.getDownloadURL();
 
         await FirebaseFirestore.instance
             .collection("Places")
@@ -197,7 +196,7 @@ class _EditOrUploadPlaceScreenState extends State<EditOrUploadPlaceScreen> {
               .child("PlacesImages")
               .child("${widget.productModel!.PlaceId}.jpg");
           await ref.putFile(File(_pickedImage!.path));
-          placeImageUrl = await ref.getDownloadURL();
+          //placeImageUrl = await ref.getDownloadURL();
         }
 
         await FirebaseFirestore.instance
@@ -489,7 +488,7 @@ class _EditOrUploadPlaceScreenState extends State<EditOrUploadPlaceScreen> {
                           ),
                           const SizedBox(
                             height: 10,
-                          )
+                          ),
                           const SizedBox(height: 15),
                           TextFormField(
                             key: const ValueKey('Description'),
