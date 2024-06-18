@@ -9,8 +9,6 @@ import 'package:vixor_project/provider/view%20provider.dart';
 import 'package:vixor_project/screens/dashboard_screen/widgets/heartbtn.dart';
 import 'package:vixor_project/screens/dashboard_screen/widgets/product_details.dart';
 import 'package:vixor_project/services/MyAppFunctions.dart';
-
-
 class PlaceWidget2 extends StatefulWidget {
   const PlaceWidget2({
     super.key,

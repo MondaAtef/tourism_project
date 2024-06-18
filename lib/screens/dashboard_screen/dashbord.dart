@@ -19,7 +19,7 @@ class _DashBoardScreenState extends State<DashBoardScreen> {
   List<ListItemModell> itemModel = [
     ListItemModell(image: Assets.Ballon, text: 'Ballon'),
     ListItemModell(image: Assets.luxor, text: 'Luxor Temple'),
-    ListItemModell(image: Assets.imagesWall1, text: 'Karnak Temple'),
+    ListItemModell(image: Assets.Karnak, text: 'Karnak Temple'),
     ListItemModell(image: Assets.imagesWall1, text: 'Abo EL Hagaga Mosque'),
     ListItemModell(image: Assets.imagesWall1, text: 'Church of the Virgin Mary'),
     ListItemModell(image: Assets.imagesWall1, text: 'Valley of the Kings Temple'),

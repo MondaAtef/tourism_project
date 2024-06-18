@@ -20,10 +20,8 @@ import 'package:vixor_project/screens/auth/forget%20password.dart';
 import 'package:vixor_project/screens/auth/sign_up_screen.dart';
 import 'package:vixor_project/utils/app_colors.dart';
 import 'package:vixor_project/utils/app_imagse.dart';
-
 class Login extends StatefulWidget {
   const Login({Key? key}) : super(key: key);
-
   @override
   State<Login> createState() => _LoginState();
 }
@@ -40,11 +38,9 @@ class _LoginState extends State<Login> {
         scopes: ['email'],
       );
       final FirebaseAuth _auth = FirebaseAuth.instance;
-
       final GoogleSignInAccount? googleUser = await _googleSignIn.signIn();
       final GoogleSignInAuthentication? googleAuth =
       await googleUser?.authentication;
-
       final AuthCredential credential = GoogleAuthProvider.credential(
         accessToken: googleAuth?.accessToken,
         idToken: googleAuth?.idToken,
@@ -52,7 +48,6 @@ class _LoginState extends State<Login> {
 
       final User? user =
           (await _auth.signInWithCredential(credential)).user;
-
       final String? name = user?.displayName;
       final String? image = user?.photoURL;
       final String? email = user?.email;
@@ -338,10 +333,6 @@ class _LoginState extends State<Login> {
                           await  _googleSignUp(context: context).
                           then((value) {
                             navigateTo(context,const CustomBottomNavBar());
-
-                        //  await  _googleSignUp(context).then((value) {
-                         //   navigateTo(context,const CustomBottomNavBar());
-
                           });
                         },
                         width: 150,

@@ -33,19 +33,13 @@ class _EditOrUploadPlaceScreenState extends State<EditOrUploadPlaceScreen> {
       _descriptionController,
       _timeController,
       _thingsController;
-
-
-//  _adultController,
-// _studentController;
-//var openedat = TextEditingController();
-//var closedat = TextEditingController();
   String? _categoryValue;
   bool isEditing = false;
   String? productNetworkImage;
   bool _isLoading = false;
   String? productImageUrl;
-  // String?x;
-  //String?y;
+
+
   @override
   void initState() {
     if (widget.productModel != null) {
@@ -65,14 +59,6 @@ class _EditOrUploadPlaceScreenState extends State<EditOrUploadPlaceScreen> {
     _thingsController =
         TextEditingController(text: widget.productModel?.thingToKnow);
 
-    /* _studentController =
-        TextEditingController(text: widget.productModel?.TicketforStudent);
-    _adultController =
-        TextEditingController(text: widget.productModel?.Ticketforadult);
-    openedat= TextEditingController(text: widget.productModel?.openedat);
-    closedat= TextEditingController(text: widget.productModel?.closedat);*/
-
-
     super.initState();
   }
 
@@ -83,10 +69,6 @@ class _EditOrUploadPlaceScreenState extends State<EditOrUploadPlaceScreen> {
     _descriptionController.dispose();
     _timeController.dispose();
     _thingsController.dispose();
-    /* _studentController.dispose();
-    _adultController.dispose();
-    openedat.dispose();
-    closedat.dispose();*/
     super.dispose();
   }
 
@@ -96,10 +78,7 @@ class _EditOrUploadPlaceScreenState extends State<EditOrUploadPlaceScreen> {
     _descriptionController.clear();
     _timeController.clear();
     _thingsController.clear();
-    /* _studentController.clear();
-    _adultController.clear();
-    openedat.clear();
-    closedat.clear();*/
+
     removePickedImage();
   }
 
@@ -437,10 +416,7 @@ class _EditOrUploadPlaceScreenState extends State<EditOrUploadPlaceScreen> {
                       ],
                     )
                   ],
-                  const SizedBox(
-                    height: 25,
-                  ),
-
+                  const SizedBox(height: 25,),
                   // Category dropdown widget
                   DropdownButton(
                       items: AppConstants.categoriesDropDownList,
@@ -502,9 +478,7 @@ class _EditOrUploadPlaceScreenState extends State<EditOrUploadPlaceScreen> {
                               );
                             },
                           ),
-                          const SizedBox(
-                              height: 10
-                          ),
+                          const SizedBox(height: 10),
                           TextFormField(
                             controller:  _timeController,
                             key: const ValueKey('The Best Time'),

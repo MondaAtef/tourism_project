@@ -3,9 +3,11 @@ import 'package:flutter/material.dart';
 import 'package:fluttertoast/fluttertoast.dart';
 import 'package:vixor_project/const/reusable.dart';
 import 'package:vixor_project/screens/Admin/admin_screen.dart';
+import 'package:vixor_project/screens/dashboard_screen/webview.dart';
 import 'package:vixor_project/screens/luxor.dart';
 import 'package:vixor_project/screens/more_about_sustainability.dart';
 import 'package:vixor_project/utils/app_imagse.dart';
+
 
 class Mydrawer extends StatelessWidget {
   const Mydrawer({Key? key});
@@ -126,7 +128,7 @@ class Mydrawer extends StatelessWidget {
                                                 prefixIcon:
                                                     const Icon(Icons.lock),
                                                 fillColor:
-                                                    const Color(0xff8E4F2E),
+                                                    const Color.fromARGB(255, 208, 208, 208),
                                                 filled: true,
                                                 labelText: 'Lock',
                                                 border: OutlineInputBorder(
@@ -205,6 +207,19 @@ class Mydrawer extends StatelessWidget {
                       );
                     },
                   );
+                },
+              ),
+              ListTile(
+                title: const Text(
+                  'Join Our Community',
+                  style: TextStyle(color: Color(0xff8E4F2E)),
+                ),
+                onTap: () {
+                  Navigator.push(
+                    context,
+                    MaterialPageRoute(builder: (context) =>  Webviewscreen()),
+                  );
+                  // Navigator.pop(context);
                 },
               ),
             ],

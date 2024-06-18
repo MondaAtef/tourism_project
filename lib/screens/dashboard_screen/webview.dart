@@ -5,7 +5,7 @@ import 'package:webview_flutter/webview_flutter.dart';
 class Webviewscreen extends StatelessWidget {
   Webviewscreen({super.key, });
   final controller=WebViewController()..setJavaScriptMode(JavaScriptMode.disabled)..
-  loadRequest(Uri.parse("https://www.google.com/search?gs_ssp=eJzj4tTP1TcwtDBIMjVg9GLNKa3ILwIAKmQE-Q&q=luxor&oq=&gs_lcrp=EgZjaHJvbWUqCQgCEC4YJxjqAjIJCAAQIxgnGOoCMg8IARAuGCcYxwEY6gIY0QMyCQgCEC4YJxjqAjIJCAMQIxgnGOoCMgkIBBAjGCcY6gIyCQgFECMYJxjqAjIJCAYQIxgnGOoCMgkIBxAjGCcY6gLSAQoxOTkwMThqMGo3qAIIsAIB&sourceid=chrome&ie=UTF-8"));
+  loadRequest(Uri.parse("https://www.facebook.com/groups/133079348938338/?hoisted_section_header_type=recently_seen&multi_permalinks=796972032549063"));
 
   @override
   Widget build(BuildContext context) {

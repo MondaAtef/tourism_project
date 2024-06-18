@@ -79,12 +79,12 @@ class _RecommendationScreenState extends State<RecommendationScreen> {
                       labelText: 'Number Of Days',
                       labelStyle: TextStyle(color: Colors.white),
                       border: OutlineInputBorder(
-                        borderSide: BorderSide(color: Colors.white), // Border color when enabled
+                        borderSide: BorderSide(color: Colors.white),
                         borderRadius: BorderRadius.circular(8.0),
                       ),
                       focusedBorder: OutlineInputBorder(
-                        borderSide: BorderSide(color: Colors.white), // Border color when focused
-                        borderRadius: BorderRadius.circular(8.0), // Adjust the border radius as needed
+                        borderSide: BorderSide(color: Colors.white),
+                        borderRadius: BorderRadius.circular(8.0),
                       ),
                     ),
                     style: TextStyle(color: Colors.white),

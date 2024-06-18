@@ -104,7 +104,6 @@ class _LoginState extends State<SignUp> {
   }
   @override
   Widget build(BuildContext context) {
-
     return Scaffold(
         body: Container(
         decoration: BoxDecoration(
@@ -159,11 +158,8 @@ Form(
   child: Column(
     crossAxisAlignment: CrossAxisAlignment.start,
     children: [
-      Padding(
-          padding: const EdgeInsets.all(10),
-          ),
+      Padding(padding: const EdgeInsets.all(10),),
       TextFormField(
-
         keyboardType: TextInputType.name,
         textInputAction: TextInputAction.next,
         onEditingComplete: () => FocusScope.of(context)
@@ -172,9 +168,8 @@ Form(
         validator: (value) {
           if (value!.isEmpty) {
             return "17".tr;
-          } else {
-            return null;
           }
+          else {return null;}
         },
         decoration: InputDecoration(
           labelText: "16".tr,
@@ -246,10 +241,7 @@ Form(
         validator: (value) {
           if (value!.isEmpty || value.length < 7) {
             return "20".tr;
-
-          } else {
-            return null;
-          }
+          } else {return null;}
         },
         onEditingComplete: () => FocusScope.of(context)
             .requestFocus(_addressFocusNode),

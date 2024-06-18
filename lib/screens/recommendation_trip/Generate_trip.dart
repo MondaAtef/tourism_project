@@ -1,9 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:vixor_project/screens/recommendation_trip/Recommendation.dart';
 import 'package:vixor_project/utils/app_imagse.dart';
-
- // Make sure to import the correct path for your assets
-
 class GenerateTrip extends StatelessWidget {
   final int day;
   final List<Recommendation> recommendations;

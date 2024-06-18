@@ -9,8 +9,6 @@ import 'package:vixor_project/const/firebase%20constants.dart';
 import 'package:vixor_project/const/reusable.dart';
 import 'package:vixor_project/const/uttils.dart';
 import 'package:vixor_project/screens/auth/loading%20manager.dart';
-
-
 class ForgetPasswordScreen extends StatefulWidget {
   const ForgetPasswordScreen({Key? key}) : super(key: key);
   @override
@@ -71,27 +69,20 @@ class _ForgetPasswordScreenState extends State<ForgetPasswordScreen> {
         isLoading: _isLoading,
         child: Stack(
           children: [
-
             Padding(
               padding: const EdgeInsets.symmetric(horizontal: 16),
               child: Column(
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
-                  SizedBox(
-                    height: size.height * 0.1,
-                  ),
+                  SizedBox(height: size.height * 0.1,),
                   const Backwidget(),
-                  const SizedBox(
-                    height: 20,
-                  ),
+                  const SizedBox(height: 20,),
                   Textwidget(
                     text: "13".tr,
                     color: Colors.black,
                     textsize: 30,
                   ),
-                  const SizedBox(
-                    height: 30,
-                  ),
+                  const SizedBox(height: 30,),
                   TextField(
                     controller: emailTextController,
                     style: const TextStyle(color: Colors.black),
@@ -109,9 +100,7 @@ class _ForgetPasswordScreenState extends State<ForgetPasswordScreen> {
                       ),
                     ),
                   ),
-                  const SizedBox(
-                    height: 15,
-                  ),
+                  const SizedBox(height: 15,),
                   AuthButton(
                     buttonText: "15".tr,
                     fct: () {
