@@ -18,7 +18,7 @@ import 'package:vixor_project/screens/dashboard_screen/widgets/CustomListTile.da
 import 'package:vixor_project/screens/dashboard_screen/widgets/viewed_recently.dart';
 import 'package:vixor_project/screens/dashboard_screen/widgets/wishlist.dart';
 import 'package:vixor_project/screens/profile_screen/Edit%20profile.dart';
-import 'package:vixor_project/services/chatservices/assets_manager.dart';
+import 'package:vixor_project/utils/assets_manager.dart';
 import 'package:vixor_project/utils/app_imagse.dart';
 
 

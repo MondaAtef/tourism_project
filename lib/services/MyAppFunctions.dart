@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:vixor_project/componenet/widgets/subtitle_text.dart';
 import 'package:vixor_project/componenet/widgets/title%20widget.dart';
-import 'package:vixor_project/services/chatservices/assets_manager.dart';
+import 'package:vixor_project/utils/assets_manager.dart';
 
 
 

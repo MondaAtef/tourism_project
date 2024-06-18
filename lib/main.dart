@@ -12,7 +12,7 @@ import 'package:vixor_project/cubit/bloc.dart';
 import 'package:vixor_project/cubit/cashe%20helper.dart';
 import 'package:vixor_project/cubit/dio%20helper.dart';
 import 'package:vixor_project/provider/PlaceProvider.dart';
-import 'package:vixor_project/provider/chatprovider/chats_provider.dart';
+
 import 'package:vixor_project/provider/homeprovider.dart';
 import 'package:vixor_project/provider/theme_provider.dart';
 import 'package:vixor_project/provider/trip%20provider.dart';
@@ -26,7 +26,7 @@ import 'package:vixor_project/screens/localization/changelocal.dart';
 import 'package:vixor_project/screens/localization/localization.dart';
 import 'package:vixor_project/screens/localization/services.dart';
 import 'package:vixor_project/screens/splash.dart';
-import 'provider/chatprovider/models_provider.dart';
+
 import 'screens/dashboard_screen/widgets/searchscreen.dart';
 
 void main()async {
@@ -101,9 +101,9 @@ class _MyAppState extends State<MyApp> {
                 //Notify about theme changes
                 return themeChangeProvider;
               }),
-              ChangeNotifierProvider(
+             /* ChangeNotifierProvider(
                 create: (_) => ModelsProvider(),
-              ),
+              ),*/
               ChangeNotifierProvider(create: (_) {
                 return WishlistProvider();
               }),
@@ -114,9 +114,9 @@ class _MyAppState extends State<MyApp> {
                 return TripProvider();
               }),
 
-              ChangeNotifierProvider(
+             /* ChangeNotifierProvider(
                 create: (_) => ChatProvider(),
-              ),
+              ),*/
               ChangeNotifierProvider(create: (_) {
                 return PlaceProvider();
               }),

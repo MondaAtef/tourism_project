@@ -5,7 +5,7 @@ import 'package:vixor_project/componenet/widgets/cat.dart';
 import 'package:vixor_project/componenet/widgets/namewidget.dart';
 import 'package:vixor_project/componenet/widgets/title%20widget.dart';
 import 'package:vixor_project/const/app_constants.dart';
-import 'package:vixor_project/services/chatservices/assets_manager.dart';
+import 'package:vixor_project/utils/assets_manager.dart';
 import 'package:vixor_project/utils/app_imagse.dart';
 
 class Homescreen extends StatefulWidget {

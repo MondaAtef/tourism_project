@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:vixor_project/services/chatservices/assets_manager.dart';
+import 'package:vixor_project/utils/assets_manager.dart';
 
 class CategoriesModel {
   final String id;

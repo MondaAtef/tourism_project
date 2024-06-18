@@ -10,7 +10,7 @@ import 'package:vixor_project/provider/homeprovider.dart';
 import 'package:vixor_project/provider/wishlist_provider.dart';
 import 'package:vixor_project/screens/dashboard_screen/widgets/placewidget2.dart';
 import 'package:vixor_project/services/MyAppFunctions.dart';
-import 'package:vixor_project/services/chatservices/assets_manager.dart';
+import 'package:vixor_project/utils/assets_manager.dart';
 
 
 class WishlistScreen extends StatefulWidget {

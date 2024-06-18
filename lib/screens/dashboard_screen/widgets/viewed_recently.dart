@@ -6,7 +6,7 @@ import 'package:vixor_project/componenet/widgets/title%20widget.dart';
 import 'package:vixor_project/provider/view%20provider.dart';
 import 'package:vixor_project/screens/dashboard_screen/widgets/placewidget2.dart';
 import 'package:vixor_project/services/MyAppFunctions.dart';
-import 'package:vixor_project/services/chatservices/assets_manager.dart';
+import 'package:vixor_project/utils/assets_manager.dart';
 
 
 class ViewedRecentlyScreen extends StatelessWidget {

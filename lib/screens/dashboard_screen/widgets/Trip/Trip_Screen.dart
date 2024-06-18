@@ -13,7 +13,7 @@ import 'package:vixor_project/screens/auth/loading%20manager.dart';
 import 'package:vixor_project/screens/dashboard_screen/widgets/Trip/bottom_checkout.dart';
 import 'package:vixor_project/screens/dashboard_screen/widgets/Trip/trip_widget.dart';
 import 'package:vixor_project/services/MyAppFunctions.dart';
-import 'package:vixor_project/services/chatservices/assets_manager.dart';
+import 'package:vixor_project/utils/assets_manager.dart';
 class TripScreen extends StatefulWidget {
   const TripScreen({super.key});
   @override
