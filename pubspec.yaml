@@ -70,6 +70,7 @@ dependencies:
   url_launcher: ^6.1.2
   flutter_gemini: ^2.0.3
   dash_chat_2: ^0.0.20
+  location: ^6.0.2
 
   dio: ^5.3.3
   flutter_localizations:
