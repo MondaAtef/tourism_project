@@ -18,13 +18,14 @@ int Maxlinees=10;
     return Text(
 text,
       maxLines: Maxlinees,
-      style: TextStyle(
+      style: GoogleFonts.oxanium(
+        textStyle: TextStyle(
         overflow: TextOverflow.ellipsis,
         color: color,
       fontSize: textsize,
       fontWeight: istitle?FontWeight.bold:FontWeight.normal,
-        fontFamily: "Oxanium",
     ),
+      ),
     );
   }
 }

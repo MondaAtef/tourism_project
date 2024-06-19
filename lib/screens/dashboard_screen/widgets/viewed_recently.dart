@@ -53,7 +53,7 @@ class ViewedRecentlyScreen extends StatelessWidget {
             },
             icon: const Icon(
               Icons.delete_forever_rounded,
-              color: Colors.red,
+              color: Colors.amber,
             ),
           ),
         ],

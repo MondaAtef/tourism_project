@@ -217,7 +217,7 @@ class Mydrawer extends StatelessWidget {
                 onTap: () {
                   Navigator.push(
                     context,
-                    MaterialPageRoute(builder: (context) =>  Webviewscreen()),
+                    MaterialPageRoute(builder: (context) =>  WebviewScreen()),
                   );
                   // Navigator.pop(context);
                 },

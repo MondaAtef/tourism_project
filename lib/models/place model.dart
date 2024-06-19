@@ -22,17 +22,12 @@ class Placemodel with ChangeNotifier {
     required this.thingToKnow,
 
     this.createdAt,
-    /*required this.Ticketforadult,
-    required this.TicketforStudent,
-    required this.closedat,
-    required this.openedat,*/
   });
 
   factory Placemodel.fromFirestore(DocumentSnapshot doc) {
     Map data = doc.data() as Map<String, dynamic>;
-    // data.containsKey("")
     return Placemodel(
-      PlaceId: data["PlaceId"], //doc.get(field),
+      PlaceId: data["PlaceId"],
       PlaceTitle: data['PlaceTitle'],
 
       PlaceAddress: data['PlaceAddress'],
@@ -42,10 +37,6 @@ class Placemodel with ChangeNotifier {
       BestTime:data['BestTime'],
       createdAt: data['createdAt'],
       thingToKnow:data['thingToKnow'],
-      //Ticketforadult: data['Ticketforadult'],
-     // TicketforStudent: data['TicketforStudent'],
-      //closedat: data['closedat'],
-      //openedat: data['openedat'],
 
     );
   }

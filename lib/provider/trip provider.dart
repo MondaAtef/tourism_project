@@ -154,15 +154,6 @@ class TripProvider with ChangeNotifier {
 
   double getTotal({required HomeProvider productsProvider}) {
     double total = 0.0;
-
- /*  _cartItems.forEach((key, value) {
-      final getCurrProduct = productsProvider.findByProdId(value.productId);
-      if (getCurrProduct == null) {
-        total += 0;
-      } else {
-        total += double.parse(getCurrProduct.TicketforStudent) * value.quantity;
-      }
-    });*/
     return total;
   }
 

@@ -34,7 +34,7 @@ class HomeItem3 extends StatelessWidget {
               ),
               GestureDetector(
                 onTap: () {
-                  navigateTo(context, Webviewscreen());
+                  navigateTo(context, WebviewScreen());
                 },
                 child: Container(
                   decoration: BoxDecoration(

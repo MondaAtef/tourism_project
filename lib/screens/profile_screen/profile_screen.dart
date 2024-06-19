@@ -33,9 +33,6 @@ class _SettingScreenState extends State<SettingScreen> {
 
   @override
   Widget build(BuildContext context) {
-    final themeState = Provider.of<ThemeProvider>(context);
-    final Color color = themeState.getDarkTheme ? Colors.white : Colors.black;
-
     return BlocConsumer<NewsCubit, NewsStates>(
       listener: (context, state) {},
       builder: (context, state) {

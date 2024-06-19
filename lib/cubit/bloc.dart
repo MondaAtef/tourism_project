@@ -89,8 +89,7 @@ class NewsCubit extends Cubit<NewsStates> {
     emit(SocialUserUpdateLoadingState());
     firebase_storage.FirebaseStorage.instance
         .ref()
-        .child('users/${Uri
-        .file(profileImage!.path)
+        .child('users/${Uri.file(profileImage!.path)
         .pathSegments
         .last}')
         .putFile(profileImage!)
@@ -111,7 +110,7 @@ class NewsCubit extends Cubit<NewsStates> {
     });
   }
 
-  void UploadcoverImage({
+ /* void UploadcoverImage({
     required String name,
     required String phone,
     required String bio,
@@ -141,7 +140,7 @@ class NewsCubit extends Cubit<NewsStates> {
       emit(SocialuploadcoverimageErrorState());
     });
   }
-
+*/
   void updataUser({
     required String name,
     required String phone,

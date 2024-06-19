@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:google_fonts/google_fonts.dart';
 
 class TitlesTextWidget extends StatelessWidget {
   const TitlesTextWidget({
@@ -19,13 +20,13 @@ class TitlesTextWidget extends StatelessWidget {
     return Text(
       label,
       maxLines: maxLines,
-      // textAlign: TextAlign.justify,
-      style: TextStyle(
+      style: GoogleFonts.oxanium(
+        textStyle: TextStyle(
         color: color,
         fontSize: fontSize,
         fontWeight: FontWeight.bold,
-        fontFamily: 'Oxanium', // Specify the Oxanium font family
         overflow: TextOverflow.ellipsis,
+      ),
       ),
     );
   }

@@ -23,16 +23,6 @@ class Padge extends StatelessWidget {
               ),
             ),
             const SizedBox(height: 0),
-            /*const Text(
-              'vixor',
-              textAlign: TextAlign.center,
-              style: TextStyle(
-                fontSize: 32,
-                fontWeight: FontWeight.w400,
-                height: 2,
-                color: Color(0xd18e4f2e),
-              ),
-            ),*/
           ],
         ),
       ),

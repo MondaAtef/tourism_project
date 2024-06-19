@@ -42,7 +42,6 @@ class CategoryRoundedWidget extends StatelessWidget {
             label: name,
             fontSize: 14,
             fontWeight: FontWeight.bold,
-
             color: const Color(0xFF8D502F),
           )
         ],

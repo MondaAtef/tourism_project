@@ -92,7 +92,7 @@ class _AllplacesScreenState extends State<AllplacesScreen> {
                           },
                           child: const Icon(
                             Icons.clear,
-                            color: Colors.red,
+                            color: Colors.amber,
                           ),
                         ),
                       ),
