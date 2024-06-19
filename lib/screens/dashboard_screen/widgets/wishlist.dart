@@ -54,7 +54,6 @@ class _WishlistScreenState extends State<WishlistScreen> {
       body: EmptyBagWidget(
         imagePath: AssetsManager.bagWish,
         title: "66".tr,
-        subtitle:'',
         buttonText: "67".tr,
       ),
     )
@@ -68,8 +67,7 @@ class _WishlistScreenState extends State<WishlistScreen> {
         ),
         title: TitlesTextWidget(
           label: "69".tr,
-            //label: "69(${wishlistProvider.getWishlists.length})",
-            color: Colors.brown,// Set the text color to brown
+            color: Color(0xFF8D502F),
 
 
         ),
@@ -88,7 +86,7 @@ class _WishlistScreenState extends State<WishlistScreen> {
             },
             icon: const Icon(
               Icons.delete_outline,
-              color: Colors.red,
+              color: Colors.amber
             ),
           ),
         ],

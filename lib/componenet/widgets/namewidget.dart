@@ -17,18 +17,5 @@ class AppNameTextWidget extends StatelessWidget {
         // You can add more styling options here
       ),
     );
-    // return Shimmer.fromColors(
-    //   period: const Duration(seconds: 22),
-    //   baseColor: Colors.transparent,
-    //   highlightColor: Colors.white,
-    //   child: Image.asset(Assets.vixor,
-    //   width: 120,
-    //   height:90,
-    //   )
-    //   // TitlesTextWidget(
-    //   //   label: "Vixor",
-    //   //   fontSize: fontSize,
-    //   // ),
-    // );
   }
 }

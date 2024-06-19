@@ -109,38 +109,6 @@ class NewsCubit extends Cubit<NewsStates> {
       emit(SocialuploadimageErrorState());
     });
   }
-
- /* void UploadcoverImage({
-    required String name,
-    required String phone,
-    required String bio,
-    required String title,
-  }) {
-    emit(SocialUserUpdateLoadingState());
-    firebase_storage.FirebaseStorage.instance
-        .ref()
-        .child('users/${Uri
-        .file(coverimage!.path)
-        .pathSegments
-        .last}')
-        .putFile(coverimage! as File)
-        .then((value) {
-      value.ref.getDownloadURL().then((value) {
-        // emit(SocialuploadcoverimageSuccessState());
-        print(value);
-        updataUser(name: name,
-            phone: phone,
-            bio: bio,
-            //cover: value,
-            title: title);
-      }).catchError((error) {
-        emit(SocialuploadcoverimageErrorState());
-      });
-    }).catchError((error) {
-      emit(SocialuploadcoverimageErrorState());
-    });
-  }
-*/
   void updataUser({
     required String name,
     required String phone,
@@ -155,7 +123,6 @@ class NewsCubit extends Cubit<NewsStates> {
       bio: bio,
       shopping_address: title,
       email: usermodel!.email,
-     // cover: cover ?? usermodel!.cover!,
       image: image ?? usermodel!.image!,
       id: usermodel!.id,
       isEmailVerified: false,

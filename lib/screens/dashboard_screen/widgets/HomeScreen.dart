@@ -63,9 +63,6 @@ class _HomeScreenState extends State<Homescreen> {
                       height: 100,
                     ),
                     const TitlesTextWidget(label: "Categories", color: Colors.white,fontSize:25),
-                    const SizedBox(
-                      height: 5,
-                    ),
                     SizedBox(
                       width: size.width * 0.9,  // Adjust width here
                       child: ListView.separated(

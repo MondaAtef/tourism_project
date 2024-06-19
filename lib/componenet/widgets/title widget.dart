@@ -25,7 +25,7 @@ class TitlesTextWidget extends StatelessWidget {
         color: color,
         fontSize: fontSize,
         fontWeight: FontWeight.bold,
-        overflow: TextOverflow.ellipsis,
+       // overflow: TextOverflow.ellipsis,
       ),
       ),
     );

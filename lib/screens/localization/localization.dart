@@ -80,6 +80,9 @@ class MyTranslation extends Translations {
       "74":"لم تتم إضافة أي أماكن",
       "75":"بحث",
       "76":"لم يتم العثور على أماكن",
+      "77":"لم يتم زيارة الأماكن بعد",
+      "78":"عرض الأماكن الآن",
+      "79":"حذف الكل؟",
 
     },
     "en": {
@@ -159,6 +162,9 @@ class MyTranslation extends Translations {
       "74":"No Places Has Been Added",
       "75":"Search",
       "76":"No Places Found",
+      "77":"No viewed Places yet",
+      "78":"show Place now",
+      "79":"Delete All?",
 
 
 
@@ -242,6 +248,9 @@ class MyTranslation extends Translations {
       "74":"추가된 장소가 없습니다",
       "75":"찾다",
       "76":"장소를 찾을 수 없습니다",
+      "77":"아직 조회한 장소가 없습니다",
+      "78":"지금 장소 표시",
+      "79":"모두 삭제 ?",
     },
 
 

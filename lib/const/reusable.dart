@@ -260,7 +260,7 @@ Future<void>warningDialog({
   await showDialog(context: context, builder: (context){
     return AlertDialog(
 
-      backgroundColor: Colors.brown.withOpacity(0.9),
+      backgroundColor: Color(0xff8E4F2E).withOpacity(0.9),
       title: Row(
         children: [
 

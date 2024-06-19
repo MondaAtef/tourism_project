@@ -65,7 +65,7 @@ class MyAppFunctions {
                       child: const SubtitleTextWidget(
 
                         label: "OK",
-                        color: Colors.brown,
+                        color: Color(0xFF8D502F),
                       ),
                     ),
                   ],

@@ -127,8 +127,7 @@ class _MyAppState extends State<MyApp> {
                     debugShowCheckedModeBanner: false,
                     locale: controller.language,
                     routes: {
-                      ViewedRecentlyScreen.routName: (context) =>
-                      const ViewedRecentlyScreen(),
+                      ViewedRecentlyScreen.routName: (context) => const ViewedRecentlyScreen(),
                       SearchScreen.routeName: (context) => const SearchScreen(),
                       ProductDetailsScreen.routName: (context) =>
                       const ProductDetailsScreen(),

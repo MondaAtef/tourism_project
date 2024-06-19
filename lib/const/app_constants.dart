@@ -19,7 +19,8 @@ class AppConstants {
       'https://i.ibb.co/8r1Ny2n/20-Nike-Air-Force-1-07.png';
 
   static List<String> categoriesList = [
-    //'Nile Tourism ',
+    'Green Hotels ',
+    'Resturant',
     'Historical landmarks (west)',
     'Historical landmarks (East)',
     'leisure tourism',
@@ -27,11 +28,16 @@ class AppConstants {
   ];
 
   static List<CategoriesModel> categoyList = [
-   /* CategoriesModel(
-      id: "Nile Tourism",
-      image: AssetsManager.nile,
-      name: "Nile Tourism",
-    ),*/
+    CategoriesModel(
+      id: "Green Hotels ",
+      image: AssetsManager.hotels,
+      name: "Green Hotels ",
+    ),
+    CategoriesModel(
+      id: "Resturant",
+      image: AssetsManager.Resturant,
+      name: "Resturant",
+    ),
     CategoriesModel(
       id: "Historical landmarks (west)",
       image: AssetsManager.west,

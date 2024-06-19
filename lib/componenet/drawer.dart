@@ -55,15 +55,7 @@ class Mydrawer extends StatelessWidget {
                   // Navigator.pop(context);
                 },
               ),
-              ListTile(
-                title: const Text(
-                  'Customize Trip',
-                  style: TextStyle(color: Color(0xff8E4F2E)),
-                ),
-                onTap: () {
-                  // Navigator.pop(context);
-                },
-              ),
+
               ListTile(
                 title: const Text(
                   'More About luxor',
@@ -219,6 +211,15 @@ class Mydrawer extends StatelessWidget {
                     context,
                     MaterialPageRoute(builder: (context) =>  WebviewScreen()),
                   );
+                  // Navigator.pop(context);
+                },
+              ),
+              ListTile(
+                title: const Text(
+                  'Customize Trip',
+                  style: TextStyle(color: Color(0xff8E4F2E)),
+                ),
+                onTap: () {
                   // Navigator.pop(context);
                 },
               ),

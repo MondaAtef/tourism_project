@@ -3,17 +3,17 @@ import 'package:get/get.dart';
 import 'package:vixor_project/componenet/widgets/title%20widget.dart';
 
 import 'subtitle_text.dart';
+import 'package:vixor_project/screens/dashboard_screen/widgets/HomeScreen.dart';
 
 class EmptyBagWidget extends StatelessWidget {
   const EmptyBagWidget({
     super.key,
     required this.imagePath,
     required this.title,
-    required this.subtitle,
     required this.buttonText,
   });
 
-  final String imagePath, title, subtitle, buttonText;
+  final String imagePath, title, buttonText;
   @override
   Widget build(BuildContext context) {
     Size size = MediaQuery.of(context).size;
@@ -54,7 +54,13 @@ class EmptyBagWidget extends StatelessWidget {
                 backgroundColor: const Color(0xff9f6b4f),
                 padding:
                 const EdgeInsets.symmetric(horizontal: 20, vertical: 15)),
-            onPressed: () {},
+            onPressed: () {
+              // Navigate to the Homescreen
+              Navigator.push(
+                context,
+                MaterialPageRoute(builder: (context) => Homescreen()),
+              );
+            },
             child: Text(buttonText,style: const TextStyle(
               fontSize: 17.0,
               color: Colors.white,

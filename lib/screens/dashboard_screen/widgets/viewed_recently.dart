@@ -1,5 +1,6 @@
 import 'package:dynamic_height_grid_view/dynamic_height_grid_view.dart';
 import 'package:flutter/material.dart';
+import 'package:get/get.dart';
 import 'package:provider/provider.dart';
 import 'package:vixor_project/componenet/widgets/empty_bag.dart';
 import 'package:vixor_project/componenet/widgets/title%20widget.dart';
@@ -21,10 +22,8 @@ class ViewedRecentlyScreen extends StatelessWidget {
         ? Scaffold(
       body: EmptyBagWidget(
         imagePath: AssetsManager.viewed,
-        title: "No viewed Places yet",
-        subtitle:
-        "Looks like your cart is empty add something and make me happy",
-        buttonText: "show Place now",
+        title: "77".tr,
+        buttonText: "78".tr,
       ),
     )
         : Scaffold(
@@ -36,8 +35,9 @@ class ViewedRecentlyScreen extends StatelessWidget {
           ),
         ),
         title: TitlesTextWidget(
-            label:
-            "Viewed recently (${viewedProdProvider.getViewedProds.length})"),
+          color: Color(0xFF8D502F),
+            label: "30".tr,
+        ),
         actions: [
           IconButton(
 
@@ -45,7 +45,7 @@ class ViewedRecentlyScreen extends StatelessWidget {
                MyAppFunctions.showErrorOrWarningDialog(
                 isError: false,
                 context: context,
-                subtitle: "Clear cart?",
+                subtitle: "79".tr,
                 fct: () {
                 viewedProdProvider.clearHistory();
                 },
