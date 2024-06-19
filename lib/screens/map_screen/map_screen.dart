@@ -4,6 +4,7 @@ import 'package:flutter/material.dart';
 import 'package:google_maps_flutter/google_maps_flutter.dart';
 import 'package:geolocator/geolocator.dart';
 import 'package:vixor_project/utils/app_imagse.dart';
+import 'package:location/location.dart';
 
 class MapScreen extends StatefulWidget {
   const MapScreen({super.key});
@@ -17,7 +18,9 @@ class _MapScreenState extends State<MapScreen> {
   double long1 = 20.1069703;
   double lat2 = 20.7124815;
   double long2 = 20.1069703;
+
   List<Marker> markers = [
+
   Marker(
   markerId: const MarkerId('2'),
   position: const LatLng(25.694636426028495, 32.635042358490956),//Iberotel Luxor
@@ -388,36 +391,70 @@ class _MapScreenState extends State<MapScreen> {
   ];
 
   GoogleMapController? gmc;
+  LocationData? _currentLocation;
+  final Location _location = Location();
 
-  _determinePosition() async {
+  Future<void> _determinePosition() async {
     bool serviceEnabled;
     LocationPermission permission;
+
     serviceEnabled = await Geolocator.isLocationServiceEnabled();
     if (!serviceEnabled) {
-      return Future.error('الرجاء تشغيل خدمة الموقع علي جهازك');
+      return Future.error('Please enable location services.');
     }
 
     permission = await Geolocator.checkPermission();
     if (permission == LocationPermission.denied) {
       permission = await Geolocator.requestPermission();
       if (permission == LocationPermission.denied) {
-        return Future.error('Location permissions are denied');
+        return Future.error('Location permissions are denied.');
       }
     }
+
     if (permission == LocationPermission.deniedForever) {
       return Future.error(
           'Location permissions are permanently denied, we cannot request permissions.');
     }
-    if (permission == LocationPermission.whileInUse) {
-      double distanceInMeters =
-          Geolocator.distanceBetween(lat1, long1, lat2, long2);
-      if (kDebugMode) {
-        print("======================");
-      }
-      if (kDebugMode) {
-        print(distanceInMeters / 1000);
-      }
-    }
+
+    _currentLocation = await _location.getLocation();
+    _currentLocation = await _location.getLocation();
+
+    _location.onLocationChanged.listen((LocationData currentLocation) {
+      setState(() {
+        _currentLocation = currentLocation;
+        //markers.clear();
+        //check if the current location already exists
+        Marker currentLocationMarker = Marker(
+          markerId: const MarkerId('currentLocation'),
+          position: LatLng(_currentLocation!.latitude!, _currentLocation!.longitude!),
+          infoWindow: const InfoWindow(title: 'My Location'),
+        );
+
+        bool markerExists = false;
+        for (int i = 0; i < markers.length; i++) {
+          if (markers[i].markerId == currentLocationMarker.markerId) {
+            markers[i] = currentLocationMarker;
+            markerExists = true;
+            break;
+          }
+        }
+
+        if (!markerExists) {
+          markers.add(currentLocationMarker);
+        }
+
+        if (gmc != null) {
+          gmc!.animateCamera(
+            CameraUpdate.newCameraPosition(
+              CameraPosition(
+                target: LatLng(_currentLocation!.latitude!, _currentLocation!.longitude!),
+                zoom: 14,
+              ),
+            ),
+          );
+        }
+      });
+    });
   }
 
   CameraPosition cameraPosition = const CameraPosition(
@@ -443,14 +480,8 @@ class _MapScreenState extends State<MapScreen> {
                   onTap: (LatLng latLng) {
                     if (kDebugMode) {
                       print("=====================");
-                    }
-                    if (kDebugMode) {
                       print(latLng.latitude);
-                    }
-                    if (kDebugMode) {
                       print(latLng.longitude);
-                    }
-                    if (kDebugMode) {
                       print("=====================");
                     }
                     markers.add(Marker(
@@ -463,7 +494,19 @@ class _MapScreenState extends State<MapScreen> {
                   initialCameraPosition: cameraPosition,
                   onMapCreated: (mapcontroller) {
                     gmc = mapcontroller;
+                    if (_currentLocation != null) {
+                      mapcontroller.animateCamera(
+                        CameraUpdate.newCameraPosition(
+                          CameraPosition(
+                            target: LatLng(_currentLocation!.latitude!, _currentLocation!.longitude!),
+                            zoom: 14,
+                          ),
+                        ),
+                      );
+                    }
                   },
+                  myLocationEnabled: true,
+                  myLocationButtonEnabled: true,
                 ),
               ],
             ),
