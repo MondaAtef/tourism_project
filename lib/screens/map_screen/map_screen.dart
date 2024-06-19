@@ -422,14 +422,26 @@ class _MapScreenState extends State<MapScreen> {
     _location.onLocationChanged.listen((LocationData currentLocation) {
       setState(() {
         _currentLocation = currentLocation;
-        markers.clear();
-        markers.add(
-          Marker(
-            markerId: const MarkerId('currentLocation'),
-            position: LatLng(_currentLocation!.latitude!, _currentLocation!.longitude!),
-            infoWindow: const InfoWindow(title: 'My Location'),
-          ),
+        //markers.clear();
+        //check if the current location already exists
+        Marker currentLocationMarker = Marker(
+          markerId: const MarkerId('currentLocation'),
+          position: LatLng(_currentLocation!.latitude!, _currentLocation!.longitude!),
+          infoWindow: const InfoWindow(title: 'My Location'),
         );
+
+        bool markerExists = false;
+        for (int i = 0; i < markers.length; i++) {
+          if (markers[i].markerId == currentLocationMarker.markerId) {
+            markers[i] = currentLocationMarker;
+            markerExists = true;
+            break;
+          }
+        }
+
+        if (!markerExists) {
+          markers.add(currentLocationMarker);
+        }
 
         if (gmc != null) {
           gmc!.animateCamera(
