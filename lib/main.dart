@@ -101,9 +101,6 @@ class _MyAppState extends State<MyApp> {
                 //Notify about theme changes
                 return themeChangeProvider;
               }),
-             /* ChangeNotifierProvider(
-                create: (_) => ModelsProvider(),
-              ),*/
               ChangeNotifierProvider(create: (_) {
                 return WishlistProvider();
               }),
@@ -114,9 +111,6 @@ class _MyAppState extends State<MyApp> {
                 return TripProvider();
               }),
 
-             /* ChangeNotifierProvider(
-                create: (_) => ChatProvider(),
-              ),*/
               ChangeNotifierProvider(create: (_) {
                 return PlaceProvider();
               }),

@@ -116,7 +116,7 @@ class _SearchScreenState extends State<SearchScreen> {
                           },
                           child: const Icon(
                             Icons.clear,
-                            color: Colors.red,
+                            color: Colors.amber,
                           ),
                         ),
                       ),

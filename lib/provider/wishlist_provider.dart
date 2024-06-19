@@ -110,7 +110,7 @@ class WishlistProvider with ChangeNotifier {
       });
       _wishlistItems.clear();
       Fluttertoast.showToast(msg: '64'.tr,
-        backgroundColor: Colors.brown.shade600,
+        backgroundColor: Color(0xFF8D502F),
         textColor: Colors.white,
         fontSize: 16.0,);
     } catch (e) {

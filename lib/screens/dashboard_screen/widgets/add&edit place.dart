@@ -130,7 +130,7 @@ class _EditOrUploadPlaceScreenState extends State<EditOrUploadPlaceScreen> {
         });
         Fluttertoast.showToast(
           msg: "Place has been added",
-          backgroundColor: Colors.brown.shade600,
+          backgroundColor: Color(0xff8E4F2E),
           textColor: Colors.white,
           fontSize: 16.0,
         );

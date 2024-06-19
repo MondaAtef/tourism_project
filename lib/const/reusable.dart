@@ -182,10 +182,10 @@ Widget listtile({
     title: Textwidget(
       color: color,
       text:title,
-      textsize:19.0,
+      textsize:20,
       // istitle: true,
     ),
-     leading: Icon(icon),
+     leading: Icon(icon,color: Colors.white,),
      trailing: const Icon(IconlyLight.arrowRight2),
      onTap: (){
        onpressed();

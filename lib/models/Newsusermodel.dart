@@ -7,7 +7,7 @@ class NewsUserModel
   String? id;
   String? image;
   String? bio;
-  String? cover;
+  //String? cover;
   bool? isEmailVerified;
   NewsUserModel({
     this.name,
@@ -16,7 +16,7 @@ class NewsUserModel
     this.phone,
     this.image,
     this.bio,
-    this.cover,
+    //this.cover,
     this.id,
     this.isEmailVerified,
   });
