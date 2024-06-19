@@ -85,24 +85,24 @@ class _SettingScreenState extends State<SettingScreen> {
                     ),
                     Text(
                       '${usermodel.name}',
-                      style: Theme.of(context).textTheme.bodyText1,
+                      style: Theme.of(context).textTheme.bodyLarge,
                     ),
                     Text(
                       '${usermodel.bio}',
-                      style: Theme.of(context).textTheme.caption,
+                      style: Theme.of(context).textTheme.titleSmall,
                     ),
                     Text(
                       '${usermodel.shopping_address}',
                       style: Theme.of(context)
                           .textTheme
-                          .caption!
+                          .titleSmall!
                           .copyWith(color: Colors.grey),
                     ),
                     Text(
                       '${usermodel.phone}',
                       style: Theme.of(context)
                           .textTheme
-                          .caption!
+                          .titleSmall!
                           .copyWith(color: Colors.grey),
                     ),
                     Padding(
