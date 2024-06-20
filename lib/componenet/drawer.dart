@@ -7,7 +7,9 @@ import 'package:vixor_project/screens/dashboard_screen/webview.dart';
 import 'package:vixor_project/screens/luxor.dart';
 import 'package:vixor_project/screens/more_about_sustainability.dart';
 import 'package:vixor_project/utils/app_imagse.dart';
+import 'package:flutter_rating_bar/flutter_rating_bar.dart';
 import 'package:url_launcher/url_launcher.dart';
+
 
 class Mydrawer extends StatelessWidget {
   const Mydrawer({Key? key}) : super(key: key);
@@ -216,12 +218,51 @@ class Mydrawer extends StatelessWidget {
               ),
               ListTile(
                 title: const Text(
-                  'Customize Trip',
+                  'Rate Us',
                   style: TextStyle(color: Color(0xff8E4F2E)),
                 ),
                 onTap: () {
-                  // Implement onTap functionality for Customize Trip
+                  showDialog(
+                    context: context,
+                    builder: (BuildContext context) {
+                      return AlertDialog(
+                        content: Column(
+                          mainAxisSize: MainAxisSize.min,
+                          children: [
+                            RatingBar.builder(
+                              initialRating: 2.5,
+                              minRating: 0,
+                              direction: Axis.horizontal,
+                              allowHalfRating: true,
+                              itemCount: 5,
+                              itemPadding: const EdgeInsets.symmetric(horizontal: 4.0),
+                              itemBuilder: (context, _) => const Icon(
+                                Icons.star,
+                                color: Colors.amber,
+                              ),
+                              onRatingUpdate: (rating) {
+                                print(rating);
+                              },
+                            ),
+                          ],
+                        ),
+                        actions: [
+                          TextButton(
+                            onPressed: () {
+                              Navigator.of(context).pop();
+                            },
+                            child: const Text('Rate'),
+                          ),
+                        ],
+                      );
+                    },
+                  );
+                  // Navigator.pop(context);
+
+                 
                 },
+
+
               ),
             ],
           ),
