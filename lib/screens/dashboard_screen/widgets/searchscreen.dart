@@ -75,7 +75,9 @@ class _SearchScreenState extends State<SearchScreen> {
               AssetsManager.hors,
             ),
           ),
-          title: TitlesTextWidget(label: passedCategory ?? "Search places"),
+          title: TitlesTextWidget(
+              color: Color(0xFF8D502F),
+              label: passedCategory ?? "Search places"),
         ),
           body: productList.isEmpty
               ? const Center(child: TitlesTextWidget(label: "No Place found"))

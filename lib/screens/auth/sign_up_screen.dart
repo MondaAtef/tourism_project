@@ -241,7 +241,15 @@ Form(
         validator: (value) {
           if (value!.isEmpty || value.length < 7) {
             return "20".tr;
-          } else {return null;}
+          }
+          final hasLowercase = value.contains(RegExp(r'[a-z]'));
+          final hasUppercase = value.contains(RegExp(r'[A-Z]'));
+          final hasSpecialCharacter = value.contains(RegExp(r'[!@#%^&*?]'));
+
+          if (!hasLowercase || !hasUppercase || !hasSpecialCharacter) {
+            return "18".tr ;
+          }
+          else {return null;}
         },
         onEditingComplete: () => FocusScope.of(context)
             .requestFocus(_addressFocusNode),
@@ -290,7 +298,7 @@ Form(
         onEditingComplete: _submitFormOnRegister,
         controller: _addressTextController,
         validator: (value) {
-          if (value!.isEmpty || value.length < 10) {
+          if (value!.isEmpty) {
             return "22".tr;
           } else {
             return null;

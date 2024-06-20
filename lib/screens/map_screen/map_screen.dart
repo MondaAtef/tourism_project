@@ -507,7 +507,20 @@ class _MapScreenState extends State<MapScreen> {
                   },
                   myLocationEnabled: true,
                   myLocationButtonEnabled: true,
+
+                /*  marker Set<Marker>.from(markers.map((Marker marker) {
+                    return Marker(
+                      markerId: marker.markerId,
+                      position: marker.position,
+                      icon: marker.icon,
+                      onTap: () {
+                        _onMarkerTapped(marker.markerId);
+                      },
+                    );
+                  }
+                  )),*/
                 ),
+
               ],
             ),
           ),

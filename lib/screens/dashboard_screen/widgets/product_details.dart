@@ -9,6 +9,8 @@ import 'package:vixor_project/provider/trip%20provider.dart';
 import 'package:vixor_project/screens/dashboard_screen/widgets/heartbtn.dart';
 import 'package:vixor_project/services/MyAppFunctions.dart';
 
+import '../../map_screen/map_screen.dart';
+
 
 class ProductDetailsScreen extends StatefulWidget {
   static const routName = "/ProductDetailsScreen";
@@ -79,17 +81,23 @@ class _ProductDetailsScreenState extends State<ProductDetailsScreen> {
                             height: kBottomNavigationBarHeight - 10,
                             child: ElevatedButton.icon(
                               style: ElevatedButton.styleFrom(
-                                backgroundColor:  Color(0xFF8D502F),
+                                backgroundColor: Color(0xFF8D502F),
                                 shape: RoundedRectangleBorder(
-                                  borderRadius: BorderRadius.circular(
-                                    30.0,
-                                  ),
+                                  borderRadius: BorderRadius.circular(30.0),
                                 ),
                               ),
                               onPressed: () async {
-                                if (cartProvider.isProdinCart(
-                                    productId:
-                                    getCurrProduct.PlaceId)) {
+                                if (cartProvider.isProdinCart(productId: getCurrProduct.PlaceId)) {
+                                  // Navigate to map screen
+                                  Navigator.push(
+                                    context,
+                                    MaterialPageRoute(
+                                      builder: (context) => MapScreen(
+                                        /*latitude: getCurrProduct.latitude, // Replace with actual latitude
+                                        longitude: getCurrProduct.longitude, */// Replace with actual longitude
+                                         ),
+                                    ),
+                                  );
                                   return;
                                 }
                                 try {
@@ -98,8 +106,7 @@ class _ProductDetailsScreenState extends State<ProductDetailsScreen> {
                                       qty: 1,
                                       context: context);
                                 } catch (e) {
-                                  await MyAppFunctions
-                                      .showErrorOrWarningDialog(
+                                  await MyAppFunctions.showErrorOrWarningDialog(
                                     context: context,
                                     subtitle: e.toString(),
                                     fct: () {},
@@ -107,22 +114,22 @@ class _ProductDetailsScreenState extends State<ProductDetailsScreen> {
                                 }
                               },
                               icon: Icon(
-                                cartProvider.isProdinCart(
-                                    productId:
-                                    getCurrProduct.PlaceId)
+                                cartProvider.isProdinCart(productId: getCurrProduct.PlaceId)
                                     ? Icons.check
-                                    : Icons.add_shopping_cart_outlined,
+                                    : Icons.local_taxi,
                                 color: Colors.white,
                               ),
-                              label: Text(cartProvider.isProdinCart(
-                                  productId: getCurrProduct.PlaceId)
-                                  ? "In Trip"
-                                  : "Add to MyTrip",
-                                   style: const TextStyle(color: Colors.white),
-
+                              label: Text(
+                                cartProvider.isProdinCart(productId: getCurrProduct.PlaceId)
+                                    ? "map"
+                                    : "Go",
+                                style: const TextStyle(color: Colors.white),
+                              ),
                             ),
+
+
+
                           ),
-                        ),
                         ),
                     ],
                     ),
@@ -164,19 +171,6 @@ class _ProductDetailsScreenState extends State<ProductDetailsScreen> {
                       ],
                     ),
                   ),
-            /*      Row(
-                    crossAxisAlignment: CrossAxisAlignment.start,
-                    children: [
-                      Flexible(
-                        child: Text(
-                          "Best Time:${getCurrProduct.BestTime}",
-                          softWrap: true,
-                          style: const TextStyle(
-                              fontSize: 20, fontWeight: FontWeight.w700),
-                        ),
-                      ),
-                    ],
-                  ),*/
                   const SizedBox(
                     height: 5,
                   ),

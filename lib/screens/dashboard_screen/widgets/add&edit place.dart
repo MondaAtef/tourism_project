@@ -30,9 +30,12 @@ class _EditOrUploadPlaceScreenState extends State<EditOrUploadPlaceScreen> {
   late TextEditingController
   _titleController,
       _addressController,
+   //  _latitudeController,
+     // _longitudeController,
       _descriptionController,
       _timeController,
       _thingsController;
+
   String? _categoryValue;
   bool isEditing = false;
   String? productNetworkImage;
@@ -58,6 +61,10 @@ class _EditOrUploadPlaceScreenState extends State<EditOrUploadPlaceScreen> {
         TextEditingController(text: widget.productModel?.BestTime);
     _thingsController =
         TextEditingController(text: widget.productModel?.thingToKnow);
+   /* _latitudeController =
+        TextEditingController(text: widget.productModel?.latitude);
+    _longitudeController =
+        TextEditingController(text: widget.productModel?.longitude);*/
 
     super.initState();
   }
@@ -66,18 +73,24 @@ class _EditOrUploadPlaceScreenState extends State<EditOrUploadPlaceScreen> {
   void dispose() {
     _titleController.dispose();
     _addressController.dispose();
+   // _latitudeController.dispose();
+    // _longitudeController.dispose();
     _descriptionController.dispose();
     _timeController.dispose();
     _thingsController.dispose();
+
     super.dispose();
   }
 
   void clearForm() {
     _titleController.clear();
     _addressController.clear();
+   // _latitudeController.clear();
+    //_longitudeController.clear();
     _descriptionController.clear();
     _timeController.clear();
     _thingsController.clear();
+
 
     removePickedImage();
   }
@@ -120,6 +133,8 @@ class _EditOrUploadPlaceScreenState extends State<EditOrUploadPlaceScreen> {
           'PlaceId': placeId,
           'PlaceTitle': _titleController.text,
           'PlaceAddress':_addressController.text,
+         // 'latitude':_latitudeController.text,
+          //'longitude':_longitudeController.text,
           'PlaceImage': productImageUrl,
           'PlaceCategory': _categoryValue,
           'PlaceDescription': _descriptionController.text,
@@ -199,7 +214,9 @@ class _EditOrUploadPlaceScreenState extends State<EditOrUploadPlaceScreen> {
           'PlaceId': widget.productModel!.PlaceId,
           'PlaceTitle': _titleController.text,
           'PlaceAddress':_addressController.text,
-          'PlaceImage': productImageUrl, // Ensure this is updated
+          //'latitude':_latitudeController.text,
+          //'longitude':_longitudeController.text,
+          'PlaceImage': productImageUrl,
           'PlaceCategory': _categoryValue,
           'PlaceDescription': _descriptionController.text,
           'thingToKnow': _thingsController.text,
@@ -478,6 +495,50 @@ class _EditOrUploadPlaceScreenState extends State<EditOrUploadPlaceScreen> {
                               );
                             },
                           ),
+                          /*const SizedBox(
+                            height: 10,
+                          ),
+                          TextFormField(
+                            controller: _latitudeController,
+                            key: const ValueKey('latitude'),
+                            maxLength: 80,
+                            minLines: 1,
+                            maxLines: 2,
+                            keyboardType: TextInputType.multiline,
+                            textInputAction: TextInputAction.newline,
+                            decoration: const InputDecoration(
+                              hintText: 'latitude',
+                            ),
+                            validator: (value) {
+                              return MyValidators.uploadProdTexts(
+                                value: value,
+                                toBeReturnedString:
+                                "Please enter a valid latitude",
+                              );
+                            },
+                          ),
+                          const SizedBox(
+                            height: 10,
+                          ),
+                          TextFormField(
+                            controller: _longitudeController,
+                            key: const ValueKey('longitude'),
+                            maxLength: 80,
+                            minLines: 1,
+                            maxLines: 2,
+                            keyboardType: TextInputType.multiline,
+                            textInputAction: TextInputAction.newline,
+                            decoration: const InputDecoration(
+                              hintText: 'longitude',
+                            ),
+                            validator: (value) {
+                              return MyValidators.uploadProdTexts(
+                                value: value,
+                                toBeReturnedString:
+                                "Please enter a valid longitude",
+                              );
+                            },
+                          ),*/
                           const SizedBox(height: 10),
                           TextFormField(
                             controller:  _timeController,
