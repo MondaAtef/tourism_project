@@ -5,6 +5,8 @@ class Placemodel with ChangeNotifier {
   final String PlaceId,
       PlaceTitle,
       PlaceAddress,
+      //latitude,
+      //longitude,
       PlaceCategory,
       PlaceDescription,
       PlaceImage,
@@ -14,12 +16,15 @@ class Placemodel with ChangeNotifier {
   Placemodel({
     required this.PlaceId,
     required this.PlaceAddress,
+    //required this.latitude,
+    //required this.longitude,
     required this.PlaceTitle,
     required this.PlaceCategory,
     required this.PlaceDescription,
     required this.PlaceImage,
     required this.BestTime,
     required this.thingToKnow,
+
 
     this.createdAt,
   });
@@ -29,7 +34,6 @@ class Placemodel with ChangeNotifier {
     return Placemodel(
       PlaceId: data["PlaceId"],
       PlaceTitle: data['PlaceTitle'],
-
       PlaceAddress: data['PlaceAddress'],
       PlaceCategory: data['PlaceCategory'],
       PlaceDescription: data['PlaceDescription'],
@@ -37,6 +41,8 @@ class Placemodel with ChangeNotifier {
       BestTime:data['BestTime'],
       createdAt: data['createdAt'],
       thingToKnow:data['thingToKnow'],
+     // latitude:data['latitude'],
+      //longitude:data['longitude'],
 
     );
   }

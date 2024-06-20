@@ -21,9 +21,7 @@ class EmptyBagWidget extends StatelessWidget {
       physics: const BouncingScrollPhysics(),
       child: Column(
         children: [
-          const SizedBox(
-            height: 50,
-          ),
+          const SizedBox(height: 50),
           Image.asset(
             imagePath,
             width: double.infinity,

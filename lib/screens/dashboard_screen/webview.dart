@@ -11,12 +11,7 @@ class _WebviewScreenState extends State<WebviewScreen> {
   late WebViewController _controller;
 
   @override
-  void initState() {
-    super.initState();
-    _controller = WebViewController()
-      ..setJavaScriptMode(JavaScriptMode.unrestricted)
-      ..loadRequest(Uri.parse("https://www.google.com/search?gs_ssp=eJzj4tTP1TcwtDBIMjVg9GLNKa3ILwIAKmQE-Q&q=luxor&oq=&gs_lcrp=EgZjaHJvbWUqCQgFEC4YJxjqAjIJCAAQIxgnGOoCMgkIARAjGCcY6gIyCQgCECMYJxjqAjIJCAMQIxgnGOoCMg8IBBAuGCcYxwEY6gIY0QMyCQgFEC4YJxjqAjIJCAYQIxgnGOoCMgkIBxAjGCcY6gLSAQkzMzc3ajBqMTWoAgiwAgE&sourceid=chrome&ie=UTF-8"));
-  }
+
 
   @override
   Widget build(BuildContext context) {

@@ -66,19 +66,6 @@ class NewsCubit extends Cubit<NewsStates> {
     }
   }
 
-  File? coverimage;
-
-  Future<void> getCoverImage() async {
-    final pickedFile = await picker.pickImage(source: ImageSource.gallery);
-    if (pickedFile != null) {
-      coverimage = File(pickedFile.path);
-      emit(SocialcoverimagePickedSuccessState());
-    } else {
-      print('No Image Selected');
-      emit(SocialcoverimagePickedErrorState());
-    }
-  }
-
   void UploadProfileImage
       ({
     required String name,
@@ -89,9 +76,7 @@ class NewsCubit extends Cubit<NewsStates> {
     emit(SocialUserUpdateLoadingState());
     firebase_storage.FirebaseStorage.instance
         .ref()
-        .child('users/${Uri.file(profileImage!.path)
-        .pathSegments
-        .last}')
+        .child('users/${Uri.file(profileImage!.path).pathSegments.last}')
         .putFile(profileImage!)
         .then((value) {
       value.ref.getDownloadURL().then((value) {

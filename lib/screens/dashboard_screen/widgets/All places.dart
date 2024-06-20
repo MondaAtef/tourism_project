@@ -38,19 +38,17 @@ class _AllplacesScreenState extends State<AllplacesScreen> {
     List<Placemodel> productList = passedCategory == null
         ? productsProvider.products
         : productsProvider.findByCategory(categoryName: passedCategory);
+
+
     return GestureDetector(
       onTap: () {
         FocusScope.of(context).unfocus();
       },
       child: Scaffold(
         appBar: AppBar(
-          // leading: Padding(
-          //   padding: const EdgeInsets.all(8.0),
-          //   child: Image.asset(
-          //     AssetsManager.shoppingCart,
-          //   ),
-          // ),
-          title: TitlesTextWidget(label: passedCategory ?? "73".tr),
+          title: TitlesTextWidget(
+              color: Color(0xFF8D502F),
+              label: passedCategory ?? "73".tr),
         ),
         body: StreamBuilder<List<Placemodel>>(
             stream: productsProvider.fetchProductsStream(),
@@ -96,12 +94,6 @@ class _AllplacesScreenState extends State<AllplacesScreen> {
                           ),
                         ),
                       ),
-                     /*  onChanged: (value) {
-                         setState(() {
-                           productListSearch = productsProvider.searchQuery(
-                               searchText: searchTextController.text);
-                         });
-                       },*/
                       onSubmitted: (value) {
                         setState(() {
                           productListSearch = productsProvider.searchQuery(
@@ -113,8 +105,7 @@ class _AllplacesScreenState extends State<AllplacesScreen> {
                     const SizedBox(
                       height: 15.0,
                     ),
-                    if (searchTextController.text.isNotEmpty &&
-                        productListSearch.isEmpty) ...[
+                    if (searchTextController.text.isNotEmpty && productListSearch.isEmpty) ...[
                        Center(
                         child: TitlesTextWidget(label: "76".tr),
                       ),
@@ -131,7 +122,7 @@ class _AllplacesScreenState extends State<AllplacesScreen> {
                           return ProductWidget(
                             productId: searchTextController.text.isNotEmpty
                                 ? productListSearch[index].PlaceId
-                                : productList[index].PlaceId,
+                                : productList [index].PlaceId,
                           );
                         },
                       ),

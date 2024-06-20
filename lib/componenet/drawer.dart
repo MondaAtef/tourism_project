@@ -7,15 +7,25 @@ import 'package:vixor_project/screens/dashboard_screen/webview.dart';
 import 'package:vixor_project/screens/luxor.dart';
 import 'package:vixor_project/screens/more_about_sustainability.dart';
 import 'package:vixor_project/utils/app_imagse.dart';
-
+import 'package:url_launcher/url_launcher.dart';
 
 class Mydrawer extends StatelessWidget {
-  const Mydrawer({Key? key});
+  const Mydrawer({Key? key}) : super(key: key);
+
+  _launchURLInBrowser() async {
+    const url = 'https://www.facebook.com/groups/496278322877578/?ref=share';
+    if (await canLaunch(url)) {
+      await launch(url);
+    } else {
+      throw 'Could not launch $url';
+    }
+  }
 
   @override
   Widget build(BuildContext context) {
-    var emailcontroller = TextEditingController();
+    var emailController = TextEditingController();
     var formKey = GlobalKey<FormState>();
+
     return Drawer(
       child: Stack(
         children: [
@@ -28,20 +38,19 @@ class Mydrawer extends StatelessWidget {
               ),
             ),
           ),
-
           Container(
             color: Colors.white.withOpacity(0.8),
           ),
-
           ListView(
             padding: EdgeInsets.zero,
             children: [
               const DrawerHeader(
-                  child: Text(
-                'Menu',
-                textAlign: TextAlign.center,
-                style: TextStyle(color: Color(0xff8E4F2E)),
-              )),
+                child: Text(
+                  'Menu',
+                  textAlign: TextAlign.center,
+                  style: TextStyle(color: Color(0xff8E4F2E)),
+                ),
+              ),
               ListTile(
                 title: const Text(
                   'More About Sustainability',
@@ -52,13 +61,11 @@ class Mydrawer extends StatelessWidget {
                     context,
                     MaterialPageRoute(builder: (context) => const Sustabilty()),
                   );
-                  // Navigator.pop(context);
                 },
               ),
-
               ListTile(
                 title: const Text(
-                  'More About luxor',
+                  'More About Luxor',
                   style: TextStyle(color: Color(0xff8E4F2E)),
                 ),
                 onTap: () {
@@ -66,11 +73,8 @@ class Mydrawer extends StatelessWidget {
                     context,
                     MaterialPageRoute(builder: (context) => const luxor()),
                   );
-                  // Navigator.pop(context);
                 },
               ),
-
-
               ListTile(
                 title: const Text(
                   'Admin',
@@ -89,8 +93,7 @@ class Mydrawer extends StatelessWidget {
                             child: Container(
                               height: 200,
                               width: MediaQuery.of(context).size.width * 0.85,
-                              padding: const EdgeInsets.symmetric(
-                                  horizontal: 20, vertical: 20),
+                              padding: const EdgeInsets.symmetric(horizontal: 20, vertical: 20),
                               decoration: BoxDecoration(
                                 color: Colors.white.withOpacity(0.5),
                                 borderRadius: BorderRadius.circular(20),
@@ -101,77 +104,80 @@ class Mydrawer extends StatelessWidget {
                                   Form(
                                     key: formKey,
                                     child: Row(
-                                      mainAxisAlignment:
-                                          MainAxisAlignment.center,
+                                      mainAxisAlignment: MainAxisAlignment.center,
                                       children: [
                                         SizedBox(
                                           width: MediaQuery.of(context).size.width * 0.6,
                                           height: 50,
                                           child: TextFormField(
-                                              controller: emailcontroller,
-                                              obscureText: true,
-                                              validator: (v) {
-                                                if (v.toString() != '123') {
-                                                  print("0");
-                                                }
-                                                return null;
-                                              },
-                                              decoration: InputDecoration(
-                                                prefixIcon:
-                                                    const Icon(Icons.lock),
-                                                fillColor:
-                                                    const Color.fromARGB(255, 208, 208, 208),
-                                                filled: true,
-                                                labelText: 'Lock',
-                                                border: OutlineInputBorder(
-                                                    borderRadius:
-                                                        BorderRadius.circular(12)),
+                                            controller: emailController,
+                                            obscureText: true,
+                                            validator: (v) {
+                                              if (v.toString() != '123') {
+                                                print("0");
+                                              }
+                                              return null;
+                                            },
+                                            decoration: InputDecoration(
+                                              prefixIcon: const Icon(Icons.lock),
+                                              fillColor: const Color.fromARGB(255, 208, 208, 208),
+                                              filled: true,
+                                              labelText: 'Lock',
+                                              border: OutlineInputBorder(
+                                                borderRadius: BorderRadius.circular(12),
                                               ),
-                                              keyboardType:
-                                                  TextInputType.emailAddress,
-                                              onChanged: (value) {
-                                                print(value);
-                                              }),
+                                            ),
+                                            keyboardType: TextInputType.emailAddress,
+                                            onChanged: (value) {
+                                              print(value);
+                                            },
+                                          ),
                                         ),
                                       ],
                                     ),
                                   ),
-                                  const SizedBox(
-                                    height: 20.0,
-                                  ),
+                                  const SizedBox(height: 20.0),
                                   Center(
                                     child: GestureDetector(
-                                      onTap: () async {},
+                                      onTap: () async {
+                                        if (formKey.currentState!.validate()) {
+                                          if (emailController.text == '123') {
+                                            Navigator.push(context, MaterialPageRoute(builder: (context) => const Admin()));
+                                          } else {
+                                            Fluttertoast.showToast(
+                                              msg: "Try Again",
+                                              toastLength: Toast.LENGTH_LONG,
+                                              gravity: ToastGravity.CENTER,
+                                              timeInSecForIosWeb: 1,
+                                              backgroundColor: Colors.grey.shade600,
+                                              textColor: Colors.white,
+                                              fontSize: 16.0,
+                                            );
+                                          }
+                                        }
+                                      },
                                       child: Container(
                                         decoration: BoxDecoration(
-                                          borderRadius:
-                                              BorderRadius.circular(20.0),
+                                          borderRadius: BorderRadius.circular(20.0),
                                           color: const Color(0xffecf6ff),
                                         ),
                                         height: 40.0,
                                         width: 250.0,
                                         child: Row(
-                                          mainAxisAlignment:
-                                              MainAxisAlignment.center,
+                                          mainAxisAlignment: MainAxisAlignment.center,
                                           children: [
                                             MaterialButton(
-                                              onPressed: () {
-                                                if (formKey.currentState!
-                                                    .validate()) {
-                                                  if (emailcontroller.text ==
-                                                      '123') {
-                                                    navigateTo(
-                                                        context, const Admin());
+                                              onPressed: () async {
+                                                if (formKey.currentState!.validate()) {
+                                                  if (emailController.text == '123') {
+                                                    Navigator.push(context, MaterialPageRoute(builder: (context) => const Admin()));
                                                   } else {
                                                     Fluttertoast.showToast(
                                                       msg: "Try Again",
-                                                      toastLength:
-                                                          Toast.LENGTH_LONG,
-                                                      gravity:
-                                                          ToastGravity.CENTER,
+                                                      toastLength: Toast.LENGTH_LONG,
+                                                      gravity: ToastGravity.CENTER,
                                                       timeInSecForIosWeb: 1,
-                                                      backgroundColor:
-                                                          Colors.grey.shade600,
+                                                      backgroundColor: Colors.grey.shade600,
                                                       textColor: Colors.white,
                                                       fontSize: 16.0,
                                                     );
@@ -206,13 +212,7 @@ class Mydrawer extends StatelessWidget {
                   'Join Our Community',
                   style: TextStyle(color: Color(0xff8E4F2E)),
                 ),
-                onTap: () {
-                  Navigator.push(
-                    context,
-                    MaterialPageRoute(builder: (context) =>  WebviewScreen()),
-                  );
-                  // Navigator.pop(context);
-                },
+                onTap: _launchURLInBrowser,
               ),
               ListTile(
                 title: const Text(
@@ -220,7 +220,7 @@ class Mydrawer extends StatelessWidget {
                   style: TextStyle(color: Color(0xff8E4F2E)),
                 ),
                 onTap: () {
-                  // Navigator.pop(context);
+                  // Implement onTap functionality for Customize Trip
                 },
               ),
             ],
@@ -229,4 +229,11 @@ class Mydrawer extends StatelessWidget {
       ),
     );
   }
+}
+
+void navigateTo(BuildContext context, Widget page) {
+  Navigator.push(
+    context,
+    MaterialPageRoute(builder: (context) => page),
+  );
 }

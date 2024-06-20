@@ -84,6 +84,28 @@ class _ProductWidgetState extends State<ProductWidget> {
                 maxLines: 2,
               ),
             ),
+          /*  const SizedBox(
+              height: 6.0,
+            ),
+            Padding(
+              padding: const EdgeInsets.all(2.0),
+              child: TitlesTextWidget(
+                label: getCurrProduct.latitude,
+                fontSize: 18,
+                maxLines: 2,
+              ),
+            ),
+            const SizedBox(
+              height: 6.0,
+            ),
+            Padding(
+              padding: const EdgeInsets.all(2.0),
+              child: TitlesTextWidget(
+                label: getCurrProduct.longitude,
+                fontSize: 18,
+                maxLines: 2,
+              ),
+            ),*/
           ],
         ),
       ),
