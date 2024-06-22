@@ -25,8 +25,8 @@ class MyAppBar extends StatelessWidget implements PreferredSizeWidget {
       title: Center(
         child: Image.asset(
           Assets.appbar2,
-          width: 140,
-          height: 130,
+          width: 120,
+          height: 100,
         ),
       ),
       actions: [
