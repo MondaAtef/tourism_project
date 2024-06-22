@@ -45,7 +45,7 @@ class Info extends StatelessWidget {
                     Container(
                       margin: const EdgeInsets.fromLTRB(0, 0, 0, 34),
                       child: const CustomTextWidget(
-                        text: 'vixor',
+                        text: 'VIXOR',
                         color: Colors.white,
                         fontSize: 50,
                       ),

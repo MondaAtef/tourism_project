@@ -20,10 +20,10 @@ class _DashBoardScreenState extends State<DashBoardScreen> {
     ListItemModell(image: Assets.Ballon, text: 'Ballon'),
     ListItemModell(image: Assets.luxor, text: 'Luxor Temple'),
     ListItemModell(image: Assets.Karnak, text: 'Karnak Temple'),
-    ListItemModell(image: Assets.imagesWall1, text: 'Abo EL Hagaga Mosque'),
-    ListItemModell(image: Assets.imagesWall1, text: 'Church of the Virgin Mary'),
-    ListItemModell(image: Assets.imagesWall1, text: 'Valley of the Kings Temple'),
-    ListItemModell(image: Assets.imagesWall1, text: 'Nile Corniche'),
+    ListItemModell(image: Assets.abo, text: 'Abo EL Hagaga Mosque'),
+    ListItemModell(image: Assets.churach, text: 'Church of the Virgin Mary'),
+    ListItemModell(image: Assets.vellay, text: 'Valley of the Kings Temple'),
+    ListItemModell(image: Assets.nile, text: 'Nile Corniche'),
   ];
 
   @override
@@ -37,7 +37,6 @@ class _DashBoardScreenState extends State<DashBoardScreen> {
             fit: BoxFit.cover,
             width: double.infinity,
             height: double.infinity,
-
           ),
           // Semi-transparent color overlay
           Container(
@@ -90,35 +89,36 @@ class _DashBoardScreenState extends State<DashBoardScreen> {
                             child: SizedBox(
                               width: MediaQuery.of(context).size.width * .30,
                               child: Column(
+                                mainAxisAlignment: MainAxisAlignment.center,
                                 children: [
                                   Container(
                                     width: 100,
                                     height: 100,
                                     decoration: BoxDecoration(
-
                                       borderRadius: BorderRadius.circular(20), // Adjust radius for rounded but not circular shape
                                       border: Border.all(
                                         color: Colors.white,
                                         width: 2, // Optional: Add a border around the container
-
                                       ),
                                     ),
                                     child: Center(
                                       child: ClipRRect(
-
                                         borderRadius: BorderRadius.circular(20), // Match radius with the container
                                         child: Image.asset(
                                           item.image,
                                           width: 80, // Adjust width to not take full container space
                                           height: 80, // Adjust height to not take full container space
-
                                           fit: BoxFit.cover,
                                         ),
                                       ),
                                     ),
                                   ),
                                   const SizedBox(height: 8),
-                                  Text(item.text),
+                                  Text(
+                                    item.text,
+                                    style: const TextStyle(color: Colors.white), // Set text color to white
+                                    textAlign: TextAlign.center, // Center the text
+                                  ),
                                 ],
                               ),
                             ),
@@ -127,12 +127,8 @@ class _DashBoardScreenState extends State<DashBoardScreen> {
                       ),
                     ),
                   ),
-
                   const SizedBox(height: 30),
-
                   const ItemList1(),
-
-
                 ],
               ),
             ),

@@ -17,7 +17,7 @@ class MyAppBar extends StatelessWidget implements PreferredSizeWidget {
       iconTheme: const IconThemeData(color: Colors.white),
       title: Center(
         child: Text(
-          'Vixor',
+          'VIXOR',
           style: const TextStyle(
 
             fontSize: 30,

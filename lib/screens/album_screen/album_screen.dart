@@ -1,5 +1,4 @@
 import 'dart:io';
-
 import 'package:flutter/material.dart';
 import 'package:flutter_iconly/flutter_iconly.dart';
 import 'package:get/get.dart';
@@ -7,6 +6,7 @@ import 'package:image_picker/image_picker.dart';
 import 'package:share_plus/share_plus.dart';
 import 'package:vixor_project/cubit/cashe%20helper.dart';
 import 'package:vixor_project/utils/app_imagse.dart';
+
 class Photobook extends StatefulWidget {
   const Photobook({super.key});
 
@@ -34,14 +34,13 @@ class _PhotobookState extends State<Photobook> {
 
   @override
   void initState() {
-    images = CachHelper.getImages(key: 'images')!;
     super.initState();
+    images = CachHelper.getImages(key: 'images') ?? [];
   }
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-
       body: Stack(
         children: [
           // Background image
@@ -57,43 +56,54 @@ class _PhotobookState extends State<Photobook> {
             width: double.infinity,
             height: double.infinity,
           ),
-          // Grid view of images
-          GridView.builder(
-            gridDelegate: const SliverGridDelegateWithFixedCrossAxisCount(
-              crossAxisCount: 3,
-              crossAxisSpacing: 4.0,
-              mainAxisSpacing: 4.0,
-            ),
-            itemCount: images.length,
-            itemBuilder: (BuildContext context, int index) {
-              return InkWell(
-                onTap: () {
-                  setState(() {
-                    if (!indexForImages.contains(index)) {
-                      indexForImages.add(index);
-                      like.add(XFile(images[index]));
-                    } else {
-                      indexForImages.remove(index);
-                      like.remove(XFile(images[index]));
-                    }
-                  });
-                },
-                child: Stack(
-                  alignment: Alignment.center,
-                  children: [
-                    Image.file(File(images[index])),
-                    indexForImages.contains(index)
-                        ? const Align(
-                      alignment: Alignment.topRight,
-                      child: Icon(
-                        Icons.check,
-                        color: Colors.green,
-                      ),
-                    )
-                        : const SizedBox.shrink(),
-                    Align(
-                      alignment: Alignment.topLeft,
-                      child: InkWell(
+          // Check if images list is empty
+          if (images.isEmpty)
+            Center(
+              child: Text(
+                'Make Your Album',
+                style: TextStyle(
+                  color: Colors.white,
+                  fontSize: 24,
+                ),
+              ),
+            )
+          else
+            GridView.builder(
+              gridDelegate: const SliverGridDelegateWithFixedCrossAxisCount(
+                crossAxisCount: 3,
+                crossAxisSpacing: 4.0,
+                mainAxisSpacing: 4.0,
+              ),
+              itemCount: images.length,
+              itemBuilder: (BuildContext context, int index) {
+                return InkWell(
+                  onTap: () {
+                    setState(() {
+                      if (!indexForImages.contains(index)) {
+                        indexForImages.add(index);
+                        like.add(XFile(images[index]));
+                      } else {
+                        indexForImages.remove(index);
+                        like.remove(XFile(images[index]));
+                      }
+                    });
+                  },
+                  child: Stack(
+                    alignment: Alignment.center,
+                    children: [
+                      Image.file(File(images[index])),
+                      indexForImages.contains(index)
+                          ? const Align(
+                        alignment: Alignment.topRight,
+                        child: Icon(
+                          Icons.check,
+                          color: Colors.green,
+                        ),
+                      )
+                          : const SizedBox.shrink(),
+                      Align(
+                        alignment: Alignment.topLeft,
+                        child: InkWell(
                           onTap: () {
                             setState(() {
                               images.removeAt(index);
@@ -106,20 +116,21 @@ class _PhotobookState extends State<Photobook> {
                             Icons.delete_outline,
                             color: Colors.amber,
                             size: 28,
-                          )),
-                    ),
-                  ],
-                ),
-              );
-            },
-          ),
+                          ),
+                        ),
+                      ),
+                    ],
+                  ),
+                );
+              },
+            ),
         ],
       ),
       floatingActionButton: Column(
         mainAxisAlignment: MainAxisAlignment.end,
         children: [
           FloatingActionButton(
-            backgroundColor:Colors.white,
+            backgroundColor: Colors.white,
             shape: const CircleBorder(),
             onPressed: () async {
               if (like.isNotEmpty) {
@@ -131,21 +142,20 @@ class _PhotobookState extends State<Photobook> {
           ),
           const SizedBox(height: 16.0),
           FloatingActionButton(
-              backgroundColor:Colors.white,
-              shape: const CircleBorder(),
-              onPressed: () => _pickImage(ImageSource.gallery),
-              tooltip: '48'.tr,
-              child: const Icon(Icons.photo_library,  color: Color(0xFF8D502F))
+            backgroundColor: Colors.white,
+            shape: const CircleBorder(),
+            onPressed: () => _pickImage(ImageSource.gallery),
+            tooltip: '48'.tr,
+            child: const Icon(Icons.photo_library, color: Color(0xFF8D502F)),
           ),
           const SizedBox(height: 16.0),
           FloatingActionButton(
-            backgroundColor:Colors.white,
+            backgroundColor: Colors.white,
             shape: const CircleBorder(),
             onPressed: () => _pickImage(ImageSource.camera),
             tooltip: '49'.tr,
             child: const Icon(Icons.camera_alt, color: Color(0xFF8D502F)),
           ),
-
         ],
       ),
     );

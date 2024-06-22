@@ -43,7 +43,7 @@ class Lang extends GetView<LocaleController> {
                     Container(
                       margin: const EdgeInsets.fromLTRB(0, 0, 3, 34),
                       child: const CustomTextWidget(
-                        text: 'vixor',
+                        text: 'VIXOR',
                         fontSize: 70,
                         color: Colors.white,
                       ),

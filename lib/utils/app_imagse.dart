@@ -70,6 +70,10 @@ class Assets {
   static String wall = "assets/images/Wall2.jpg";
   static String admin_icon = "assets/images/crook.png";
   static String guard = "assets/images/guard.jpg";
-
+  static String nile = "assets/images/nile.PNG";
+  static String abo = "assets/images/abo.PNG";
+  static String churach = "assets/images/churach.PNG";
+  static String vellay = "assets/images/vallay.PNG";
+  static String pharon_2 = "assets/images/pharon_2.png";
 
 }

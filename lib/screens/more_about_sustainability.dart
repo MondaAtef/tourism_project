@@ -15,7 +15,6 @@ class Sustabilty extends StatelessWidget {
       appBar: const MyAppBar(),
       drawer: const Mydrawer(),
       body: SizedBox(
-        // Wrap the Stack with SizedBox
         width: double.infinity,
         height: MediaQuery.of(context).size.height,
         child: Stack(
@@ -38,8 +37,6 @@ class Sustabilty extends StatelessWidget {
                   children: [
                     SizedBox(
                       width: double.infinity,
-                      // constraints: BoxConstraints(
-                      //     minHeight: MediaQuery.of(context).size.height * .8),
                       height: MediaQuery.sizeOf(context).height * .40,
                       child: Stack(
                         children: [
@@ -92,23 +89,12 @@ class Sustabilty extends StatelessWidget {
                                   const Padding(
                                     padding: EdgeInsets.all(0),
                                     child: CustomTextWidget(
-                                      fontSize: 20,
+                                      fontSize: 17,
                                       fontWeight: FontWeight.w400,
                                       text:
                                           "Sustainability has become a pivotal concern in the ",
                                     ),
                                   ),
-                                  // Container(
-                                  //   decoration: const BoxDecoration(
-                                  //     color: Color(0xffC78800),
-                                  //     borderRadius: BorderRadius.only(
-                                  //       topRight: Radius.circular(20.0),
-                                  //       topLeft: Radius.zero,
-                                  //       bottomRight: Radius.circular(20.0),
-                                  //       bottomLeft: Radius.zero,
-                                  //     ),
-                                  //   ),
-                                  // )
                                 ],
                               ),
                             ),
@@ -126,7 +112,7 @@ class Sustabilty extends StatelessWidget {
                     const Padding(
                       padding: EdgeInsets.all(8.0),
                       child: CustomTextWidget(
-                        fontSize: 20,
+                        fontSize: 17,
                         fontWeight: FontWeight.w400,
                         text:
                             "global context, transcending various industries. In recent years, the tourism sector has witnessed a paradigm shift towards responsible and sustainable practices.As the world seeks ways to minimize its environmental footprint, Egypt is also embracing the concept of sustainable tourism to safeguard its rich cultural and natural heritage. ",
@@ -163,7 +149,7 @@ class Sustabilty extends StatelessWidget {
                       child: Padding(
                         padding: EdgeInsets.all(8.0),
                         child: CustomTextWidget(
-                          fontSize: 20,
+                          fontSize: 17,
                           fontWeight: FontWeight.w400,
                           text:
                               "1)Environmental Conservation:\n Egypt, with its ancient wonders and natural beauty,  is taking steps to protect its ecosystems. Initiatives include wildlife conservation, waste management, and sustainable energy practices in tourist facilities.\n2)Cultural Preservation:\n  Preserving Egypt's rich cultural heritage is crucial for sustainable tourism. This involves responsible tourism practices, respectful behavior towards cultural sites, and initiatives to empower local communities. \n 3)Community Engagement:\n Involving local communities in the tourism industry fosters economic growth and social development. Empowering residents through job opportunities, training, and community-based tourism initiatives ensures that the benefits of tourism are shared equitably.",
@@ -203,7 +189,7 @@ class Sustabilty extends StatelessWidget {
                       child: Padding(
                         padding: EdgeInsets.all(8.0),
                         child: CustomTextWidget(
-                          fontSize: 20,
+                          fontSize: 17,
                           fontWeight: FontWeight.w400,
                           textAlign: TextAlign.left,
                           text:

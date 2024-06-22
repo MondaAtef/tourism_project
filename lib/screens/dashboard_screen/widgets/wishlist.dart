@@ -10,6 +10,7 @@ import 'package:vixor_project/provider/homeprovider.dart';
 import 'package:vixor_project/provider/wishlist_provider.dart';
 import 'package:vixor_project/screens/dashboard_screen/widgets/placewidget2.dart';
 import 'package:vixor_project/services/MyAppFunctions.dart';
+import 'package:vixor_project/utils/app_imagse.dart';
 import 'package:vixor_project/utils/assets_manager.dart';
 
 
@@ -52,7 +53,7 @@ class _WishlistScreenState extends State<WishlistScreen> {
     return wishlistProvider.getWishlists.isEmpty
         ? Scaffold(
       body: EmptyBagWidget(
-        imagePath: AssetsManager.bagWish,
+        imagePath: Assets.pharon_2,
         title: "66".tr,
         buttonText: "67".tr,
       ),

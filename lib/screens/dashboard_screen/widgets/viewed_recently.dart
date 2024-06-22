@@ -7,6 +7,7 @@ import 'package:vixor_project/componenet/widgets/title%20widget.dart';
 import 'package:vixor_project/provider/view%20provider.dart';
 import 'package:vixor_project/screens/dashboard_screen/widgets/placewidget2.dart';
 import 'package:vixor_project/services/MyAppFunctions.dart';
+import 'package:vixor_project/utils/app_imagse.dart';
 import 'package:vixor_project/utils/assets_manager.dart';
 
 
@@ -21,7 +22,7 @@ class ViewedRecentlyScreen extends StatelessWidget {
     return viewedProdProvider.getViewedProds.isEmpty
         ? Scaffold(
       body: EmptyBagWidget(
-        imagePath: AssetsManager.viewed,
+        imagePath: Assets.pharon_2,
         title: "77".tr,
         buttonText: "78".tr,
       ),
