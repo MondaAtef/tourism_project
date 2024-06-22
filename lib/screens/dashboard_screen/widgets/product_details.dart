@@ -58,60 +58,23 @@ class _ProductDetailsScreenState extends State<ProductDetailsScreen> {
             Padding(
               padding: const EdgeInsets.all(8.0),
               child: Column(
-                crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
                   Row(
                     mainAxisAlignment: MainAxisAlignment.end,
                     children: [
-                      IconButton(
-                        onPressed: () {
-                          Navigator.push(
-                            context,
-                            MaterialPageRoute(
-                              builder: (context) => MapScreen(),
-                            ),
-                          );
-                        },
-                        icon: Container(
-                          padding: EdgeInsets.all(10), // Adjust padding as needed
-                          decoration: BoxDecoration(
-                            color: Colors.brown.shade100, // Replace with your desired background color
-                            borderRadius: BorderRadius.circular(8), // Optional: Add border radius
-                          ),
-                          child: Row(
-                            children: [
-                              Icon(Icons.car_crash_outlined),
-                              SizedBox(width: 5),
-                              Text(
-                                'Map',
-                                style: TextStyle(
-                                  fontSize: 16, // Adjust text size as needed
-                                  fontWeight: FontWeight.bold, // Optional: Adjust text style
-                                  color: Colors.white, // Optional: Adjust text color
-                                ),
-                              ),
-                            ],
-                          ),
-                        ),
-                      ),
                       const SizedBox(width: 100),
                       HeartButtonWidget(
-                       // bkgColor: Colors.blue.shade100,
+                        bkgColor: Colors.brown.shade100,
                         productId: getCurrProduct.PlaceId,
                       ),
-
-
                     ],
                   ),
-                  const SizedBox(height: 20),
+                  const SizedBox(height: 10),
                  SingleChildScrollView(
                    scrollDirection: Axis.vertical,
                    child: Column(
                      crossAxisAlignment: CrossAxisAlignment.start,
                     children: [
-                      /*const TitlesTextWidget(
-                      color: Colors.black,
-                      label: "Name:" ,),*/
                       TitlesTextWidget(
                       color: Colors.black,
                       label:
