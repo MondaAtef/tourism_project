@@ -4,7 +4,6 @@ import 'package:flutter/services.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_gemini/flutter_gemini.dart';
 import 'package:get/get.dart';
-import 'package:get/get_navigation/get_navigation.dart';
 import 'package:provider/provider.dart';
 
 import 'package:vixor_project/cubit/bloc%20observer.dart';
@@ -15,7 +14,6 @@ import 'package:vixor_project/provider/PlaceProvider.dart';
 
 import 'package:vixor_project/provider/homeprovider.dart';
 import 'package:vixor_project/provider/theme_provider.dart';
-import 'package:vixor_project/provider/trip%20provider.dart';
 import 'package:vixor_project/provider/view%20provider.dart';
 import 'package:vixor_project/provider/wishlist_provider.dart';
 import 'package:vixor_project/screens/chat_screen/chat_screen.dart';

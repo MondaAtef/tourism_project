@@ -5,7 +5,6 @@ import 'package:vixor_project/componenet/my_app_bar.dart';
 import 'package:vixor_project/utils/app_colors.dart';
 import 'package:vixor_project/utils/app_imagse.dart';
 
-
 class luxor extends StatelessWidget {
   const luxor({Key? key});
 
@@ -29,7 +28,7 @@ class luxor extends StatelessWidget {
             ),
             Container(
               height: double.infinity,
-              color:const Color (0xFF8D502F).withOpacity(0.7),
+              color: const Color(0xFF8D502F).withOpacity(0.7),
               child: SingleChildScrollView(
                 scrollDirection: Axis.vertical,
                 child: Column(
@@ -37,7 +36,8 @@ class luxor extends StatelessWidget {
                   children: [
                     SizedBox(
                       width: double.infinity,
-                      height: MediaQuery.sizeOf(context).height * .40,
+                      // height: MediaQuery.sizeOf(context).height * .430,
+                      height: 370,
                       child: Stack(
                         children: [
                           Positioned(
@@ -46,7 +46,7 @@ class luxor extends StatelessWidget {
                             child: Container(
                               constraints: BoxConstraints(
                                   maxWidth:
-                                  MediaQuery.of(context).size.width * .6),
+                                      MediaQuery.of(context).size.width * .5),
                               child: Column(
                                 crossAxisAlignment: CrossAxisAlignment.start,
                                 children: [
@@ -92,7 +92,7 @@ class luxor extends StatelessWidget {
                                       fontSize: 17,
                                       fontWeight: FontWeight.w400,
                                       text:
-                                      "Sustainability has become a pivotal concern in the global context,transcending \n various industries.  ",
+                                          "Luxor is a city in southern Egypt that is renowned for its rich history and impressive archaeological sites. Often referred to as",
                                     ),
                                   ),
                                 ],
@@ -103,7 +103,7 @@ class luxor extends StatelessWidget {
                             top: 15,
                             right: 0,
                             child: SizedBox(
-                              //width: MediaQuery.of(context).size.width * .5,
+                                //width: MediaQuery.of(context).size.width * .5,
                                 child: Image(image: AssetImage(Assets.forest))),
                           ),
                         ],
@@ -115,7 +115,7 @@ class luxor extends StatelessWidget {
                         fontSize: 17,
                         fontWeight: FontWeight.w400,
                         text:
-                        "In recent years, the tourism sector has witnessed a paradigm shift towards responsible and sustainable practices.As the world seeks ways to minimize its environmental footprint, Egypt is also embracing the concept of sustainable tourism to safeguard its rich cultural and natural heritage. ",
+                            "the\"world\'s greatest open-air museum,\" Luxor is built on the site of the ancient city of Thebes, which was the capital of Egypt during the New Kingdom period. ",
                       ),
                     ),
                     Container(
@@ -131,7 +131,6 @@ class luxor extends StatelessWidget {
                         ),
                       ),
                       child: const Padding(
-
                         padding: EdgeInsets.all(0),
                         child: CustomTextWidget(
                           text: 'Some Warnings',
@@ -152,7 +151,7 @@ class luxor extends StatelessWidget {
                           fontSize: 17,
                           fontWeight: FontWeight.w400,
                           text:
-                          "1)Environmental Conservation:\n Egypt, with its ancient wonders and natural beauty,  is taking steps to protect its ecosystems. Initiatives include wildlife conservation, waste management, and sustainable energy practices in tourist facilities.\n2)Cultural Preservation:\n  Preserving Egypt's rich cultural heritage is crucial for sustainable tourism. This involves responsible tourism practices, respectful behavior towards cultural sites, and initiatives to empower local communities. \n 3)Community Engagement:\n Involving local communities in the tourism industry fosters economic growth and social development. Empowering residents through job opportunities, training, and community-based tourism initiatives ensures that the benefits of tourism are shared equitably.",
+                              "-Respect Monuments: Avoid touching or writing on artifacts.\n-Keep Sites Clean: Use designated bins for trash.\n-Follow Guides'Instructions: Obey signage and guides'directions.\n-Camera Etiquette: No flash photography near ancient art.\n-Sustainability: Preserve cultural treasures for future generations",
                         ),
                       ),
                     ),
@@ -193,7 +192,7 @@ class luxor extends StatelessWidget {
                           fontWeight: FontWeight.w400,
                           textAlign: TextAlign.left,
                           text:
-                          "1)Conservation of Historical Sites:\nEgypt is home to iconic historical sites such as the Pyramids of Giza and the Sphinx. Sustainable tourism efforts focus on maintaining the integrity of these sites through controlled visitor numbers, preservation measures, and the promotion of responsible tourism practices.\n2)Eco-friendly Initiatives:\nEco-friendly accommodations, transportation, and activities are gaining traction in Egypt. From solar-powered hotels to low-impact transportation options, the tourism industry is aligning itself with sustainable practices.\n3)Cultural Immersion:\nSustainable tourism in Egypt emphasizes cultural exchange and immersive experiences. Visitors are encouraged to engage with local communities, participate in cultural events",
+                              "Historical Importance: Luxor, Egypt's ancient capital, is famous for its ancient temples and tombs, attracting visitors worldwide.\nSustainability Goals: Luxor aims to promote sustainable tourism by managing cultural and natural resources wisely and involving the local community.\nFuture Outlook: With these efforts, Luxor plans to remain a popular and sustainable tourist destination while preserving its cultural heritage for future generations.",
                         ),
                       ),
                     ),

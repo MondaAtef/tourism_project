@@ -5,7 +5,6 @@ import 'package:vixor_project/componenet/my_app_bar.dart';
 import 'package:vixor_project/utils/app_colors.dart';
 import 'package:vixor_project/utils/app_imagse.dart';
 
-
 class Sustabilty extends StatelessWidget {
   const Sustabilty({Key? key});
 
@@ -29,7 +28,7 @@ class Sustabilty extends StatelessWidget {
             ),
             Container(
               height: double.infinity,
-              color:const Color (0xFF8D502F).withOpacity(0.7),
+              color: const Color(0xFF8D502F).withOpacity(0.7),
               child: SingleChildScrollView(
                 scrollDirection: Axis.vertical,
                 child: Column(
@@ -37,7 +36,8 @@ class Sustabilty extends StatelessWidget {
                   children: [
                     SizedBox(
                       width: double.infinity,
-                      height: MediaQuery.sizeOf(context).height * .40,
+                      //height: MediaQuery.sizeOf(context).height * .40,
+                      height: 332,
                       child: Stack(
                         children: [
                           Positioned(
@@ -46,7 +46,7 @@ class Sustabilty extends StatelessWidget {
                             child: Container(
                               constraints: BoxConstraints(
                                   maxWidth:
-                                      MediaQuery.of(context).size.width * .6),
+                                      MediaQuery.of(context).size.width * .5),
                               child: Column(
                                 crossAxisAlignment: CrossAxisAlignment.start,
                                 children: [
@@ -92,7 +92,7 @@ class Sustabilty extends StatelessWidget {
                                       fontSize: 17,
                                       fontWeight: FontWeight.w400,
                                       text:
-                                          "Sustainability has become a pivotal concern in the ",
+                                          "Sustainability has become a pivotal concern in the global context, transcending various industries.",
                                     ),
                                   ),
                                 ],
@@ -115,7 +115,7 @@ class Sustabilty extends StatelessWidget {
                         fontSize: 17,
                         fontWeight: FontWeight.w400,
                         text:
-                            "global context, transcending various industries. In recent years, the tourism sector has witnessed a paradigm shift towards responsible and sustainable practices.As the world seeks ways to minimize its environmental footprint, Egypt is also embracing the concept of sustainable tourism to safeguard its rich cultural and natural heritage. ",
+                            "In recent years, the tourism sector has witnessed a paradigm shift towards responsible and sustainable practices.As the world seeks ways to minimize its environmental footprint, Egypt is also embracing the concept of sustainable tourism to safeguard its rich cultural and natural heritage. ",
                       ),
                     ),
                     Container(
@@ -131,7 +131,6 @@ class Sustabilty extends StatelessWidget {
                         ),
                       ),
                       child: const Padding(
-
                         padding: EdgeInsets.all(0),
                         child: CustomTextWidget(
                           text: 'Importance',
@@ -193,7 +192,7 @@ class Sustabilty extends StatelessWidget {
                           fontWeight: FontWeight.w400,
                           textAlign: TextAlign.left,
                           text:
-                              "1)Environmental Conservation:\n Egypt, with its ancient wonders and natural beauty,  is taking steps to protect its ecosystems. Initiatives include wildlife conservation, waste management, and sustainable energy practices in tourist facilities.\n2)Cultural Preservation:\n  Preserving Egypt's rich cultural heritage is crucial for sustainable tourism. This involves responsible tourism practices, respectful behavior towards cultural sites, and initiatives to empower local communities. \n 3)Community Engagement:\n Involving local communities in the tourism industry fosters economic growth and social development. Empowering residents through job opportunities, training, and community-based tourism initiatives ensures that the benefits of tourism are shared equitably.",
+                              "Cultural Heritage Preservation\nProtection of Sites: \nControlled access and restoration projects at historical sites like the Pyramids of Giza and Luxor temples. Funding Conservation: Tourism revenue funds archaeological conservation efforts. Environmental Sustainability\nEco-Friendly Hotels: \nUse of renewable energy and water-saving measures in accommodations. Protected Areas: National parks like Ras Mohammed protect biodiversity and promote eco-tourism.\nMarine Conservation: Protecting Red Sea coral reefs from overfishing and pollution.Community Engagement\nLocal Benefits: \nSupporting local businesses, employing locals, and promoting local crafts.\nCultural Respect: \nEncouraging respectful engagement with local cultures.\nCommunity-Based Tourism: \nInvolving locals in tourism planning, especially in areas like Siwa Oasis.Responsible Travel Practices\nEducation: \nTourists educated on minimizing waste, conserving water, and respecting sites.\nSustainable Transport:\n Promoting cycling tours and public transportation to reduce carbon footprint.\nPolicy and Regulation\nGovernment Initiatives: \nPolicies for sustainable practices and heritage protection.\nCertification: \nEncouraging businesses to get sustainability certifications like Green Star.\nInnovative Projects\nGreen Projects: \nDeveloping eco-lodges and using solar power in tourist facilities.\nEducational Programs:\n Workshops and campaigns to raise awareness about sustainability.\nPartnerships and Collaboration\nInternational Collaboration: \nWorking with UNESCO and UNEP on sustainable tourism standards.\nNGO Involvement: \nNGOs advocating for and implementing sustainable tourism projects.\nChallenges and Opportunities\nBalancing Act: \nBalancing economic benefits of tourism with conservation needs.\nPromoting Lesser-Known Sites: \nEncouraging visits to lesser-known destinations to reduce pressure on popular sites.\nClimate Adaptation: \nAdapting tourism practices to address climate change impacts on heritage and natural sites.",
                         ),
                       ),
                     ),
