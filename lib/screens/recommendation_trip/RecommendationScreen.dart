@@ -18,7 +18,7 @@ class _RecommendationScreenState extends State<RecommendationScreen> {
 
   void fetchRecommendations(int numDays) async {
     final response = await http.post(
-      Uri.parse('http://192.168.1.4:5000/recommend'),
+      Uri.parse('http://192.168.1.3:5000/recommend'),
       headers: <String, String>{
         'Content-Type': 'application/json; charset=UTF-8',
       },

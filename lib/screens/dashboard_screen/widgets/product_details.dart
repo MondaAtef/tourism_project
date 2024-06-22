@@ -145,7 +145,7 @@ class _ProductDetailsScreenState extends State<ProductDetailsScreen> {
                       children: [
                         const TitlesTextWidget(
                             color: Colors.black,
-                            label: "The Best Time :"),
+                            label: "The Best Time to Visit:"),
                         Subtitle(
                           color: Colors.black,
                           label: "${getCurrProduct.BestTime}",
