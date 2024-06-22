@@ -3,13 +3,9 @@ import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 import 'package:vixor_project/componenet/widgets/namewidget.dart';
 import 'package:vixor_project/componenet/widgets/subtitle_places.dart';
-import 'package:vixor_project/componenet/widgets/subtitle_text.dart';
 import 'package:vixor_project/componenet/widgets/title%20widget.dart';
-import 'package:vixor_project/componenet/widgets/title widget.dart';
 import 'package:vixor_project/provider/homeprovider.dart';
-import 'package:vixor_project/provider/trip provider.dart';
 import 'package:vixor_project/screens/dashboard_screen/widgets/heartbtn.dart';
-import 'package:vixor_project/services/MyAppFunctions.dart';
 
 import '../../map_screen/map_screen.dart';
 
