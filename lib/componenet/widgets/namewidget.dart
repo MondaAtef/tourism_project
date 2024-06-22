@@ -7,14 +7,11 @@ class AppNameTextWidget extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Text(
-      'vixor',
+      'VIXOR',
       style: TextStyle(
         fontSize: fontSize,
         fontWeight: FontWeight.w400,
         color: Colors.white,
-        fontFamily: "Oxanium",
-
-        // You can add more styling options here
       ),
     );
   }

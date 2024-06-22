@@ -20,11 +20,11 @@ class TitlesTextWidget extends StatelessWidget {
     return Text(
       label,
       maxLines: maxLines,
-      style: GoogleFonts.oxanium(
+      style: GoogleFonts.openSans(
         textStyle: TextStyle(
         color: color,
         fontSize: fontSize,
-        fontWeight: FontWeight.bold,
+          fontWeight: FontWeight.w600,
        // overflow: TextOverflow.ellipsis,
       ),
       ),

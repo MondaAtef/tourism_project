@@ -1,16 +1,260 @@
-import 'dart:io';
+import 'package:auto_direction/auto_direction.dart';
 import 'package:dash_chat_2/dash_chat_2.dart';
-import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_gemini/flutter_gemini.dart'; // تأكد من تضمين حزمة Gemini
-import 'package:image_picker/image_picker.dart';
 
 const String GEMINI_API_KEY = 'AIzaSyATicaAafi-vz0hgnOkp_U132hG_6Y3yaw';
+
+// تعريف قائمة الأسئلة والأجوبة
 List<Map<String, String>> faq = [
+  {
+    "question": "كيف يمكنني تخطيط رحلتي باستخدام التطبيق؟",
+    "answer":
+    "يمكنك تخطيط رحلتك من خلال الوصول إلى ميزة 'تخطيط الرحلة'، حيث يقترح النظام مسارات رحلات محسنة تركز على السياحة المستدامة. يمكنك أيضًا تخصيص خطة رحلتك بناءً على تفضيلاتك."
+  },
+  {
+    "question": "هل تتوفر مسارات رحلات جاهزة؟",
+    "answer":
+    "نعم، يوفر النظام مسارات رحلات جاهزة تعطي الأولوية لممارسات السياحة المستدامة. يمكنك الاختيار من بين مجموعة متنوعة من الخيارات المصممة لتناسب اهتمامات ومدد زمنية مختلفة."
+  },
+  {
+    "question": "كيف يمكنني العثور على أماكن إقامة صديقة للبيئة في الأقصر؟",
+    "answer":
+    "يمكنك العثور على أماكن إقامة صديقة للبيئة من خلال الوصول إلى ميزة 'توصيات الإقامة'، حيث يوصي النظام بفنادق مستدامة بناءً على تفضيلاتك."
+  },
+  {
+    "question": "كيف يمكنني الوصول إلى تعليمات الحفاظ على البيئة في كل موقع؟",
+    "answer":
+    "يتم توفير تعليمات الحفاظ على البيئة في كل موقع من خلال ميزة 'تعليمات الحفاظ على البيئة' التي تعتمد على موقعك باستخدام GPS. يمكنك الوصول إلى هذه التعليمات لتقليل تأثيرك البيئي أثناء زيارتك."
+  },
+  {
+    "question": "هل يتوفر التطبيق بعدة لغات؟",
+    "answer":
+    "نعم، يتوفر التطبيق بعدة لغات لتلبية احتياجات مجموعة واسعة من المستخدمين. يمكنك اختيار لغتك المفضلة من إعدادات التطبيق للوصول إلى المحتوى بلغتك المفضلة."
+  },
+  {
+    "question": "كيف يمكنني تقليل بصمتي البيئية أثناء استكشاف الأقصر؟",
+    "answer":
+    "يمكنك تقليل بصمتك البيئية باستخدام وسائل النقل الصديقة للبيئة مثل الدراجات أو الحافلات العامة، ودعم المبادرات المحلية للحفاظ على البيئة، واختيار أماكن إقامة تتبع ممارسات مستدامة."
+  },
+  {
+    "question":
+    "ما هي الممارسات المستدامة التي يجب علي اتباعها عند زيارة المواقع الأثرية في الأقصر؟",
+    "answer":
+    "عند زيارة المواقع الأثرية في الأقصر، من المهم اتباع الإرشادات مثل البقاء على المسارات المحددة، وعدم لمس أو إزالة القطع الأثرية، واحترام الأهمية الثقافية للموقع."
+  },
+  {
+    "question": "هل هناك خيارات نقل صديقة للبيئة متاحة للتجول في الأقصر؟",
+    "answer":
+    "نعم، توفر الأقصر خيارات نقل صديقة للبيئة مثل الدراجات الكهربائية، العربات التي تجرها الخيول، والجولات السياحية سيرًا على الأقدام التي تتيح لك استكشاف المدينة مع تقليل تأثيرك البيئي."
+  },
+  {
+    "question": "هل يمكنني التعرف على الحرف اليدوية التقليدية في الأقصر؟",
+    "answer":
+    "نعم، يمكنك التعرف على الحرف اليدوية التقليدية في الأقصر من خلال زيارة الأسواق المحلية، وورش العمل، والمراكز الثقافية حيث يعرض الحرفيون مهاراتهم ويبيعون المنتجات اليدوية."
+  },
+  {
+    "question":
+    "كيف يمكنني دعم مبادرات السياحة المستدامة في الأقصر بعد مغادرتي؟",
+    "answer":
+    "يمكنك دعم مبادرات السياحة المستدامة في الأقصر من خلال مشاركة تجاربك الإيجابية مع الآخرين ودعم المنظمات التي تروج للسياحة المستدامة في المنطقة."
+  },
+  {
+    "question":
+    "ما هي الخطوات التي يجب علي اتخاذها لضمان أن أكون محترمًا ثقافيًا أثناء أنشطتي السياحية؟",
+    "answer":
+    "يجب عليك احترام العادات والتقاليد المحلية، والحصول على إذن قبل التقاط الصور، والتفاعل مع المجتمعات المحلية باحترام، ودعم الأعمال التجارية المسؤولة ثقافيًا."
+  },
+  {
+    "question":
+    "ما هي بعض الخيارات المستدامة للهدايا التذكارية التي يمكنني شراؤها في الأقصر؟",
+    "answer":
+    "تشمل الخيارات المستدامة للهدايا التذكارية في الأقصر الحرف اليدوية المحلية، والمنسوجات المصنوعة يدويًا، والمجوهرات التقليدية، والمنتجات الصديقة للبيئة التي يتم الحصول عليها من الحرفيين المحليين."
+  },
+  {
+    "question": "كيف يمكنني تقليل النفايات أثناء السفر في الأقصر؟",
+    "answer":
+    "يمكنك تقليل النفايات من خلال حمل زجاجة مياه قابلة لإعادة الاستخدام، وتجنب البلاستيك المستخدم لمرة واحدة، والتخلص من النفايات بشكل مسؤول في الحاويات المخصصة أو مرافق إعادة التدوير."
+  },
+  {
+    "question": "هل يمكنني تخصيص خطة رحلتي وفقًا لاهتماماتي؟",
+    "answer":
+    "بالتأكيد! يوفر تطبيقنا خطط رحلات محسنة تعطي الأولوية لممارسات السياحة المستدامة. لديك المرونة في تخصيص رحلتك بناءً على اهتماماتك وميزانيتك وأهدافك المتعلقة بالاستدامة. يتيح لك ذلك استكشاف الأقصر بطريقة تتماشى مع قيمك مع تقليل بصمتك البيئية."
+  },
+  {
+    "question": "هل توجد فنادق صديقة للبيئة موصى بها؟",
+    "answer":
+    "نعم، نوصي بفنادق صديقة للبيئة بناءً على تفضيلاتك وتوافرها. تلعب هذه الإقامات دورًا حيويًا في السياحة المسؤولة، وتضمن توصياتنا إقامة مريحة ومستدامة في الأقصر."
+  },
+  {
+    "question": "كيف يمكن أن يساعدني الروبوت الدردشة أثناء رحلتي؟",
+    "answer":
+    "تم تصميم روبوت الدردشة لتقديم إرشادات حول ممارسات السياحة المستدامة، والإجابة على استفساراتك، واقتراح الأنشطة أو المعالم. يساعدك على اتخاذ قرارات مستنيرة أثناء استكشاف الأقصر، مما يضمن تجربة سفر لا تُنسى ومسؤولة."
+  },
+  {
+    "question":
+    "كيف يمكنني العثور على مواقع مستدامة في الأقصر باستخدام ميزة الخريطة؟",
+    "answer":
+    "تعرض ميزة الخريطة الأماكن الخضراء والمستدامة مثل الفنادق الصديقة للبيئة، والمحميات الطبيعية، والمواقع الثقافية. تشير الألوان المختلفة على الخريطة إلى أنواع مختلفة من المواقع المستدامة، مما يسهل عليك التعرف عليها واستكشافها. تشجعك هذه الميزة على زيارة الوجهات المستدامة وتعزز سلوك السفر المسؤول."
+  },
+  {
+    "question": "ما هي تعليمات الحفاظ على البيئة المتاحة في كل موقع؟",
+    "answer":
+    "تعليمات الحفاظ على البيئة مخصصة لموقعك باستخدام GPS لتعلمك بطرق تقليل تأثيرك البيئي أثناء زيارتك. من خلال اتباع هذه الإرشادات، تساهم في الحفاظ على التراث الطبيعي والثقافي في الأقصر."
+  },
+  {
+    "question":
+    "كيف يمكنني إنشاء ألبوم صور رقمي لتوثيق تجاربي في السفر المستدام؟",
+    "answer":
+    "يمكنك إنشاء ألبومات صور رقمية لتوثيق تجاربك في السفر المستدام في الأقصر. يدعم تطبيقنا تخزين الصور بسهولة واسترجاعها ومشاركتها، مما يتيح لك مشاركة ذكرياتك مع الآخرين وتعزيز السياحة المستدامة."
+  },
+  {
+    "question": "هل يتوفر التطبيق بعدة لغات؟",
+    "answer":
+    "نعم، نوفر التطبيق بعدة لغات لضمان الوصول إلى مجموعة متنوعة من المستخدمين، بما في ذلك السياح الدوليين. يعزز دعم اللغات تجربتك ويسهل التواصل، مما يجعل التطبيق أكثر شمولية وسهولة في الاستخدام."
+  },
+  {
+    "question": "كيف يمكنني تضمين تجارب ثقافية في خطة رحلتي المستدامة؟",
+    "answer":
+    "يمكنك تخصيص خطة رحلتك لتشمل تجارب ثقافية مثل زيارة المعالم التاريخية والمتاحف والمهرجانات التقليدية. تضمن توصياتنا أنك تشارك في التراث الثقافي للأقصر مع تعزيز الاستدامة."
+  },
+  {
+    "question": "ما هي المعايير المستخدمة لتوصية الفنادق الصديقة للبيئة؟",
+    "answer":
+    "نوصي بالفنادق الصديقة للبيئة بناءً على معايير مثل كفاءة الطاقة، وممارسات إدارة النفايات، والمشاركة المجتمعية، والشهادات مثل Green Key أو EarthCheck. تعطي هذه الإقامات الأولوية للاستدامة مع تقديم إقامة مريحة للمسافرين."
+  },
+  {
+    "question":
+    "هل هناك خيارات اقتصادية بين الفنادق الصديقة للبيئة الموصى بها؟",
+    "answer":
+    "نعم، نوفر مجموعة من الفنادق الصديقة للبيئة لتناسب مختلف الميزانيات. يمكنك تصفية تفضيلاتك للعثور على خيارات إقامة مستدامة ومعقولة التكلفة في الأقصر."
+  },
+  {
+    "question": "ما مدى دقة ميزة الخريطة في تحديد المواقع المستدامة؟",
+    "answer":
+    "تستخدم ميزة الخريطة بيانات جغرافية دقيقة لتحديد وعرض المواقع المستدامة في الأقصر. نتعاون مع السلطات المحلية والمنظمات لضمان موثوقية وصحة المعلومات المقدمة."
+  },
+  {
+    "question": "هل يمكنني التنقل إلى المواقع المستدامة باستخدام ميزة الخريطة؟",
+    "answer":
+    "نعم، يمكنك استخدام ميزة الخريطة للتنقل إلى المواقع المستدامة مثل الفنادق"
+  },
+  {
+    "question": "ما هي أشهر المطاعم التي تدعم الاستدامة في الأقصر؟",
+    "answer":
+    "مطعم صُفرة: مأكولات مصرية تقليدية مع مكونات طازجة ومحلية\n مطعم نفرتاري: تجربة تناول الطعام على جزيرة فيلة بمكونات محلية وصحية\n مطعم سكارابيو: أطباق عضوية وصحية مع إطلالات على نهر النيل\n مطعم كارما: أطباق نباتية ونباتية صديقة للبيئة مع مكونات محلية\n مطعم الموديرا: أطباق متنوعة ومستدامة مع خدمة ممتازة"
+  },
+  {
+    "question": "ماذا عن مطعم صُفرة؟",
+    "answer":
+    "الوصف: يقدم مطعم صُفرة المأكولات المصرية التقليدية باستخدام مكونات طازجة ومحلية\n الاستدامة: يدعم المطعم المزارعين المحليين ويهدف إلى تقليل النفايات من خلال ممارسات مستدامة.\n الموقع: شارع سيدي أبو الحجاج، الأقصر، مصر."
+  },
+  {
+    "question": "ماذا عن مطعم نفرتاري؟",
+    "answer":
+    "الوصف: يقع مطعم نفرتاري على جزيرة فيلة، ويشتهر بتقديم تجربة طعام ممتعة مع مناظر طبيعية خلابة.\n الاستدامة: يستخدم مكونات محلية وصحية، ويدعم المزارعين المحليين، ويركز على تقليل بصمته الكربونية.\n الموقع: جزيرة فيلة، الأقصر، مصر."
+  },
+  {
+    "question": "ماذا عن مطعم سكارابيو؟",
+    "answer":
+    "الوصف: يُعرف مطعم سكارابيو بأطباقه العضوية والصحية، ويقدم جوًا هادئًا مع إطلالات على نهر النيل.\n الاستدامة: يعتمد على المكونات المحلية والعضوية ويدعم الممارسات المستدامة.\n الموقع: كورنيش النيل، الأقصر، مصر."
+  },
+  {
+    "question": "ماذا عن مطعم كارما؟",
+    "answer":
+    "الوصف: يتخصص مطعم كارما في تقديم أطباق نباتية وصديقة للنباتيين. يشتهر بقائمة طعامه اللذيذة والمبتكرة.\n الاستدامة: يستخدم المطعم مكونات طازجة ومحلية ويركز على تقليل الأثر البيئي.\n الموقع: شارع المدينة، الأقصر، مصر."
+  },
+  {
+    "question": "ماذا عن مطعم الموديرا؟",
+    "answer":
+    "الوصف: يقدم مطعم الموديرا مجموعة متنوعة من الأطباق باستخدام مكونات محلية ومستدامة، ويوفر تجربة طعام فريدة مع خدمة ممتازة.\n الاستدامة: ملتزم بتقديم طعام مستدام ويدعم المجتمع المحلي من خلال شراء المنتجات المحلية.\n الموقع: شارع الكورنيش، الأقصر، مصر."
+  },
+  {
+    "question": "ما هي أشهر الفنادق التي تدعم الاستدامة في الأقصر؟",
+    "answer":
+    "فندق الموديرا\n فندق شتايجنبرجر نايل بالاس\n فندق سونستا سانت جورج\n منتجع شتايجنبرجر أختي"
+  },
+  {
+    "question": "ماذا عن فندق الموديرا؟",
+    "answer":
+    "الوصف: فندق الموديرا هو فندق فاخر يمزج بين الطراز العربي التقليدي والراحة العصرية. يتميز بديكور فاخر وضيافة دافئة.\n الاستدامة: يركز الفندق على الاستدامة من خلال مبادرات إدارة النفايات، والحفاظ على الطاقة، والمشاركة المجتمعية.\n الموقع: يقع في منطقة هادئة على بعد حوالي 4 كيلومترات من المعابد القديمة في الأقصر، مما يجعله مثاليًا لمن يبحثون عن الهدوء والاستكشاف الثقافي."
+  },
+  {
+    "question": "ماذا عن فندق شتايجنبرجر نايل بالاس؟",
+    "answer":
+    "الوصف: فندق شتايجنبرجر نايل بالاس هو من أفضل الفنادق في الأقصر، حيث يقدم إطلالات خلابة على نهر النيل ومرافق فاخرة.\n الاستدامة: يعتمد الفندق على ممارسات الاستدامة بما في ذلك تقليل الأثر البيئي والحفاظ على الموارد الطبيعية.\n الموقع: يقع على كورنيش النيل في الأقصر، على مسافة قصيرة من المعابد الشهيرة ومرافق التسوق."
+  },
+  {
+    "question": "ماذا عن فندق سونستا سانت جورج؟",
+    "answer":
+    "الوصف: فندق سونستا سانت جورج هو فندق فاخر معاصر يتميز بمرافق عالمية الطراز وديكور أنيق.\n الاستدامة: ينفذ الفندق ممارسات مستدامة في إدارة الموارد والحفاظ على البيئة.\n الموقع: يقع على ضفاف النيل، بالقرب من معبد الكرنك والمواقع الأثرية في الأقصر، مما يجعله مثاليًا للاسترخاء والاستكشاف التاريخي."
+  },
+  {
+    "question": "ماذا عن منتجع شتايجنبرجر أختي؟",
+    "answer":
+    "الوصف: منتجع شتايجنبرجر أختي هو منتجع مثالي للمسافرين الباحثين عن الاسترخاء والراحة، مع إطلالات خلابة على جبال الأقصر.\n الاستدامة: يركز المنتجع على الاستدامة من خلال سياسات صديقة للبيئة في إدارة الموارد وتقليل النفايات.\n الموقع: يقع على ضفاف النيل في الأقصر، على بعد مسافة قصيرة بالسيارة من معبد الكرنك والمعالم التاريخية."
+  },
+  {
+    "question":
+    "What are the most popular restaurants that support sustainability in Luxor?",
+    "answer":
+    "sofra Restaurant: Traditional Egyptian cuisine with fresh, local ingredients\n Nefertari Restaurant:Dining experience on Philae Island with local, healthy ingredients\n Scarabeo Restaurant: Organic and healthy dishes with Nile River views\n Karma Restaurant: Vegetarian and vegan-friendly dishes with local ingredients\n Al-Moudira Restaurant: Diverse, sustainable dishes with excellent service"
+  },
+  {
+    "question": "What about Sofra Restaurant?",
+    "answer":
+    "description: Sofra Restaurant offers traditional Egyptian cuisine using fresh, local ingredients\nsustainability: The restaurant supports local farmers and aims to reduce waste through sustainable     practices.\n location :Sidi Abu El Haggag Street, Luxor, Egypt."
+  },
+  {
+    "question": "What about Nefertari Restaurant?",
+    "answer":
+    "description:Located on Philae Island, Nefertari Restaurant is known for providing a delightful dining experience with stunning natural views.\n sustainability: It uses local and healthy ingredients, supports local farmers, and focuses on reducing its carbon footprint. \n location Philae Island, Luxor, Egypt."
+  },
+  {
+    "question": "What about Scarabeo Restaurant?",
+    "answer":
+    "description: Scarabeo Restaurant is known for its organic and healthy dishes, offering a serene ambiance with views of the Nile River.\n sustainability: It relies on local and organic ingredients and supports sustainable practices.\n location: Nile Corniche, Luxor, Egypt."
+  },
+  {
+    "question": "What about Karma Restaurant?",
+    "answer":
+    "description: Karma Restaurant specializes in offering vegetarian and vegan-friendly dishes. It is known for its delicious and innovative menu.\n sustainability: The restaurant uses fresh, local ingredients and focuses on reducing environmental impact.\n location: Al Madina Street, Luxor, Egypt."
+  },
+  {
+    "question": "What about Al-Moudira Restaurant?",
+    "answer":
+    "description:Al-Moudira Restaurant offers a diverse range of dishes using local and sustainable ingredients, providing a unique dining experience with excellent service.\n sustainability: It is committed to serving sustainable food and supports the local community by sourcing local products.\n location: Corniche Street, Luxor, Egypt."
+  },
+  {
+    "question":
+    "What are the most popular Hotels that support sustainability in Luxor?",
+    "answer":
+    "Al Moudira Hotel\n Steigenberger Nile Palace Hotel \n Sonesta St. George Hotel Hotel\n Steigenberger Resort Achti Hotel"
+  },
+  {
+    "question": "What about Al-Moudira Hotel?",
+    "answer":
+    "description :Al Moudira Hotel is a luxurious hotel blending traditional Arabic style with modern comfort. It features lavish décor and warm hospitality\n sustainability: The hotel emphasizes sustainability through waste management initiatives, energy conservation, and community engagement\n location: Located in a serene area about 4 kilometers from Luxor's ancient temples, making it ideal for those seeking tranquility and cultural exploration."
+  },
+  {
+    "question": "What about Steigenberger Nile Palace Hotel ?",
+    "answer":
+    "description: Steigenberger Nile Palace Hotel is one of Luxor's finest hotels, offering stunning views of the Nile River and luxurious amenities.\nsustainability: The hotel adopts sustainability practices including reducing environmental footprint and preserving natural resources.\nlocation: Situated on the Corniche in Luxor, a short distance from the famous Luxor temples and shopping facilities."
+  },
+  {
+    "question": "What about Sonesta St. George Hotel?",
+    "answer":
+    "description: Sonesta St. George Hotel is a contemporary luxury hotel with world-class facilities and elegant décor.\n sustainability:  The hotel implements sustainable practices in resource management and environmental conservation \n location: Located on the banks of the Nile, close to the Karnak Temple and Luxor's archaeological sites, making it perfect for relaxation and historical exploration."
+  },
+  {
+    "question": "What about Steigenberger Resort Achti?",
+    "answer":
+    "description: Steigenberger Resort Achti is an ideal resort for travelers seeking relaxation and comfort, with breathtaking views of Luxor's mountains.\nsustainability: The resort focuses on sustainability through eco-friendly policies in resource management and waste reduction.\n location: Situated on the banks of the Nile in Luxor, a short drive from the Karnak Temple and historical landmarks."
+  },
   {
     "question": "How can I plan my trip using the application?",
     "answer":
-    "You can plan your trip by accessing the 'show your trip' feature, where the system suggests optimized trip itineraries focused on sustainable tourism. You can also customize your trip plan based on your preferences."
+    "You can plan your trip by accessing the 'Trip Planning' feature, where the system suggests optimized trip itineraries focused on sustainable tourism. You can also customize your trip plan based on your preferences."
   },
   {
     "question": "Are there pre-made trip itineraries available?",
@@ -261,15 +505,67 @@ class _ChatScreenState extends State<ChatScreen> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-     /* appBar: AppBar(
-        title: Text('Chat with VIXOR'),
-      ),*/
       body: Column(
         children: [
           Expanded(
             child: DashChat(
-              messageOptions: MessageOptions(),
+              messageOptions: MessageOptions(
+                showOtherUsersName: true,
+                avatarBuilder: (p0, onPressAvatar, onLongPressAvatar) {
+                  if (p0.id == "0") {
+                    return Container(
+                      padding: const EdgeInsets.all(5),
+                      child: Column(
+                        children: [
+                          CircleAvatar(
+                            backgroundColor: Colors.brown[100],
+                            child: Icon(
+                              Icons.person,
+                              color: Color(0xff6F4E37),
+                            ),
+                          ),
+                          Text(
+                            "You",
+                            style: TextStyle(color: Colors.grey, fontSize: 12),
+                          )
+                        ],
+                      ),
+                    );
+                  } else {
+                    return Container(
+                      padding: const EdgeInsets.all(5),
+                      child: Column(
+                        children: [
+                          CircleAvatar(
+                            backgroundImage: NetworkImage(p0.profileImage!),
+                          ),
+                          Text(
+                            p0.firstName!,
+                            style: TextStyle(color: Colors.grey, fontSize: 10),
+                          )
+                        ],
+                      ),
+                    );
+                  }
+                },
+                currentUserContainerColor: const Color(0xff6F4E37),
+                showCurrentUserAvatar: true,
+                userNameBuilder: (user) {
+                  return Container();
+                },
+                messageTextBuilder: (message, previousMessage, nextMessage) {
+                  return AutoDirection(
+                    text: message.text,
+                    child: Text(
+                      message.text,
+                      style: TextStyle(
+                          color: message.user.id == '0' ? Colors.white : null),
+                    ),
+                  );
+                },
+              ),
               inputOptions: InputOptions(
+                inputTextDirection: getDirection(_textEditingController.text),
                 onTextChange: (value) {
                   setState(() {
                     _searchText = value;
@@ -281,7 +577,7 @@ class _ChatScreenState extends State<ChatScreen> {
                 sendButtonBuilder: (send) {
                   return IconButton(
                     onPressed: send,
-                    icon: Icon(Icons.send),
+                    icon: const Icon(Icons.send),
                   );
                 },
                 cursorStyle: const CursorStyle(
@@ -300,13 +596,16 @@ class _ChatScreenState extends State<ChatScreen> {
                 itemCount: filteredOptions.length,
                 itemBuilder: (context, index) {
                   final option = filteredOptions[index];
-                  return InkWell(
-                    onTap: () {
-                      _textEditingController.text = option;
-                    },
-                    child: Container(
-                      padding: EdgeInsets.all(10),
-                      child: Text(option!),
+                  return Card(
+                    child: InkWell(
+                      onTap: () {
+                        _textEditingController.text = option;
+                      },
+                      child: Container(
+                        padding: const EdgeInsets.all(10),
+                        child:
+                        AutoDirection(text: option!, child: Text(option)),
+                      ),
                     ),
                   );
                 },
@@ -314,14 +613,15 @@ class _ChatScreenState extends State<ChatScreen> {
             ),
         ],
       ),
-      floatingActionButton: Container(
-        margin: EdgeInsets.all(35),
-        child: FloatingActionButton(
-          onPressed: _sendMediaMessage,
-          child: Icon(Icons.image),
-        ),
-      ),
     );
+  }
+
+  TextDirection getDirection(String text) {
+    if (text.contains(RegExp(r'[\u0600-\u06FF]'))) {
+      return TextDirection.rtl;
+    } else {
+      return TextDirection.ltr;
+    }
   }
 
   void _sendMessage(ChatMessage message) {
@@ -370,25 +670,5 @@ class _ChatScreenState extends State<ChatScreen> {
         messages = [replyMessage, ...messages];
       });
     });
-  }
-
-  void _sendMediaMessage() async {
-    ImagePicker imagePicker = ImagePicker();
-    XFile? file = await imagePicker.pickImage(source: ImageSource.gallery);
-    if (file != null) {
-      ChatMessage message = ChatMessage(
-        user: currentUser,
-        text: 'Describe this picture?',
-        medias: [
-          ChatMedia(
-            fileName: '',
-            type: MediaType.image,
-            url: file.path,
-          ),
-        ],
-        createdAt: DateTime.now(),
-      );
-      _sendMessage(message);
-    }
   }
 }

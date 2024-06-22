@@ -458,8 +458,8 @@ class _EditOrUploadPlaceScreenState extends State<EditOrUploadPlaceScreen> {
                             controller: _titleController,
                             key: const ValueKey('Title'),
                             maxLength: 80,
-                            minLines: 1,
-                            maxLines: 2,
+                            minLines: 4,
+                            maxLines: 8,
                             keyboardType: TextInputType.multiline,
                             textInputAction: TextInputAction.newline,
                             decoration: const InputDecoration(

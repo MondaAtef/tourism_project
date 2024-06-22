@@ -2,6 +2,7 @@ import 'package:fancy_shimmer_image/fancy_shimmer_image.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 import 'package:vixor_project/componenet/widgets/namewidget.dart';
+import 'package:vixor_project/componenet/widgets/subtitle_places.dart';
 import 'package:vixor_project/componenet/widgets/subtitle_text.dart';
 import 'package:vixor_project/componenet/widgets/title%20widget.dart';
 import 'package:vixor_project/componenet/widgets/title widget.dart';
@@ -107,19 +108,30 @@ class _ProductDetailsScreenState extends State<ProductDetailsScreen> {
                     ],
                   ),
                   const SizedBox(height: 20),
-                  Text(
-                    "Title: ${getCurrProduct.PlaceTitle}",
-                    softWrap: true,
-                    style: const TextStyle(
-                      fontSize: 20,
-                      fontWeight: FontWeight.w700,
+                 SingleChildScrollView(
+                   scrollDirection: Axis.vertical,
+                   child: Column(
+                     crossAxisAlignment: CrossAxisAlignment.start,
+                    children: [
+                      /*const TitlesTextWidget(
+                      color: Colors.black,
+                      label: "Name:" ,),*/
+                      TitlesTextWidget(
+                      color: Colors.black,
+                      label:
+                      "${getCurrProduct.PlaceTitle}",
                     ),
+                    ],
                   ),
+                 ),
                   const SizedBox(height: 10),
                   Row(
                     children: [
-                      const TitlesTextWidget(label: "Category:"),
-                      SubtitleTextWidget(
+                      const TitlesTextWidget(
+                          color: Colors.black,
+                          label: "Category :"),
+                      Subtitle(
+                        color: Colors.black,
                         label:
                         "In ${getCurrProduct.PlaceCategory}",
                       ),
@@ -129,10 +141,13 @@ class _ProductDetailsScreenState extends State<ProductDetailsScreen> {
                   SingleChildScrollView(
                     scrollDirection: Axis.vertical,
                     child: Column(
+                      crossAxisAlignment: CrossAxisAlignment.start,
                       children: [
                         const TitlesTextWidget(
-                            label: "The Best Time:"),
-                        SubtitleTextWidget(
+                            color: Colors.black,
+                            label: "The Best Time :"),
+                        Subtitle(
+                          color: Colors.black,
                           label: "${getCurrProduct.BestTime}",
                         ),
                       ],
@@ -142,10 +157,14 @@ class _ProductDetailsScreenState extends State<ProductDetailsScreen> {
                   SingleChildScrollView(
                     scrollDirection: Axis.vertical,
                     child: Column(
+                      crossAxisAlignment: CrossAxisAlignment.start,
                       children: [
+
                         const TitlesTextWidget(
-                            label: "Description:"),
-                        SubtitleTextWidget(
+                            color: Colors.black,
+                            label: "Description :"),
+                        Subtitle(
+                          color: Colors.black,
                           label:
                           "${getCurrProduct.PlaceDescription}",
                         ),
@@ -156,11 +175,15 @@ class _ProductDetailsScreenState extends State<ProductDetailsScreen> {
                   SingleChildScrollView(
                     scrollDirection: Axis.vertical,
                     child: Column(
+                      crossAxisAlignment: CrossAxisAlignment.start,
                       children: [
                         const TitlesTextWidget(
+                            color: Colors.black,
                             label:
-                            "Things to Know Before you go:"),
-                        SubtitleTextWidget(
+                            "Things to Know Before you go :"),
+                        Subtitle(
+
+                          color: Colors.black,
                           label:
                           "${getCurrProduct.thingToKnow}",
                         ),

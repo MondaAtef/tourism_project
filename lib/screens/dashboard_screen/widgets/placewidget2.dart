@@ -65,7 +65,7 @@ class _PlaceWidget2State extends State<PlaceWidget2> {
                     child: TitlesTextWidget(
                       label: getCurrProduct.PlaceTitle,
                       fontSize: 18,
-                      maxLines: 2,
+                      maxLines: 4,
                     ),
                   ),const Spacer(),
                   Flexible(
