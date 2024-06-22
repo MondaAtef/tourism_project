@@ -19,6 +19,7 @@ import 'package:vixor_project/provider/trip%20provider.dart';
 import 'package:vixor_project/provider/view%20provider.dart';
 import 'package:vixor_project/provider/wishlist_provider.dart';
 import 'package:vixor_project/screens/chat_screen/chat_screen.dart';
+import 'package:vixor_project/screens/dashboard_screen/details.dart';
 import 'package:vixor_project/screens/dashboard_screen/widgets/product_details.dart';
 import 'package:vixor_project/screens/dashboard_screen/widgets/viewed_recently.dart';
 import 'package:vixor_project/screens/dashboard_screen/widgets/wishlist.dart';
@@ -29,13 +30,13 @@ import 'package:vixor_project/screens/splash.dart';
 
 import 'screens/dashboard_screen/widgets/searchscreen.dart';
 
-void main()async {
+void main() async {
   WidgetsFlutterBinding.ensureInitialized();
   await initialServices();
   Gemini.init(apiKey: GEMINI_API_KEY);
   // ignore: deprecated_member_use
   BlocOverrides.runZoned(
-        () async {
+    () async {
       await CachHelper.init();
       DioHelper.init();
       runApp(const MyApp());
@@ -66,7 +67,7 @@ class _MyAppState extends State<MyApp> {
   //Fetch the current theme
   void getCurrentAppTheme() async {
     themeChangeProvider.setDarkTheme =
-    await themeChangeProvider.darkThemePreferences.getTheme();
+        await themeChangeProvider.darkThemePreferences.getTheme();
   }
 
   final Future<FirebaseApp> firebaseinitilization = Firebase.initializeApp();
@@ -95,7 +96,8 @@ class _MyAppState extends State<MyApp> {
 
           return MultiProvider(
             providers: [
-              BlocProvider(create: (BuildContext context)=>NewsCubit()..getUserData(),
+              BlocProvider(
+                create: (BuildContext context) => NewsCubit()..getUserData(),
               ),
               ChangeNotifierProvider(create: (_) {
                 //Notify about theme changes
@@ -107,7 +109,7 @@ class _MyAppState extends State<MyApp> {
               ChangeNotifierProvider(create: (_) {
                 return ViewedProdProvider();
               }),
-            /*  ChangeNotifierProvider(create: (_) {
+              /*  ChangeNotifierProvider(create: (_) {
                 return TripProvider();
               }),*/
 
@@ -117,29 +119,27 @@ class _MyAppState extends State<MyApp> {
               ChangeNotifierProvider(create: (_) {
                 return HomeProvider();
               }),
-
             ],
             child: Consumer<ThemeProvider>(
                 builder: (context, themeChangeProvider, ch) {
-                  LocaleController controller = Get.put(LocaleController());
-                  return GetMaterialApp(
-                    translations: MyTranslation(),
-                    debugShowCheckedModeBanner: false,
-                    locale: controller.language,
-                    routes: {
-                      ViewedRecentlyScreen.routName: (context) => const ViewedRecentlyScreen(),
-                      SearchScreen.routeName: (context) => const SearchScreen(),
-                      ProductDetailsScreen.routName: (context) =>
+              LocaleController controller = Get.put(LocaleController());
+              return GetMaterialApp(
+                translations: MyTranslation(),
+                debugShowCheckedModeBanner: false,
+                locale: controller.language,
+                routes: {
+                  ViewedRecentlyScreen.routName: (context) =>
+                      const ViewedRecentlyScreen(),
+                  SearchScreen.routeName: (context) => const SearchScreen(),
+                  ProductDetailsScreen.routName: (context) =>
                       const ProductDetailsScreen(),
-                      WishlistScreen.routName: (context) => const WishlistScreen(),
-                    },
-
-                    title: 'Luxor app',
-                    home: const Splash(),
-
-
-                  );
-                }),
+                  WishlistScreen.routName: (context) => const WishlistScreen(),
+                  PlaceDetailScreen.routeName: (context) => PlaceDetailScreen(),
+                },
+                title: 'Luxor app',
+                home: const Splash(),
+              );
+            }),
           );
         });
   }

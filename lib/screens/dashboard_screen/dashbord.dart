@@ -3,7 +3,7 @@ import 'package:flutter/material.dart';
 import 'package:vixor_project/componenet/widgets/title%20widget.dart';
 import 'package:vixor_project/const/app_constants.dart';
 import 'package:vixor_project/models/list_item_model.dart';
-import 'package:vixor_project/screens/dashboard_screen/webview.dart';
+import 'package:vixor_project/screens/dashboard_screen/details.dart';
 import 'package:vixor_project/screens/dashboard_screen/widgets/home_item_list_1.dart';
 import 'package:vixor_project/utils/app_imagse.dart';
 import 'package:vixor_project/utils/app_colors.dart';
@@ -17,13 +17,30 @@ class DashBoardScreen extends StatefulWidget {
 
 class _DashBoardScreenState extends State<DashBoardScreen> {
   List<ListItemModell> itemModel = [
-    ListItemModell(image: Assets.Ballon, text: 'Hot air   ballooning'),
-    ListItemModell(image: Assets.Karnak, text: 'Karnak Temple in East'),
-    ListItemModell(image: Assets.nile, text: 'Nile Corniche in Luxor'),
-    ListItemModell(image: Assets.abo, text: 'Abo EL Hagaga Mosque'),
-    ListItemModell(image: Assets.churach, text: 'Church of the Virgin Mary'),
-    ListItemModell(image: Assets.vellay, text: 'Valley of the Kings Temple'),
-
+    ListItemModell(
+        image: Assets.Ballon,
+        text: 'Air Balloon',
+        id: '51f3fc18-4b5b-4fc0-9065-61e31c2a1673'),
+    ListItemModell(
+        image: Assets.Karnak,
+        text: 'Karnak Temple',
+        id: 'c1a1b6c3-898b-417f-a70d-267f5173ec06'),
+    ListItemModell(
+        image: Assets.nile,
+        text: 'Nile Corniche',
+        id: '72a40038-6335-4b3f-ba24-9309907a9808'),
+    ListItemModell(
+        image: Assets.abo,
+        text: 'Abo EL Hagaga Mosque',
+        id: 'e23328a9-ee95-4029-b496-3f6897c1ec38'),
+    ListItemModell(
+        image: Assets.churach,
+        text: 'Church of the Virgin Mary',
+        id: '197738d5-b223-44a1-b572-1db70674d8a4'),
+    ListItemModell(
+        image: Assets.vellay,
+        text: 'Valley of the Kings Temple',
+        id: '65cce395-92cc-4f07-b08d-c2822f5bffb1'),
   ];
 
   @override
@@ -76,7 +93,8 @@ class _DashBoardScreenState extends State<DashBoardScreen> {
                   const SizedBox(height: 15),
                   const Padding(
                     padding: EdgeInsets.all(8.0),
-                    child: TitlesTextWidget(label: "Top Places", color: Colors.white),
+                    child: TitlesTextWidget(
+                        label: "Top Places", color: Colors.white),
                   ),
                   SingleChildScrollView(
                     scrollDirection: Axis.horizontal,
@@ -95,20 +113,33 @@ class _DashBoardScreenState extends State<DashBoardScreen> {
                                     width: 100,
                                     height: 100,
                                     decoration: BoxDecoration(
-                                      borderRadius: BorderRadius.circular(20), // Adjust radius for rounded but not circular shape
+                                      borderRadius: BorderRadius.circular(
+                                          20), // Adjust radius for rounded but not circular shape
                                       border: Border.all(
                                         color: Colors.white,
-                                        width: 2, // Optional: Add a border around the container
+                                        width:
+                                            2, // Optional: Add a border around the container
                                       ),
                                     ),
                                     child: Center(
-                                      child: ClipRRect(
-                                        borderRadius: BorderRadius.circular(20), // Match radius with the container
-                                        child: Image.asset(
-                                          item.image,
-                                          width: 80, // Adjust width to not take full container space
-                                          height: 80, // Adjust height to not take full container space
-                                          fit: BoxFit.cover,
+                                      child: GestureDetector(
+                                        onTap: () {
+                                          Navigator.of(context).pushNamed(
+                                            PlaceDetailScreen.routeName,
+                                            arguments: item.id,
+                                          );
+                                        },
+                                        child: ClipRRect(
+                                          borderRadius: BorderRadius.circular(
+                                              20), // Match radius with the container
+                                          child: Image.asset(
+                                            item.image,
+                                            width:
+                                                80, // Adjust width to not take full container space
+                                            height:
+                                                80, // Adjust height to not take full container space
+                                            fit: BoxFit.cover,
+                                          ),
                                         ),
                                       ),
                                     ),
@@ -116,8 +147,11 @@ class _DashBoardScreenState extends State<DashBoardScreen> {
                                   const SizedBox(height: 8),
                                   Text(
                                     item.text,
-                                    style: const TextStyle(color: Colors.white), // Set text color to white
-                                    textAlign: TextAlign.center, // Center the text
+                                    style: const TextStyle(
+                                        color: Colors
+                                            .white), // Set text color to white
+                                    textAlign:
+                                        TextAlign.center, // Center the text
                                   ),
                                 ],
                               ),
