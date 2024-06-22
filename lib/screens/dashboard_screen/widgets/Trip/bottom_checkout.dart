@@ -11,7 +11,7 @@ class CartBottomSheetWidget extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     final productsProvider = Provider.of<HomeProvider>(context);
-    final cartProvider = Provider.of<TripProvider>(context);
+   // final cartProvider = Provider.of<TripProvider>(context);
     return Container(
       decoration: BoxDecoration(
         color: Theme.of(context).scaffoldBackgroundColor,

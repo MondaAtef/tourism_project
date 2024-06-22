@@ -77,7 +77,7 @@ class Mydrawer extends StatelessWidget {
                   );
                 },
               ),
-              ListTile(
+            /*  ListTile(
                 title: const Text(
                   'Admin',
                   style: TextStyle(color: Color(0xff8E4F2E)),
@@ -208,7 +208,7 @@ class Mydrawer extends StatelessWidget {
                     },
                   );
                 },
-              ),
+              ),*/
               ListTile(
                 title: const Text(
                   'Join Our Community',

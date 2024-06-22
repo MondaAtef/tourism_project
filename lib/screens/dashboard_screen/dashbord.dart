@@ -17,13 +17,13 @@ class DashBoardScreen extends StatefulWidget {
 
 class _DashBoardScreenState extends State<DashBoardScreen> {
   List<ListItemModell> itemModel = [
-    ListItemModell(image: Assets.Ballon, text: 'Ballon'),
-    ListItemModell(image: Assets.luxor, text: 'Luxor Temple'),
-    ListItemModell(image: Assets.Karnak, text: 'Karnak Temple'),
+    ListItemModell(image: Assets.Ballon, text: 'Hot air   ballooning'),
+    ListItemModell(image: Assets.Karnak, text: 'Karnak Temple in East'),
+    ListItemModell(image: Assets.nile, text: 'Nile Corniche in Luxor'),
     ListItemModell(image: Assets.abo, text: 'Abo EL Hagaga Mosque'),
     ListItemModell(image: Assets.churach, text: 'Church of the Virgin Mary'),
     ListItemModell(image: Assets.vellay, text: 'Valley of the Kings Temple'),
-    ListItemModell(image: Assets.nile, text: 'Nile Corniche'),
+
   ];
 
   @override

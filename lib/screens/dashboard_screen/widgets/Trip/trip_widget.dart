@@ -1,4 +1,4 @@
-import 'package:fancy_shimmer_image/fancy_shimmer_image.dart';
+/*import 'package:fancy_shimmer_image/fancy_shimmer_image.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 import 'package:vixor_project/componenet/widgets/subtitle_text.dart';
@@ -110,4 +110,4 @@ class TripoWidget extends StatelessWidget {
       ),
     );
   }
-}
+}*/

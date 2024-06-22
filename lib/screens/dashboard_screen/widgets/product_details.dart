@@ -4,16 +4,17 @@ import 'package:provider/provider.dart';
 import 'package:vixor_project/componenet/widgets/namewidget.dart';
 import 'package:vixor_project/componenet/widgets/subtitle_text.dart';
 import 'package:vixor_project/componenet/widgets/title%20widget.dart';
+import 'package:vixor_project/componenet/widgets/title widget.dart';
 import 'package:vixor_project/provider/homeprovider.dart';
-import 'package:vixor_project/provider/trip%20provider.dart';
+import 'package:vixor_project/provider/trip provider.dart';
 import 'package:vixor_project/screens/dashboard_screen/widgets/heartbtn.dart';
 import 'package:vixor_project/services/MyAppFunctions.dart';
 
 import '../../map_screen/map_screen.dart';
 
-
 class ProductDetailsScreen extends StatefulWidget {
   static const routName = "/ProductDetailsScreen";
+
   const ProductDetailsScreen({super.key});
 
   @override
@@ -25,15 +26,15 @@ class _ProductDetailsScreenState extends State<ProductDetailsScreen> {
   Widget build(BuildContext context) {
     Size size = MediaQuery.of(context).size;
     final productsProvider = Provider.of<HomeProvider>(context);
-    String? productId = ModalRoute.of(context)!.settings.arguments as String?;
+    String? productId =
+    ModalRoute.of(context)!.settings.arguments as String?;
     final getCurrProduct = productsProvider.findByProdId(productId!);
-    final cartProvider = Provider.of<TripProvider>(context);
+
     return Scaffold(
       appBar: AppBar(
         centerTitle: true,
         leading: IconButton(
           onPressed: () {
-            // Navigator.canPop(context) ? Navigator.pop(context) : null;
             if (Navigator.canPop(context)) {
               Navigator.pop(context);
             }
@@ -43,167 +44,132 @@ class _ProductDetailsScreenState extends State<ProductDetailsScreen> {
             size: 20,
           ),
         ),
-        // automaticallyImplyLeading: false,
         title: const AppNameTextWidget(fontSize: 20),
       ),
       body: getCurrProduct == null
           ? const SizedBox.shrink()
           : SingleChildScrollView(
         child: Column(
+          crossAxisAlignment: CrossAxisAlignment.start,
           children: [
             FancyShimmerImage(
               imageUrl: getCurrProduct.PlaceImage,
               height: size.height * 0.38,
               width: double.infinity,
             ),
-            const SizedBox(
-              height: 20,
-            ),
+            const SizedBox(height: 20),
             Padding(
               padding: const EdgeInsets.all(8.0),
               child: Column(
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
-                  Padding(
-                    padding: const EdgeInsets.symmetric(horizontal: 30),
-                    child: Row(
-                      mainAxisAlignment: MainAxisAlignment.center,
-                      children: [
-                        HeartButtonWidget(
-                          bkgColor: Colors.blue.shade100,
-                          productId: getCurrProduct.PlaceId,
-                        ),
-                        const SizedBox(
-                          width: 20,
-                        ),
-                        Expanded(
-                          child: SizedBox(
-                            height: kBottomNavigationBarHeight - 10,
-                            child: ElevatedButton.icon(
-                              style: ElevatedButton.styleFrom(
-                                backgroundColor: Color(0xFF8D502F),
-                                shape: RoundedRectangleBorder(
-                                  borderRadius: BorderRadius.circular(30.0),
+                  Row(
+                    mainAxisAlignment: MainAxisAlignment.end,
+                    children: [
+                      IconButton(
+                        onPressed: () {
+                          Navigator.push(
+                            context,
+                            MaterialPageRoute(
+                              builder: (context) => MapScreen(),
+                            ),
+                          );
+                        },
+                        icon: Container(
+                          padding: EdgeInsets.all(10), // Adjust padding as needed
+                          decoration: BoxDecoration(
+                            color: Colors.brown.shade100, // Replace with your desired background color
+                            borderRadius: BorderRadius.circular(8), // Optional: Add border radius
+                          ),
+                          child: Row(
+                            children: [
+                              Icon(Icons.car_crash_outlined),
+                              SizedBox(width: 5),
+                              Text(
+                                'Map',
+                                style: TextStyle(
+                                  fontSize: 16, // Adjust text size as needed
+                                  fontWeight: FontWeight.bold, // Optional: Adjust text style
+                                  color: Colors.white, // Optional: Adjust text color
                                 ),
                               ),
-                              onPressed: () async {
-                                if (cartProvider.isProdinCart(productId: getCurrProduct.PlaceId)) {
-                                  // Navigate to map screen
-                                  Navigator.push(
-                                    context,
-                                    MaterialPageRoute(
-                                      builder: (context) => MapScreen(
-                                        /*latitude: getCurrProduct.latitude, // Replace with actual latitude
-                                        longitude: getCurrProduct.longitude, */// Replace with actual longitude
-                                         ),
-                                    ),
-                                  );
-                                  return;
-                                }
-                                try {
-                                  await cartProvider.addToCartFirebase(
-                                      productId: getCurrProduct.PlaceId,
-                                      qty: 1,
-                                      context: context);
-                                } catch (e) {
-                                  await MyAppFunctions.showErrorOrWarningDialog(
-                                    context: context,
-                                    subtitle: e.toString(),
-                                    fct: () {},
-                                  );
-                                }
-                              },
-                              icon: Icon(
-                                cartProvider.isProdinCart(productId: getCurrProduct.PlaceId)
-                                    ? Icons.check
-                                    : Icons.local_taxi,
-                                color: Colors.white,
-                              ),
-                              label: Text(
-                                cartProvider.isProdinCart(productId: getCurrProduct.PlaceId)
-                                    ? "map"
-                                    : "Go",
-                                style: const TextStyle(color: Colors.white),
-                              ),
-                            ),
-
-
-
+                            ],
                           ),
                         ),
+                      ),
+                      const SizedBox(width: 100),
+                      HeartButtonWidget(
+                       // bkgColor: Colors.blue.shade100,
+                        productId: getCurrProduct.PlaceId,
+                      ),
+
+
                     ],
+                  ),
+                  const SizedBox(height: 20),
+                  Text(
+                    "Title: ${getCurrProduct.PlaceTitle}",
+                    softWrap: true,
+                    style: const TextStyle(
+                      fontSize: 20,
+                      fontWeight: FontWeight.w700,
                     ),
                   ),
-                  const SizedBox(
-                    height: 20,
-                  ),
-                  Row(
-                    crossAxisAlignment: CrossAxisAlignment.start,
-                    children: [
-                      Flexible(
-                        child: Text(
-                          "Title:${getCurrProduct.PlaceTitle}",
-                          softWrap: true,
-                          style: const TextStyle(
-                              fontSize: 20, fontWeight: FontWeight.w700),
-                        ),
-                      ),
-                    ],
-                  ),
+                  const SizedBox(height: 10),
                   Row(
                     children: [
                       const TitlesTextWidget(label: "Category:"),
                       SubtitleTextWidget(
-                          label: "In ${getCurrProduct.PlaceCategory}"),
+                        label:
+                        "In ${getCurrProduct.PlaceCategory}",
+                      ),
                     ],
                   ),
-                  const SizedBox(
-                    height: 5,
-                  ),
+                  const SizedBox(height: 5),
                   SingleChildScrollView(
                     scrollDirection: Axis.vertical,
                     child: Column(
                       children: [
-                        const TitlesTextWidget(label:"The Best Time:"),
+                        const TitlesTextWidget(
+                            label: "The Best Time:"),
                         SubtitleTextWidget(
-                            label: "${getCurrProduct.BestTime}"),
-
+                          label: "${getCurrProduct.BestTime}",
+                        ),
                       ],
                     ),
                   ),
-                  const SizedBox(
-                    height: 5,
-                  ),
+                  const SizedBox(height: 5),
                   SingleChildScrollView(
                     scrollDirection: Axis.vertical,
                     child: Column(
                       children: [
-                        const TitlesTextWidget(label:"Description:"),
+                        const TitlesTextWidget(
+                            label: "Description:"),
                         SubtitleTextWidget(
-                            label: "${getCurrProduct.PlaceDescription}"),
-
+                          label:
+                          "${getCurrProduct.PlaceDescription}",
+                        ),
                       ],
                     ),
                   ),
-                  const SizedBox(
-                    height: 5,
-                  ),
+                  const SizedBox(height: 5),
                   SingleChildScrollView(
                     scrollDirection: Axis.vertical,
                     child: Column(
                       children: [
-                        const TitlesTextWidget(label:"Things to Know Before you go:"),
+                        const TitlesTextWidget(
+                            label:
+                            "Things to Know Before you go:"),
                         SubtitleTextWidget(
-                            label: "${getCurrProduct.thingToKnow}"),
-
+                          label:
+                          "${getCurrProduct.thingToKnow}",
+                        ),
                       ],
                     ),
                   ),
-
-
                 ],
               ),
-            )
+            ),
           ],
         ),
       ),

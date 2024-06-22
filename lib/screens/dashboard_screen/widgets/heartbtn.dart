@@ -76,7 +76,7 @@ class _HeartButtonWidgetState extends State<HeartButtonWidget> {
           )
               ? IconlyBold.heart
               : IconlyLight.heart,
-          size: widget.size,
+          size: 30,
           color: wishlistsProvider.isProdinWishlist(
             productId: widget.productId,
           )

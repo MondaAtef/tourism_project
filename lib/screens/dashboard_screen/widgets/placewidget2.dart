@@ -27,7 +27,7 @@ class _PlaceWidget2State extends State<PlaceWidget2> {
     final getCurrProduct = productsProvider.findByProdId(widget.productId);
     Size size = MediaQuery.of(context).size;
     final viewedProdProvider = Provider.of<ViewedProdProvider>(context);
-    final cartProvider = Provider.of<TripProvider>(context);
+  //  final cartProvider = Provider.of<TripProvider>(context);
 
     return getCurrProduct == null
         ? const SizedBox.shrink()
@@ -74,7 +74,7 @@ class _PlaceWidget2State extends State<PlaceWidget2> {
                       productId: getCurrProduct.PlaceId,
                     ),
                   ),
-                  Flexible(
+                  /*Flexible(
                     flex: 1,
                     child: InkWell(
                       borderRadius: BorderRadius.circular(12.0),
@@ -107,7 +107,7 @@ class _PlaceWidget2State extends State<PlaceWidget2> {
                         color: Colors.grey,
                       ),
                     ),
-                  ),
+                  ),*/
 
                 ],
               ),

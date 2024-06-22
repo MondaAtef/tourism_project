@@ -107,9 +107,9 @@ class _MyAppState extends State<MyApp> {
               ChangeNotifierProvider(create: (_) {
                 return ViewedProdProvider();
               }),
-              ChangeNotifierProvider(create: (_) {
+            /*  ChangeNotifierProvider(create: (_) {
                 return TripProvider();
-              }),
+              }),*/
 
               ChangeNotifierProvider(create: (_) {
                 return PlaceProvider();
