@@ -15,16 +15,12 @@ class CategorydashWidget extends StatelessWidget {
   Widget build(BuildContext context) {
     return GestureDetector(
       onTap: () {
-        // navigateTo(context, SearchScreen());
         Navigator.pushNamed(context, SearchScreen.routeName, arguments: name);
       },
       child: Container(
         decoration: BoxDecoration(
           border: Border.all(
             color:Colors.white,
-            //color: const Color.fromARGB(255, 183, 178, 178),
-            // Border color
-            //color: AppColors.gray, // Border color
             width: 2, // Border width
           ),
         ),

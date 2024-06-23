@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:provider/provider.dart';
 import 'package:vixor_project/provider/homeprovider.dart';
-import 'package:vixor_project/provider/trip%20provider.dart';
+
 
 
 class CartBottomSheetWidget extends StatelessWidget {
@@ -11,7 +11,6 @@ class CartBottomSheetWidget extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     final productsProvider = Provider.of<HomeProvider>(context);
-   // final cartProvider = Provider.of<TripProvider>(context);
     return Container(
       decoration: BoxDecoration(
         color: Theme.of(context).scaffoldBackgroundColor,

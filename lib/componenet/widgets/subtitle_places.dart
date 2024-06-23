@@ -31,7 +31,6 @@ class Subtitle extends StatelessWidget {
           decoration: textDecoration,
           color: color,
           fontStyle: fontStyle,
-          // Use fontFamily parameter
         ),
       ),
     );

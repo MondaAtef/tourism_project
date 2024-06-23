@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:gap/gap.dart';
+import 'package:get/get.dart';
 import 'package:vixor_project/componenet/widgets/cat.dart';
 import 'package:vixor_project/componenet/widgets/namewidget.dart';
 import 'package:vixor_project/componenet/widgets/title%20widget.dart';
@@ -61,7 +62,7 @@ class _HomeScreenState extends State<Homescreen> {
                     const SizedBox(
                       height: 100,
                     ),
-                    const TitlesTextWidget(label: "Categories", color: Colors.white,fontSize:25),
+                    TitlesTextWidget(label: "87".tr, color: Colors.white,fontSize:25),
                     SizedBox(
                       width: size.width * 0.9,  // Adjust width here
                       child: ListView.separated(

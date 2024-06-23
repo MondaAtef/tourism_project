@@ -22,7 +22,7 @@ class NewsCubit extends Cubit<NewsStates> {
   final _uid = user!.uid;
   bool isdark = false;
 
-  void changeappmode({bool? fromshared}) {
+ /* void changeappmode({bool? fromshared}) {
     if (fromshared != null) {
       isdark = fromshared;
       emit(AppChangeDarkState());
@@ -33,7 +33,7 @@ class NewsCubit extends Cubit<NewsStates> {
         emit(AppChangeDarkState());
       });
     }
-  }
+  }*/
 
   Future getUserData() async
   {
@@ -80,7 +80,6 @@ class NewsCubit extends Cubit<NewsStates> {
         .putFile(profileImage!)
         .then((value) {
       value.ref.getDownloadURL().then((value) {
-        //  emit(SocialuploadimageSuccessState());
         print(value);
         updataUser(name: name,
             phone: phone,

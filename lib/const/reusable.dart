@@ -283,7 +283,7 @@ Future<void>warningDialog({
           }
         }, child:Textwidget(
           color: Colors.white,
-          text: 'Cancel',
+          text: '83'.tr,
           textsize: 18,
         ),),
         TextButton(
@@ -291,7 +291,7 @@ Future<void>warningDialog({
           onPressed: fct
           ,child:Textwidget(
           color:  Color(0xFF8D502F),
-          text: 'ok',
+          text: '84'.tr,
           textsize: 18,
         ),
 

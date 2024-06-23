@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:get/get.dart';
 import 'package:vixor_project/screens/recommendation_trip/Recommendation.dart';
 import 'package:vixor_project/utils/app_imagse.dart';
 class GenerateTrip extends StatelessWidget {
@@ -16,7 +17,7 @@ class GenerateTrip extends StatelessWidget {
       extendBodyBehindAppBar: true, // Extends body behind the AppBar
       appBar: AppBar(
         title: Text(
-          'Day $day',
+          '${"96".tr} $day',
           style: TextStyle(color: Colors.white),
         ),
         iconTheme: IconThemeData(color: Colors.white),

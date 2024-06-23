@@ -25,7 +25,7 @@ class WishlistProvider with ChangeNotifier {
     if (user == null) {
       MyAppFunctions.showErrorOrWarningDialog(
         context: context,
-        subtitle: "Please login first",
+        subtitle: "85".tr,
         fct: () {},
       );
       return;

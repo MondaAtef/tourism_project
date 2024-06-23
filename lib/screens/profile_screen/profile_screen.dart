@@ -14,7 +14,6 @@ import 'package:vixor_project/provider/theme_provider.dart';
 import 'package:vixor_project/screens/auth/forget%20password.dart';
 import 'package:vixor_project/screens/auth/login_screen.dart';
 import 'package:vixor_project/screens/dashboard_screen/widgets/CustomListTile.dart';
-// import 'package:vixor_project/screens/dashboard_screen/widgets/Trip/Trip_Screen.dart';
 import 'package:vixor_project/screens/dashboard_screen/widgets/viewed_recently.dart';
 import 'package:vixor_project/screens/dashboard_screen/widgets/wishlist.dart';
 import 'package:vixor_project/screens/profile_screen/Edit%20profile.dart';
@@ -173,24 +172,6 @@ class _SettingScreenState extends State<SettingScreen> {
                         ],
                       ),
                     ),
-                    /* SwitchListTile(
-                      title: Textwidget(
-                        text: themeState.getDarkTheme
-                            ? 'DarkMode'
-                            : 'LightMode',
-                        color: color,
-                        textsize: 18.0,
-                      ),
-                      secondary: Icon(themeState.getDarkTheme
-                          ? Icons.dark_mode_outlined
-                          : Icons.light_mode_outlined),
-                      value: themeState.getDarkTheme,
-                      onChanged: (bool value) {
-                        setState(() {
-                          themeState.setDarkTheme = value;
-                        });
-                      },
-                    ),*/
                     CustomListTile(
                       text: "29".tr,
                       imagePath: AssetsManager.wishlistSvg,

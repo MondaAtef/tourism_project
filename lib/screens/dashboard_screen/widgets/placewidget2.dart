@@ -1,14 +1,12 @@
 import 'package:fancy_shimmer_image/fancy_shimmer_image.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
-import 'package:vixor_project/componenet/widgets/subtitle_text.dart';
 import 'package:vixor_project/componenet/widgets/title%20widget.dart';
 import 'package:vixor_project/provider/homeprovider.dart';
-import 'package:vixor_project/provider/trip%20provider.dart';
 import 'package:vixor_project/provider/view%20provider.dart';
 import 'package:vixor_project/screens/dashboard_screen/widgets/heartbtn.dart';
 import 'package:vixor_project/screens/dashboard_screen/widgets/product_details.dart';
-import 'package:vixor_project/services/MyAppFunctions.dart';
+
 class PlaceWidget2 extends StatefulWidget {
   const PlaceWidget2({
     super.key,
@@ -74,41 +72,6 @@ class _PlaceWidget2State extends State<PlaceWidget2> {
                       productId: getCurrProduct.PlaceId,
                     ),
                   ),
-                  /*Flexible(
-                    flex: 1,
-                    child: InkWell(
-                      borderRadius: BorderRadius.circular(12.0),
-                      onTap: () async {
-                        if (cartProvider.isProdinCart(
-                            productId: getCurrProduct.PlaceId)) {
-                          return;
-                        }
-                        try {
-                          await cartProvider.addToCartFirebase(
-                              productId: getCurrProduct.PlaceId,
-                              qty: 1,
-                              context: context);
-                        } catch (e) {
-                          await MyAppFunctions.showErrorOrWarningDialog(
-                            context: context,
-                            subtitle: e.toString(),
-                            fct: () {},
-                          );
-                        }
-
-                      },
-                      splashColor: Colors.red,
-                      child: Icon(
-                        cartProvider.isProdinCart(
-                            productId: getCurrProduct.PlaceId)
-                            ? Icons.check
-                            : Icons.place_outlined,
-                        size: 25,
-                        color: Colors.grey,
-                      ),
-                    ),
-                  ),*/
-
                 ],
               ),
             ),

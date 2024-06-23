@@ -53,7 +53,6 @@ class EmptyBagWidget extends StatelessWidget {
                 padding:
                 const EdgeInsets.symmetric(horizontal: 20, vertical: 15)),
             onPressed: () {
-              // Navigate to the Homescreen
               Navigator.push(
                 context,
                 MaterialPageRoute(builder: (context) => Homescreen()),

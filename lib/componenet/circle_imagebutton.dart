@@ -9,14 +9,14 @@ class CircleImageButton extends StatelessWidget {
   final Color borderColor;
 
   const CircleImageButton({
-    super.key, // Add Key? key parameter
+    super.key,
     required this.imagePath,
     required this.onPressed,
     this.width = 100,
     this.height = 100,
-    this.borderRadius = 50, // Set borderRadius to half of width or height to make it circular
+    this.borderRadius = 50,
     this.borderColor = const Color(0xffD8DADC),
-  }); // Pass key parameter to super constructor
+  });
 
   @override
   Widget build(BuildContext context) {
@@ -30,7 +30,7 @@ class CircleImageButton extends StatelessWidget {
           borderRadius: BorderRadius.circular(borderRadius),
           border: Border.all(
             color: borderColor,
-            width: 2, // adjust border width as needed
+            width: 2,
           ),
         ),
         child: ClipRRect(

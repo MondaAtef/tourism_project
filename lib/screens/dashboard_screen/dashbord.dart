@@ -1,5 +1,6 @@
 import 'package:card_swiper/card_swiper.dart';
 import 'package:flutter/material.dart';
+import 'package:get/get.dart';
 import 'package:vixor_project/componenet/widgets/title%20widget.dart';
 import 'package:vixor_project/const/app_constants.dart';
 import 'package:vixor_project/models/list_item_model.dart';
@@ -91,10 +92,10 @@ class _DashBoardScreenState extends State<DashBoardScreen> {
                     ),
                   ),
                   const SizedBox(height: 15),
-                  const Padding(
+                   Padding(
                     padding: EdgeInsets.all(8.0),
                     child: TitlesTextWidget(
-                        label: "Top Places", color: Colors.white),
+                        label: "100".tr, color: Colors.white),
                   ),
                   SingleChildScrollView(
                     scrollDirection: Axis.horizontal,
@@ -113,12 +114,10 @@ class _DashBoardScreenState extends State<DashBoardScreen> {
                                     width: 100,
                                     height: 100,
                                     decoration: BoxDecoration(
-                                      borderRadius: BorderRadius.circular(
-                                          20), // Adjust radius for rounded but not circular shape
+                                      borderRadius: BorderRadius.circular(20), // Adjust radius for rounded but not circular shape
                                       border: Border.all(
                                         color: Colors.white,
-                                        width:
-                                            2, // Optional: Add a border around the container
+                                        width: 2, // Optional: Add a border around the container
                                       ),
                                     ),
                                     child: Center(
@@ -134,10 +133,8 @@ class _DashBoardScreenState extends State<DashBoardScreen> {
                                               20), // Match radius with the container
                                           child: Image.asset(
                                             item.image,
-                                            width:
-                                                80, // Adjust width to not take full container space
-                                            height:
-                                                80, // Adjust height to not take full container space
+                                            width: 80, // Adjust width to not take full container space
+                                            height: 80, // Adjust height to not take full container space
                                             fit: BoxFit.cover,
                                           ),
                                         ),
@@ -148,8 +145,7 @@ class _DashBoardScreenState extends State<DashBoardScreen> {
                                   Text(
                                     item.text,
                                     style: const TextStyle(
-                                        color: Colors
-                                            .white), // Set text color to white
+                                        color: Colors.white), // Set text color to white
                                     textAlign:
                                         TextAlign.center, // Center the text
                                   ),

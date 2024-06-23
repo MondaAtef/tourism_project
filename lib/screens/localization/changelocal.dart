@@ -33,7 +33,7 @@ class LocaleController extends GetxController {
     }
     else if (sharedPrefLang == "ko") {
       language = const Locale("ko");
-      appTheme = themekorean;
+      appTheme = themeKorean;
     }
     else {
       language = Locale(Get.deviceLocale!.languageCode);

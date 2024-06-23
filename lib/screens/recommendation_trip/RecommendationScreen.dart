@@ -1,5 +1,6 @@
 import 'dart:convert';
 import 'package:flutter/material.dart';
+import 'package:get/get.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:http/http.dart' as http;
 import 'package:vixor_project/screens/recommendation_trip/Generate_trip.dart';
@@ -45,7 +46,7 @@ class _RecommendationScreenState extends State<RecommendationScreen> {
       extendBodyBehindAppBar: true, // Extends body behind the AppBar
       appBar: AppBar(
         title: Text(
-          'Trip',
+          '97'.tr,
           style: TextStyle(color: Colors.white),
         ),
         iconTheme: IconThemeData(color: Colors.white),
@@ -76,7 +77,7 @@ class _RecommendationScreenState extends State<RecommendationScreen> {
                     controller: daysController,
                     keyboardType: TextInputType.number,
                     decoration: InputDecoration(
-                      labelText: 'Number Of Days',
+                      labelText: '98'.tr,
                       labelStyle: TextStyle(color: Colors.white),
                       border: OutlineInputBorder(
                         borderSide: BorderSide(color: Colors.white),
@@ -106,7 +107,7 @@ class _RecommendationScreenState extends State<RecommendationScreen> {
                     fixedSize: Size(200, 50),
                     backgroundColor: Color.fromARGB(255, 208, 208, 208).withOpacity(0.8),
                   ),
-                  child: Text('Get Your Trip',
+                  child: Text('99'.tr,
                     style: GoogleFonts.oxanium(
                       textStyle: TextStyle(
                         color: Color.fromARGB(167, 33, 126, 180),
@@ -142,7 +143,7 @@ class _RecommendationScreenState extends State<RecommendationScreen> {
                                       ),
                                     );
                                   },
-                                  child: Text('Day ${index + 1}',
+                                  child: Text('${"96".tr} ${index + 1}',
                                     style: GoogleFonts.oxanium(
                                       textStyle: TextStyle(
                                         color: Color.fromARGB(167, 33, 126, 180),

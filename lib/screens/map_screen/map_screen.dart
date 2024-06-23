@@ -1,6 +1,7 @@
 import 'dart:async';
 import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
+import 'package:get/get.dart';
 import 'package:google_maps_flutter/google_maps_flutter.dart';
 import 'package:geolocator/geolocator.dart';
 import 'package:vixor_project/utils/app_imagse.dart';
@@ -400,20 +401,20 @@ class _MapScreenState extends State<MapScreen> {
 
     serviceEnabled = await Geolocator.isLocationServiceEnabled();
     if (!serviceEnabled) {
-      return Future.error('Please enable location services.');
+      return Future.error('88'.tr);
     }
 
     permission = await Geolocator.checkPermission();
     if (permission == LocationPermission.denied) {
       permission = await Geolocator.requestPermission();
       if (permission == LocationPermission.denied) {
-        return Future.error('Location permissions are denied.');
+        return Future.error('89'.tr);
       }
     }
 
     if (permission == LocationPermission.deniedForever) {
       return Future.error(
-          'Location permissions are permanently denied, we cannot request permissions.');
+          '90'.tr);
     }
 
     _currentLocation = await _location.getLocation();
@@ -427,7 +428,7 @@ class _MapScreenState extends State<MapScreen> {
         Marker currentLocationMarker = Marker(
           markerId: const MarkerId('currentLocation'),
           position: LatLng(_currentLocation!.latitude!, _currentLocation!.longitude!),
-          infoWindow: const InfoWindow(title: 'My Location'),
+          infoWindow: InfoWindow(title: '91'.tr),
         );
 
         bool markerExists = false;
@@ -507,18 +508,6 @@ class _MapScreenState extends State<MapScreen> {
                   },
                   myLocationEnabled: true,
                   myLocationButtonEnabled: true,
-
-                /*  marker Set<Marker>.from(markers.map((Marker marker) {
-                    return Marker(
-                      markerId: marker.markerId,
-                      position: marker.position,
-                      icon: marker.icon,
-                      onTap: () {
-                        _onMarkerTapped(marker.markerId);
-                      },
-                    );
-                  }
-                  )),*/
                 ),
 
               ],
@@ -531,10 +520,10 @@ class _MapScreenState extends State<MapScreen> {
             child: Row(
               mainAxisAlignment: MainAxisAlignment.spaceEvenly,
               children: [
-                _buildImageColumn(Assets.green_mark, 'Hotels'),
-                _buildImageColumn(Assets.orange_mark, 'Restaurants'),
-                _buildImageColumn(Assets.blue_mark, 'Hand Crafts'),
-                _buildImageColumn(Assets.yellow_mark, 'Historical places'),
+                _buildImageColumn(Assets.green_mark, '92'.tr),
+                _buildImageColumn(Assets.orange_mark, '93'.tr),
+                _buildImageColumn(Assets.blue_mark, '94'.tr),
+                _buildImageColumn(Assets.yellow_mark, '95'.tr),
               ],
             ),
           ),

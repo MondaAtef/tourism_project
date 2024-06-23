@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:get/get.dart';
 import 'dart:developer';
 import 'package:provider/provider.dart';
 import 'package:dynamic_height_grid_view/dynamic_height_grid_view.dart';
@@ -77,10 +78,10 @@ class _SearchScreenState extends State<SearchScreen> {
           ),
           title: TitlesTextWidget(
               color: Color(0xFF8D502F),
-              label: passedCategory ?? "Search places"),
+              label: passedCategory ?? "101".tr),
         ),
           body: productList.isEmpty
-              ? const Center(child: TitlesTextWidget(label: "No Place found"))
+              ?  Center(child: TitlesTextWidget(label: "102".tr))
             : StreamBuilder<List<Placemodel>>(
             stream: productsProvider.fetchProductsStream(),
             builder: (context, snapshot) {
@@ -93,8 +94,8 @@ class _SearchScreenState extends State<SearchScreen> {
                   child: SelectableText(snapshot.error.toString()),
                 );
               } else if (snapshot.data == null) {
-                return const Center(
-                  child: SelectableText("No places has been added"),
+                return  Center(
+                  child: SelectableText("103".tr),
                 );
               }
               return Padding(
@@ -107,7 +108,7 @@ class _SearchScreenState extends State<SearchScreen> {
                     TextField(
                       controller: searchTextController,
                       decoration: InputDecoration(
-                        hintText: "Search",
+                        hintText: "104".tr,
                         prefixIcon: const Icon(Icons.search),
                         suffixIcon: GestureDetector(
                           onTap: () {
@@ -141,8 +142,8 @@ class _SearchScreenState extends State<SearchScreen> {
                     ),
                     if (searchTextController.text.isNotEmpty &&
                         productListSearch.isEmpty) ...[
-                      const Center(
-                        child: TitlesTextWidget(label: "No Places found"),
+                       Center(
+                        child: TitlesTextWidget(label: "105".tr),
                       ),
                     ],
                     Expanded(
